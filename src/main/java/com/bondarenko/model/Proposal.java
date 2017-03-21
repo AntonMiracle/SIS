@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 @SuppressWarnings ("serial")
-public class Proposal implements Serializable {
+public class Proposal implements Serializable {	
 	private Long id;
 	private User user;
 	private Status status;
