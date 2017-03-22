@@ -2,15 +2,38 @@ package com.bondarenko.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @SuppressWarnings ("serial")
+@Entity
 public class Task implements Serializable {
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column (name = "PROPOSAL_ID")
 	private Long id;
+	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn (name = "STATUS_ID")
 	private Status status;
+	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn (name = "USER_ID")
 	private User user;
+	@Column (name = "DESCRIPTION", nullable = false, length = 2048)
 	private String description;
-	private List<Proposal> proposals;
+	@Column (name = "CONCLUSION", nullable = false, length = 2048)
+	private String conclusion;
+	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn (name = "PROPOSAL_ID")
+	private Proposal proposal;
+	@Column (name = "CREATE_DATE")
 	private Timestamp createDate;
 
 	public Long getId() {
@@ -29,8 +52,12 @@ public class Task implements Serializable {
 		return description;
 	}
 
-	public List<Proposal> getProposals() {
-		return proposals;
+	public String getConclusion() {
+		return conclusion;
+	}
+
+	public Proposal getProposal() {
+		return proposal;
 	}
 
 	public Timestamp getCreateDate() {
@@ -53,8 +80,12 @@ public class Task implements Serializable {
 		this.description = description;
 	}
 
-	public void setProposals(List<Proposal> proposals) {
-		this.proposals = proposals;
+	public void setConclusion(String conclusion) {
+		this.conclusion = conclusion;
+	}
+
+	public void setProposal(Proposal proposal) {
+		this.proposal = proposal;
 	}
 
 	public void setCreateDate(Timestamp createDate) {

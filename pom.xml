@@ -12,13 +12,23 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<!-- General -->
+		<!-- general -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<maven.compile.version>3.6.0</maven.compile.version>
+		<!-- jpa -->
+		<javax.javaee-api.version>7.0</javax.javaee-api.version>
 	</properties>
 
 	<dependencies>
+		<!-- jpa -->
+		<dependency>	  
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javax.javaee-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

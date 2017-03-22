@@ -4,15 +4,39 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 @SuppressWarnings ("serial")
+@Entity
 public class Car implements Serializable {
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column (name = "CAR_ID")
 	private Long id;
+	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn (name = "USER_ID")
 	private User user;
+	@Column (name = "NUMBER", nullable = false, unique = true, length = 100)
 	private String number;
+	@Column (name = "MODEL", nullable = false, length = 100)
 	private String model;
+	@Column (name = "MARK", nullable = false, length = 100)
 	private String mark;
+	@Column (name = "DESCRIPTION", nullable = false, length = 100)
 	private String description;
+	@Column (name = "CREATE_DATE")
 	private Timestamp createDate;
+	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn (name = "CAR_ID", referencedColumnName = "CAR_ID")
 	private List<Proposal> proposals;
 
 	public Long getId() {

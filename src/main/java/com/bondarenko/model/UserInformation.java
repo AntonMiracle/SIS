@@ -3,14 +3,35 @@ package com.bondarenko.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 @SuppressWarnings ("serial")
+@Entity
 public class UserInformation implements Serializable {
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column (name = "USER_INFORMATION_ID")
 	private Long id;
+	@OneToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.REMOVE}, fetch = FetchType.EAGER)
+	@JoinColumn (name = "USER_ID")
 	private User user;
+	@Column (name = "PHONE", nullable = false, unique = true, length = 100)
 	private String phone;
+	@Column (name = "NAME", nullable = false, length = 100)
 	private String name;
+	@Column (name = "SURNAME", nullable = false, length = 100)
 	private String surname;
+	@Column (name = "MAIL", nullable = false, length = 100)
 	private String mail;
+	@Column (name = "CREATE_DATE")
 	private Timestamp createDate;
 
 	public Long getId() {

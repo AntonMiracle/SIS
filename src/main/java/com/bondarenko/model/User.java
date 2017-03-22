@@ -3,15 +3,45 @@ package com.bondarenko.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 @SuppressWarnings ("serial")
+@Entity
 public class User implements Serializable {
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column (name = "USER_ID")
 	private Long id;
+	@Column (name = "USERNAME", nullable = false, unique = true, length = 100)
 	private String username;
+	@Column (name = "PASSWORD", nullable = false, length = 100)
 	private String password;
+	@OneToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.REMOVE}, fetch = FetchType.EAGER)
+	@JoinColumn (name = "USER_INFORMATION_ID")
 	private UserInformation userInformation;
+	@ManyToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinTable (name = "USER_ROLE", joinColumns = {@JoinColumn (name = "USER_ID")}, inverseJoinColumns = {
+			@JoinColumn (name = "ROLE_ID")})
 	private List<Role> roles;
+	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
 	private List<Proposal> proposals;
+	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
 	private List<Car> cars;
+	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
 	private List<Task> tasks;
 
 	public Long getId() {
