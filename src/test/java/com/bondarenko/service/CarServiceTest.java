@@ -15,7 +15,7 @@ import com.bondarenko.model.Car;
 import com.bondarenko.model.User;
 
 @RunWith (SpringJUnit4ClassRunner.class)
-@ContextConfiguration (locations = "classpath:config/sis-context.xml")
+@ContextConfiguration (locations = {DBUnitConfig.contextConfigurationLocation})
 @TestExecutionListeners ({DependencyInjectionTestExecutionListener.class})
 public class CarServiceTest extends DBUnitConfig {
 	@Autowired

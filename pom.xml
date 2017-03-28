@@ -24,12 +24,15 @@
 		<hibernate.validator>6.0.0.Alpha1</hibernate.validator>
 		<!-- spring -->
 		<spring>4.3.6.RELEASE</spring>
-		<!-- H2 -->
+		<!-- h2 -->
 		<h2>1.4.193</h2>
 		<commons.dbcp>1.2.2</commons.dbcp>
-		<!-- test -->
+		<!-- testing -->
 		<junit>4.12</junit>
 		<dbunit>2.5.3</dbunit>
+		<!-- logging -->
+		<log4j.version>2.7</log4j.version>
+		<slf4.api.version>1.7.22</slf4.api.version>
 		<!-- other -->
 
 	</properties>
@@ -49,7 +52,7 @@
 			<version>${hibernate.core}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate.validator}</version>
 		</dependency>
@@ -79,7 +82,7 @@
 			<artifactId>spring-beans</artifactId>
 			<version>${spring}</version>
 		</dependency>
-		<!-- H2 -->
+		<!-- h2 -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -90,7 +93,7 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>${commons.dbcp}</version>
 		</dependency>
-		<!-- test -->
+		<!-- testing -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
@@ -106,6 +109,17 @@
 			<artifactId>junit</artifactId>
 			<version>${junit}</version>
 			<scope>test</scope>
+		</dependency>
+		<!-- logging -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4.api.version}</version>
 		</dependency>
 		<!-- other -->
 

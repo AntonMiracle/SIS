@@ -14,7 +14,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import com.bondarenko.model.Status;
 
 @RunWith (SpringJUnit4ClassRunner.class)
-@ContextConfiguration (locations = "classpath:config/sis-context.xml")
+@ContextConfiguration (locations = {DBUnitConfig.contextConfigurationLocation})
 @TestExecutionListeners ({DependencyInjectionTestExecutionListener.class})
 public class StatusServiceTest extends DBUnitConfig {
 	@Autowired

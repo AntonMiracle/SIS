@@ -18,7 +18,7 @@ import com.bondarenko.model.User;
 import com.bondarenko.util.DaoUtil;
 
 @RunWith (SpringJUnit4ClassRunner.class)
-@ContextConfiguration (locations = "classpath:config/sis-context.xml")
+@ContextConfiguration (locations = {DBUnitConfig.contextConfigurationLocation})
 @TestExecutionListeners ({DependencyInjectionTestExecutionListener.class})
 public class TaskServiceTest extends DBUnitConfig {
 	@Autowired

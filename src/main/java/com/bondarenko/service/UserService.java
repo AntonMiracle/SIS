@@ -10,7 +10,7 @@ public interface UserService {
 
 	public boolean delete(User user) throws RuntimeException;// test-ok
 	
-	public boolean delete(Long userId) throws RuntimeException;
+	public boolean delete(Long userId) throws RuntimeException;//test-ok
 
 	public User update(User user) throws RuntimeException;// test-ok
 

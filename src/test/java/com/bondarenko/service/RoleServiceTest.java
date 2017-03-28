@@ -14,7 +14,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import com.bondarenko.model.Role;
 
 @RunWith (SpringJUnit4ClassRunner.class)
-@ContextConfiguration (locations = "classpath:config/sis-context.xml")
+@ContextConfiguration (locations = {DBUnitConfig.contextConfigurationLocation})
 @TestExecutionListeners ({DependencyInjectionTestExecutionListener.class})
 public class RoleServiceTest extends DBUnitConfig {
 	@Autowired
