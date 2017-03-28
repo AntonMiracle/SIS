@@ -20,7 +20,7 @@ public class UserInformation implements Serializable {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "USER_INFORMATION_ID")
 	private Long id;
-	@OneToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.REMOVE}, fetch = FetchType.EAGER)
+	@OneToOne (cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID")
 	private User user;
 	@Column (name = "PHONE", nullable = false, unique = true, length = 100)

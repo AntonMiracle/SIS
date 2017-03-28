@@ -18,17 +18,97 @@
 		<java.version>1.8</java.version>
 		<maven.compile.version>3.6.0</maven.compile.version>
 		<!-- jpa -->
-		<javax.javaee-api.version>7.0</javax.javaee-api.version>
+		<javax.servlet-api>4.0.0-b01</javax.servlet-api>
+		<!-- hibernate -->
+		<hibernate.core>4.3.11.Final</hibernate.core>
+		<hibernate.validator>6.0.0.Alpha1</hibernate.validator>
+		<!-- spring -->
+		<spring>4.3.6.RELEASE</spring>
+		<!-- H2 -->
+		<h2>1.4.193</h2>
+		<commons.dbcp>1.2.2</commons.dbcp>
+		<!-- test -->
+		<junit>4.12</junit>
+		<dbunit>2.5.3</dbunit>
+		<!-- other -->
+
 	</properties>
 
 	<dependencies>
 		<!-- jpa -->
-		<dependency>	  
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>${javax.javaee-api.version}</version>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet-api}</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.core}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator}</version>
+		</dependency>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring}</version>
+		</dependency>
+		<!-- H2 -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>${commons.dbcp}</version>
+		</dependency>
+		<!-- test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>${dbunit}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- other -->
+
 	</dependencies>
 
 	<build>

@@ -18,7 +18,7 @@ import javax.persistence.ManyToOne;
 public class Task implements Serializable {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column (name = "PROPOSAL_ID")
+	@Column (name = "TASK_ID")
 	private Long id;
 	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "STATUS_ID")

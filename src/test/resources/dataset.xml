@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  
+<dataset>
+ 	
+ 	<user user_id="1" username="username1" password="pass1"/>
+ 	<user user_id="2" username="username2" password="pass2"/>
+ 	<user user_id="3" username="username3" password="pass3"/>
+ 	<user user_id="4" username="username4" password="pass4"/>
+ 	<user user_id="5" username="username5" password="pass5"/>
+ 	<user user_id="6" username="username6" password="pass5"/>
+ 	<user user_id="7" username="username7" password="pass5"/>
+ 	  
+	<userinformation user_information_id="1" user_id="1" name="name1" surname="surname1" phone="phone1" mail="mail1" create_date="2016-12-1 00:00:00.0"/>
+	<userinformation user_information_id="2" user_id="2" name="name2" surname="surname2" phone="phone2" mail="mail2" create_date="2016-12-1 00:00:00.0"/>
+	<userinformation user_information_id="3" user_id="3" name="name3" surname="surname3" phone="phone3" mail="mail3" create_date="2016-12-1 00:00:00.0"/>
+	<userinformation user_information_id="4" user_id="4" name="name4" surname="surname4" phone="phone4" mail="mail4" create_date="2016-12-1 00:00:00.0"/>
+	<userinformation user_information_id="5" user_id="5" name="name5" surname="surname5" phone="phone5" mail="mail5" create_date="2016-12-1 00:00:00.0"/>
+	<userinformation user_information_id="6" user_id="6" name="name5" surname="surname5" phone="phone6" mail="mail5" create_date="2016-12-1 00:00:00.0"/>
+	<userinformation user_information_id="7" user_id="7" name="name5" surname="surname5" phone="phone7" mail="mail5" create_date="2016-12-1 00:00:00.0"/>
+       
+    <role role_id="1" name="role1"/>
+    <role role_id="2" name="role2"/>
+    <role role_id="3" name="role3"/>
+    <role role_id="4" name="role4"/>
+    <role role_id="5" name="role5"/>
+    <role role_id="6" name="role6"/>
+    
+    <user_role user_id="1" role_id="1"/>
+    <user_role user_id="1" role_id="2"/>
+    <user_role user_id="2" role_id="1"/>
+    <user_role user_id="2" role_id="2"/>
+    <user_role user_id="2" role_id="3"/>
+    <user_role user_id="2" role_id="4"/>
+    <user_role user_id="3" role_id="4"/>
+    <user_role user_id="4" role_id="3"/>
+    <user_role user_id="5" role_id="2"/>
+    <user_role user_id="6" role_id="1"/>    
+            
+    <status status_id="1" name="status1"/>
+    <status status_id="2" name="status2"/>
+    <status status_id="3" name="status3"/>
+    <status status_id="4" name="status4"/>
+    <status status_id="5" name="open"/>
+    <status status_id="6" name="status6"/>
+    
+    <car car_id="1" user_id="1" number="number1" model="model1" mark="mark1" description="description1" create_date="2016-12-1 00:00:00.0"/>
+    <car car_id="2" user_id="1" number="number2" model="model1" mark="mark2" description="description2" create_date="2016-12-1 00:00:00.0"/>
+    <car car_id="3" user_id="2" number="number3" model="model3" mark="mark1" description="description1" create_date="2016-12-1 00:00:00.0"/>
+    
+    <proposal proposal_id="1" user_id="1" status_id="1" car_id="1" description="description1" create_date="2016-10-1 00:00:00.0"/>      
+    <proposal proposal_id="2" user_id="1" status_id="2" car_id="1" description="description1" create_date="2016-10-1 00:00:00.0"/>      
+    <proposal proposal_id="3" user_id="2" status_id="3" car_id="3" description="description1" create_date="2016-10-1 00:00:00.0"/>      
+    <proposal proposal_id="4" user_id="1" status_id="1" car_id="2" description="description1" create_date="2016-10-1 00:00:00.0"/>      
+    <proposal proposal_id="5" user_id="1" status_id="4" car_id="2" description="description1" create_date="2016-10-1 00:00:00.0"/>      
+    <proposal proposal_id="6" user_id="1" status_id="2" car_id="1" description="description1" create_date="2016-10-1 00:00:00.0"/>     
+    
+    <task task_id="1" status_id="1" user_id="1" proposal_id="1" description="description1" conclusion="conclusion1" create_date="2016-12-1 00:00:00.0"/>
+    <task task_id="2" status_id="2" user_id="1" proposal_id="1" description="description1" conclusion="conclusion1" create_date="2016-12-1 00:00:00.0"/>
+    <task task_id="3" status_id="3" user_id="2" proposal_id="2" description="description1" conclusion="conclusion1" create_date="2016-12-1 00:00:00.0"/>
+    <task task_id="4" status_id="1" user_id="3" proposal_id="3" description="description1" conclusion="conclusion1" create_date="2016-12-1 00:00:00.0"/>
+    <task task_id="5" status_id="1" user_id="1" proposal_id="4" description="description1" conclusion="conclusion1" create_date="2016-12-1 00:00:00.0"/>
+    
+</dataset>
+
