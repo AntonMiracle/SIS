@@ -42,7 +42,7 @@ public class ProjectProperties {
 			hibernateDialect = properties.getProperty("hibernate.dialect");
 			hibernateHBM2DDLAuto = properties.getProperty("hibernate.hbm2ddl.auto");
 			hibernateShowSQL = properties.getProperty("hibernate.show.sql");			
-			
+			LOG.trace("properties are received successfully");
 		} catch (IOException ex) {
 			LOG.error(ex, ex);
 			ex.printStackTrace();

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration status="WARN" name="my-config">
+	<Properties>
+		<Property name="PATTERN">%-5level %d [%t] %c:%M(%L): %m%n</Property>
+	</Properties>
+	<Appenders>
+		<Console name="CONSOLE" target="SYSTEM_OUT">
+			<PatternLayout pattern="${PATTERN}" />
+		</Console>
+		<File name="FILE_LOG" fileName="logs/LogFile.log" immediateFlush="FALSE"
+			append="FALSE">
+			<PatternLayout pattern="${PATTERN}" />
+		</File>
+		<File name="PROJECT_PROPERITES_FILE_LOG" fileName="logs/ProjectPropertiesFile.log" immediateFlush="FALSE"
+			append="FALSE">
+			<PatternLayout pattern="${PATTERN}" />
+		</File>
+		<File name="TESTING_FILE_LOG" fileName="logs/TestingFile.log" immediateFlush="FALSE"
+			append="FALSE">
+			<PatternLayout pattern="${PATTERN}" />
+		</File>
+	</Appenders>
+	<Loggers>
+		<Root level="FATAL">
+			<AppenderRef ref="FILE_LOG" />
+		</Root>
+		<Logger name="com.bondarenko" level="ERROR" additivity="FALSE">
+			<AppenderRef ref="FILE_LOG" />
+		</Logger>
+		<Logger name="com.bondarenko.util.ProjectProperties" level="TRACE" additivity="FALSE">
+			<AppenderRef ref="PROJECT_PROPERITES_FILE_LOG" />
+		</Logger>
+		<Logger name="com.bondarenko.service.DBUnitConfig" level="TRACE" additivity="FALSE">
+			<AppenderRef ref="TESTING_FILE_LOG" />
+		</Logger>
+	</Loggers>
+</Configuration>
