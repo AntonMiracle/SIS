@@ -10,7 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class ProjectProperties {
-	private static final Logger LOG = LogManager.getFormatterLogger();
+	private static final Logger LOG = LogManager.getLogger();	
 	public static ProjectProperties projectProps = getInstance();
 	private String jdbcUrl;
 	private String jdbcDriver;

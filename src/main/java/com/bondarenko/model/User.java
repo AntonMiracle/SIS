@@ -28,7 +28,7 @@ public class User implements Serializable {
 	@Column (name = "PASSWORD", nullable = false, length = 100)
 	private String password;	
 	@OneToOne (cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
+	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")	
 	private UserInformation userInformation;
 	@ManyToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinTable (name = "USER_ROLE", joinColumns = {@JoinColumn (name = "USER_ID")}, inverseJoinColumns = {

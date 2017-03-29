@@ -191,11 +191,22 @@ public class UserServiceTest extends DBUnitConfig {
 		user.setUserInformation(ui);
 		user.setUsername(username);
 		user.setPassword(password);
-		Long userIdBeforeSave = user.getId();
+		Assert.assertNull(user.getId());
+		Assert.assertNull(user.getUserInformation().getId());
 		user = userService.save(user);
-		Assert.assertNull(userIdBeforeSave);
 		Assert.assertNotNull(user);
 		Assert.assertNotNull(user.getId());
+		Assert.assertNotNull(user.getUserInformation());
+		Assert.assertNotNull(user.getUserInformation().getId());
+		Assert.assertNotNull(user.getUserInformation().getPhone());
+		Assert.assertNotNull(user.getUserInformation().getUser().getId());
+		Assert.assertNotNull(userService.getByPhone(phone));
+		Assert.assertNotNull(userService.getByPhone(phone).getUserInformation().getUser().getId());
+		Assert.assertNotNull(userService.getByUsername(username));
+		Assert.assertNotNull(userService.getByUsername(username).getUserInformation().getUser().getId());
+		Assert.assertNotNull(userService.getById(user.getId()));
+		Assert.assertNotNull(userService.getById(user.getId()).getUserInformation().getUser().getId());
+		Assert.assertEquals(phone, user.getUserInformation().getPhone());
 		Assert.assertEquals(countUsers + 1, userService.getUsers().size());
 	}
 
@@ -219,10 +230,10 @@ public class UserServiceTest extends DBUnitConfig {
 	}
 
 	@Test
-	public void shouldFillUserNullFieldsAfterGet() throws Exception {
-		String username = "username";
+	public void shouldFillUserNullFieldsAfterGetById() throws Exception {
+		String username = "username3344";
 		String password = "pass";
-		String phone = "phone";
+		String phone = "phone22344";
 		UserInformation ui = new UserInformation();
 		ui.setPhone(phone);
 		User user = new User();
@@ -239,13 +250,13 @@ public class UserServiceTest extends DBUnitConfig {
 		Assert.assertNull(user.getUserInformation().getSurname());
 		Assert.assertNull(user.getUserInformation().getId());
 		Assert.assertNull(user.getUserInformation().getCreateDate());
-		userService.save(user);
-		user = userService.getById(user.getId());
+		user = userService.save(user);
 		Assert.assertNotNull(user.getId());
 		Assert.assertNotNull(user.getTasks());
 		Assert.assertNotNull(user.getCars());
 		Assert.assertNotNull(user.getProposals());
 		Assert.assertNotNull(user.getRoles());
+		Assert.assertNotNull(user.getUserInformation());
 		Assert.assertNotNull(user.getUserInformation().getMail());
 		Assert.assertNotNull(user.getUserInformation().getName());
 		Assert.assertNotNull(user.getUserInformation().getSurname());
@@ -275,9 +286,6 @@ public class UserServiceTest extends DBUnitConfig {
 		Assert.assertNull(user.getUserInformation().getId());
 		Assert.assertNull(user.getUserInformation().getCreateDate());
 		userService.checkNewUserFields(user);
-		Assert.assertNotNull(user.getTasks());
-		Assert.assertNotNull(user.getCars());
-		Assert.assertNotNull(user.getProposals());
 		Assert.assertNotNull(user.getRoles());
 		Assert.assertNotNull(user.getUserInformation().getMail());
 		Assert.assertNotNull(user.getUserInformation().getName());

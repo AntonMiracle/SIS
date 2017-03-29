@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,7 @@ import com.bondarenko.util.DaoUtil;
 
 @Service
 public class UserServiceImp implements UserService {
+	private static final Logger LOG = LogManager.getLogger();
 	@Autowired
 	private UserDao userDao;
 	@Autowired
@@ -33,176 +36,260 @@ public class UserServiceImp implements UserService {
 	@Override
 	@Transactional
 	public User save(User user) throws RuntimeException {
-		if (checkNewUserFields(user)) {
-			userDao.save(user);
-			user = getById(user.getId());
+		try {
+			if (checkNewUserFields(user)) {
+				user = userDao.save(user);	
+				nullFilter(user);
+			}
+			return user;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return user;
 	}
 
 	@Override
 	@Transactional
 	public boolean delete(User user) throws RuntimeException {
-		return userDao.delete(user);
+		try {
+			return userDao.delete(user);
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
 	}
 
 	@Override
 	@Transactional
 	public User update(User user) throws RuntimeException {
-		return userDao.update(user);
+		try {
+			return userDao.update(user);
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
 	}
 
 	@Override
 	@Transactional
 	public boolean delete(Long userId) throws RuntimeException {
-		User user = getById(userId);
-		if (user != null) {
-			return delete(user);
+		try {
+			User user = getById(userId);
+			if (user != null) {
+				return delete(user);
+			}
+			return false;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return false;
 	}
 
 	@Override
 	@Transactional
 	public List<User> getUsers() throws RuntimeException {
-		return userDao.getAll() == null ? new ArrayList<User>() : userDao.getAll();
+		try {
+			return userDao.getAll() == null ? new ArrayList<User>() : userDao.getAll();
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
 	}
 
 	@Override
 	@Transactional
 	public List<User> getByRolename(String name) throws RuntimeException {
-		Role role = roleService.getByName(name);
-		return role.getUsers() == null ? new ArrayList<User>() : role.getUsers();
+		try {
+			Role role = roleService.getByName(name);
+			return role.getUsers() == null ? new ArrayList<User>() : role.getUsers();
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
 	}
 
 	@Override
 	@Transactional
 	public User getByPhone(String phone) throws RuntimeException {
-		User user = null;
-		if (userInformationDao.getByPhone(phone) != null) {
-			user = userInformationDao.getByPhone(phone).getUser();
+		try {
+			User user = null;
+			if (userInformationDao.getByPhone(phone) != null && userInformationDao.getByPhone(phone).getUser() != null) {
+				user = getById(userInformationDao.getByPhone(phone).getUser().getId());				
+			}			
+			return user;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		if (user != null) {
-			nullFilter(user);
-		}
-		return user;
 	}
 
 	@Override
 	@Transactional
 	public User getById(Long id) throws RuntimeException {
-		User user = userDao.getById(id);
-		if (user != null) {
+		try {
+			User user = userDao.getById(id);
 			nullFilter(user);
+			return user;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return user;
 	}
 
 	@Override
 	@Transactional
 	public User getByUsername(String username) throws RuntimeException {
-		User user = userDao.getByUsername(username);
-		if (user != null) {
-			nullFilter(user);
+		try {
+			User user = userDao.getByUsername(username);
+			if(user != null){
+				user = getById(user.getId());
+			}
+			return user;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return user;
 	}
 
 	@Override
 	@Transactional
 	public boolean checkNewUserFields(User user) throws RuntimeException {
-		UserInformation ui = user.getUserInformation();
-		String userName = user.getUsername();
-		String pass = user.getPassword();
-		if (userName != null && userName.length() > 0 && pass != null && pass.length() > 0 && ui != null
-				&& ui.getPhone() != null && ui.getPhone().length() > 0) {
-			ui.setMail(ui.getMail() == null ? "" : ui.getMail());
-			ui.setName(ui.getName() == null ? "" : ui.getName());
-			ui.setSurname(ui.getSurname() == null ? "" : ui.getSurname());
-			ui.setCreateDate(ui.getCreateDate() == null ? Timestamp.valueOf(LocalDateTime.now()) : ui.getCreateDate());
-			if (user.getRoles() == null || user.getRoles().size() == 0) {
-				List<Role> roles = new ArrayList<>();
-				roles.add(roleService.getByName(DaoUtil.ROLE_CLIENT));
-				user.setRoles(roles);
+		try {
+			if (user != null && user.getId() == null) {
+				UserInformation ui = user.getUserInformation();
+				String userName = user.getUsername();
+				String pass = user.getPassword();
+				if (userName != null && userName.length() > 0 && pass != null && pass.length() > 0 && ui != null
+						&& ui.getPhone() != null && ui.getPhone().length() > 0) {
+					ui.setMail(ui.getMail() == null ? "" : ui.getMail());
+					ui.setName(ui.getName() == null ? "" : ui.getName());
+					ui.setSurname(ui.getSurname() == null ? "" : ui.getSurname());
+					ui.setCreateDate(Timestamp.valueOf(LocalDateTime.now()));
+					ui.setUser(user);
+					if (user.getRoles() == null || user.getRoles().size() == 0) {
+						List<Role> roles = new ArrayList<>();
+						roles.add(roleService.getByName(DaoUtil.ROLE_CLIENT));
+						user.setRoles(roles);
+					}	
+					return true;
+				}				
 			}
-			nullFilter(user);
-			return true;
+			return false;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return false;
 	}
 
+
+	@Override
+	public User nullFilter(User user) throws RuntimeException {
+		try {
+			if (user != null) {
+				user.setCars(user.getCars() == null ? new ArrayList<Car>() : user.getCars());
+				user.setTasks(user.getTasks() == null ? new ArrayList<Task>() : user.getTasks());
+				user.setProposals(user.getProposals() == null ? new ArrayList<Proposal>() : user.getProposals());				
+			}
+			return user;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
+	}
+	
 	@Override
 	@Transactional
 	public boolean isUsernameUnique(String username) throws RuntimeException {
-		return userDao.isUsernameUnique(username);
+		try {
+			return userDao.isUsernameUnique(username);
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
 	}
 
 	@Override
 	@Transactional
 	public boolean isPhoneUnique(String phone) throws RuntimeException {
-		return userInformationDao.isPhoneUnique(phone);
+		try {
+			return userInformationDao.isPhoneUnique(phone);
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
 	}
 
 	@Override
 	@Transactional
 	public boolean isAuthenticationCorrect(String username, String password) throws RuntimeException {
-		if (password != null && password.length() > 0 && userDao.getByUsername(username) != null
-				&& userDao.getByUsername(username).getPassword().equals(password)) {
-			return true;
+		try {
+			if (password != null && password.length() > 0 && userDao.getByUsername(username) != null
+					&& userDao.getByUsername(username).getPassword().equals(password)) {
+				return true;
+			}
+			return false;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return false;
-	}
-
-	@Override
-	public User nullFilter(User user) throws RuntimeException {
-		user.setCars(user.getCars() == null ? new ArrayList<Car>() : user.getCars());
-		user.setTasks(user.getTasks() == null ? new ArrayList<Task>() : user.getTasks());
-		user.setProposals(user.getProposals() == null ? new ArrayList<Proposal>() : user.getProposals());
-		return user;
 	}
 
 	@Override
 	@Transactional
 	public User addRoleByName(Long id, String name) throws RuntimeException {
-		User user = getById(id);
-		Role role = roleService.getByName(name);
-		if (user != null && role != null) {
-			user.getRoles().add(role);
-			user = update(user);
+		try {
+			User user = getById(id);
+			Role role = roleService.getByName(name);
+			if (user != null && role != null) {
+				user.getRoles().add(role);
+				user = update(user);
+			}
+			return user;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return user;
 	}
 
 	@Override
 	@Transactional
 	public User removeRoleByName(Long id, String name) throws RuntimeException {
-		User user = getById(id);
-		Role role = roleService.getByName(name);
-		if (user != null && role != null && user.getRoles() != null && user.getRoles().size() > 1) {
-			for (int i = 0; i < user.getRoles().size(); i++) {
-				if (user.getRoles().get(i).getName().equals(name)) {
-					user.getRoles().remove(i);
-					break;
+		try {
+			User user = getById(id);
+			Role role = roleService.getByName(name);
+			if (user != null && role != null && user.getRoles() != null && user.getRoles().size() > 1) {
+				for (int i = 0; i < user.getRoles().size(); i++) {
+					if (user.getRoles().get(i).getName().equals(name)) {
+						user.getRoles().remove(i);
+						break;
+					}
 				}
+				user = update(user);
 			}
-			user = update(user);
+			return user;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return user;
 	}
 
 	@Override
 	@Transactional
 	public boolean isHasRole(Long userId, String name) throws RuntimeException {
-		User user = getById(userId);
-		Role role = roleService.getByName(name);
-		if (user != null && role != null && user.getRoles() != null) {
-			for (Role r : user.getRoles()) {
-				if (r.getName().equals(name)) {
-					return true;
+		try {
+			User user = getById(userId);
+			Role role = roleService.getByName(name);
+			if (user != null && role != null && user.getRoles() != null) {
+				for (Role r : user.getRoles()) {
+					if (r.getName().equals(name)) {
+						return true;
+					}
 				}
 			}
+			return false;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return false;
 	}
-
 }

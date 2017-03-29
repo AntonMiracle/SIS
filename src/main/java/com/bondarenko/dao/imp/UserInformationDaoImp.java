@@ -66,4 +66,11 @@ public class UserInformationDaoImp implements UserInformationDao {
 		return (UserInformation) query.uniqueResult();
 	}
 
+	@Override
+	public UserInformation getByUserId(Long userId) throws RuntimeException {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from UserInformation as ui where ui.user.id = '" + userId.toString() + "'");
+		return (UserInformation) query.uniqueResult();
+	}
+
 }

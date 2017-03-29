@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,7 @@ import com.bondarenko.util.DaoUtil;
 
 @Service
 public class ProposalServiceImp implements ProposalService {
+	private static final Logger LOG = LogManager.getLogger();
 	@Autowired
 	private ProposalDao proposalDao;
 	@Autowired
@@ -33,105 +36,164 @@ public class ProposalServiceImp implements ProposalService {
 	@Override
 	@Transactional
 	public Proposal save(Proposal proposal) throws RuntimeException {
-		if (checkNewProposalFields(proposal)) {
-			proposalDao.save(proposal);
+		try {
+			if (checkNewProposalFields(proposal)) {
+				proposalDao.save(proposal);
+			}
+			return proposal;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return proposal;
 	}
 
 	@Override
 	@Transactional
 	public Proposal save(Long userId, Long carId, String description) throws RuntimeException {
-		Proposal proposal = null;
-		User user = userService.getById(userId);
-		Car car = carService.getById(carId);
-		if (user != null && car != null) {
-			proposal = new Proposal();
-			proposal.setCar(car);
-			proposal.setUser(user);
-			proposal.setDescription(description);
-			proposal = save(proposal);
+		try {
+			Proposal proposal = null;
+			User user = userService.getById(userId);
+			Car car = carService.getById(carId);
+			if (user != null && car != null) {
+				proposal = new Proposal();
+				proposal.setCar(car);
+				proposal.setUser(user);
+				proposal.setDescription(description);
+				proposal = save(proposal);
+			}
+			return proposal;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return proposal;
 	}
 
 	@Override
 	@Transactional
 	public boolean delete(Proposal proposal) throws RuntimeException {
-		return proposalDao.delete(proposal);
+		try {
+			return proposalDao.delete(proposal);
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
 	}
 
 	@Override
 	@Transactional
 	public boolean delete(Long proposalId) throws RuntimeException {
-		Proposal proposal = getById(proposalId);
-		if (proposal != null) {
-			return delete(proposal);
+		try {
+			Proposal proposal = getById(proposalId);
+			if (proposal != null) {
+				return delete(proposal);
+			}
+			return false;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return false;
 	}
 
 	@Override
 	@Transactional
 	public Proposal update(Proposal proposal) throws RuntimeException {
-		return proposalDao.update(proposal);
+		try {
+			return proposalDao.update(proposal);
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
 	}
 
 	@Override
 	@Transactional
 	public List<Proposal> getProposals() throws RuntimeException {
-		return proposalDao.getAll();
+		try {
+			return proposalDao.getAll();
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
 	}
 
 	@Override
 	@Transactional
 	public List<Proposal> getByUserId(Long id) throws RuntimeException {
-		return proposalDao.getAllByUserId(id);
+		try {
+			return proposalDao.getAllByUserId(id);
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
 	}
 
 	@Override
 	@Transactional
 	public Proposal getById(Long id) throws RuntimeException {
-		return proposalDao.getById(id);
+		try {
+			return proposalDao.getById(id);
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
 	}
 
 	@Override
 	@Transactional
 	public List<Proposal> getByStatusId(Long id) throws RuntimeException {
-		return proposalDao.getAllByStatusId(id);
+		try {
+			return proposalDao.getAllByStatusId(id);
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
 	}
 
 	@Override
 	@Transactional
 	public List<Proposal> getByCarId(Long id) throws RuntimeException {
-		return proposalDao.getAllByCarId(id);
+		try {
+			return proposalDao.getAllByCarId(id);
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
 	}
 
 	@Override
 	@Transactional
 	public boolean checkNewProposalFields(Proposal proposal) throws RuntimeException {
-		User user = proposal.getUser();
-		Car car = proposal.getCar();
-		if (user != null && user.getId() != null && car != null && car.getId() != null
-				&& proposal.getDescription() != null && proposal.getDescription().length() > 0) {
-			proposal.setCreateDate(proposal.getCreateDate() == null ? Timestamp.valueOf(LocalDateTime.now())
-					: proposal.getCreateDate());
-			proposal.setStatus(statusService.getByName(DaoUtil.STATUS_OPEN));
-			return true;
+		try {
+			User user = proposal.getUser();
+			Car car = proposal.getCar();
+			if (user != null && user.getId() != null && car != null && car.getId() != null
+					&& proposal.getDescription() != null && proposal.getDescription().length() > 0) {
+				proposal.setCreateDate(proposal.getCreateDate() == null ? Timestamp.valueOf(LocalDateTime.now()) : proposal.getCreateDate());
+				proposal.setStatus(statusService.getByName(DaoUtil.STATUS_OPEN));
+				return true;
+			}
+			return false;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return false;
 	}
 
 	@Override
 	@Transactional
 	public Proposal setStatusByName(Long proposalId, String name) throws RuntimeException {
-		Status status = statusService.getByName(name);
-		Proposal proposal = getById(proposalId);
-		if (proposal != null && status != null) {
-			proposal.setStatus(status);
-			proposal = update(proposal);
+		try {
+			Status status = statusService.getByName(name);
+			Proposal proposal = getById(proposalId);
+			if (proposal != null && status != null) {
+				proposal.setStatus(status);
+				proposal = update(proposal);
+			}
+			return proposal;
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
 		}
-		return proposal;
 	}
 
 }

@@ -22,8 +22,8 @@ import com.bondarenko.util.ProjectProperties;
 
 public class DBUnitConfig extends DBTestCase {
 	public static final String contextConfigurationLocation = "classpath:config/sis-context.xml";
-	private static final Logger LOG = LogManager.getFormatterLogger();	
-	private String datasetPath = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "dataset.xml";	
+	private static final Logger LOG = LogManager.getLogger();
+	private String datasetPath = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "dataset.xml";
 	private ProjectProperties sisPro = ProjectProperties.getInstance();
 	protected IDataSet beforeData;
 	protected IDatabaseTester tester;
@@ -40,17 +40,20 @@ public class DBUnitConfig extends DBTestCase {
 	}
 
 	@Before
-	public void setUp() throws Exception {
-		LOG.traceEntry();		
-		tester = new JdbcDatabaseTester(sisPro.getJdbcDriver(), sisPro.getJdbcUrl(), sisPro.getJdbcUsername(),
-				sisPro.getJdbcPassword());
-		beforeData = readXmlDataFile(datasetPath);
-		tester.setDataSet(beforeData);
-		tester.onSetup();
+	public void setUp() {
+		LOG.traceEntry();
+		try {
+			tester = new JdbcDatabaseTester(sisPro.getJdbcDriver(), sisPro.getJdbcUrl(), sisPro.getJdbcUsername(), sisPro.getJdbcPassword());
+			beforeData = readXmlDataFile(datasetPath);
+			tester.setDataSet(beforeData);
+			tester.onSetup();
+		} catch (Exception e) {
+			LOG.error(e, e);
+		}
 		LOG.traceExit("Set up complete");
 	}
 
-	protected IDataSet readXmlDataFile(String path){
+	protected IDataSet readXmlDataFile(String path) {
 		LOG.traceEntry();
 		FileInputStream input = null;
 		IDataSet result = null;
@@ -58,13 +61,13 @@ public class DBUnitConfig extends DBTestCase {
 			input = new FileInputStream(path);
 			result = new FlatXmlDataSetBuilder().build(input);
 		} catch (DataSetException | FileNotFoundException e) {
-			LOG.error(e,e);
+			LOG.error(e, e);
 		} finally {
 			if (input != null) {
 				try {
 					input.close();
 				} catch (IOException e) {
-					LOG.error(e,e);
+					LOG.error(e, e);
 				}
 			}
 		}
@@ -73,23 +76,29 @@ public class DBUnitConfig extends DBTestCase {
 	}
 
 	@After
-	public void tearDown() throws Exception {
-		LOG.traceEntry();		
-		super.tearDown();		
-		tester.onTearDown();
+	public void tearDown() {
+		LOG.traceEntry();
+		try {
+			super.tearDown();
+			tester.onTearDown();
+		} catch (Exception e) {
+			LOG.error(e, e);
+		}
 		LOG.traceExit();
 	}
 
 	@Override
-	protected IDataSet getDataSet() throws Exception {
+	protected IDataSet getDataSet() {
 		return beforeData;
 	}
+
 	@Override
-	protected DatabaseOperation getSetUpOperation() throws Exception {  
-        return DatabaseOperation.REFRESH;  
-    }  
+	protected DatabaseOperation getSetUpOperation() {
+		return DatabaseOperation.REFRESH;
+	}
+
 	@Override
-	protected DatabaseOperation getTearDownOperation() throws Exception {
+	protected DatabaseOperation getTearDownOperation() {
 		return DatabaseOperation.DELETE_ALL;
 	}
 

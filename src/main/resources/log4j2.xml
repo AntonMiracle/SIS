@@ -20,19 +20,28 @@
 			append="FALSE">
 			<PatternLayout pattern="${PATTERN}" />
 		</File>
+		<File name="SERVICE_FILE_LOG" fileName="logs/ServiceFile.log" immediateFlush="FALSE"
+			append="FALSE">
+			<PatternLayout pattern="${PATTERN}" />
+		</File>
 	</Appenders>
-	<Loggers>
-		<Root level="FATAL">
-			<AppenderRef ref="FILE_LOG" />
+	<Loggers>	
+		<Root level="fatal">
+			<AppenderRef ref="CONSOLE" />
 		</Root>
 		<Logger name="com.bondarenko" level="ERROR" additivity="FALSE">
 			<AppenderRef ref="FILE_LOG" />
 		</Logger>
+		<Logger name="com.bondarenko.service" level="TRACE" additivity="FALSE">
+			<AppenderRef ref="SERVICE_FILE_LOG" />
+		</Logger>
 		<Logger name="com.bondarenko.util.ProjectProperties" level="TRACE" additivity="FALSE">
 			<AppenderRef ref="PROJECT_PROPERITES_FILE_LOG" />
-		</Logger>
+		</Logger>		
 		<Logger name="com.bondarenko.service.DBUnitConfig" level="TRACE" additivity="FALSE">
 			<AppenderRef ref="TESTING_FILE_LOG" />
 		</Logger>
+		
+		
 	</Loggers>
 </Configuration>

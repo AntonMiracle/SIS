@@ -16,6 +16,8 @@ public interface UserInformationDao {
 	public UserInformation getByPhone(String phone) throws RuntimeException;
 
 	public UserInformation getById(Long id) throws RuntimeException;
+	
+	public UserInformation getByUserId(Long userId) throws RuntimeException;
 
 	public boolean isPhoneUnique(String phone) throws RuntimeException;
 
