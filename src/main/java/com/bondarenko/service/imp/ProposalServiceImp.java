@@ -120,7 +120,7 @@ public class ProposalServiceImp implements ProposalService {
 	@Transactional
 	public List<Proposal> getByUserId(Long id) throws RuntimeException {
 		try {
-			return proposalDao.getAllByUserId(id);
+			return proposalDao.getByUserId(id);
 		} catch (RuntimeException ex) {
 			LOG.error(ex, ex);
 			throw ex;
@@ -142,7 +142,7 @@ public class ProposalServiceImp implements ProposalService {
 	@Transactional
 	public List<Proposal> getByStatusId(Long id) throws RuntimeException {
 		try {
-			return proposalDao.getAllByStatusId(id);
+			return proposalDao.getByStatusId(id);
 		} catch (RuntimeException ex) {
 			LOG.error(ex, ex);
 			throw ex;
@@ -153,7 +153,7 @@ public class ProposalServiceImp implements ProposalService {
 	@Transactional
 	public List<Proposal> getByCarId(Long id) throws RuntimeException {
 		try {
-			return proposalDao.getAllByCarId(id);
+			return proposalDao.getByCarId(id);
 		} catch (RuntimeException ex) {
 			LOG.error(ex, ex);
 			throw ex;

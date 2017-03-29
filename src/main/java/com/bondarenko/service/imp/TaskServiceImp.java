@@ -102,38 +102,6 @@ public class TaskServiceImp implements TaskService {
 
 	@Override
 	@Transactional
-	public Task updateDescription(Long taskId, String description) throws RuntimeException {
-		try {
-			Task task = getById(taskId);
-			if (task != null) {
-				task.setDescription(description);
-				task = update(task);
-			}
-			return task;
-		} catch (RuntimeException ex) {
-			LOG.error(ex, ex);
-			throw ex;
-		}
-	}
-
-	@Override
-	@Transactional
-	public Task updateConclusion(Long taskId, String conclusion) throws RuntimeException {
-		try {
-			Task task = getById(taskId);
-			if (task != null) {
-				task.setConclusion(conclusion);
-				task = update(task);
-			}
-			return task;
-		} catch (RuntimeException ex) {
-			LOG.error(ex, ex);
-			throw ex;
-		}
-	}
-
-	@Override
-	@Transactional
 	public List<Task> getTasks() throws RuntimeException {
 		try {
 			return taskDao.getAll();

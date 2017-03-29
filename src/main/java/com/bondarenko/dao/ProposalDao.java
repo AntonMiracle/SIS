@@ -15,10 +15,10 @@ public interface ProposalDao {
 
 	public Proposal getById(Long id) throws RuntimeException;
 
-	public List<Proposal> getAllByUserId(Long id) throws RuntimeException;
+	public List<Proposal> getByUserId(Long id) throws RuntimeException;
 
-	public List<Proposal> getAllByStatusId(Long id) throws RuntimeException;
+	public List<Proposal> getByStatusId(Long id) throws RuntimeException;
 
-	public List<Proposal> getAllByCarId(Long id) throws RuntimeException;
+	public List<Proposal> getByCarId(Long id) throws RuntimeException;
 
 }

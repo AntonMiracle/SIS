@@ -215,27 +215,5 @@ public class TaskServiceTest extends DBUnitConfig {
 		int countTasks = taskService.getTasks().size();
 		taskService.save(userId, description);
 		Assert.assertEquals(countTasks + 1, taskService.getTasks().size());
-	}
-
-	@Test
-	public void shouldUpdateTaskByIdAndDescription() throws Exception {
-		Long taskId = new Long(1);
-		String description = "some description";
-		Task task = taskService.getById(taskId);
-		Assert.assertNotNull(task);
-		Assert.assertNotEquals(description, task.getDescription());
-		task = taskService.updateDescription(taskId, description);
-		Assert.assertEquals(description, task.getDescription());
-	}
-
-	@Test
-	public void shouldUpdateTaskByIdAndConclusion() throws Exception {
-		Long taskId = new Long(1);
-		String conclusion = "some conclusion";
-		Task task = taskService.getById(taskId);
-		Assert.assertNotNull(task);
-		Assert.assertNotEquals(conclusion, task.getConclusion());
-		task = taskService.updateConclusion(taskId, conclusion);
-		Assert.assertEquals(conclusion, task.getConclusion());
-	}
+	}	
 }

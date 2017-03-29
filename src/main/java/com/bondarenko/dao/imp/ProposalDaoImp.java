@@ -56,7 +56,7 @@ public class ProposalDaoImp implements ProposalDao {
 
 	@SuppressWarnings ("unchecked")
 	@Override
-	public List<Proposal> getAllByUserId(Long id) throws RuntimeException {
+	public List<Proposal> getByUserId(Long id) throws RuntimeException {
 		Session session = sessionFactory.getCurrentSession();
 		List<Proposal> proposals = session
 				.createQuery("from Proposal as proposal where proposal.user.id = '" + id.toString() + "'").list();
@@ -65,7 +65,7 @@ public class ProposalDaoImp implements ProposalDao {
 
 	@SuppressWarnings ("unchecked")
 	@Override
-	public List<Proposal> getAllByStatusId(Long id) throws RuntimeException {
+	public List<Proposal> getByStatusId(Long id) throws RuntimeException {
 		Session session = sessionFactory.getCurrentSession();
 		List<Proposal> proposals = session
 				.createQuery("from Proposal as proposal where proposal.status.id = '" + id.toString() + "'").list();
@@ -74,7 +74,7 @@ public class ProposalDaoImp implements ProposalDao {
 
 	@SuppressWarnings ("unchecked")
 	@Override
-	public List<Proposal> getAllByCarId(Long id) throws RuntimeException {
+	public List<Proposal> getByCarId(Long id) throws RuntimeException {
 		Session session = sessionFactory.getCurrentSession();
 		List<Proposal> proposals = session
 				.createQuery("from Proposal as proposal where proposal.car.id = '" + id.toString() + "'").list();

@@ -15,10 +15,6 @@ public interface TaskService {
 
 	public Task update(Task task) throws RuntimeException;// test-ok
 
-	public Task updateDescription(Long taskId, String description) throws RuntimeException;// test-ok
-
-	public Task updateConclusion(Long taskId, String conclusion) throws RuntimeException;// test-ok
-
 	public List<Task> getTasks() throws RuntimeException;// test-ok
 
 	public Task getById(Long id) throws RuntimeException;// test-ok
