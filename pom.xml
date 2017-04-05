@@ -5,7 +5,7 @@
 
 	<groupId>com.bondarenko</groupId>
 	<artifactId>sis</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>0.0.1</version>
 
 	<name>sis</name>
