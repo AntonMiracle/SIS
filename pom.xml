@@ -163,8 +163,7 @@
 			<artifactId>jstl</artifactId>
 			<version>${jstl}</version>
 		</dependency>
-		<!-- json -->
-		
+		<!-- json -->		
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
@@ -177,8 +176,7 @@
             <version>${json}</version>
         </dependency>
         -->
-		<!-- other -->
-		
+		<!-- other -->		
 	</dependencies>
 	
 	<build>

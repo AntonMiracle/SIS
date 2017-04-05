@@ -28,18 +28,15 @@ $(document).ready(function() {
 	
 	//login project info, set/unset visible on mouseenter/mouseleave 
 	$('.menuLogin #info').mouseleave(function() {
-//		$('.loginProjectInfo').fadeOut('fast');
 		hideProjectInformationContent();
 	});	
 	$('.menuLogin #info').mouseenter(function() {
-//		$('.loginProjectInfo').fadeIn('fast');
 		showProjectInformationContent();
 	});
 	
 	//check input username & password
 	$('.loginIn #in').click(function(){	
 		if(compareUsernameAndPassword($('.loginInput input#username').val(),$('.loginInput input#password').val())){
-			cleanLoginContentFields();
 			hideElement($('.loginInput td#loginTip'));
 			return true;			
 		}else{
@@ -47,7 +44,7 @@ $(document).ready(function() {
 			showElement($('.loginInput td#loginTip'));
 			cleanLoginContentFields();
 			return false;
-		}
+		};
 	});
 	
 	//login UP
@@ -58,7 +55,7 @@ $(document).ready(function() {
 		}else{
 			showUpContent();
 			isUpContentActive = true;			
-		}		
+		};		
 	});
 	
 	$('.loginUpInput #up').click(function(){
@@ -78,7 +75,7 @@ $(document).ready(function() {
 		var error = 'incorrect field';
 		var isUsernameFree = getAndReturnData('rest/check/usernamefree/' + username.val());
 		var isPhoneFree = getAndReturnData('rest/check/phonefree/' + phone.val());
-		count = count + checkUniqueField(username.val(), usernameTip, error, isUsernameFree)
+		count = count + checkUniqueField(username.val(), usernameTip, error, isUsernameFree);
 		count = count + checkInputData(password.val(), passwordTip, error);		
 		count = count + checkInputData(confirm.val(), confirmTip, error);		
 		count = count + checkInputData(name.val(), nameTip, error);
@@ -87,7 +84,7 @@ $(document).ready(function() {
 			setTextInsideElement(confirmTip, error);
 			showElement(confirmTip);
 			return false;
-		}
+		};
 		if(count === 0 && password.val() === confirm.val()){
 			var client = {
 			username : username.val(),
@@ -97,12 +94,12 @@ $(document).ready(function() {
 			phone : phone.val(),
 			mail : mail.val(),
 			};			
-			saveData('rest/user/new', 'POST', client)
+			saveData('rest/user/new', 'POST', client);
 			hideUpContent();
 			return true;
 		}else{
 			return false;
-		}			
+		};			
 	});
 	
 	/*============================*/
@@ -153,14 +150,14 @@ $(document).ready(function() {
 		$('.loginProjectInfo').fadeOut('slow');
 		$('.loginInput').fadeIn('slow');
 		$('.loginIn').fadeIn('slow');	
-	}
+	};
 	
 	function showProjectInformationContent(){
 		$('.loginProjectInfo').fadeIn('slow');
 		$('.loginInput').fadeOut('slow');
 		$('.loginIn').fadeOut('slow');
 		$('.loginInput td#loginTip').fadeOut('slow');	
-	}
+	};
 	
 	/*========================*/
 	/*=    clean function    =*/
@@ -173,11 +170,11 @@ $(document).ready(function() {
 		setElementValue($('.loginUpInput #surname'), '');
 		setElementValue($('.loginUpInput #phone'), '');
 		setElementValue($('.loginUpInput #mail'), '');
-	}
+	};
 	function cleanLoginContentFields(){
 		setElementValue($('.loginInput input#username'), '');
 		setElementValue($('.loginInput input#password'), '');
-	}
+	};
 	
 	/*=======================*/
 	/*=    ajax function    =*/
@@ -215,7 +212,7 @@ $(document).ready(function() {
 			return true;
 		} else {
 			return false;
-		}
+		};
 	};
 	
 	function setTextInsideElement(element, text) {
@@ -238,7 +235,7 @@ $(document).ready(function() {
 			setTextInsideElement(tipElement, error);
 			showElement(tipElement);
 			return 1;
-		}
+		};
 	};
 	
 	function checkUniqueField(value,tipElement, error, check){	
@@ -250,12 +247,12 @@ $(document).ready(function() {
 				setTextInsideElement(tipElement, error);
 				showElement(tipElement);
 				return 1;
-			}		
+			};		
 		}else{
 			setTextInsideElement(tipElement, error);
 			showElement(tipElement);
 			return 1;
-		}	
+		};	
 	};
 	
 	function compareUsernameAndPassword(username, password){
