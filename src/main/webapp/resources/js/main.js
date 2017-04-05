@@ -13,7 +13,7 @@ $(document).ready(function() {
 	var loginButtonShow = 1000;	
 	var loginBackgroundShow = 1500;	
 //	var rootUrl = location.protocol + '//' + location.host + '/sis/';
-	var rootUrl = location.protocol + '//' + location.host;
+	var rootUrl = location.protocol + '//' + location.host + '/';
 	
 	/*====================*/
 	/*=    login page    =*/
