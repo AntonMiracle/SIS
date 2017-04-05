@@ -39,6 +39,8 @@
 		<jstl>1.2</jstl>
 		<!-- json -->
 		<json>2.9.0.pr2</json>
+		<!-- tomcat -->
+		<tomcat.version>8.0.28</tomcat.version>
 		<!-- other -->
 	</properties>
 
@@ -176,7 +178,38 @@
             <version>${json}</version>
         </dependency>
         -->
-		<!-- other -->		
+		<!-- tomcat -->
+		<dependency>
+	        <groupId>org.apache.tomcat.embed</groupId>
+	        <artifactId>tomcat-embed-core</artifactId>
+	        <version>${tomcat.version}</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.apache.tomcat.embed</groupId>
+	        <artifactId>tomcat-embed-logging-juli</artifactId>
+	        <version>${tomcat.version}</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.apache.tomcat.embed</groupId>
+	        <artifactId>tomcat-embed-jasper</artifactId>
+	        <version>${tomcat.version}</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.apache.tomcat</groupId>
+	        <artifactId>tomcat-jasper</artifactId>
+	        <version>${tomcat.version}</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.apache.tomcat</groupId>
+	        <artifactId>tomcat-jasper-el</artifactId>
+	        <version>${tomcat.version}</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.apache.tomcat</groupId>
+	        <artifactId>tomcat-jsp-api</artifactId>
+	        <version>${tomcat.version}</version>
+	    </dependency>
+		<!-- other -->				
 	</dependencies>
 	
 	<build>
@@ -191,23 +224,47 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-			 <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>install</phase>
-            <configuration>
-              <tasks>
-				<copy file="target/sis.war" 
-					todir="D:/apache-tomcat-8.0.39/webapps"/>
-              </tasks>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+			<!-- 
+			<plugin>
+	        <artifactId>maven-antrun-plugin</artifactId>
+	        <executions>
+	          <execution>
+	            <phase>install</phase>
+	            <configuration>
+	              <tasks>
+					<copy file="target/sis.war" 
+						todir="D:/apache-tomcat-8.0.39/webapps"/>
+	              </tasks>
+	            </configuration>
+	            <goals>
+	              <goal>run</goal>
+	            </goals>
+	          </execution>
+	        </executions>
+	      </plugin>
+	      -->
+	      <plugin>
+	            <groupId>org.codehaus.mojo</groupId>
+	            <artifactId>appassembler-maven-plugin</artifactId>
+	            <version>1.1.1</version>
+	            <configuration>
+	                <assembleDirectory>target</assembleDirectory>
+	                <programs>
+	                    <program>
+	                        <mainClass>launch.Main</mainClass>
+	                        <name>webapp</name>
+	                    </program>
+	                </programs>
+	            </configuration>
+	            <executions>
+	                <execution>
+	                    <phase>package</phase>
+	                    <goals>
+	                        <goal>assemble</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	        </plugin>
 		</plugins>
 	</build>
 </project>
