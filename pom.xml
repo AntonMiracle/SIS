@@ -33,8 +33,13 @@
 		<!-- logging -->
 		<log4j.version>2.7</log4j.version>
 		<slf4.api.version>1.7.22</slf4.api.version>
+		<!-- security -->
+		<security>4.2.1.RELEASE</security>
+		<!-- jstl -->
+		<jstl>1.2</jstl>
+		<!-- json -->
+		<json>2.9.0.pr2</json>
 		<!-- other -->
-
 	</properties>
 
 	<dependencies>
@@ -82,6 +87,16 @@
 			<artifactId>spring-beans</artifactId>
 			<version>${spring}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<version>${spring}</version>
+		</dependency>
 		<!-- h2 -->
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -121,9 +136,51 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4.api.version}</version>
 		</dependency>
-		<!-- other -->		
+		<!-- security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${security}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${security}</version>
+		</dependency>		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${security}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${security}</version>
+		</dependency>
+		<!-- jstl -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl}</version>
+		</dependency>
+		<!-- json -->
+		
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${json}</version>
+		</dependency>
+		<!--  
+		<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${json}</version>
+        </dependency>
+        -->
+		<!-- other -->
+		
 	</dependencies>
-
+	
 	<build>
 		<finalName>sis</finalName>
 		<plugins>
@@ -136,6 +193,23 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+			 <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>install</phase>
+            <configuration>
+              <tasks>
+				<copy file="target/sis.war" 
+					todir="D:/apache-tomcat-8.0.39/webapps"/>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
 		</plugins>
 	</build>
 </project>

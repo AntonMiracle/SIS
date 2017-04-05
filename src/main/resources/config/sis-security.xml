@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
+<!-- ====================================== -->		
+<!-- set security offline for all resources -->
+<!-- ====================================== -->
+	<http pattern="/resources/**" security="none" />
+	<http pattern="/rest/**" security="none" />
+	
+<!-- ===================================================================== -->	
+<!-- configuration permision for app-url, configuration custom login form  -->
+<!-- ===================================================================== -->	
+	<http auto-config="true" use-expressions="true">
+		<access-denied-handler error-page="/errorhandler"/>		
+		<intercept-url pattern="/" access="permitAll" />		
+		<intercept-url pattern="/login" access="permitAll" />		
+		<intercept-url pattern="/home" access="hasAnyRole('ROLE_BOSS', 'ROLE_MANAGER', 'ROLE_ADMIN', 'ROLE_CLIENT')" />
+		<!-- 
+		<intercept-url pattern="/createclient" access="hasRole('ROLE_MANAGER')" />					
+		<intercept-url pattern="/clients" access="hasAnyRole('ROLE_BOSS', 'ROLE_MANAGER')" />  
+		-->			
+		<form-login	
+			login-processing-url="/j_spring_security_check"		
+            login-page="/login" 
+            default-target-url="/home" 
+            always-use-default-target="true"
+            authentication-failure-url="/login"                        
+            username-parameter="j_username"
+			password-parameter="j_password" />             
+        <logout 
+        	invalidate-session="true"
+        	logout-success-url="/login" />          
+        <csrf/>  		
+	</http>
+
+<!-- =============================================== -->	
+<!-- add custom implementation of UserDetailsService -->
+<!-- =============================================== -->		
+	<beans:bean id="customUserDetailsService" class="com.bondarenko.service.imp.UserDetailsServiceImp"/>
+	
+<!-- ==================================== -->		
+<!-- configuration authentication manager -->
+<!-- ==================================== -->	
+	<authentication-manager alias="authenticationManager">
+	  	<authentication-provider user-service-ref="customUserDetailsService"/>  	
+	</authentication-manager>	
+</beans:beans> 

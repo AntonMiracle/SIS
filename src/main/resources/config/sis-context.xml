@@ -21,10 +21,11 @@
 	<!-- Import otherr configuration -->
 	<!-- =========================== -->
 	<import resource="classpath:config/sis-data.xml" />
+	<import resource="classpath:config/sis-mvc.xml" />
+	<import resource="classpath:config/sis-security.xml" />
 
-	<!-- =========================================================== -->
-	<!-- search all component, mvc modules and mapping source folder -->
-	<!-- =========================================================== -->
+	<!-- ==================== -->
+	<!-- search all component -->
+	<!-- ==================== -->
 	<context:component-scan base-package="com.bondarenko" />
-
 </beans>

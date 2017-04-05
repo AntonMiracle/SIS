@@ -23,6 +23,7 @@
     <role role_id="4" name="role4"/>
     <role role_id="5" name="role5"/>
     <role role_id="6" name="role6"/>
+    <role role_id="7" name="client"/>
     
     <user_role user_id="1" role_id="1"/>
     <user_role user_id="1" role_id="2"/>
