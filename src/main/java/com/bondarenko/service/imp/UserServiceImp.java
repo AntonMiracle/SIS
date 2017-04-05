@@ -37,7 +37,7 @@ public class UserServiceImp implements UserService {
 	@Transactional
 	public User save(User user) throws RuntimeException {
 		try {
-			if (checkNewUserFields(user)) {
+			if (checkNewUserFields(user)) {				
 				user = userDao.save(user);	
 				nullFilter(user);
 			}
@@ -157,20 +157,35 @@ public class UserServiceImp implements UserService {
 		try {
 			if (user != null && user.getId() == null) {
 				UserInformation ui = user.getUserInformation();
-				String userName = user.getUsername();
+				String username = user.getUsername();
 				String pass = user.getPassword();
-				if (userName != null && userName.length() > 0 && pass != null && pass.length() > 0 && ui != null
-						&& ui.getPhone() != null && ui.getPhone().length() > 0) {
+				if (username != null && username.length() > 0 && pass != null && pass.length() > 0 && ui != null
+						&& ui.getPhone() != null && ui.getPhone().length() > 0 && isUsernameUnique(username)) {
 					ui.setMail(ui.getMail() == null ? "" : ui.getMail());
 					ui.setName(ui.getName() == null ? "" : ui.getName());
 					ui.setSurname(ui.getSurname() == null ? "" : ui.getSurname());
 					ui.setCreateDate(Timestamp.valueOf(LocalDateTime.now()));
 					ui.setUser(user);
-					if (user.getRoles() == null || user.getRoles().size() == 0) {
+					if (user.getRoles() == null) {						
 						List<Role> roles = new ArrayList<>();
 						roles.add(roleService.getByName(DaoUtil.ROLE_CLIENT));
 						user.setRoles(roles);
-					}	
+					}else{
+						if (user.getRoles().size() == 0) {							
+							user.getRoles().add(roleService.getByName(DaoUtil.ROLE_CLIENT));							
+						}else{
+							boolean isNeedSetClientRole = true;
+							for(Role role : user.getRoles()){
+								if(role.getName().equals(DaoUtil.ROLE_CLIENT)){
+									isNeedSetClientRole = false;
+									break;
+								}
+							}
+							if(isNeedSetClientRole){
+								user.getRoles().add(roleService.getByName(DaoUtil.ROLE_CLIENT));	
+							}
+						}
+					}					
 					return true;
 				}				
 			}
@@ -240,7 +255,7 @@ public class UserServiceImp implements UserService {
 		try {
 			User user = getById(id);
 			Role role = roleService.getByName(name);
-			if (user != null && role != null) {
+			if (user != null && role != null && !isHasRole(id, name)) {
 				user.getRoles().add(role);
 				user = update(user);
 			}
@@ -257,7 +272,7 @@ public class UserServiceImp implements UserService {
 		try {
 			User user = getById(id);
 			Role role = roleService.getByName(name);
-			if (user != null && role != null && user.getRoles() != null && user.getRoles().size() > 1) {
+			if (user != null && role != null && user.getRoles() != null && user.getRoles().size() > 1 && isHasRole(id, name)) {
 				for (int i = 0; i < user.getRoles().size(); i++) {
 					if (user.getRoles().get(i).getName().equals(name)) {
 						user.getRoles().remove(i);

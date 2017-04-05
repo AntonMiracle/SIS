@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.bondarenko.model.Car;
 import com.bondarenko.model.Proposal;
@@ -19,6 +20,7 @@ import com.bondarenko.model.Status;
 import com.bondarenko.model.User;
 import com.bondarenko.util.DaoUtil;
 
+@WebAppConfiguration
 @RunWith (SpringJUnit4ClassRunner.class)
 @ContextConfiguration (locations = {DBUnitConfig.contextConfigurationLocation})
 @TestExecutionListeners ({DependencyInjectionTestExecutionListener.class})

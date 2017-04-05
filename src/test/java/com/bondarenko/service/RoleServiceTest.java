@@ -10,9 +10,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.bondarenko.model.Role;
 
+@WebAppConfiguration
 @RunWith (SpringJUnit4ClassRunner.class)
 @ContextConfiguration (locations = {DBUnitConfig.contextConfigurationLocation})
 @TestExecutionListeners ({DependencyInjectionTestExecutionListener.class})
@@ -24,7 +26,7 @@ public class RoleServiceTest extends DBUnitConfig {
 
 	@Test
 	public void shouldGetAllRoles() throws Exception {
-		int countRoles = 6;
+		int countRoles = 7;
 		List<Role> roles = roleService.getRoles();
 		Assert.assertEquals(countRoles, roles.size());
 	}

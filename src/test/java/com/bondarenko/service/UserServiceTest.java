@@ -2,6 +2,7 @@ package com.bondarenko.service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -12,10 +13,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.bondarenko.model.Role;
 import com.bondarenko.model.User;
 import com.bondarenko.model.UserInformation;
 
+@WebAppConfiguration
 @RunWith (SpringJUnit4ClassRunner.class)
 @ContextConfiguration (locations = {DBUnitConfig.contextConfigurationLocation})
 @TestExecutionListeners ({DependencyInjectionTestExecutionListener.class})
@@ -269,28 +273,36 @@ public class UserServiceTest extends DBUnitConfig {
 		String username = "username";
 		String password = "pass";
 		String phone = "phone";
+		String roleName = "role6";
 		UserInformation ui = new UserInformation();
+		List<Role> roles = new ArrayList<>();
+		roles.add( roleService.getByName(roleName));
 		ui.setPhone(phone);
 		User user = new User();
 		user.setUserInformation(ui);
 		user.setUsername(username);
-		user.setPassword(password);
+		user.setPassword(password);		
+		user.setRoles(roles);
 		Assert.assertNull(user.getTasks());
 		Assert.assertNull(user.getCars());
 		Assert.assertNull(user.getId());
 		Assert.assertNull(user.getProposals());
-		Assert.assertNull(user.getRoles());
 		Assert.assertNull(user.getUserInformation().getMail());
 		Assert.assertNull(user.getUserInformation().getName());
 		Assert.assertNull(user.getUserInformation().getSurname());
 		Assert.assertNull(user.getUserInformation().getId());
 		Assert.assertNull(user.getUserInformation().getCreateDate());
-		userService.checkNewUserFields(user);
+		Assert.assertTrue(userService.checkNewUserFields(user));
 		Assert.assertNotNull(user.getRoles());
+		Assert.assertEquals(2, user.getRoles().size());		
+		Assert.assertTrue(userService.checkNewUserFields(user));
 		Assert.assertNotNull(user.getUserInformation().getMail());
 		Assert.assertNotNull(user.getUserInformation().getName());
 		Assert.assertNotNull(user.getUserInformation().getSurname());
 		Assert.assertNotNull(user.getUserInformation().getCreateDate());
+		
+		
+		
 	}
 
 	@Test
