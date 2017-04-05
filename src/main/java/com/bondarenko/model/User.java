@@ -16,9 +16,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @SuppressWarnings ("serial")
 @Entity
-public class User implements Serializable {
+public class User implements Serializable {	
+	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "USER_ID")
@@ -26,23 +29,35 @@ public class User implements Serializable {
 	@Column (name = "USERNAME", nullable = false, unique = true, length = 100)
 	private String username;
 	@Column (name = "PASSWORD", nullable = false, length = 100)
-	private String password;	
+	private String password;
 	@OneToOne (cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")	
+	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
+	@JsonManagedReference
 	private UserInformation userInformation;
 	@ManyToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinTable (name = "USER_ROLE", joinColumns = {@JoinColumn (name = "USER_ID")}, inverseJoinColumns = {
 			@JoinColumn (name = "ROLE_ID")})
+	@JsonManagedReference
 	private List<Role> roles;
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
+	@JsonManagedReference
 	private List<Proposal> proposals;
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
+	@JsonManagedReference
 	private List<Car> cars;
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
+	@JsonManagedReference
 	private List<Task> tasks;
+		
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", userInformation="
+				+ userInformation + ", roles=" + roles + ", proposals=" + proposals + ", cars=" + cars + ", tasks="
+				+ tasks + "]";
+	}
 
 	public Long getId() {
 		return id;
@@ -107,5 +122,7 @@ public class User implements Serializable {
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
-
+	
+	
+	
 }

@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @SuppressWarnings ("serial")
 @Entity
 public class Role implements Serializable {
@@ -26,6 +28,7 @@ public class Role implements Serializable {
 	@ManyToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinTable (name = "USER_ROLE", joinColumns = {@JoinColumn (name = "ROLE_ID")}, inverseJoinColumns = {
 			@JoinColumn (name = "USER_ID")})
+	@JsonBackReference
 	private List<User> users;
 
 	public Long getId() {

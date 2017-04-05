@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @SuppressWarnings ("serial")
 @Entity
 public class Task implements Serializable {
@@ -25,6 +27,7 @@ public class Task implements Serializable {
 	private Status status;
 	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID")
+	@JsonBackReference
 	private User user;
 	@Column (name = "DESCRIPTION", nullable = false, length = 2048)
 	private String description;

@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @SuppressWarnings ("serial")
 @Entity
 public class UserInformation implements Serializable {
@@ -22,6 +24,7 @@ public class UserInformation implements Serializable {
 	private Long id;
 	@OneToOne (cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID")
+	@JsonBackReference
 	private User user;
 	@Column (name = "PHONE", nullable = false, unique = true, length = 100)
 	private String phone;
@@ -31,7 +34,7 @@ public class UserInformation implements Serializable {
 	private String surname;
 	@Column (name = "MAIL", nullable = false, length = 100)
 	private String mail;
-	@Column (name = "CREATE_DATE")
+	@Column (name = "CREATE_DATE")	
 	private Timestamp createDate;
 
 	public Long getId() {
