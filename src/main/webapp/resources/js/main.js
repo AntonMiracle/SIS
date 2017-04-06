@@ -148,9 +148,9 @@ $(document).ready(function() {
 	
 	//Project information content
 	function hideProjectInformationContent(){
-		$('.loginProjectInfo').fadeOut('slow');
+		$('.loginIn').fadeIn('slow');
 		$('.loginInput').fadeIn('slow');
-		$('.loginIn').fadeIn('slow');	
+		$('.loginProjectInfo').fadeOut('slow');		
 	};
 	
 	function showProjectInformationContent(){
