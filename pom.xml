@@ -169,13 +169,12 @@
 		    <artifactId>jackson-databind</artifactId>
 		    <version>${json}</version>
 		</dependency>
-		<!--  
 		<dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${json}</version>
         </dependency>
-        -->		
+       	
 		<!-- other -->				
 	</dependencies>
 	

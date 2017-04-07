@@ -14,9 +14,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.bondarenko.maker.data.StatusMaker;
 import com.bondarenko.model.Task;
 import com.bondarenko.model.User;
-import com.bondarenko.util.DaoUtil;
 
 @WebAppConfiguration
 @RunWith (SpringJUnit4ClassRunner.class)
@@ -152,7 +152,7 @@ public class TaskServiceTest extends DBUnitConfig {
 		Assert.assertNotNull(user);
 		Assert.assertNotNull(task);
 		Assert.assertNull(task.getConclusion());
-		Assert.assertNotNull(statusService.getByName(DaoUtil.STATUS_OPEN));
+		Assert.assertNotNull(statusService.getByName(StatusMaker.STATUS_OPEN));
 		Assert.assertTrue(taskService.checkNewTaskFields(task));
 		Assert.assertNotNull(task.getConclusion());
 		Assert.assertNotNull(task.getCreateDate());
@@ -161,7 +161,7 @@ public class TaskServiceTest extends DBUnitConfig {
 		Assert.assertEquals(now.getYear(), task.getCreateDate().getYear());
 		Assert.assertEquals(now.getMonth(), task.getCreateDate().getMonth());
 		Assert.assertEquals(now.getDate(), task.getCreateDate().getDate());
-		Assert.assertEquals(DaoUtil.STATUS_OPEN, task.getStatus().getName());
+		Assert.assertEquals(StatusMaker.STATUS_OPEN, task.getStatus().getName());
 	}
 
 	@Test

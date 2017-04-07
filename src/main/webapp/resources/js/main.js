@@ -148,16 +148,16 @@ $(document).ready(function() {
 	
 	//Project information content
 	function hideProjectInformationContent(){
-		$('.loginIn').fadeIn('slow');
-		$('.loginInput').fadeIn('slow');
-		$('.loginProjectInfo').fadeOut('slow');		
+		showElement($('.loginIn'));
+		showElement($('.loginInput'));
+		hideElement($('.loginProjectInfo'));		
 	};
 	
 	function showProjectInformationContent(){
-		$('.loginProjectInfo').fadeIn('slow');
-		$('.loginInput').fadeOut('slow');
-		$('.loginIn').fadeOut('slow');
-		$('.loginInput td#loginTip').fadeOut('slow');	
+		showElement($('.loginProjectInfo'));
+		hideElement($('.loginInput'));
+		hideElement($('.loginIn'));
+		hideElement($('.loginInput td#loginTip'));	
 	};
 	
 	/*========================*/

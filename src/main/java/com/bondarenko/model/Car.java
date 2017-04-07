@@ -106,4 +106,10 @@ public class Car implements Serializable {
 		this.proposals = proposals;
 	}
 
+	@Override
+	public String toString() {
+		return "Car [id=" + id + ", user=" + user + ", number=" + number + ", model=" + model + ", mark=" + mark
+				+ ", description=" + description + ", createDate=" + createDate + ", proposals=" + proposals + "]";
+	}
+
 }

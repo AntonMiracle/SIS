@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bondarenko.dao.TaskDao;
+import com.bondarenko.maker.data.StatusMaker;
 import com.bondarenko.model.Status;
 import com.bondarenko.model.Task;
 import com.bondarenko.model.User;
 import com.bondarenko.service.StatusService;
 import com.bondarenko.service.TaskService;
 import com.bondarenko.service.UserService;
-import com.bondarenko.util.DaoUtil;
 
 @Service
 public class TaskServiceImp implements TaskService {
@@ -165,7 +165,7 @@ public class TaskServiceImp implements TaskService {
 				task.setCreateDate(
 						task.getCreateDate() == null ? Timestamp.valueOf(LocalDateTime.now()) : task.getCreateDate());
 				task.setStatus(
-						task.getStatus() == null ? statusService.getByName(DaoUtil.STATUS_OPEN) : task.getStatus());
+						task.getStatus() == null ? statusService.getByName(StatusMaker.STATUS_OPEN) : task.getStatus());
 				return true;
 			}
 			return false;

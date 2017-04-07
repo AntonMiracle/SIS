@@ -89,4 +89,19 @@ public class Proposal implements Serializable {
 	public void setCreateDate(Timestamp createDate) {
 		this.createDate = createDate;
 	}
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+	@Override
+	public String toString() {
+		return "Proposal [id=" + id + ", user=" + user + ", status=" + status + ", carId=" + car.getId() + ", description="
+				+ description + ", tasks=" + tasks + ", createDate=" + createDate + "]";
+	}
+
 }

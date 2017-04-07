@@ -95,4 +95,10 @@ public class Task implements Serializable {
 		this.createDate = createDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Task [id=" + id + ", status=" + status.getName() + ", userId=" + user.getId() + ", description=" + description
+				+ ", conclusion=" + conclusion + ", proposalId=" + proposal.getId() + ", createDate=" + createDate + "]";
+	}
+
 }

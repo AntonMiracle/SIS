@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bondarenko.dao.UserDao;
 import com.bondarenko.dao.UserInformationDao;
+import com.bondarenko.maker.data.RoleMaker;
 import com.bondarenko.model.Car;
 import com.bondarenko.model.Proposal;
 import com.bondarenko.model.Role;
@@ -21,7 +22,6 @@ import com.bondarenko.model.User;
 import com.bondarenko.model.UserInformation;
 import com.bondarenko.service.RoleService;
 import com.bondarenko.service.UserService;
-import com.bondarenko.util.DaoUtil;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -168,21 +168,21 @@ public class UserServiceImp implements UserService {
 					ui.setUser(user);
 					if (user.getRoles() == null) {						
 						List<Role> roles = new ArrayList<>();
-						roles.add(roleService.getByName(DaoUtil.ROLE_CLIENT));
+						roles.add(roleService.getByName(RoleMaker.ROLE_CLIENT));
 						user.setRoles(roles);
 					}else{
 						if (user.getRoles().size() == 0) {							
-							user.getRoles().add(roleService.getByName(DaoUtil.ROLE_CLIENT));							
+							user.getRoles().add(roleService.getByName(RoleMaker.ROLE_CLIENT));							
 						}else{
 							boolean isNeedSetClientRole = true;
 							for(Role role : user.getRoles()){
-								if(role.getName().equals(DaoUtil.ROLE_CLIENT)){
+								if(role.getName().equals(RoleMaker.ROLE_CLIENT)){
 									isNeedSetClientRole = false;
 									break;
 								}
 							}
 							if(isNeedSetClientRole){
-								user.getRoles().add(roleService.getByName(DaoUtil.ROLE_CLIENT));	
+								user.getRoles().add(roleService.getByName(RoleMaker.ROLE_CLIENT));	
 							}
 						}
 					}					

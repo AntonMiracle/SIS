@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bondarenko.dao.ProposalDao;
+import com.bondarenko.maker.data.StatusMaker;
 import com.bondarenko.model.Car;
 import com.bondarenko.model.Proposal;
 import com.bondarenko.model.Status;
@@ -19,7 +20,6 @@ import com.bondarenko.service.CarService;
 import com.bondarenko.service.ProposalService;
 import com.bondarenko.service.StatusService;
 import com.bondarenko.service.UserService;
-import com.bondarenko.util.DaoUtil;
 
 @Service
 public class ProposalServiceImp implements ProposalService {
@@ -169,7 +169,7 @@ public class ProposalServiceImp implements ProposalService {
 			if (user != null && user.getId() != null && car != null && car.getId() != null
 					&& proposal.getDescription() != null && proposal.getDescription().length() > 0) {
 				proposal.setCreateDate(proposal.getCreateDate() == null ? Timestamp.valueOf(LocalDateTime.now()) : proposal.getCreateDate());
-				proposal.setStatus(statusService.getByName(DaoUtil.STATUS_OPEN));
+				proposal.setStatus(statusService.getByName(StatusMaker.STATUS_OPEN));
 				return true;
 			}
 			return false;
