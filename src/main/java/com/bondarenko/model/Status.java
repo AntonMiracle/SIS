@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @SuppressWarnings ("serial")
 @Entity
@@ -26,11 +27,11 @@ public class Status implements Serializable {
 	private String name;
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "STATUS_ID", referencedColumnName = "STATUS_ID")
-	@JsonBackReference
+	@JsonIgnore
 	private List<Proposal> proposals;
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "STATUS_ID", referencedColumnName = "STATUS_ID")
-	@JsonBackReference
+	@JsonIgnore
 	private List<Task> tasks;
 
 	public Long getId() {

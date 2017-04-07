@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @SuppressWarnings ("serial")
@@ -29,7 +30,7 @@ public class Task implements Serializable {
 	private Status status;
 	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID")
-	@JsonBackReference
+	@JsonIgnore
 	private User user;
 	@Column (name = "DESCRIPTION", nullable = false, length = 2048)
 	private String description;
@@ -37,7 +38,7 @@ public class Task implements Serializable {
 	private String conclusion;
 	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "PROPOSAL_ID")
-	@JsonBackReference
+	@JsonIgnore
 	private Proposal proposal;
 	@Column (name = "CREATE_DATE")
 	private Timestamp createDate;

@@ -37,7 +37,7 @@ public class User implements Serializable {
 	@ManyToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinTable (name = "USER_ROLE", joinColumns = {@JoinColumn (name = "USER_ID")}, inverseJoinColumns = {
 			@JoinColumn (name = "ROLE_ID")})
-//	@JsonManagedReference
+	@JsonManagedReference
 	private List<Role> roles;
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
