@@ -40,6 +40,7 @@ public class Car implements Serializable {
 	private Timestamp createDate;
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "CAR_ID", referencedColumnName = "CAR_ID")
+	@JsonBackReference
 	private List<Proposal> proposals;
 
 	public Long getId() {
