@@ -38,7 +38,7 @@ public class ExampleDataMaker {
 	private Random rnd = new Random();
 
 	private void setUsersRole(UserService us, RoleService rs) {
-		users = um.generateUsers(numberOfClients + numberOfManager + numberOfWorkers);
+		users = um.generateUsers(numberOfClients + numberOfManager + numberOfWorkers, us);
 		for (int i = 0, w = 0, m = 0; i < users.length; i++) {
 			if (w < workers.length) {
 				users[i].getRoles().add(rm.generateWorker(rs));
@@ -142,11 +142,12 @@ public class ExampleDataMaker {
 
 	public void generateExampleData(UserService us, TaskService ts, CarService cs, ProposalService ps, StatusService ss, RoleService rs) {
 		if (!isExampleDataInitialized) {
-			setUsersRole(us, rs);
-			setCarsUser(cs);
-			setProposals(ps, ss);
-			setTasks(ts);
-			setTaskStatus(ts, ss);
+//			setUsersRole(us, rs);
+//			setCarsUser(cs);
+//			setProposals(ps, ss);
+//			setTasks(ts);
+//			setTaskStatus(ts, ss);
+			um.generateUsers(20, us);
 			isExampleDataInitialized = true;
 		}
 	}

@@ -18,7 +18,7 @@ public class UserMaker {
 		}
 	}
 
-	public User[] generateUsers(int quantity) {
+	public User[] generateUsers(int quantity, UserService us) {
 		UserInformation[] uis = new UserInformationMaker().generateUserInformation(quantity);
 		User[] users = new User[uis.length];
 		for (int i = 0; i < users.length; i++) {
@@ -26,8 +26,9 @@ public class UserMaker {
 			user.setUsername("tu" + String.valueOf(i));
 			user.setPassword("tp" + String.valueOf(i));
 			user.setUserInformation(uis[i]);
-			user.setRoles(new ArrayList<Role>());
-			users[i] = user;
+//			user.setRoles(new ArrayList<Role>());
+//			users[i] = user;
+			us.save(user);
 		}
 		return users;
 	}
