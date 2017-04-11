@@ -159,33 +159,13 @@ public class UserServiceImp implements UserService {
 				UserInformation ui = user.getUserInformation();
 				String username = user.getUsername();
 				String pass = user.getPassword();
-				if (username != null && username.length() > 0 && pass != null && pass.length() > 0 && ui != null
-						&& ui.getPhone() != null && ui.getPhone().length() > 0 && isUsernameUnique(username)) {
-					ui.setMail(ui.getMail() == null ? "" : ui.getMail());
-					ui.setName(ui.getName() == null ? "" : ui.getName());
-					ui.setSurname(ui.getSurname() == null ? "" : ui.getSurname());
+				if (username != null && username.length() > 0 && pass != null && pass.length() > 0 
+						&& ui.getPhone() != null && ui.getPhone().length() > 0 && isUsernameUnique(username)) {					
 					ui.setCreateDate(Timestamp.valueOf(LocalDateTime.now()));
 					ui.setUser(user);
-					if (user.getRoles() == null) {						
-						List<Role> roles = new ArrayList<>();
-						roles.add(roleService.getByName(RoleMaker.ROLE_CLIENT));
-						user.setRoles(roles);
-					}else{
-						if (user.getRoles().size() == 0) {							
-							user.getRoles().add(roleService.getByName(RoleMaker.ROLE_CLIENT));							
-						}else{
-							boolean isNeedSetClientRole = true;
-							for(Role role : user.getRoles()){
-								if(role.getName().equals(RoleMaker.ROLE_CLIENT)){
-									isNeedSetClientRole = false;
-									break;
-								}
-							}
-							if(isNeedSetClientRole){
-								user.getRoles().add(roleService.getByName(RoleMaker.ROLE_CLIENT));	
-							}
-						}
-					}					
+					if(user.getRoles().size() == 0){
+						user.getRoles().add(roleService.getByName(RoleMaker.ROLE_CLIENT));
+					}			
 					return true;
 				}				
 			}

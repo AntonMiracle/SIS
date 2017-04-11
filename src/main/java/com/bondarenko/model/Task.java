@@ -33,9 +33,9 @@ public class Task implements Serializable {
 	@JsonIgnore
 	private User user;
 	@Column (name = "DESCRIPTION", nullable = false, length = 2048)
-	private String description;
+	private String description = new String();
 	@Column (name = "CONCLUSION", nullable = false, length = 2048)
-	private String conclusion;
+	private String conclusion= new String();
 	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "PROPOSAL_ID")
 	@JsonIgnore

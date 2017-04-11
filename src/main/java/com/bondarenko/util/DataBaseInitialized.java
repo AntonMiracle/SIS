@@ -20,7 +20,7 @@ public class DataBaseInitialized {
 			new RoleMaker().initialized(roleService);
 			new StatusMaker().initialized(statusService);
 			new UserMaker().initializedUsers(userService, roleService);
-			new ExampleDataMaker().generateExampleData(userService, taskService, carService, proposalService, statusService, roleService);
+			new ExampleDataMaker().initializedExampleData(userService, taskService, carService, proposalService, statusService, roleService);
 			System.out.println("Database initialized complete");
 			isDatabaseFill = true;
 		}

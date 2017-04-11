@@ -151,7 +151,6 @@ public class TaskServiceTest extends DBUnitConfig {
 		Timestamp now = Timestamp.valueOf(LocalDateTime.now());
 		Assert.assertNotNull(user);
 		Assert.assertNotNull(task);
-		Assert.assertNull(task.getConclusion());
 		Assert.assertNotNull(statusService.getByName(StatusMaker.STATUS_OPEN));
 		Assert.assertTrue(taskService.checkNewTaskFields(task));
 		Assert.assertNotNull(task.getConclusion());

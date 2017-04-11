@@ -2,6 +2,7 @@ package com.bondarenko.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,7 +16,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @SuppressWarnings ("serial")
@@ -32,17 +32,17 @@ public class Car implements Serializable {
 	@Column (name = "NUMBER", nullable = false, unique = true, length = 100)
 	private String number;
 	@Column (name = "MODEL", nullable = false, length = 100)
-	private String model;
+	private String model = new String();
 	@Column (name = "MARK", nullable = false, length = 100)
-	private String mark;
+	private String mark = new String();
 	@Column (name = "DESCRIPTION", nullable = false, length = 100)
-	private String description;
+	private String description = new String();
 	@Column (name = "CREATE_DATE")
 	private Timestamp createDate;
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "CAR_ID", referencedColumnName = "CAR_ID")
 	@JsonIgnore
-	private List<Proposal> proposals;
+	private List<Proposal> proposals = new ArrayList<>();
 
 	public Long getId() {
 		return id;

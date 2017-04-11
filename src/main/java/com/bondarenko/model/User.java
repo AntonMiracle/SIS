@@ -1,6 +1,7 @@
 package com.bondarenko.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -33,24 +34,24 @@ public class User implements Serializable {
 	@OneToOne (cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
 	@JsonManagedReference
-	private UserInformation userInformation;
+	private UserInformation userInformation = new UserInformation();
 	@ManyToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinTable (name = "USER_ROLE", joinColumns = {@JoinColumn (name = "USER_ID")}, inverseJoinColumns = {
 			@JoinColumn (name = "ROLE_ID")})
 	@JsonManagedReference
-	private List<Role> roles;
+	private List<Role> roles = new ArrayList<>();
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
 	@JsonManagedReference
-	private List<Proposal> proposals;
+	private List<Proposal> proposals = new ArrayList<>();
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
 	@JsonManagedReference
-	private List<Car> cars;
+	private List<Car> cars = new ArrayList<>();
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
 	@JsonManagedReference
-	private List<Task> tasks;
+	private List<Task> tasks = new ArrayList<>();
 		
 	@Override
 	public String toString() {

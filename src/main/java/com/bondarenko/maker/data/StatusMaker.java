@@ -1,6 +1,5 @@
 package com.bondarenko.maker.data;
 
-import com.bondarenko.model.Status;
 import com.bondarenko.service.StatusService;
 
 public class StatusMaker {
@@ -22,17 +21,5 @@ public class StatusMaker {
 			}
 			isInitilized = true;
 		}
-	}
-
-	public Status generateOpen(StatusService statusService) {
-		return statusService.getByName(STATUS_OPEN);
-	}
-
-	public Status generateClose(StatusService statusService) {
-		return statusService.getByName(STATUS_CLOSE);
-	}
-
-	public Status generateAccepted(StatusService statusService) {
-		return statusService.getByName(STATUS_ACCEPTED);
 	}
 }

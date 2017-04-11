@@ -30,18 +30,6 @@ public class RoleMaker {
 			}
 			isInitilized = true;
 		}
-	}
-
-	public Role generateWorker(RoleService roleService) {
-		return roleService.getByName(ROLE_WORKER);
-	}
-
-	public Role generateManager(RoleService roleService) {
-		return roleService.getByName(ROLE_MANAGER);
-	}
-
-	public Role generateClient(RoleService roleService) {
-		return roleService.getByName(ROLE_CLIENT);
-	}
+	}	
 
 }

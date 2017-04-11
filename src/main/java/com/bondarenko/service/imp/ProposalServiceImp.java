@@ -167,8 +167,8 @@ public class ProposalServiceImp implements ProposalService {
 			User user = proposal.getUser();
 			Car car = proposal.getCar();
 			if (user != null && user.getId() != null && car != null && car.getId() != null
-					&& proposal.getDescription() != null && proposal.getDescription().length() > 0) {
-				proposal.setCreateDate(proposal.getCreateDate() == null ? Timestamp.valueOf(LocalDateTime.now()) : proposal.getCreateDate());
+					&& proposal.getDescription().length() > 0) {
+				proposal.setCreateDate(Timestamp.valueOf(LocalDateTime.now()));
 				proposal.setStatus(statusService.getByName(StatusMaker.STATUS_OPEN));
 				return true;
 			}

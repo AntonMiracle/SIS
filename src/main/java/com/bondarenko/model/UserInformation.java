@@ -29,11 +29,11 @@ public class UserInformation implements Serializable {
 	@Column (name = "PHONE", nullable = false, unique = true, length = 100)
 	private String phone;
 	@Column (name = "NAME", nullable = false, length = 100)
-	private String name;
+	private String name = new String();
 	@Column (name = "SURNAME", nullable = false, length = 100)
-	private String surname;
+	private String surname = new String();
 	@Column (name = "MAIL", nullable = false, length = 100)
-	private String mail;
+	private String mail = new String();
 	@Column (name = "CREATE_DATE")	
 	private Timestamp createDate;
 

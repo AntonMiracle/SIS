@@ -160,12 +160,9 @@ public class TaskServiceImp implements TaskService {
 	public boolean checkNewTaskFields(Task task) throws RuntimeException {
 		try {
 			User user = task.getUser();
-			if (user != null && task.getDescription() != null && task.getDescription().length() > 0) {
-				task.setConclusion("");
-				task.setCreateDate(
-						task.getCreateDate() == null ? Timestamp.valueOf(LocalDateTime.now()) : task.getCreateDate());
-				task.setStatus(
-						task.getStatus() == null ? statusService.getByName(StatusMaker.STATUS_OPEN) : task.getStatus());
+			if (user != null && task.getDescription().length() > 0) {				
+				task.setCreateDate(Timestamp.valueOf(LocalDateTime.now()));
+				task.setStatus(task.getStatus() == null ? statusService.getByName(StatusMaker.STATUS_OPEN) : task.getStatus());
 				return true;
 			}
 			return false;

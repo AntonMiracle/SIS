@@ -129,12 +129,8 @@ public class CarServiceTest extends DBUnitConfig {
 		car.setNumber(number);
 		Assert.assertNull(carService.save(car).getId());
 		car.setUser(user);
-		Assert.assertNull(car.getDescription());
-		Assert.assertNull(car.getMark());
-		Assert.assertNull(car.getModel());
 		Assert.assertNull(car.getCreateDate());
-		Assert.assertNull(car.getId());
-		Assert.assertNull(car.getProposals());
+		Assert.assertNull(car.getId());		
 		car = carService.save(car);
 		Assert.assertNotNull(car.getDescription());
 		Assert.assertNotNull(car.getMark());
@@ -168,12 +164,8 @@ public class CarServiceTest extends DBUnitConfig {
 		Car car = new Car();
 		car.setNumber(number);
 		car.setUser(user);
-		Assert.assertNull(car.getDescription());
-		Assert.assertNull(car.getMark());
-		Assert.assertNull(car.getModel());
 		Assert.assertNull(car.getCreateDate());
 		Assert.assertNull(car.getId());
-		Assert.assertNull(car.getProposals());
 		carService.save(car);
 		car = carService.getById(car.getId());
 		Assert.assertNotNull(car.getDescription());
