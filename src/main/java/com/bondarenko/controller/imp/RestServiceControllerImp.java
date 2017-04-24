@@ -21,33 +21,31 @@ import com.bondarenko.service.UserService;
 import com.bondarneko.dto.NewUserDto;
 
 @RestController
-@RequestMapping(value = {"/rest","/rest/user","/rest/check"})
-public class RestServiceControllerImp implements RestServiceController{
+@RequestMapping (value = {"/rest","/rest/user","/rest/check"})
+public class RestServiceControllerImp implements RestServiceController {
 	@Autowired
 	private UserService userService;
 	@Autowired
 	private UserInformationService uiService;
-	
-	@Override
-	@GetMapping(value = "/users")	
-	public ResponseEntity<User[]> getUsers() throws RuntimeException {
-//		public ResponseEntity<List<User>> getUsers() throws RuntimeException {
-//		List<User> users = new ArrayList<>();
-		User[] users = new User[userService.getUsers().size()];
-		int i = 0;
-		for(User user : userService.getUsers()){
-//			users.add(user);
-			users[i++] = user;
-		}
-//		return new ResponseEntity<List<User>>(users,HttpStatus.OK);
-		return new ResponseEntity<User[]>(users,HttpStatus.OK);
-	}	
 
 	@Override
-	@PostMapping(value = "/new")
-	public ResponseEntity<User> saveUser(@RequestBody NewUserDto dto) throws RuntimeException{
+	@GetMapping (value = "/users")
+	public ResponseEntity<List<User>> getUsers() throws RuntimeException {
+		List<User> users = new ArrayList<>();
+		for (User user : userService.getUsers()) {
+			users.add(user);
+		}
+		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+
+	}
+	
+	
+
+	@Override
+	@PostMapping (value = "/new")
+	public ResponseEntity<User> saveUser(@RequestBody NewUserDto dto) throws RuntimeException {
 		User user = new User();
-		if(dto != null){			
+		if (dto != null) {
 			UserInformation ui = new UserInformation();
 			user.setUserInformation(ui);
 			user.setUsername(dto.getUsername());
@@ -55,36 +53,36 @@ public class RestServiceControllerImp implements RestServiceController{
 			ui.setPhone(dto.getPhone());
 			ui.setMail(dto.getMail());
 			ui.setName(dto.getName());
-			ui.setSurname(dto.getSurname());			
+			ui.setSurname(dto.getSurname());
 			user = userService.save(user);
 		}
-		return new ResponseEntity<User>(user,HttpStatus.OK);
-	}	
-
-	@Override
-	@GetMapping("/usernamefree/{username}")
-	public ResponseEntity<Boolean> isUsernameUnique(@PathVariable("username")String username) throws RuntimeException {		
-		return new ResponseEntity<Boolean>(userService.isUsernameUnique(username),HttpStatus.OK);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 
 	@Override
-	@GetMapping("/phonefree/{phone}")
-	public ResponseEntity<Boolean> isPhoneUnique(@PathVariable("phone")String phone) throws RuntimeException {		
-		return new ResponseEntity<Boolean>(uiService.isPhoneUnique(phone),HttpStatus.OK);
+	@GetMapping ("/usernamefree/{username}")
+	public ResponseEntity<Boolean> isUsernameUnique(@PathVariable ("username") String username)
+			throws RuntimeException {
+		return new ResponseEntity<Boolean>(userService.isUsernameUnique(username), HttpStatus.OK);
 	}
 
 	@Override
-	@GetMapping("/{id}")
-	public ResponseEntity<User> getById(@PathVariable("id")Long id) throws RuntimeException {		
-		return new ResponseEntity<User>(userService.getById(id),HttpStatus.OK);
+	@GetMapping ("/phonefree/{phone}")
+	public ResponseEntity<Boolean> isPhoneUnique(@PathVariable ("phone") String phone) throws RuntimeException {
+		return new ResponseEntity<Boolean>(uiService.isPhoneUnique(phone), HttpStatus.OK);
 	}
-	
+
 	@Override
-	@GetMapping("/authentication/{username}/{password}")
-	public ResponseEntity<Boolean> checkUsernameAndPassword(
-			@PathVariable("username")String username, 
-			@PathVariable("password")String password) throws RuntimeException {
-		return new ResponseEntity<Boolean>(userService.isAuthenticationCorrect(username, password),HttpStatus.OK);
-	}	
-	
+	@GetMapping ("/{id}")
+	public ResponseEntity<User> getById(@PathVariable ("id") Long id) throws RuntimeException {
+		return new ResponseEntity<User>(userService.getById(id), HttpStatus.OK);
+	}
+
+	@Override
+	@GetMapping ("/authentication/{username}/{password}")
+	public ResponseEntity<Boolean> checkUsernameAndPassword(@PathVariable ("username") String username,
+			@PathVariable ("password") String password) throws RuntimeException {
+		return new ResponseEntity<Boolean>(userService.isAuthenticationCorrect(username, password), HttpStatus.OK);
+	}
+
 }
