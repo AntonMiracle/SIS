@@ -30,12 +30,17 @@ public class RestServiceControllerImp implements RestServiceController{
 	
 	@Override
 	@GetMapping(value = "/users")	
-	public ResponseEntity<List<User>> getUsers() throws RuntimeException {
-		List<User> users = new ArrayList<>();
+	public ResponseEntity<User[]> getUsers() throws RuntimeException {
+//		public ResponseEntity<List<User>> getUsers() throws RuntimeException {
+//		List<User> users = new ArrayList<>();
+		User[] users = new User[userService.getUsers().size()];
+		int i = 0;
 		for(User user : userService.getUsers()){
-			users.add(user);
+//			users.add(user);
+			users[i++] = user;
 		}
-		return new ResponseEntity<List<User>>(users,HttpStatus.OK);
+//		return new ResponseEntity<List<User>>(users,HttpStatus.OK);
+		return new ResponseEntity<User[]>(users,HttpStatus.OK);
 	}	
 
 	@Override

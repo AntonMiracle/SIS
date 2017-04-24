@@ -9,7 +9,8 @@ import com.bondarneko.dto.NewUserDto;
 
 public interface RestServiceController {
 
-	public ResponseEntity<List<User>> getUsers() throws RuntimeException;
+//	public ResponseEntity<List<User>> getUsers() throws RuntimeException;
+	public ResponseEntity<User[]> getUsers() throws RuntimeException;
 	
 	public ResponseEntity<User> saveUser(NewUserDto dto) throws RuntimeException;
 
