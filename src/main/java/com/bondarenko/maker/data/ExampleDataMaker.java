@@ -33,12 +33,12 @@ public class ExampleDataMaker {
 
 	public void generateExampleData(UserService us, TaskService ts, CarService cs, ProposalService ps, StatusService ss,
 			RoleService rs) {
-		int numberOfManagers = 2;
-		int numberOfClients = 7;
-		int numberOfWorkers = 2;
-		int maxCarsByClient = 3;
-		int numberOfProposals = 15;
-		int maxTasksByProposal = 4;
+		int numberOfManagers = 1;
+		int numberOfClients = 5;
+		int numberOfWorkers = 1;
+		int maxCarsByClient = 2;
+		int numberOfProposals = 7;
+		int maxTasksByProposal = 3;
 		UserMaker um = new UserMaker();
 		CarMaker cm = new CarMaker();
 		ProposalMaker pm = new ProposalMaker();
