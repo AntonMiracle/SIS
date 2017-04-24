@@ -2,6 +2,7 @@ package com.bondarenko.controller.imp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bondarenko.controller.RestServiceController;
+import com.bondarenko.model.Proposal;
 import com.bondarenko.model.User;
 import com.bondarenko.model.UserInformation;
+import com.bondarenko.service.ProposalService;
 import com.bondarenko.service.UserInformationService;
 import com.bondarenko.service.UserService;
 import com.bondarneko.dto.NewUserDto;
@@ -23,6 +26,8 @@ import com.bondarneko.dto.NewUserDto;
 @RestController
 @RequestMapping (value = {"/rest","/rest/user","/rest/check"})
 public class RestServiceControllerImp implements RestServiceController {
+	@Autowired
+	private ProposalService proposalService;
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -37,6 +42,12 @@ public class RestServiceControllerImp implements RestServiceController {
 		}
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 
+	}
+	@Override
+	@GetMapping (value = "/proposals")
+	public ResponseEntity<Set<Proposal>> getProposals() throws RuntimeException {		
+		return new ResponseEntity<Set<Proposal>>(proposalService.getProposals(), HttpStatus.OK);
+		
 	}
 	
 	

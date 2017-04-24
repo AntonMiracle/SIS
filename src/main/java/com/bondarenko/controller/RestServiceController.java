@@ -1,15 +1,18 @@
 package com.bondarenko.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.http.ResponseEntity;
 
+import com.bondarenko.model.Proposal;
 import com.bondarenko.model.User;
 import com.bondarneko.dto.NewUserDto;
 
 public interface RestServiceController {
 
 	public ResponseEntity<List<User>> getUsers() throws RuntimeException;
+	public ResponseEntity<Set<Proposal>> getProposals() throws RuntimeException;
 	
 	public ResponseEntity<User> saveUser(NewUserDto dto) throws RuntimeException;
 
