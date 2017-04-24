@@ -1,6 +1,7 @@
 package com.bondarenko.controller.imp;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,8 +30,12 @@ public class RestServiceControllerImp implements RestServiceController{
 	
 	@Override
 	@GetMapping(value = "/users")	
-	public ResponseEntity<Set<User>> getUsers() throws RuntimeException {
-		return new ResponseEntity<Set<User>>(userService.getUsers(),HttpStatus.OK);
+	public ResponseEntity<List<User>> getUsers() throws RuntimeException {
+		List<User> users = new ArrayList<>();
+		for(User user : userService.getUsers()){
+			users.add(user);
+		}
+		return new ResponseEntity<List<User>>(users,HttpStatus.OK);
 	}	
 
 	@Override
