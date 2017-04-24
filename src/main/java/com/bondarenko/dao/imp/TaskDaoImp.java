@@ -20,6 +20,7 @@ public class TaskDaoImp implements TaskDao {
 	public Task save(Task task) throws RuntimeException {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(task);
+		session.flush();
 		return getById(task.getId());
 	}
 

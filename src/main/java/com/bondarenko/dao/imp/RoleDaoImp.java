@@ -20,6 +20,7 @@ public class RoleDaoImp implements RoleDao {
 	public Role save(Role role) throws RuntimeException {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(role);
+		session.flush();
 		return getById(role.getId());
 	}
 

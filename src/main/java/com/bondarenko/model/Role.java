@@ -1,7 +1,8 @@
 package com.bondarenko.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,7 +16,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @SuppressWarnings ("serial")
 @Entity
@@ -29,8 +29,8 @@ public class Role implements Serializable {
 	@ManyToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinTable (name = "USER_ROLE", joinColumns = {@JoinColumn (name = "ROLE_ID")}, inverseJoinColumns = {
 			@JoinColumn (name = "USER_ID")})
-	@JsonIgnore
-	private List<User> users;
+	@JsonBackReference
+	private Set<User> users = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -40,7 +40,7 @@ public class Role implements Serializable {
 		return name;
 	}
 
-	public List<User> getUsers() {
+	public Set<User> getUsers() {
 		return users;
 	}
 
@@ -52,7 +52,7 @@ public class Role implements Serializable {
 		this.name = name;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 

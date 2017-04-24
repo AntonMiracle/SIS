@@ -1,5 +1,7 @@
 package com.bondarenko.service.imp;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,21 +11,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bondarenko.dao.StatusDao;
-import com.bondarenko.model.Status;
-import com.bondarenko.service.StatusService;
+import com.bondarenko.dao.UserInformationDao;
+import com.bondarenko.model.UserInformation;
+import com.bondarenko.service.UserInformationService;
 
 @Service
-public class StatusServiceImp implements StatusService {
+public class UserInformationServiceImp implements UserInformationService {
 	private static final Logger LOG = LogManager.getLogger();
 	@Autowired
-	private StatusDao statusDao;
+	private UserInformationDao uiDao;
 
 	@Override
 	@Transactional
-	public Status save(Status status) throws RuntimeException {
+	public UserInformation save(UserInformation ui) throws RuntimeException {
 		try {
-			return statusDao.save(status);
+			ui.setCreateDate(Timestamp.valueOf(LocalDateTime.now()));
+			return uiDao.save(ui);
 		} catch (RuntimeException ex) {
 			LOG.error(ex, ex);
 			throw ex;
@@ -32,72 +35,60 @@ public class StatusServiceImp implements StatusService {
 
 	@Override
 	@Transactional
-	public boolean delete(Long statusId) throws RuntimeException {
+	public UserInformation update(UserInformation ui) throws RuntimeException {
 		try {
-			return statusDao.delete(getById(statusId));
+			return uiDao.update(ui);
 		} catch (RuntimeException ex) {
 			LOG.error(ex, ex);
 			throw ex;
 		}
-	}
+	}	
 
 	@Override
 	@Transactional
-	public Status update(Status status) throws RuntimeException {
+	public Set<UserInformation> getUserInformations() throws RuntimeException {
 		try {
-			return statusDao.update(status);
-		} catch (RuntimeException ex) {
-			LOG.error(ex, ex);
-			throw ex;
-		}
-	}
-
-	@Override
-	@Transactional
-	public Status getByName(String name) throws RuntimeException {
-		try {
-			return statusDao.getByName(name);
-		} catch (RuntimeException ex) {
-			LOG.error(ex, ex);
-			throw ex;
-		}
-	}
-
-	@Override
-	@Transactional
-	public Status getById(Long id) throws RuntimeException {
-		try {
-			return statusDao.getById(id);
-		} catch (RuntimeException ex) {
-			LOG.error(ex, ex);
-			throw ex;
-		}
-	}
-
-	@Override
-	@Transactional
-	public boolean isNameUnique(String name) throws RuntimeException {
-		try {
-			return statusDao.isNameUnique(name);
-		} catch (RuntimeException ex) {
-			LOG.error(ex, ex);
-			throw ex;
-		}
-	}
-
-	@Override
-	@Transactional
-	public Set<Status> getStatuses() throws RuntimeException {
-		try {
-			Set<Status> statuses = new HashSet<>();
-			for (Status status : statusDao.getAll()) {
-				statuses.add(status);
+			Set<UserInformation> uis = new HashSet<>();
+			for (UserInformation ui : uiDao.getAll()) {
+				uis.add(ui);
 			}
-			return statuses;
+			return uis;
 		} catch (RuntimeException ex) {
 			LOG.error(ex, ex);
 			throw ex;
 		}
 	}
 
+	@Override
+	@Transactional
+	public UserInformation getByPhone(String phone) throws RuntimeException {
+		try {
+			return uiDao.getByPhone(phone);
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
+	}
+
+	@Override
+	@Transactional
+	public UserInformation getById(Long id) throws RuntimeException {
+		try {
+			return uiDao.getById(id);
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
+	}
+
+	@Override
+	@Transactional
+	public boolean isPhoneUnique(String phone) throws RuntimeException {
+		try {
+			return uiDao.isPhoneUnique(phone);
+		} catch (RuntimeException ex) {
+			LOG.error(ex, ex);
+			throw ex;
+		}
+	}
 }

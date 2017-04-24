@@ -20,6 +20,7 @@ public class ProposalDaoImp implements ProposalDao {
 	public Proposal save(Proposal proposal) throws RuntimeException {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(proposal);
+		session.flush();
 		return getById(proposal.getId());
 	}
 

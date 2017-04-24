@@ -11,22 +11,32 @@ public class RoleMaker {
 	public static final String ROLE_ADMIN = "admin";
 	public static final String ROLE_BOSS = "boss";
 
-	public void initialized(RoleService roleService) {
+	public void initialized(RoleService roleService) {		
 		if (!isInitilized) {
 			if (roleService.isNameUnique(ROLE_ADMIN)) {
-				roleService.save(ROLE_ADMIN);
+				Role role = new Role();
+				role.setName(ROLE_ADMIN);
+				roleService.save(role);
 			}
 			if (roleService.isNameUnique(ROLE_WORKER)) {
-				roleService.save(ROLE_WORKER);
+				Role role = new Role();
+				role.setName(ROLE_WORKER);
+				roleService.save(role);
 			}
 			if (roleService.isNameUnique(ROLE_MANAGER)) {
-				roleService.save(ROLE_MANAGER);
+				Role role = new Role();
+				role.setName(ROLE_MANAGER);
+				roleService.save(role);
 			}
 			if (roleService.isNameUnique(ROLE_CLIENT)) {
-				roleService.save(ROLE_CLIENT);
+				Role role = new Role();
+				role.setName(ROLE_CLIENT);
+				roleService.save(role);
 			}
 			if (roleService.isNameUnique(ROLE_BOSS)) {
-				roleService.save(ROLE_BOSS);
+				Role role = new Role();
+				role.setName(ROLE_BOSS);
+				roleService.save(role);
 			}
 			isInitilized = true;
 		}

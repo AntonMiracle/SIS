@@ -20,6 +20,7 @@ public class UserInformationDaoImp implements UserInformationDao {
 	public UserInformation save(UserInformation userInformation) throws RuntimeException {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(userInformation);
+		session.flush();
 		return getById(userInformation.getId());
 	}
 
@@ -42,7 +43,7 @@ public class UserInformationDaoImp implements UserInformationDao {
 	@SuppressWarnings ("unchecked")
 	@Override
 	public List<UserInformation> getAll() throws RuntimeException {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();		
 		List<UserInformation> users = session.createQuery("from UserInformation").list();
 		return users;
 	}

@@ -2,8 +2,8 @@ package com.bondarenko.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,7 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @SuppressWarnings ("serial")
 @Entity
@@ -27,22 +27,28 @@ public class Car implements Serializable {
 	private Long id;
 	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID")
-	@JsonIgnore
+	@JsonBackReference
 	private User user;
 	@Column (name = "NUMBER", nullable = false, unique = true, length = 100)
 	private String number;
 	@Column (name = "MODEL", nullable = false, length = 100)
-	private String model = new String();
+	private String model;
 	@Column (name = "MARK", nullable = false, length = 100)
-	private String mark = new String();
+	private String mark;
 	@Column (name = "DESCRIPTION", nullable = false, length = 100)
-	private String description = new String();
+	private String description;
 	@Column (name = "CREATE_DATE")
 	private Timestamp createDate;
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "CAR_ID", referencedColumnName = "CAR_ID")
-	@JsonIgnore
-	private List<Proposal> proposals = new ArrayList<>();
+	@JsonBackReference
+	private Set<Proposal> proposals = new HashSet<>();
+
+	@Override
+	public String toString() {
+		return "Car [id=" + id + ", user=" + user + ", number=" + number + ", model=" + model + ", mark=" + mark
+				+ ", description=" + description + ", createDate=" + createDate + ", proposals=" + proposals + "]";
+	}
 
 	public Long getId() {
 		return id;
@@ -72,7 +78,7 @@ public class Car implements Serializable {
 		return createDate;
 	}
 
-	public List<Proposal> getProposals() {
+	public Set<Proposal> getProposals() {
 		return proposals;
 	}
 
@@ -104,14 +110,8 @@ public class Car implements Serializable {
 		this.createDate = createDate;
 	}
 
-	public void setProposals(List<Proposal> proposals) {
+	public void setProposals(Set<Proposal> proposals) {
 		this.proposals = proposals;
-	}
-
-	@Override
-	public String toString() {
-		return "Car [id=" + id + ", user=" + user + ", number=" + number + ", model=" + model + ", mark=" + mark
-				+ ", description=" + description + ", createDate=" + createDate + ", proposals=" + proposals + "]";
 	}
 
 }

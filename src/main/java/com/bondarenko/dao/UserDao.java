@@ -16,6 +16,8 @@ public interface UserDao {
 	
 	public User getByUsername(String username) throws RuntimeException;
 	
+	public User getByUserInformationId(Long id) throws RuntimeException;
+	
 	public User getById(Long id) throws RuntimeException;
 	
 	public boolean isUsernameUnique(String username) throws RuntimeException;

@@ -1,6 +1,6 @@
 package com.bondarenko.controller.imp;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bondarenko.controller.RestServiceController;
 import com.bondarenko.model.User;
 import com.bondarenko.model.UserInformation;
+import com.bondarenko.service.UserInformationService;
 import com.bondarenko.service.UserService;
 import com.bondarneko.dto.NewUserDto;
 
@@ -23,11 +24,13 @@ import com.bondarneko.dto.NewUserDto;
 public class RestServiceControllerImp implements RestServiceController{
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private UserInformationService uiService;
 	
 	@Override
 	@GetMapping(value = "/users")	
-	public ResponseEntity<List<User>> getUsers() throws RuntimeException {
-		return new ResponseEntity<List<User>>(userService.getUsers(),HttpStatus.OK);
+	public ResponseEntity<Set<User>> getUsers() throws RuntimeException {
+		return new ResponseEntity<Set<User>>(userService.getUsers(),HttpStatus.OK);
 	}	
 
 	@Override
@@ -57,7 +60,7 @@ public class RestServiceControllerImp implements RestServiceController{
 	@Override
 	@GetMapping("/phonefree/{phone}")
 	public ResponseEntity<Boolean> isPhoneUnique(@PathVariable("phone")String phone) throws RuntimeException {		
-		return new ResponseEntity<Boolean>(userService.isPhoneUnique(phone),HttpStatus.OK);
+		return new ResponseEntity<Boolean>(uiService.isPhoneUnique(phone),HttpStatus.OK);
 	}
 
 	@Override

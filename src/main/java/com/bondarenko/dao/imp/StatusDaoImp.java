@@ -20,6 +20,7 @@ public class StatusDaoImp implements StatusDao {
 	public Status save(Status status) throws RuntimeException {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(status);
+		session.flush();
 		return getById(status.getId());
 	}
 

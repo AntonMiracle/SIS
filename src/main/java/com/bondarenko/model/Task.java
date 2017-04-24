@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @SuppressWarnings ("serial")
@@ -30,15 +29,15 @@ public class Task implements Serializable {
 	private Status status;
 	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID")
-	@JsonIgnore
+	@JsonBackReference
 	private User user;
 	@Column (name = "DESCRIPTION", nullable = false, length = 2048)
-	private String description = new String();
+	private String description;
 	@Column (name = "CONCLUSION", nullable = false, length = 2048)
-	private String conclusion= new String();
+	private String conclusion;
 	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "PROPOSAL_ID")
-	@JsonIgnore
+	@JsonBackReference
 	private Proposal proposal;
 	@Column (name = "CREATE_DATE")
 	private Timestamp createDate;
@@ -101,8 +100,9 @@ public class Task implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Task [id=" + id + ", status=" + status.getName() + ", userId=" + user.getId() + ", description=" + description
-				+ ", conclusion=" + conclusion + ", proposalId=" + proposal.getId() + ", createDate=" + createDate + "]";
+		return "Task [id=" + id + ", status=" + status.getName() + ", userId=" + user.getId() + ", description="
+				+ description + ", conclusion=" + conclusion + ", proposalId=" + proposal.getId() + ", createDate="
+				+ createDate + "]";
 	}
 
 }

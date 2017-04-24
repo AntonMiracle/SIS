@@ -3,17 +3,11 @@ package com.bondarenko.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @SuppressWarnings ("serial")
 @Entity
@@ -22,27 +16,19 @@ public class UserInformation implements Serializable {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "USER_INFORMATION_ID")
 	private Long id;
-	@OneToOne (cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-	@JoinColumn (name = "USER_ID")
-	@JsonBackReference
-	private User user;
 	@Column (name = "PHONE", nullable = false, unique = true, length = 100)
 	private String phone;
 	@Column (name = "NAME", nullable = false, length = 100)
-	private String name = new String();
+	private String name;
 	@Column (name = "SURNAME", nullable = false, length = 100)
-	private String surname = new String();
+	private String surname;
 	@Column (name = "MAIL", nullable = false, length = 100)
-	private String mail = new String();
-	@Column (name = "CREATE_DATE")	
+	private String mail;
+	@Column (name = "CREATE_DATE")
 	private Timestamp createDate;
 
 	public Long getId() {
 		return id;
-	}
-
-	public User getUser() {
-		return user;
 	}
 
 	public String getPhone() {
@@ -67,10 +53,6 @@ public class UserInformation implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public void setPhone(String phone) {

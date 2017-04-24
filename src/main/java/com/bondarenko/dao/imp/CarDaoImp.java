@@ -20,6 +20,7 @@ public class CarDaoImp implements CarDao {
 	public Car save(Car car) throws RuntimeException {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(car);
+		session.flush();
 		return getById(car.getId());
 	}
 

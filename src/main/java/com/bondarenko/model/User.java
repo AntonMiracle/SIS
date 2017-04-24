@@ -1,8 +1,8 @@
 package com.bondarenko.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,8 +21,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @SuppressWarnings ("serial")
 @Entity
-public class User implements Serializable {	
-	
+public class User implements Serializable {
+
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "USER_ID")
@@ -32,27 +32,26 @@ public class User implements Serializable {
 	@Column (name = "PASSWORD", nullable = false, length = 100)
 	private String password;
 	@OneToOne (cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
-	@JsonManagedReference
+	@JoinColumn (name = "USER_INFORMATION_ID")
 	private UserInformation userInformation = new UserInformation();
 	@ManyToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinTable (name = "USER_ROLE", joinColumns = {@JoinColumn (name = "USER_ID")}, inverseJoinColumns = {
 			@JoinColumn (name = "ROLE_ID")})
 	@JsonManagedReference
-	private List<Role> roles = new ArrayList<>();
+	private Set<Role> roles = new HashSet<>();
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
 	@JsonManagedReference
-	private List<Proposal> proposals = new ArrayList<>();
+	private Set<Proposal> proposals = new HashSet<>();
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
 	@JsonManagedReference
-	private List<Car> cars = new ArrayList<>();
+	private Set<Car> cars = new HashSet<>();
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID", referencedColumnName = "USER_ID")
 	@JsonManagedReference
-	private List<Task> tasks = new ArrayList<>();
-		
+	private Set<Task> tasks = new HashSet<>();
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", userInformation="
@@ -76,19 +75,19 @@ public class User implements Serializable {
 		return userInformation;
 	}
 
-	public List<Role> getRoles() {
+	public Set<Role> getRoles() {
 		return roles;
 	}
 
-	public List<Proposal> getProposals() {
+	public Set<Proposal> getProposals() {
 		return proposals;
 	}
 
-	public List<Car> getCars() {
+	public Set<Car> getCars() {
 		return cars;
 	}
 
-	public List<Task> getTasks() {
+	public Set<Task> getTasks() {
 		return tasks;
 	}
 
@@ -108,22 +107,20 @@ public class User implements Serializable {
 		this.userInformation = userInformation;
 	}
 
-	public void setRoles(List<Role> roles) {
+	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
 
-	public void setProposals(List<Proposal> proposals) {
+	public void setProposals(Set<Proposal> proposals) {
 		this.proposals = proposals;
 	}
 
-	public void setCars(List<Car> cars) {
+	public void setCars(Set<Car> cars) {
 		this.cars = cars;
 	}
 
-	public void setTasks(List<Task> tasks) {
+	public void setTasks(Set<Task> tasks) {
 		this.tasks = tasks;
 	}
-	
-	
-	
+
 }

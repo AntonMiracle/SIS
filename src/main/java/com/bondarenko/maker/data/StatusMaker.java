@@ -1,5 +1,6 @@
 package com.bondarenko.maker.data;
 
+import com.bondarenko.model.Status;
 import com.bondarenko.service.StatusService;
 
 public class StatusMaker {
@@ -11,13 +12,19 @@ public class StatusMaker {
 	public void initialized(StatusService statusService) {
 		if (!isInitilized) {
 			if (statusService.isNameUnique(STATUS_OPEN)) {
-				statusService.save(STATUS_OPEN);
+				Status status = new Status();
+				status.setName(STATUS_OPEN);
+				statusService.save(status);
 			}
 			if (statusService.isNameUnique(STATUS_CLOSE)) {
-				statusService.save(STATUS_CLOSE);
+				Status status = new Status();
+				status.setName(STATUS_CLOSE);
+				statusService.save(status);
 			}
 			if (statusService.isNameUnique(STATUS_ACCEPTED)) {
-				statusService.save(STATUS_ACCEPTED);
+				Status status = new Status();
+				status.setName(STATUS_ACCEPTED);
+				statusService.save(status);
 			}
 			isInitilized = true;
 		}

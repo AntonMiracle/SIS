@@ -2,8 +2,7 @@ package com.bondarenko.service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -32,7 +31,7 @@ public class UserServiceTest extends DBUnitConfig {
 	@Test
 	public void shouldGetAllUsers() throws Exception {
 		int countUsers = 7;
-		List<User> users = userService.getUsers();
+		Set<User> users = userService.getUsers();
 		Assert.assertEquals(countUsers, users.size());
 	}
 
@@ -125,17 +124,6 @@ public class UserServiceTest extends DBUnitConfig {
 	}
 
 	@Test
-	public void shouldDeleteUser() throws Exception {
-		Long userId = new Long(7);
-		int countUsers = userService.getUsers().size();
-		User user = userService.getById(userId);
-		Assert.assertTrue(userService.delete(user));
-		Assert.assertEquals(countUsers - 1, userService.getUsers().size());
-		Assert.assertNull(userService.getById(userId));
-
-	}
-
-	@Test
 	public void shouldDeleteUserById() throws Exception {
 		Long userId = new Long(7);
 		int countUsers = userService.getUsers().size();
@@ -143,15 +131,6 @@ public class UserServiceTest extends DBUnitConfig {
 		Assert.assertEquals(countUsers - 1, userService.getUsers().size());
 		Assert.assertNull(userService.getById(userId));
 
-	}
-
-	@Test
-	public void shouldGetUsersByRoleName() throws Exception {
-		String roleName = "role1";
-		int countUsersWithRoleName = 3;
-		List<User> users = userService.getByRolename(roleName);
-		Assert.assertNotNull(users);
-		Assert.assertEquals(countUsersWithRoleName, users.size());
 	}
 
 	@Test
@@ -164,17 +143,7 @@ public class UserServiceTest extends DBUnitConfig {
 	}
 
 	@Test
-	public void shouldCheckPhoneForUnique() throws Exception {
-		String phone1 = "phone1";
-		String phone2 = "phone122";
-		Assert.assertNotNull(userService.getByPhone(phone1));
-		Assert.assertFalse(userService.isPhoneUnique(phone1));
-		Assert.assertNull(userService.getByPhone(phone2));
-		Assert.assertTrue(userService.isPhoneUnique(phone2));
-	}
-
-	@Test
-	public void shouldCheckUsernameForUnique() throws Exception {
+	public void shouldCheckIsUsernameUnique() throws Exception {
 		String username1 = "username1";
 		String username2 = "username122";
 		Assert.assertNotNull(userService.getByUsername(username1));
@@ -191,6 +160,9 @@ public class UserServiceTest extends DBUnitConfig {
 		String phone = "phone";
 		UserInformation ui = new UserInformation();
 		ui.setPhone(phone);
+		ui.setMail("");
+		ui.setName("");
+		ui.setSurname("");
 		User user = new User();
 		user.setUserInformation(ui);
 		user.setUsername(username);
@@ -203,13 +175,9 @@ public class UserServiceTest extends DBUnitConfig {
 		Assert.assertNotNull(user.getUserInformation());
 		Assert.assertNotNull(user.getUserInformation().getId());
 		Assert.assertNotNull(user.getUserInformation().getPhone());
-		Assert.assertNotNull(user.getUserInformation().getUser().getId());
 		Assert.assertNotNull(userService.getByPhone(phone));
-		Assert.assertNotNull(userService.getByPhone(phone).getUserInformation().getUser().getId());
 		Assert.assertNotNull(userService.getByUsername(username));
-		Assert.assertNotNull(userService.getByUsername(username).getUserInformation().getUser().getId());
 		Assert.assertNotNull(userService.getById(user.getId()));
-		Assert.assertNotNull(userService.getById(user.getId()).getUserInformation().getUser().getId());
 		Assert.assertEquals(phone, user.getUserInformation().getPhone());
 		Assert.assertEquals(countUsers + 1, userService.getUsers().size());
 	}
@@ -221,6 +189,7 @@ public class UserServiceTest extends DBUnitConfig {
 		String newUsername = "new_username1";
 		String newPhone = "new_phone1";
 		User user = userService.getByUsername(username);
+		Assert.assertNull(userService.getByUsername(newUsername));
 		user.setUsername(newUsername);
 		user.getUserInformation().setPhone(newPhone);
 		user = userService.update(user);
@@ -233,83 +202,6 @@ public class UserServiceTest extends DBUnitConfig {
 
 	}
 
-	@Test
-	public void shouldFillUserNullFieldsAfterGetById() throws Exception {
-		String username = "username3344";
-		String password = "pass";
-		String phone = "phone22344";
-		UserInformation ui = new UserInformation();
-		ui.setPhone(phone);
-		User user = new User();
-		user.setUserInformation(ui);
-		user.setUsername(username);
-		user.setPassword(password);
-		Assert.assertNull(user.getId());
-		Assert.assertNotNull(user.getRoles());		
-		Assert.assertNull(user.getUserInformation().getId());
-		Assert.assertNull(user.getUserInformation().getCreateDate());
-		user = userService.save(user);
-		Assert.assertNotNull(user.getId());
-		Assert.assertNotNull(user.getTasks());
-		Assert.assertNotNull(user.getCars());
-		Assert.assertNotNull(user.getProposals());
-		Assert.assertNotNull(user.getRoles());
-		Assert.assertNotNull(user.getUserInformation());
-		Assert.assertNotNull(user.getUserInformation().getMail());
-		Assert.assertNotNull(user.getUserInformation().getName());
-		Assert.assertNotNull(user.getUserInformation().getSurname());
-		Assert.assertNotNull(user.getUserInformation().getId());
-		Assert.assertNotNull(user.getUserInformation().getCreateDate());
-	}
-
-	@Test
-	public void shouldCheckNewUserFieldsAndFillDefault() throws Exception {
-		String username = "username";
-		String password = "pass";
-		String phone = "phone";
-		String roleName = "role6";
-		UserInformation ui = new UserInformation();
-		List<Role> roles = new ArrayList<>();
-		roles.add( roleService.getByName(roleName));
-		ui.setPhone(phone);
-		User user = new User();
-		user.setUserInformation(ui);
-		user.setUsername(username);
-		user.setPassword(password);		
-		user.setRoles(roles);		
-		Assert.assertNull(user.getId());		
-		Assert.assertNull(user.getUserInformation().getId());
-		Assert.assertNull(user.getUserInformation().getCreateDate());
-		Assert.assertTrue(userService.checkNewUserFields(user));
-		Assert.assertNotNull(user.getRoles());
-		Assert.assertEquals(1, user.getRoles().size());		
-		Assert.assertTrue(userService.checkNewUserFields(user));
-		Assert.assertNotNull(user.getUserInformation().getMail());
-		Assert.assertNotNull(user.getUserInformation().getName());
-		Assert.assertNotNull(user.getUserInformation().getSurname());
-		Assert.assertNotNull(user.getUserInformation().getCreateDate());
-		
-		
-		
-	}
-
-	@Test
-	public void shouldSaveUserWithRequiredFields() throws Exception {
-		String username = "username";
-		String password = "pass";
-		String phone = "phone";
-		UserInformation ui = new UserInformation();
-		User user = new User();
-		Assert.assertNull(userService.save(user).getId());
-		user.setUserInformation(ui);
-		ui.setPhone(phone);
-		Assert.assertNull(userService.save(user).getId());
-		user.setUsername(username);
-		Assert.assertNull(userService.save(user).getId());
-		user.setPassword(password);
-		Assert.assertNotNull(userService.save(user).getId());
-	}
-
 	@SuppressWarnings ("deprecation")
 	@Test
 	public void shouldSetCreateDateOnSave() throws Exception {
@@ -318,6 +210,9 @@ public class UserServiceTest extends DBUnitConfig {
 		String phone = "phone";
 		UserInformation ui = new UserInformation();
 		ui.setPhone(phone);
+		ui.setMail("");
+		ui.setName("");
+		ui.setSurname("");
 		User user = new User();
 		user.setUserInformation(ui);
 		user.setUsername(username);
@@ -340,7 +235,8 @@ public class UserServiceTest extends DBUnitConfig {
 		Assert.assertNotNull(user);
 		Assert.assertNotNull(roleService.getByName(roleName));
 		Assert.assertFalse(userService.isHasRole(user.getId(), roleName));
-		user = userService.addRoleByName(userId, roleName);
+		user.getRoles().add(roleService.getByName(roleName));
+		user = userService.update(user);
 		Assert.assertEquals(coutUserRolesBeforeAdd + 1, user.getRoles().size());
 		Assert.assertTrue(userService.isHasRole(user.getId(), roleName));
 	}
@@ -354,22 +250,20 @@ public class UserServiceTest extends DBUnitConfig {
 
 	@Test
 	public void shouldRemoveRole() throws Exception {
-		String roleName1 = "role1";
-		String roleName2 = "role4";
-		Long userId1 = new Long(1);
-		Long userId2 = new Long(3);
-		User user1 = userService.getById(userId1);// has 2 roles
-		User user2 = userService.getById(userId2);// has 1 role
-		Assert.assertNotNull(user1);
-		Assert.assertNotNull(user2);
-		int countRoles1 = user1.getRoles().size();
-		int countRoles2 = user2.getRoles().size();
-		Assert.assertTrue(userService.isHasRole(userId1, roleName1));
-		Assert.assertTrue(userService.isHasRole(userId2, roleName2));
-		user1 = userService.removeRoleByName(userId1, roleName1);
-		user2 = userService.removeRoleByName(userId2, roleName2);
-		Assert.assertEquals(countRoles1 - 1, user1.getRoles().size());
-		Assert.assertEquals(countRoles2, user2.getRoles().size());
+		String roleName = "role1";
+		Long userId = new Long(1);
+		User user = userService.getById(userId);// has 2 roles
+		Assert.assertNotNull(user);
+		int countRoles = user.getRoles().size();
+		Assert.assertTrue(userService.isHasRole(userId, roleName));
+		for (Role role : user.getRoles()) {
+			if (role.getName().equals(roleName)) {
+				user.getRoles().remove(role);
+				break;
+			}
+		}
+		user = userService.update(user);
+		Assert.assertEquals(countRoles - 1, user.getRoles().size());
 	}
 
 }

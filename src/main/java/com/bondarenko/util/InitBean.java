@@ -9,6 +9,7 @@ import com.bondarenko.service.ProposalService;
 import com.bondarenko.service.RoleService;
 import com.bondarenko.service.StatusService;
 import com.bondarenko.service.TaskService;
+import com.bondarenko.service.UserInformationService;
 import com.bondarenko.service.UserService;
 
 @Component
@@ -25,11 +26,13 @@ public class InitBean implements InitializingBean {
 	private CarService carService;
 	@Autowired
 	private ProposalService proposalService;
+	@Autowired
+	private UserInformationService UserInformationService;
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		new DataBaseInitialized().initializedDatabase(roleService, statusService, taskService, carService,
-				proposalService, userService);
+				proposalService, userService, UserInformationService);
 	}
 
 }

@@ -20,6 +20,7 @@ public class UserDaoImp implements UserDao {
 	public User save(User user) throws RuntimeException {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(user);
+		session.flush();
 		return getById(user.getId());
 	}
 
@@ -64,6 +65,13 @@ public class UserDaoImp implements UserDao {
 	@Override
 	public boolean isUsernameUnique(String username) throws RuntimeException {
 		return getByUsername(username) == null ? true : false;
+	}
+	
+	@Override
+	public User getByUserInformationId(Long id) throws RuntimeException {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from User as user where user.userInformation.id = '" + id.toString() + "'");
+		return (User) query.uniqueResult();
 	}
 
 }

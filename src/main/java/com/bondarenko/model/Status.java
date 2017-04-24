@@ -1,7 +1,8 @@
 package com.bondarenko.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @SuppressWarnings ("serial")
 @Entity
@@ -27,12 +27,12 @@ public class Status implements Serializable {
 	private String name;
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "STATUS_ID", referencedColumnName = "STATUS_ID")
-	@JsonIgnore
-	private List<Proposal> proposals;
+	@JsonBackReference
+	private Set<Proposal> proposals = new HashSet<>();
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "STATUS_ID", referencedColumnName = "STATUS_ID")
-	@JsonIgnore
-	private List<Task> tasks;
+	@JsonBackReference
+	private Set<Task> tasks = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -42,11 +42,11 @@ public class Status implements Serializable {
 		return name;
 	}
 
-	public List<Proposal> getProposals() {
+	public Set<Proposal> getProposals() {
 		return proposals;
 	}
 
-	public List<Task> getTasks() {
+	public Set<Task> getTasks() {
 		return tasks;
 	}
 
@@ -58,11 +58,11 @@ public class Status implements Serializable {
 		this.name = name;
 	}
 
-	public void setProposals(List<Proposal> proposals) {
+	public void setProposals(Set<Proposal> proposals) {
 		this.proposals = proposals;
 	}
 
-	public void setTasks(List<Task> tasks) {
+	public void setTasks(Set<Task> tasks) {
 		this.tasks = tasks;
 	}
 

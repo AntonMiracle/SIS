@@ -1,6 +1,6 @@
 package com.bondarenko.service;
 
-import java.util.List;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,7 +18,7 @@ import com.bondarenko.model.User;
 @WebAppConfiguration
 @RunWith (SpringJUnit4ClassRunner.class)
 @ContextConfiguration (locations = {DBUnitConfig.contextConfigurationLocation})
-@TestExecutionListeners ({DependencyInjectionTestExecutionListener.class })
+@TestExecutionListeners ({DependencyInjectionTestExecutionListener.class})
 public class CarServiceTest extends DBUnitConfig {
 	@Autowired
 	private CarService carService;
@@ -28,7 +28,7 @@ public class CarServiceTest extends DBUnitConfig {
 	@Test
 	public void shouldGetAllCars() throws Exception {
 		int countUsers = 3;
-		List<Car> users = carService.getCars();
+		Set<Car> users = carService.getCars();
 		Assert.assertEquals(countUsers, users.size());
 	}
 
@@ -66,24 +66,13 @@ public class CarServiceTest extends DBUnitConfig {
 	}
 
 	@Test
-	public void shouldDeleteCar() throws Exception {
+	public void shouldDeleteCarById() throws Exception {
 		int countCars = carService.getCars().size();
 		String number = "number1";
 		Car car = carService.getByNumber(number);
 		Assert.assertNotNull(car);
-		carService.delete(car);
+		carService.delete(car.getId());
 		Assert.assertNull(carService.getByNumber(number));
-		Assert.assertEquals(countCars - 1, carService.getCars().size());
-	}
-
-	@Test
-	public void shouldDeleteCarById() throws Exception {
-		int countCars = carService.getCars().size();
-		Long carId = new Long(1);
-		Car car = carService.getById(carId);
-		Assert.assertNotNull(car);
-		carService.delete(car);
-		Assert.assertNull(carService.getById(carId));
 		Assert.assertEquals(countCars - 1, carService.getCars().size());
 	}
 
@@ -125,49 +114,12 @@ public class CarServiceTest extends DBUnitConfig {
 		Long userId = new Long(6);
 		User user = userService.getById(userId);
 		Car car = new Car();
-		Assert.assertNull(carService.save(car).getId());
 		car.setNumber(number);
-		Assert.assertNull(carService.save(car).getId());
 		car.setUser(user);
-		Assert.assertNull(car.getCreateDate());
-		Assert.assertNull(car.getId());		
+		car.setDescription("");
+		car.setMark("");
+		car.setModel("");
 		car = carService.save(car);
-		Assert.assertNotNull(car.getDescription());
-		Assert.assertNotNull(car.getMark());
-		Assert.assertNotNull(car.getModel());
-		Assert.assertNotNull(car.getCreateDate());
-		Assert.assertNotNull(car.getId());
-		Assert.assertNotNull(car.getProposals());
-		Assert.assertNotNull(car.getUser());
-		Assert.assertEquals(number, car.getNumber());
-		Assert.assertEquals(userId, car.getUser().getId());
-	}
-
-	@Test
-	public void shouldSaveCarIfNecessaryFieldsFill() throws Exception {
-		String number = "number100";
-		Long userId = new Long(6);
-		User user = userService.getById(userId);
-		Car car = new Car();
-		Assert.assertNull(carService.save(car).getId());
-		car.setNumber(number);
-		Assert.assertNull(carService.save(car).getId());
-		car.setUser(user);
-		Assert.assertNotNull(carService.save(car));
-	}
-
-	@Test
-	public void shouldFillCarNullFieldsAfterGet() throws Exception {
-		String number = "number100";
-		Long userId = new Long(6);
-		User user = userService.getById(userId);
-		Car car = new Car();
-		car.setNumber(number);
-		car.setUser(user);
-		Assert.assertNull(car.getCreateDate());
-		Assert.assertNull(car.getId());
-		carService.save(car);
-		car = carService.getById(car.getId());
 		Assert.assertNotNull(car.getDescription());
 		Assert.assertNotNull(car.getMark());
 		Assert.assertNotNull(car.getModel());
@@ -197,7 +149,7 @@ public class CarServiceTest extends DBUnitConfig {
 		int countCarsModel1 = 2;
 		int countCarsModel2 = 0;
 		int countCarsModel3 = 1;
-		List<Car> cars = carService.getByModel(model1);
+		Set<Car> cars = carService.getByModel(model1);
 		Assert.assertNotNull(cars);
 		Assert.assertEquals(countCarsModel1, cars.size());
 		cars = carService.getByModel(model2);
@@ -216,7 +168,7 @@ public class CarServiceTest extends DBUnitConfig {
 		int countCarsMark1 = 2;
 		int countCarsMark2 = 1;
 		int countCarsMark3 = 0;
-		List<Car> cars = carService.getByMark(mark1);
+		Set<Car> cars = carService.getByMark(mark1);
 		Assert.assertNotNull(cars);
 		Assert.assertEquals(countCarsMark1, cars.size());
 		cars = carService.getByMark(mark2);

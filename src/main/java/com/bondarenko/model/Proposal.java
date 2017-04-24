@@ -2,8 +2,8 @@ package com.bondarenko.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,7 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @SuppressWarnings ("serial")
@@ -28,7 +28,7 @@ public class Proposal implements Serializable {
 	private Long id;
 	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID")
-	@JsonIgnore
+	@JsonBackReference
 	private User user;
 	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "STATUS_ID")
@@ -39,13 +39,19 @@ public class Proposal implements Serializable {
 	@JsonManagedReference
 	private Car car;
 	@Column (name = "DESCRIPTION", nullable = false, length = 100)
-	private String description = new String();
+	private String description;
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "PROPOSAL_ID", referencedColumnName = "PROPOSAL_ID")
 	@JsonManagedReference
-	private List<Task> tasks = new ArrayList<>();
+	private Set<Task> tasks = new HashSet<>();
 	@Column (name = "CREATE_DATE")
 	private Timestamp createDate;
+
+	@Override
+	public String toString() {
+		return "Proposal [id=" + id + ", user=" + user + ", status=" + status + ", carId=" + car.getId()
+				+ ", description=" + description + ", tasks=" + tasks + ", createDate=" + createDate + "]";
+	}
 
 	public Long getId() {
 		return id;
@@ -65,6 +71,10 @@ public class Proposal implements Serializable {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public Set<Task> getTasks() {
+		return tasks;
 	}
 
 	public Timestamp getCreateDate() {
@@ -91,22 +101,12 @@ public class Proposal implements Serializable {
 		this.description = description;
 	}
 
-	public void setCreateDate(Timestamp createDate) {
-		this.createDate = createDate;
-	}
-
-	public List<Task> getTasks() {
-		return tasks;
-	}
-
-	public void setTasks(List<Task> tasks) {
+	public void setTasks(Set<Task> tasks) {
 		this.tasks = tasks;
 	}
 
-	@Override
-	public String toString() {
-		return "Proposal [id=" + id + ", user=" + user + ", status=" + status + ", carId=" + car.getId() + ", description="
-				+ description + ", tasks=" + tasks + ", createDate=" + createDate + "]";
+	public void setCreateDate(Timestamp createDate) {
+		this.createDate = createDate;
 	}
 
 }
