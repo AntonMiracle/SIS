@@ -30,6 +30,7 @@ public class ProposalMaker {
 				proposal.setUser(user);
 				proposal.setCar(car);
 				proposal.setDescription("proposalDescription");
+				ps.save(proposal);
 				switch (new Random().nextInt(3)) {
 					case 0: {
 						proposal.setStatus(ss.getByName(StatusMaker.STATUS_OPEN));
@@ -44,8 +45,7 @@ public class ProposalMaker {
 						break;
 					}
 				}
-				ps.save(proposal);
-				System.out.println("numberOfProposal : " + numberOfProposals + " | i : " + i);
+				proposal = ps.update(proposal);
 			}
 		}
 	}

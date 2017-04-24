@@ -24,8 +24,6 @@ public class CarMaker {
 					car.setModel("model" + String.valueOf(i + j));
 					car.setDescription("description + description");
 					car = cs.save(car);
-					System.out.println("User ID : " + user.getId());
-					System.out.println("Car ID : " + car.getId());
 				}
 			}
 			i++;
