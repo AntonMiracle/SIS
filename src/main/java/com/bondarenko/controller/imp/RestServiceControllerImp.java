@@ -1,7 +1,6 @@
 package com.bondarenko.controller.imp;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bondarenko.controller.RestServiceController;
+import com.bondarenko.model.Car;
 import com.bondarenko.model.Proposal;
+import com.bondarenko.model.Role;
+import com.bondarenko.model.Task;
 import com.bondarenko.model.User;
 import com.bondarenko.model.UserInformation;
+import com.bondarenko.model.dto.RestNewUserDto;
+import com.bondarenko.model.dto.RestUserDto;
 import com.bondarenko.service.ProposalService;
 import com.bondarenko.service.UserInformationService;
 import com.bondarenko.service.UserService;
-import com.bondarneko.dto.NewUserDto;
 
 @RestController
 @RequestMapping (value = {"/rest","/rest/user","/rest/check"})
@@ -35,14 +38,41 @@ public class RestServiceControllerImp implements RestServiceController {
 
 	@Override
 	@GetMapping (value = "/users")
-	public ResponseEntity<List<User>> getUsers() throws RuntimeException {
-		List<User> users = new ArrayList<>();
+	public ResponseEntity<Set<RestUserDto>> getUsers() throws RuntimeException {
+		Set<RestUserDto> users = new HashSet<>();
 		for (User user : userService.getUsers()) {
-			users.add(user);
+			RestUserDto dto = new RestUserDto();
+			dto.setId(user.getId());
+			dto.setUsername(user.getUsername());
+			dto.setPassword(user.getPassword());
+			dto.setUserInformationId(user.getUserInformation().getId());
+			for(Role role : user.getRoles()){
+				dto.getRolesId().add(role.getId());
+			}
+			for(Proposal proposal : user.getProposals()){
+				dto.getProposalsId().add(proposal.getId());
+			}
+			for(Car car : user.getCars()){
+				dto.getCarsId().add(car.getId());
+			}
+			for(Task task : user.getTasks()){
+				dto.getTasksId().add(task.getId());
+			}
+			users.add(dto);
 		}
-		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+		return new ResponseEntity<Set<RestUserDto>>(users, HttpStatus.OK);
 
 	}
+//	@Override
+//	@GetMapping (value = "/users")
+//	public ResponseEntity<List<User>> getUsers() throws RuntimeException {
+//		List<User> users = new ArrayList<>();
+//		for (User user : userService.getUsers()) {
+//			users.add(user);
+//		}
+//		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+//		
+//	}
 	@Override
 	@GetMapping (value = "/proposals")
 	public ResponseEntity<Set<Proposal>> getProposals() throws RuntimeException {		
@@ -54,7 +84,7 @@ public class RestServiceControllerImp implements RestServiceController {
 
 	@Override
 	@PostMapping (value = "/new")
-	public ResponseEntity<User> saveUser(@RequestBody NewUserDto dto) throws RuntimeException {
+	public ResponseEntity<User> saveUser(@RequestBody RestNewUserDto dto) throws RuntimeException {
 		User user = new User();
 		if (dto != null) {
 			UserInformation ui = new UserInformation();

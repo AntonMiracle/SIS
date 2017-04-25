@@ -1,6 +1,6 @@
-package com.bondarneko.dto;
+package com.bondarenko.model.dto;
 
-public class NewUserDto {
+public class RestNewUserDto {
 	private Long id;
 	private String username;
 	private String password;
