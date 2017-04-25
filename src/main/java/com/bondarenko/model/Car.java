@@ -16,8 +16,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @SuppressWarnings ("serial")
 @Entity
 public class Car implements Serializable {
@@ -27,7 +25,6 @@ public class Car implements Serializable {
 	private Long id;
 	@ManyToOne (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "USER_ID")
-	@JsonBackReference
 	private User user;
 	@Column (name = "NUMBER", nullable = false, unique = true, length = 100)
 	private String number;
@@ -41,7 +38,6 @@ public class Car implements Serializable {
 	private Timestamp createDate;
 	@OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn (name = "CAR_ID", referencedColumnName = "CAR_ID")
-	@JsonBackReference
 	private Set<Proposal> proposals = new HashSet<>();
 
 	@Override

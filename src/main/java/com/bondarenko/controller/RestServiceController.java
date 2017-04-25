@@ -4,16 +4,16 @@ import java.util.Set;
 
 import org.springframework.http.ResponseEntity;
 
-import com.bondarenko.model.Proposal;
 import com.bondarenko.model.User;
 import com.bondarenko.model.dto.RestNewUserDto;
+import com.bondarenko.model.dto.RestProposalDto;
 import com.bondarenko.model.dto.RestUserDto;
 
 public interface RestServiceController {
 
 	public ResponseEntity<Set<RestUserDto>> getUsers() throws RuntimeException;
 	
-	public ResponseEntity<Set<Proposal>> getProposals() throws RuntimeException;
+	public ResponseEntity<Set<RestProposalDto>> getProposals() throws RuntimeException;
 	
 	public ResponseEntity<User> saveUser(RestNewUserDto dto) throws RuntimeException;
 

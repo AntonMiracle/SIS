@@ -1,6 +1,5 @@
 package com.bondarenko.controller.imp;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bondarenko.controller.RestServiceController;
-import com.bondarenko.model.Car;
-import com.bondarenko.model.Proposal;
-import com.bondarenko.model.Role;
-import com.bondarenko.model.Task;
 import com.bondarenko.model.User;
-import com.bondarenko.model.UserInformation;
 import com.bondarenko.model.dto.RestNewUserDto;
+import com.bondarenko.model.dto.RestProposalDto;
 import com.bondarenko.model.dto.RestUserDto;
 import com.bondarenko.service.ProposalService;
+import com.bondarenko.service.RestService;
 import com.bondarenko.service.UserInformationService;
 import com.bondarenko.service.UserService;
 
@@ -35,75 +31,25 @@ public class RestServiceControllerImp implements RestServiceController {
 	private UserService userService;
 	@Autowired
 	private UserInformationService uiService;
+	@Autowired
+	private RestService restService;
 
 	@Override
 	@GetMapping (value = "/users")
 	public ResponseEntity<Set<RestUserDto>> getUsers() throws RuntimeException {
-		Set<RestUserDto> users = new HashSet<>();
-		for (User user : userService.getUsers()) {
-			RestUserDto dto = new RestUserDto();
-			dto.setId(user.getId());
-			dto.setUsername(user.getUsername());
-			dto.setPassword(user.getPassword());
-			UserInformation ui = user.getUserInformation();
-			dto.setUserInformationId(ui.getId());
-			dto.setCreateDate(ui.getCreateDate().toString());
-			dto.setMail(ui.getMail());
-			dto.setName(ui.getName());
-			dto.setPhone(ui.getPhone());
-			dto.setSurname(ui.getSurname());
-			for(Role role : user.getRoles()){
-				dto.getRolesId().add(role.getId());
-			}
-			for(Proposal proposal : user.getProposals()){
-				dto.getProposalsId().add(proposal.getId());
-			}
-			for(Car car : user.getCars()){
-				dto.getCarsId().add(car.getId());
-			}
-			for(Task task : user.getTasks()){
-				dto.getTasksId().add(task.getId());
-			}
-			users.add(dto);
-		}
-		return new ResponseEntity<Set<RestUserDto>>(users, HttpStatus.OK);
-
+		return new ResponseEntity<Set<RestUserDto>>(restService.getRestUsersDto(), HttpStatus.OK);
 	}
-//	@Override
-//	@GetMapping (value = "/users")
-//	public ResponseEntity<List<User>> getUsers() throws RuntimeException {
-//		List<User> users = new ArrayList<>();
-//		for (User user : userService.getUsers()) {
-//			users.add(user);
-//		}
-//		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
-//		
-//	}
+
 	@Override
 	@GetMapping (value = "/proposals")
-	public ResponseEntity<Set<Proposal>> getProposals() throws RuntimeException {		
-		return new ResponseEntity<Set<Proposal>>(proposalService.getProposals(), HttpStatus.OK);
-		
+	public ResponseEntity<Set<RestProposalDto>> getProposals() throws RuntimeException {
+		return new ResponseEntity<Set<RestProposalDto>>(restService.getRestProposalsDto(), HttpStatus.OK);
 	}
-	
-	
 
 	@Override
 	@PostMapping (value = "/new")
 	public ResponseEntity<User> saveUser(@RequestBody RestNewUserDto dto) throws RuntimeException {
-		User user = new User();
-		if (dto != null) {
-			UserInformation ui = new UserInformation();
-			user.setUserInformation(ui);
-			user.setUsername(dto.getUsername());
-			user.setPassword(dto.getPassword());
-			ui.setPhone(dto.getPhone());
-			ui.setMail(dto.getMail());
-			ui.setName(dto.getName());
-			ui.setSurname(dto.getSurname());
-			user = userService.save(user);
-		}
-		return new ResponseEntity<User>(user, HttpStatus.OK);
+		return new ResponseEntity<User>(restService.convertNewUserDto(dto), HttpStatus.OK);
 	}
 
 	@Override
