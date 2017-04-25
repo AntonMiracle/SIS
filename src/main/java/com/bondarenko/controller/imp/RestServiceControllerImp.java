@@ -45,7 +45,13 @@ public class RestServiceControllerImp implements RestServiceController {
 			dto.setId(user.getId());
 			dto.setUsername(user.getUsername());
 			dto.setPassword(user.getPassword());
-			dto.setUserInformationId(user.getUserInformation().getId());
+			UserInformation ui = user.getUserInformation();
+			dto.setUserInformationId(ui.getId());
+			dto.setCreateDate(ui.getCreateDate().toString());
+			dto.setMail(ui.getMail());
+			dto.setName(ui.getName());
+			dto.setPhone(ui.getPhone());
+			dto.setSurname(ui.getSurname());
 			for(Role role : user.getRoles()){
 				dto.getRolesId().add(role.getId());
 			}
