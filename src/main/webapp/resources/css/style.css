@@ -198,6 +198,6 @@ input {
 	outline: none;
 }
 
-.button-scale:hover,.button-scale:focus{
+.button-scale:hover{
 	border: 6px solid #508c44;
 }
