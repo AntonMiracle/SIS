@@ -158,6 +158,7 @@ $(document).ready(function() {
 	//Project information content
 	function hideProjectInformationContent(){
 		setTextInsideElement($('.menuLogin #info'),'i');
+		showElement($('.menuLogin #up'));	
 		showElement($('.loginIn'));
 		showElement($('.loginInput'));
 		hideElement($('.loginProjectInfo'));		
