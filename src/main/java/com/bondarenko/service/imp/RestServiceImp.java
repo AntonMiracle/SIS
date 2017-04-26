@@ -102,7 +102,7 @@ public class RestServiceImp implements RestService {
 	}
 
 	@Override
-	public User convertNewUserDto(RestNewUserDto dto) throws RuntimeException {
+	public void saveNewUserDto(RestNewUserDto dto) throws RuntimeException {
 		User user = new User();
 		UserInformation ui = new UserInformation();
 		user.setUserInformation(ui);
@@ -112,8 +112,7 @@ public class RestServiceImp implements RestService {
 		ui.setMail(dto.mail);
 		ui.setName(dto.name);
 		ui.setSurname(dto.surname);
-		user = userService.save(user);
-		return user;
+		user = userService.save(user);		
 	}
 
 	@SuppressWarnings ("deprecation")

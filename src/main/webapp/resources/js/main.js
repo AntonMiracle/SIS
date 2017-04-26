@@ -10,6 +10,7 @@ $(document).ready(function() {
 	/*=========================*/
 	var loginContentFlag = true;	
 	var isUpContentActive = false;
+	var isInfoContentActive = false;
 	var loginButtonShow = 1000;	
 	var loginBackgroundShow = 1500;	
 	var rootUrl = location.protocol + '//' + location.host + '/';	
@@ -26,13 +27,22 @@ $(document).ready(function() {
 	setTimeout("$('.loginIn').show();", loginButtonShow);
 	setTimeout("$('.menuLogin').show();", loginButtonShow);
 	
-	//login project info, set/unset visible on mouseenter/mouseleave 
-	$('.menuLogin #info').mouseleave(function() {
+	//login project info
+	/**$('.menuLogin #info').mouseleave(function() {
 		hideProjectInformationContent();
 	});	
 	$('.menuLogin #info').mouseenter(function() {
 		showProjectInformationContent();
-	});
+	});*/
+	$('.menuLogin #info').click(function() {
+		if(isInfoContentActive){
+			hideProjectInformationContent();
+			isInfoContentActive = false;
+		}else{
+			showProjectInformationContent();
+			isInfoContentActive = true;
+		}
+	});	
 	
 	//check input username & password
 	$('.loginIn #in').click(function(){	
@@ -147,13 +157,16 @@ $(document).ready(function() {
 	
 	//Project information content
 	function hideProjectInformationContent(){
+		setTextInsideElement($('.menuLogin #info'),'i');
 		showElement($('.loginIn'));
 		showElement($('.loginInput'));
 		hideElement($('.loginProjectInfo'));		
 	};
 	
 	function showProjectInformationContent(){
+		setTextInsideElement($('.menuLogin #info'),'B');
 		showElement($('.loginProjectInfo'));
+		hideElement($('.menuLogin #up'));
 		hideElement($('.loginInput'));
 		hideElement($('.loginIn'));
 		hideElement($('.loginInput td#loginTip'));	

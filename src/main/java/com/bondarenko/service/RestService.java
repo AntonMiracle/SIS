@@ -22,7 +22,7 @@ public interface RestService {
 
 	public RestProposalDto convertProposal(Proposal proposal) throws RuntimeException;
 
-	public User convertNewUserDto(RestNewUserDto dto) throws RuntimeException;
+	public void saveNewUserDto(RestNewUserDto dto) throws RuntimeException;
 
 	public RestCarDto convertCar(Car car) throws RuntimeException;
 

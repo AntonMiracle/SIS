@@ -198,9 +198,6 @@ input {
 	outline: none;
 }
 
-.button-scale:hover{
-	border: 1px solid #508c44;	
-	box-shadow: 15px 15px 3px 2px rgba(14, 26, 11, 0.2);
-	-webkit-transform: scale(2);
-	transform: scale(1.4);
+.button-scale:hover,.button-scale:focus{
+	border: 6px solid #508c44;
 }
