@@ -7,7 +7,6 @@ public class RestUserDto {
 	public Long id;
 	public String username;
 	public String password;
-	public Long userInformationId;
 	public String phone;
 	public String name; 
 	public String surname;

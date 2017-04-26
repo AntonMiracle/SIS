@@ -15,7 +15,7 @@ public interface RestServiceController {
 	
 	public ResponseEntity<Set<RestProposalDto>> getProposals() throws RuntimeException;
 	
-	public ResponseEntity<User> saveUser(RestNewUserDto dto) throws RuntimeException;
+	public ResponseEntity<Boolean> saveUser(RestNewUserDto dto) throws RuntimeException;
 
 	public ResponseEntity<User> getById(Long id) throws RuntimeException;
 

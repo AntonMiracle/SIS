@@ -12,9 +12,11 @@ import com.bondarenko.model.Role;
 import com.bondarenko.model.Task;
 import com.bondarenko.model.User;
 import com.bondarenko.model.UserInformation;
+import com.bondarenko.model.dto.RestCarDto;
 import com.bondarenko.model.dto.RestNewUserDto;
 import com.bondarenko.model.dto.RestProposalDto;
 import com.bondarenko.model.dto.RestUserDto;
+import com.bondarenko.service.CarService;
 import com.bondarenko.service.ProposalService;
 import com.bondarenko.service.RestService;
 import com.bondarenko.service.UserService;
@@ -25,6 +27,8 @@ public class RestServiceImp implements RestService {
 	private UserService userService;
 	@Autowired
 	private ProposalService proposalService;
+	@Autowired
+	private CarService carService;
 
 	@Override
 	public Set<RestUserDto> getRestUsersDto() throws RuntimeException {
@@ -45,14 +49,23 @@ public class RestServiceImp implements RestService {
 	}
 
 	@Override
+	public Set<RestCarDto> getRestCarsDto() throws RuntimeException {
+		Set<RestCarDto> cars = new HashSet<>();
+		for (Car car : carService.getCars()) {
+			cars.add(convertCar(car));
+		}
+		return cars;
+	}
+
+	@SuppressWarnings ("deprecation")
+	@Override
 	public RestUserDto convertUser(User user) throws RuntimeException {
 		UserInformation ui = user.getUserInformation();
 		RestUserDto dto = new RestUserDto();
 		dto.id = user.getId();
 		dto.username = user.getUsername();
 		dto.password = user.getPassword();
-		dto.userInformationId = ui.getId();
-		dto.createDate = ui.getCreateDate().toString();
+		dto.createDate = ui.getCreateDate().toGMTString();
 		dto.mail = ui.getMail();
 		dto.name = ui.getName();
 		dto.phone = ui.getPhone();
@@ -72,15 +85,16 @@ public class RestServiceImp implements RestService {
 		return dto;
 	}
 
+	@SuppressWarnings ("deprecation")
 	@Override
 	public RestProposalDto convertProposal(Proposal proposal) throws RuntimeException {
 		RestProposalDto dto = new RestProposalDto();
 		dto.id = proposal.getId();
-		dto.user = convertUser(proposal.getUser());
+		dto.userId = proposal.getUser().getId();
 		dto.status = proposal.getStatus().getName();
 		dto.carNumber = proposal.getCar().getNumber();
 		dto.description = proposal.getDescription();
-		dto.createDate = proposal.getCreateDate().toString();
+		dto.createDate = proposal.getCreateDate().toGMTString();
 		for (Task task : proposal.getTasks()) {
 			dto.tasksId.add(task.getId());
 		}
@@ -90,15 +104,30 @@ public class RestServiceImp implements RestService {
 	@Override
 	public User convertNewUserDto(RestNewUserDto dto) throws RuntimeException {
 		User user = new User();
-			UserInformation ui = new UserInformation();
-			user.setUserInformation(ui);
-			user.setUsername(dto.username);
-			user.setPassword(dto.password);
-			ui.setPhone(dto.phone);
-			ui.setMail(dto.mail);
-			ui.setName(dto.name);
-			ui.setSurname(dto.surname);
-			user = userService.save(user);		
+		UserInformation ui = new UserInformation();
+		user.setUserInformation(ui);
+		user.setUsername(dto.username);
+		user.setPassword(dto.password);
+		ui.setPhone(dto.phone);
+		ui.setMail(dto.mail);
+		ui.setName(dto.name);
+		ui.setSurname(dto.surname);
+		user = userService.save(user);
 		return user;
 	}
+
+	@SuppressWarnings ("deprecation")
+	@Override
+	public RestCarDto convertCar(Car car) throws RuntimeException {
+		RestCarDto dto = new RestCarDto();
+		dto.id = car.getId();
+		dto.userId = car.getUser().getId();
+		dto.number = car.getNumber();
+		dto.model = car.getModel();
+		dto.mark = car.getMark();
+		dto.description = car.getDescription();
+		dto.createDate = car.getCreateDate().toGMTString();
+		return null;
+	}
+
 }

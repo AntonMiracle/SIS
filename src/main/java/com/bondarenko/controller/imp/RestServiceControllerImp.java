@@ -48,8 +48,11 @@ public class RestServiceControllerImp implements RestServiceController {
 
 	@Override
 	@PostMapping (value = "/new")
-	public ResponseEntity<User> saveUser(@RequestBody RestNewUserDto dto) throws RuntimeException {
-		return new ResponseEntity<User>(restService.convertNewUserDto(dto), HttpStatus.OK);
+	public ResponseEntity<Boolean> saveUser(@RequestBody RestNewUserDto dto) throws RuntimeException {
+		boolean result = false;
+		User user = restService.convertNewUserDto(dto);
+		
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
 
 	@Override
