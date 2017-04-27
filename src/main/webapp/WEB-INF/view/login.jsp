@@ -95,11 +95,6 @@
 		<!-- ============ -->
 		<!-- project info -->
 		<!-- ============ -->	
-		<div class="loginProjectInfo">Service Interaction System information nee post here</div>
-			
-		<!-- ============ -->
-		<!-- login footer -->
-		<!-- ============ -->	
-		<div class="loginFooter">Created by Bondarenko A.M<br>b.anton.m.1986@gmail.com</div>
+		<div class="loginProjectInfo">Service Interaction System information nee post here</div>		
 	</jsp:attribute>
 </t:template>
