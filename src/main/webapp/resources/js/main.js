@@ -140,12 +140,6 @@ $(document).ready(function() {
 	});
 	$('.menuHome #tasks').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #tasks', '25', 'T');
-	});		
-	$('.homeHead #out').mouseenter(function() {
-		switchElementTextValueAndSize('.homeHead #out', 'false', 'OUT');
-	});
-	$('.homeHead #out').mouseleave(function() {
-		switchElementTextValueAndSize('.homeHead #out', 'false', 'O');
 	});	
 	/* new menu */
 	$('.menuHome #new').click(function() {
