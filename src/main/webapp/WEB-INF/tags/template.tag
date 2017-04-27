@@ -1,7 +1,7 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@attribute name="title"%>
-<%@attribute name="head"%>
+<%@attribute name="head" fragment="true"%>
 <%@attribute name="content" fragment="true"%>
 <c:url value="/resources/js/jquery-3.1.1.js" var="jqUrl" />
 <c:url value="/resources/js/main.js" var="mainJsUrl" />
