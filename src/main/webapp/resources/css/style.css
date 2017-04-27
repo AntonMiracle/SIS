@@ -35,7 +35,7 @@ input {
 	display: none;
 	width: 120px;
 	height: auto;
-	position: absolute;
+	position: relative;
 	top: 10px;
 	left: 10px;
 	margin: auto;
@@ -108,7 +108,7 @@ input {
 	position: absolute;
 	top: 10px;
 	left:150px;
-	margin: -300px 0 0 0px;
+	margin: auto;
 	border: 1px solid #508c44;
 	border-radius: 5px;
 	text-align: center;
