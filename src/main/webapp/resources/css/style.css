@@ -107,7 +107,7 @@ input {
 	position: absolute;
 	top: 50%;
 	left:50%;
-	margin: -200px 0 0 -450px;
+	margin: -300px 0 0 0px;
 	border: 1px solid #508c44;
 	border-radius: 5px;
 	text-align: center;
