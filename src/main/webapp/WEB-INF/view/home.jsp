@@ -19,13 +19,12 @@
 		<!-- home head -->
 		<!-- ========= -->
 		<div class="homeHead">
-			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">
-				<td id="loginUsername">${username}</td>			
-				<td><form:form action="${logoutUrl}" method="POST">		
+			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">						
+				<form:form action="${logoutUrl}" method="POST">
+					<td id="loginUsername">${username}</td>			
 					<button class="button-scale" id="out" title="LOG OUT">O</button>
 					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>			
-				</form:form>
-				</td>
+				</form:form>				
 			</sec:authorize>
 		</div>
 		
