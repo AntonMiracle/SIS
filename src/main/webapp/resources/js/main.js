@@ -2,6 +2,7 @@ $(document).ready(function() {
 	/*======================*/
 	/*=    global setup    =*/
 	/*======================*/
+	$('button').blur();
 	$.ajaxSetup({
 		async: false
 		});

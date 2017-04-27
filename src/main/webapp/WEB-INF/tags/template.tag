@@ -1,6 +1,7 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@attribute name="title"%>
+<%@attribute name="head"%>
 <%@attribute name="content" fragment="true"%>
 <c:url value="/resources/js/jquery-3.1.1.js" var="jqUrl" />
 <c:url value="/resources/js/main.js" var="mainJsUrl" />
@@ -18,6 +19,7 @@
 	<link type="text/css; UTF-8" rel="stylesheet" href="${fontUrl}" />
 	<script type="text/javascript" src="${jqUrl}"></script>
 	<script type="text/javascript" src="${mainJsUrl}"></script>
+	<jsp:invoke fragment="head" />
 </head>
 <body>
 	<!-- ============== -->
