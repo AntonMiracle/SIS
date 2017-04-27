@@ -26,6 +26,7 @@ $(document).ready(function() {
 	//set visible to other login page element
 	$('.loginInput').fadeIn(500);
 	setTimeout("$('.menuLogin').show();", loginButtonShow);
+	setTimeout("$('.menuHome').show();", loginButtonShow);
 	
 	//login project info	
 	$('.menuLogin #info').click(function() {
