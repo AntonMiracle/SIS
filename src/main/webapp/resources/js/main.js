@@ -24,8 +24,6 @@ $(document).ready(function() {
 	
 	//set visible to other login page element
 	$('.loginInput').fadeIn(500);
-	//$('.loginLogo').fadeIn(500);	
-	//setTimeout("$('.loginIn').show();", loginButtonShow);
 	setTimeout("$('.menuLogin').show();", loginButtonShow);
 	
 	//login project info
@@ -136,8 +134,6 @@ $(document).ready(function() {
 		setTextInsideElement($('.menuLogin #up'),'B');
 		setButtonTitle(	$('.menuLogin #up'), 'back to login');
 		hideElement($('.loginInput'));
-		//hideElement($('.loginLogo'));
-		//hideElement($('.loginIn'));
 		hideElement($('.menuLogin #info'));
 		hideElement($('.loginInput td#loginTip'));
 		cleanLoginContentFields();
@@ -150,9 +146,7 @@ $(document).ready(function() {
 		setButtonTitle(	$('.menuLogin #up'), 'registration');
 		hideElement($('.loginUpContent'));		
 		hideLoginUpContentTips();
-		//showElement($('.loginInput'));
-		//showElement($('.loginLogo'));
-		showElement($('.loginIn'));
+		showElement($('.loginInput'));
 		showElement($('.menuLogin #info'));		
 	};	
 	
@@ -160,7 +154,6 @@ $(document).ready(function() {
 	function hideProjectInformationContent(){
 		setTextInsideElement($('.menuLogin #info'),'i');
 		showElement($('.menuLogin #up'));	
-		//showElement($('.loginIn'));
 		showElement($('.loginInput'));
 		hideElement($('.loginProjectInfo'));		
 	};
@@ -170,7 +163,6 @@ $(document).ready(function() {
 		showElement($('.loginProjectInfo'));
 		hideElement($('.menuLogin #up'));
 		hideElement($('.loginInput'));
-		//hideElement($('.loginIn'));
 		hideElement($('.loginInput td#loginTip'));	
 	};
 	
