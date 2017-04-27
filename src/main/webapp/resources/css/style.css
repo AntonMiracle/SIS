@@ -55,7 +55,6 @@ input {
 /*=      login page      =*/
 /*========================*/
 .loginLogo {
-	/*display: none;*/
 	font-family: 'Monoton', cursive;	
 	border: 0px solid #508c44;	
 	font-size: 100px;
@@ -77,7 +76,7 @@ input {
 	width: 400px;
 	height: 420px;
 	text-align: center;
-	border: 1px solid #508c44;	
+	border: 0px solid #508c44;	
 	margin: auto;
 }
 
@@ -86,9 +85,10 @@ input {
 }
 
 .loginInput td#loginTip  {
-	border: 0px solid #508c44;
-	height: 130px;
+	display: none;
 	text-align: center;
+	color: red;
+	border: 0px solid #508c44;
 	margin: auto;
 }
 
