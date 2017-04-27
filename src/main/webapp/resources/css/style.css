@@ -63,11 +63,10 @@ input {
 }
 .loginContent {
 	width: 400px;
-	height: 550px;
+	height: 420px;
 	position: absolute;
-	top: 50%;
 	left: 50%;
-	margin: -275px 0 0 -200px;
+	margin: 0 0 0 -200px;
 	border: 0px solid #508c44;
 	text-align: center;
 }
@@ -76,9 +75,9 @@ input {
 	display: none;
 	top:30px;
 	width: 400px;
-	height: 80px;
+	height: 420px;
 	text-align: center;
-	border: 0px solid #508c44;	
+	border: 1px solid #508c44;	
 	margin: auto;
 }
 
@@ -87,10 +86,9 @@ input {
 }
 
 .loginInput td#loginTip  {
-	display: none;
-	text-align: center;
-	color: red;
 	border: 0px solid #508c44;
+	height: 130px;
+	text-align: center;
 	margin: auto;
 }
 
@@ -117,9 +115,14 @@ input {
 
 /*=== login footer info ===*/
 .loginFooter {
-	border: 0px solid #508c44;
-	height: 200px;
+	width: 500px;
 	height: auto;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin: 0 0 0 -250px;
+	border: 0px solid #508c44;
+	border-radius: 5px 5px 5px 5px;
 	text-align: center;
 }
 

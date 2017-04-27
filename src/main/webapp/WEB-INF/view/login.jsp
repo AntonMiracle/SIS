@@ -39,10 +39,7 @@
 						<td>PASSWORD</td><td><input id="password" type="password" name="j_password"></td>
 					</tr>
 					<tr>
-						<td colspan="3" class="loginIn"><button class="button-scale" id="in">IN</button>						
-					</tr>
-					<tr>
-						<td colspan="3" class="loginFooter">Created by Bondarenko A.M<br>b.anton.m.1986@gmail.com</td>
+						<td colspan="2" class="loginIn"><button class="button-scale" id="in">IN</button>						
 					</tr>
 				</table>				
 			</div>
@@ -99,5 +96,10 @@
 		<!-- project info -->
 		<!-- ============ -->	
 		<div class="loginProjectInfo">Service Interaction System information nee post here</div>
+			
+		<!-- ============ -->
+		<!-- login footer -->
+		<!-- ============ -->	
+		<div class="loginFooter">Created by Bondarenko A.M<br>b.anton.m.1986@gmail.com</div>
 	</jsp:attribute>
 </t:template>
