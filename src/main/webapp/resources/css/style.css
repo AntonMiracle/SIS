@@ -78,7 +78,7 @@ input {
 	width: 400px;
 	height: 80px;
 	text-align: center;
-	border: 1px solid #508c44;	
+	border: 0px solid #508c44;	
 	margin: auto;
 }
 
@@ -95,8 +95,10 @@ input {
 }
 
 .loginIn {
+	border: 0px solid #508c44;
+	height: 130px;
 	text-align: center;
-	margin: auto;
+	margin: 50px;
 }
 
 /*=== login project info ===*/
@@ -113,15 +115,11 @@ input {
 	text-align: center;
 }
 
+/*=== login footer info ===*/
 .loginFooter {
-	width: 500px;
-	height: auto;
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	margin: 0 0 0 -250px;
 	border: 0px solid #508c44;
-	border-radius: 5px 5px 5px 5px;
+	height: 200px;
+	height: auto;
 	text-align: center;
 }
 
