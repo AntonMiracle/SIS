@@ -55,36 +55,30 @@ input {
 /*=      login page      =*/
 /*========================*/
 .loginLogo {
-	display: none;
-	font-family: 'Monoton', cursive;
-	width: 200px;
-	height: 150px;
-	position: absolute;
-	top: 20%;
-	left: 50%;
-	margin: -75px 0 0 -100px;
+	/*display: none;*/
+	font-family: 'Monoton', cursive;	
 	border: 0px solid #508c44;	
 	font-size: 100px;
 	text-align: center;
 }
 .loginContent {
 	width: 400px;
-	height: 220px;
+	height: 550px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin: -110px 0 0 -200px;
+	margin: -275px 0 0 -200px;
 	border: 0px solid #508c44;
 	text-align: center;
 }
 
 .loginInput {
+	display: none;
 	top:30px;
 	width: 400px;
 	height: 80px;
-	display: none;
 	text-align: center;
-	border: 0px solid #508c44;	
+	border: 1px solid #508c44;	
 	margin: auto;
 }
 
@@ -101,9 +95,6 @@ input {
 }
 
 .loginIn {
-	display: none;
-	width: 350px;
-	height: 130px;
 	text-align: center;
 	margin: auto;
 }

@@ -14,7 +14,7 @@
 		<!-- ========== -->
 		<!-- login logo -->
 		<!-- ========== -->
-		<div class="loginLogo">SIS</div>
+		<!--  <div class="loginLogo">SIS</div> -->
 		
 		<!-- ========== -->
 		<!-- login menu -->
@@ -29,7 +29,10 @@
 		<!-- ============= -->
 		<form:form action="${loginUrl}" method="post">		
 			<div class="loginContent">
-				<table class=loginInput>			
+				<table class=loginInput>
+					<tr>
+						<td colspan="2" class="loginLogo">SIS</td>
+					</tr>			
 					<tr>
 						<td colspan="2" id="loginTip"/>
 					</tr>
@@ -39,12 +42,10 @@
 					<tr>
 						<td>PASSWORD</td><td><input id="password" type="password" name="j_password"></td>
 					</tr>
-				</table>
-				<table class="loginIn">
 					<tr>
-						<td><button class="button-scale" id="in">IN</button>						
+						<td colspan="3" class="LoginIn"><button class="button-scale" id="in">IN</button>						
 					</tr>
-				</table>
+				</table>				
 			</div>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />		
 		</form:form>
@@ -103,7 +104,7 @@
 		<!-- ============ -->
 		<!-- login footer -->
 		<!-- ============ -->	
-		<div class="loginFooter">Developed by Bondarenko A.M<br>b.anton.m.1986@gmail.com</div>
+		<div class="loginFooter">Createed by Bondarenko A.M<br>b.anton.m.1986@gmail.com</div>
 					
 	</jsp:attribute>
 </t:template>

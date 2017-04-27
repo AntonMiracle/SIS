@@ -24,8 +24,8 @@ $(document).ready(function() {
 	
 	//set visible to other login page element
 	$('.loginInput').fadeIn(500);
-	$('.loginLogo').fadeIn(500);	
-	setTimeout("$('.loginIn').show();", loginButtonShow);
+	//$('.loginLogo').fadeIn(500);	
+	//setTimeout("$('.loginIn').show();", loginButtonShow);
 	setTimeout("$('.menuLogin').show();", loginButtonShow);
 	
 	//login project info
