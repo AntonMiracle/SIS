@@ -30,7 +30,7 @@
 						<td colspan="2" class="loginLogo">SIS</td>
 					</tr>			
 					<tr>
-						<td colspan="2" id="loginTip"/>
+						<td> </td><td id="loginTip"/>
 					</tr>
 					<tr>
 						<td>LOGIN</td><td><input id="username" type="text" name="j_username"></td>
