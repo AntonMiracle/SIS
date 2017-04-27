@@ -16,6 +16,19 @@
 	</jsp:attribute>
 	<jsp:attribute name="content">
 		<!-- ========= -->
+		<!-- home head -->
+		<!-- ========= -->
+		<div class="homeHead">
+			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">
+				<td id="loginUsername">${username.name}</td>			
+				<form:form action="${logoutUrl}" method="POST">		
+					<button class="button-scale" id="out" title="LOG OUT">O</button>
+					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>			
+				</form:form>
+			</sec:authorize>
+		</div>
+		
+		<!-- ========= -->
 		<!-- home menu -->
 		<!-- ========= -->
 		<div class="menuHome">	
@@ -28,11 +41,7 @@
 				<button class="button-scale" id="clients" title="CLIENTS">C</button>		
 				<button class="button-scale" id="proposals" title="PROPOSALS">P</button>		
 				<button class="button-scale" id="workers" title="WORKERS">W</button>		
-				<button class="button-scale" id="tasks" title="TASKS">T</button>
-				<form:form action="${logoutUrl}" method="POST">		
-					<button class="button-scale" id="out" title="LOG OUT">O</button>
-					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>			
-				</form:form>
+				<button class="button-scale" id="tasks" title="TASKS">T</button>				
 			</sec:authorize>
 		</div>
 		

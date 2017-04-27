@@ -141,11 +141,11 @@ $(document).ready(function() {
 	$('.menuHome #tasks').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #tasks', '25', 'T');
 	});		
-	$('.menuHome #out').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #out', '25', 'OUT');
+	$('.homeHead #out').mouseenter(function() {
+		switchElementTextValueAndSize('.homeHead #out', 'false', 'OUT');
 	});
-	$('.menuHome #out').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #out', '25', 'O');
+	$('.homeHead #out').mouseleave(function() {
+		switchElementTextValueAndSize('.homeHead #out', 'false', 'O');
 	});	
 	/* new menu */
 	$('.menuHome #new').click(function() {
@@ -306,7 +306,9 @@ $(document).ready(function() {
 	function switchElementTextValueAndSize(element, fontSize, text){	
 		element = $(element);
 		if(!(element.text() === 'B')){
-			element.css('font-size',fontSize + 'px');
+			if(fontSize !== 'false'){
+				element.css('font-size',fontSize + 'px');
+			};
 			setTextInsideElement($(element),text);
 		};
 	};	
