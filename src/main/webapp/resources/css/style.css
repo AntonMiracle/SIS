@@ -42,6 +42,18 @@ input {
 	border: 0px solid #508c44;
 	text-align: center;
 }
+/*home menu*/
+.menuHome {
+	/*display: none;*/
+	width: 120px;
+	height: 100%;
+	position: relative;
+	/*top: 50%;*/
+	left: 10px;
+	margin: 5px;
+	border: 1px solid #508c44;
+	text-align: center;
+}
 
 .menuLogin .button-scale {
 	margin: 5px;
@@ -103,18 +115,18 @@ input {
 /*=== login project info ===*/
 .loginProjectInfo {
 	display: none;
-	width: 500px;
+	width: auto;
 	height: auto;
 	position: absolute;
 	top: 10px;
 	left:150px;
 	margin: auto;
-	border: 1px solid #508c44;
-	border-radius: 5px;
+	border: 0px solid #508c44;
+	border-radius: 7px;
 	text-align: center;
 }
 
-/*=== login footer info ===*/
+/*=== login footer info (not used)===*/
 .loginFooter {
 	width: 500px;
 	height: auto;

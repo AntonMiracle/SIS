@@ -95,6 +95,8 @@
 		<!-- ============ -->
 		<!-- project info -->
 		<!-- ============ -->	
-		<div class="loginProjectInfo">Service Interaction System information nee post here</div>		
+		<div class="loginProjectInfo">
+			Created by Bondarenko A.M<br>b.anton.m.1986@gmail.com<br>
+		</div>		
 	</jsp:attribute>
 </t:template>

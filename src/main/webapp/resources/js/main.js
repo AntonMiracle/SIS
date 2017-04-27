@@ -136,8 +136,8 @@ $(document).ready(function() {
 		setTextInsideElement($('.menuLogin #up'),'B');
 		setButtonTitle(	$('.menuLogin #up'), 'back to login');
 		hideElement($('.loginInput'));
-		hideElement($('.loginLogo'));
-		hideElement($('.loginIn'));
+		//hideElement($('.loginLogo'));
+		//hideElement($('.loginIn'));
 		hideElement($('.menuLogin #info'));
 		hideElement($('.loginInput td#loginTip'));
 		cleanLoginContentFields();
@@ -150,8 +150,8 @@ $(document).ready(function() {
 		setButtonTitle(	$('.menuLogin #up'), 'registration');
 		hideElement($('.loginUpContent'));		
 		hideLoginUpContentTips();
-		showElement($('.loginInput'));
-		showElement($('.loginLogo'));
+		//showElement($('.loginInput'));
+		//showElement($('.loginLogo'));
 		showElement($('.loginIn'));
 		showElement($('.menuLogin #info'));		
 	};	
@@ -160,7 +160,7 @@ $(document).ready(function() {
 	function hideProjectInformationContent(){
 		setTextInsideElement($('.menuLogin #info'),'i');
 		showElement($('.menuLogin #up'));	
-		showElement($('.loginIn'));
+		//showElement($('.loginIn'));
 		showElement($('.loginInput'));
 		hideElement($('.loginProjectInfo'));		
 	};
@@ -170,7 +170,7 @@ $(document).ready(function() {
 		showElement($('.loginProjectInfo'));
 		hideElement($('.menuLogin #up'));
 		hideElement($('.loginInput'));
-		hideElement($('.loginIn'));
+		//hideElement($('.loginIn'));
 		hideElement($('.loginInput td#loginTip'));	
 	};
 	
