@@ -16,8 +16,8 @@
 		<!-- login menu -->
 		<!-- ========== -->
 		<div class="menuLogin">
-			<button class="button-scale" id="up" title="registration">UP</button>
-			<button class="button-scale" id="info" title="project information">i</button>
+			<button class="button-scale" id="up" title="REGISTARATION">UP</button>
+			<button class="button-scale" id="info" title="PROJECT INFORMATION">i</button>
 		</div>
 				
 		<!-- ============= -->

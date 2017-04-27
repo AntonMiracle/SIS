@@ -4,7 +4,8 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
-<c:url value="/j_spring_security_check" var="loginUrl" />
+<c:url value="/j_spring_security_check" var="loginUrl" />  
+<c:url var="logoutUrl" value="/logout"/>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal.username" var="username" />
 </sec:authorize>
@@ -14,6 +15,26 @@
 		
 	</jsp:attribute>
 	<jsp:attribute name="content">
+		<!-- ========= -->
+		<!-- home menu -->
+		<!-- ========= -->
+		<div class="menuHome">	
+			<div class="homeLogo">SIS</div>	
+			<button class="button-scale" id="new" title="new">N</button>		
+			<button class="button-scale" id="client"  title="NEW CLIENT">C</button>		
+			<button class="button-scale" id="proposal" title="NEW PROPOSAL">P</button>		
+			<button class="button-scale" id="worker"  title="NEW WORKER">W</button>
+			<button class="button-scale" id="clients" title="CLIENTS">C</button>		
+			<button class="button-scale" id="proposals" title="PROPOSALS">P</button>		
+			<button class="button-scale" id="workers" title="WORKERS">W</button>		
+			<button class="button-scale" id="tasks" title="TASKS">T</button>
+			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">									
+				<form:form action="${logoutUrl}" method="POST">		
+					<button class="button-scale" id="out" title="LOG OUT">O</button>
+					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>			
+				</form:form>
+			</sec:authorize>
+		</div>
 		
 	</jsp:attribute>
 </t:template>
