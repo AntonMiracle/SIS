@@ -7,7 +7,7 @@
 <c:url value="/j_spring_security_check" var="loginUrl" />  
 <c:url var="logoutUrl" value="/logout"/>
 <sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="user" />
+	<sec:authentication property="principal.name" var="name" />
 </sec:authorize>
 
 <t:template title="HOME">
@@ -20,7 +20,7 @@
 		<!-- ========= -->
 		<div class="homeHead">
 			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">
-				<td id="loginUsername">${user.name}</td>			
+				<td id="loginUsername">${name}</td>			
 				<form:form action="${logoutUrl}" method="POST">		
 					<button class="button-scale" id="out" title="LOG OUT">O</button>
 					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>			
