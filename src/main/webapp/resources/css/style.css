@@ -51,7 +51,7 @@ input {
 	top: 10px;
 	left: 10px;
 	margin: auto;
-	border: 1px solid #508c44;
+	border: 0px solid #508c44;
 	text-align: center;
 }
 .menuHome #client, .menuHome #worker, .menuHome #proposal{
