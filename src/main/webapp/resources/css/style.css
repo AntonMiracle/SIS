@@ -34,11 +34,11 @@ input {
 .menuLogin {
 	display: none;
 	width: 120px;
-	height: 250px;
+	height: auto;
 	position: absolute;
-	top: 50%;
+	top: 10px;
 	left: 10px;
-	margin: -125px 0 0 0;
+	margin: auto;
 	border: 0px solid #508c44;
 	text-align: center;
 }
@@ -103,11 +103,11 @@ input {
 /*=== login project info ===*/
 .loginProjectInfo {
 	display: none;
-	width: 80%;
-	height: 600px;
+	width: 500px;
+	height: auto;
 	position: absolute;
-	top: 50%;
-	left:10%;
+	top: 10px;
+	left:150px;
 	margin: -300px 0 0 0px;
 	border: 1px solid #508c44;
 	border-radius: 5px;
