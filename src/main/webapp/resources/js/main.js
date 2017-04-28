@@ -68,11 +68,9 @@ $(document).ready(function() {
 	
 	$('.menuLogin #up').click(function(){		
 		if(isUpContentActive){
-			hideUpContent();
-			isUpContentActive=false;
+			hideUpContent();			
 		}else{
-			showUpContent();
-			isUpContentActive = true;			
+			showUpContent();		
 		};		
 	});
 	
@@ -216,6 +214,7 @@ $(document).ready(function() {
 		cleanLoginContentFields();
 		cleanUpContentFields();
 		showElement($('.loginUpContent'));
+		isUpContentActive = true;
 	};
 	
 	function hideUpContent(){
@@ -229,7 +228,8 @@ $(document).ready(function() {
 		hideElement($('.loginUpContent'));		
 		hideLoginUpContentTips();
 		showElement($('.loginInput'));
-		showElement($('.menuLogin #info'));		
+		showElement($('.menuLogin #info'));	
+		isUpContentActive = false;
 	};	
 	
 	//Project information content

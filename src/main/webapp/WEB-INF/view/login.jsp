@@ -54,7 +54,7 @@
 					<td colspan="4" id="title">SIS ACCOUNT</td>
 				</tr>
 				<tr>
-					<td rowspan="7" id="button"><button class="button-scale" id="up" title="finish registration">U</button></td>
+					<td rowspan="7" id="button"><button class="button-scale" id="up" title="finish registration">UP</button></td>
 					<td>USERNAME</td>					
 					<td><input id="username" type="text" placeholder="required (4-15)"></td>
 					<td id="usernameTip"/>
