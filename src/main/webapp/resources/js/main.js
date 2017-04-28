@@ -112,31 +112,31 @@ $(document).ready(function() {
 	/*===================*/
 	/*=== home menu ==*/
 	$('.menuHome #new').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #new', '25', 'NEW');		
+		switchElementTextValueAndSize('.menuHome #new', '20', 'NEW');		
 	});
 	$('.menuHome #new').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #new', '25', 'N');		
 	});	
 	$('.menuHome #clients').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #clients', '19', 'CLIENTS'); 
+		switchElementTextValueAndSize('.menuHome #clients', '20', 'CLIENTS'); 
 	});
 	$('.menuHome #clients').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #clients', '25', 'C');
 	});	
 	$('.menuHome #proposals').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #proposals', '14', 'PROPOSALS');
+		switchElementTextValueAndSize('.menuHome #proposals', '20', 'PROPOSALS');
 	});
 	$('.menuHome #proposals').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #proposals', '25', 'P');	
 	});	
 	$('.menuHome #workers').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #workers', '15', 'WORKERS');
+		switchElementTextValueAndSize('.menuHome #workers', '20', 'WORKERS');
 	});
 	$('.menuHome #workers').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #workers', '25', 'W');
 	});	
 	$('.menuHome #tasks').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #tasks', '25', 'TASKS');		
+		switchElementTextValueAndSize('.menuHome #tasks', '20', 'TASKS');		
 	});
 	$('.menuHome #tasks').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #tasks', '25', 'T');
@@ -152,22 +152,28 @@ $(document).ready(function() {
 		}
 	});	
 	$('.menuHome #client').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #client', '19', 'CLIENT');
+		switchElementTextValueAndSize('.menuHome #client', '20', 'CLIENT');
 	});
 	$('.menuHome #client').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #client', '25', 'C');
 	});	
 	$('.menuHome #worker').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #worker', '15', 'WORKER');
+		switchElementTextValueAndSize('.menuHome #worker', '20', 'WORKER');
 	});
 	$('.menuHome #worker').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #worker', '25', 'W');
 	});	
 	$('.menuHome #proposal').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #proposal', '13', 'PROPOSAL');
+		switchElementTextValueAndSize('.menuHome #proposal', '20', 'PROPOSAL');
 	});
 	$('.menuHome #proposal').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #proposal', '25', 'P');
+	});	
+	$('.homeHead #out').mouseenter(function() {
+		switchElementTextValueAndSize('.homeHead #out', '20', 'OUT');
+	});
+	$('.homeHead #out').mouseleave(function() {
+		switchElementTextValueAndSize('.homeHead #out', '25', 'O');
 	});	
 	/*============================*/
 	/*=    show/hide function    =*/
@@ -188,8 +194,8 @@ $(document).ready(function() {
 		hideElement($('.loginUpInput #phoneTip'));
 	};
 	//login UP content
-	function showUpContent(){		
-		setTextInsideElement($('.menuLogin #up'),'B');
+	function showUpContent(){	
+		switchElementTextValueAndSize('.menuLogin #up', 'false', 'BACK')		
 		setButtonTitle(	$('.menuLogin #up'), 'BACK');
 		hideElement($('.loginInput'));
 		hideElement($('.menuLogin #info'));
@@ -200,7 +206,7 @@ $(document).ready(function() {
 	};
 	
 	function hideUpContent(){
-		setTextInsideElement($('.menuLogin #up'),'UP');
+		switchElementTextValueAndSize('.menuLogin #up', 'false', 'UP')
 		setButtonTitle(	$('.menuLogin #up'), 'registration');
 		hideElement($('.loginUpContent'));		
 		hideLoginUpContentTips();
@@ -210,14 +216,14 @@ $(document).ready(function() {
 	
 	//Project information content
 	function hideProjectInformationContent(){
-		setTextInsideElement($('.menuLogin #info'),'i');
+		switchElementTextValueAndSize('.menuLogin #info', 'false', 'i')		
 		showElement($('.menuLogin #up'));	
 		showElement($('.loginInput'));
 		hideElement($('.loginProjectInfo'));		
 	};
 	
 	function showProjectInformationContent(){
-		setTextInsideElement($('.menuLogin #info'),'B');
+		switchElementTextValueAndSize('.menuLogin #info', 'false', 'BACK')
 		showElement($('.loginProjectInfo'));
 		hideElement($('.menuLogin #up'));
 		hideElement($('.loginInput'));
@@ -226,7 +232,7 @@ $(document).ready(function() {
 	//home new menu
 	function showHomeNewMenu(){
 		setTextInsideElement($('.menuHome .homeLogo'),'NEW');
-		setTextInsideElement($('.menuHome #new'),'B');
+		setTextInsideElement($('.menuHome #new'),'BACK');
 		setButtonTitle($('.menuHome #new'), 'BACK');
 		showElement($('.menuHome #client'));
 		showElement($('.menuHome #worker'));
@@ -299,7 +305,13 @@ $(document).ready(function() {
 	/*============================*/
 	function switchElementTextValueAndSize(element, fontSize, text){	
 		element = $(element);
-		if(!(element.text() === 'B')){
+		if((element.text() === 'B') || (element.text() === 'BACK')){
+			if((element.text() === 'B')){
+				setTextInsideElement($(element),'BACK');
+			}else{
+				setTextInsideElement($(element),'B');
+			}
+		}else{
 			if(fontSize !== 'false'){
 				element.css('font-size',fontSize + 'px');
 			};
