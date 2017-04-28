@@ -222,7 +222,7 @@ $(document).ready(function() {
 		if($('.menuLogin #up').text() === 'BACK'){
 			setTextInsideElement($('.menuLogin #up'),'UP');
 		};
-		if($('.menuLogin #up').text() === 'B'){{
+		if($('.menuLogin #up').text() === 'B'){
 			setTextInsideElement($('.menuLogin #up'),'U');
 		};				
 		setButtonTitle(	$('.menuLogin #up'), 'registration');
