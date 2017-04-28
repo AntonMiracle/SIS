@@ -130,7 +130,7 @@ $(document).ready(function() {
 		switchElementTextValueAndSize('.menuHome #clients', '25', 'C');
 	});	
 	$('.menuHome #proposals').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #proposals', '20', 'PROPOSALS');
+		switchElementTextValueAndSize('.menuHome #proposals', '19', 'PROPOSALS');
 	});
 	$('.menuHome #proposals').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #proposals', '25', 'P');	

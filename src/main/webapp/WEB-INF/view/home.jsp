@@ -12,7 +12,7 @@
 
 <t:template title="HOME">
 	<jsp:attribute name="head">
-		
+	
 	</jsp:attribute>
 	<jsp:attribute name="content">
 		<!-- ========= -->
