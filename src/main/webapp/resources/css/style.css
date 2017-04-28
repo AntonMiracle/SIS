@@ -36,7 +36,7 @@ input {
 	width: 40px;
 	height: auto;
 	position: absolute;
-	top: 10px;
+	top: 30px;
 	left: 0;
 	margin: auto;
 	border: 0px solid #508c44;
@@ -246,9 +246,6 @@ input {
 
 .menuHome #client, .menuHome #worker, .menuHome #proposal{
 	display: none;
-} 
-.menuLogin .button-scale {
-	margin: 5px;
 }
 
 .loginInput #in, .loginUpInput #up{	
@@ -256,7 +253,7 @@ input {
 	width: 80px;
 	border-radius: 40px;
 }
-.loginInput #in:hover{	
+.loginInput #in:hover, .loginUpInput #up:hover{	
 	border: 5px solid #508c44;		
 }
 
