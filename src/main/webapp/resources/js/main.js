@@ -29,6 +29,12 @@ $(document).ready(function() {
 	setTimeout("$('.menuHome').show();", loginButtonShow);
 	
 	//login project info	
+	$('.menuLogin #info').mouseenter(function() {
+		switchElementTextValueAndSize('.menuLogin #info', 'false', 'info')		
+	});
+	$('.menuLogin #info').mouseleave(function() {
+		switchElementTextValueAndSize('.menuLogin #info', 'false', 'i')
+	});
 	$('.menuLogin #info').click(function() {
 		if(isInfoContentActive){
 			hideProjectInformationContent();
@@ -52,7 +58,14 @@ $(document).ready(function() {
 		};
 	});
 	
-	//login UP
+	//login UP	
+	$('.menuLogin #up').mouseenter(function() {
+		switchElementTextValueAndSize('.menuLogin #up', 'false', 'UP')		
+	});
+	$('.menuLogin #up').mouseleave(function() {
+		switchElementTextValueAndSize('.menuLogin #up', 'false', 'U')
+	});	
+	
 	$('.menuLogin #up').click(function(){		
 		if(isUpContentActive){
 			hideUpContent();
@@ -194,9 +207,8 @@ $(document).ready(function() {
 		hideElement($('.loginUpInput #phoneTip'));
 	};
 	//login UP content
-	function showUpContent(){	
-		switchElementTextValueAndSize('.menuLogin #up', 'false', 'BACK')		
-		setButtonTitle(	$('.menuLogin #up'), 'BACK');
+	function showUpContent(){		
+		setTextInsideElement($('.menuLogin #up'),'BACK');
 		hideElement($('.loginInput'));
 		hideElement($('.menuLogin #info'));
 		hideElement($('.loginInput td#loginTip'));
@@ -206,7 +218,7 @@ $(document).ready(function() {
 	};
 	
 	function hideUpContent(){
-		switchElementTextValueAndSize('.menuLogin #up', 'false', 'UP')
+		setTextInsideElement($('.menuLogin #up'),'UP');		
 		setButtonTitle(	$('.menuLogin #up'), 'registration');
 		hideElement($('.loginUpContent'));		
 		hideLoginUpContentTips();
@@ -216,14 +228,14 @@ $(document).ready(function() {
 	
 	//Project information content
 	function hideProjectInformationContent(){
-		switchElementTextValueAndSize('.menuLogin #info', 'false', 'i')		
+		setTextInsideElement($('.menuLogin #info'),'i');		
 		showElement($('.menuLogin #up'));	
 		showElement($('.loginInput'));
 		hideElement($('.loginProjectInfo'));		
 	};
 	
 	function showProjectInformationContent(){
-		switchElementTextValueAndSize('.menuLogin #info', 'false', 'BACK')
+		setTextInsideElement($('.menuLogin #info'),'BACK');
 		showElement($('.loginProjectInfo'));
 		hideElement($('.menuLogin #up'));
 		hideElement($('.loginInput'));
