@@ -114,6 +114,7 @@ $(document).ready(function() {
 			};			
 			saveData('rest/user/new', 'POST', client);
 			hideUpContent();
+			
 			return true;
 		}else{
 			return false;
@@ -218,7 +219,11 @@ $(document).ready(function() {
 	};
 	
 	function hideUpContent(){
-		setTextInsideElement($('.menuLogin #up'),'UP');		
+		if($('.menuLogin #up').text() == 'BACK'){
+			setTextInsideElement($('.menuLogin #up'),'UP');
+		}else{
+			setTextInsideElement($('.menuLogin #up'),'U');
+		}				
 		setButtonTitle(	$('.menuLogin #up'), 'registration');
 		hideElement($('.loginUpContent'));		
 		hideLoginUpContentTips();
