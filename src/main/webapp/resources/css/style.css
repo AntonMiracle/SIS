@@ -48,7 +48,8 @@ input {
 	width: 40px;
 	height: auto;
 	position: absolute;
-	top: 30px;
+	/*top: 30px;*/
+	top: 0px;
 	left: 0;
 	margin: auto;
 	border: 0px solid #508c44;
@@ -182,10 +183,16 @@ input {
 /*=======================*/
 
 .homeLogo {
-	font-family: 'Monoton', cursive;	
-	border: 0px solid #508c44;	
-	font-size: 30px;
+	/*font-family: 'Monoton', cursive;*/
+	display: table-cell;	
+	background: url(buttonbg.jpg);
+	min-width: 130px;
+	height: 80px;
+	border: 1px solid white;
+	border-radius: 0 0 40px 0px;	
+	font-size: 20px;
 	text-align: center;
+	vertical-align: middle;
 }
 
 .homeHead {
@@ -244,10 +251,6 @@ input {
 	height: 90px;
 }
 
-.menuHome #client, .menuHome #worker, .menuHome #proposal{
-	display: none;
-}
-
 .loginInput #in, .loginUpInput #up{	
 	height: 80px;
 	width: 80px;
@@ -261,6 +264,8 @@ input {
 	font-size: 30px;
 }
 
-.menuHome#client, .menuHome#proposal, .menuHome#worker{
+.menuHome #newClient, .menuHome #newProposal, .menuHome #newWorker,
+.menuHome #allClients, .menuHome #allProposals, .menuHome #allWorkers,
+.menuHome #tasks{
 	display: none;
 }
