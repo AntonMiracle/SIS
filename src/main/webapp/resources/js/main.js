@@ -37,16 +37,17 @@ $(document).ready(function() {
 		switchElementTextValueAndSize('.menuLogin #info', 'false', 'i')
 	});
 	$('.menuLogin #info').click(function() {
+		makeFirstAfterClick('.menuLogin #info');
 		if(isInfoContentActive){
 			hideProjectInformationContent();
 		}else{
 			showProjectInformationContent();
-		};
-		makeFirstAfterClick('.menuLogin #info');
+		}
 	});	
 	
 	//check input username & password
 	$('.loginIn #in').click(function(){	
+		makeFirstAfterClick('.loginIn #in');
 		if(compareUsernameAndPassword($('.loginInput input#username').val(),$('.loginInput input#password').val())){
 			hideElement($('.loginInput td#loginTip'));
 			return true;			
@@ -56,7 +57,6 @@ $(document).ready(function() {
 			cleanLoginContentFields();
 			return false;
 		};
-		makeFirstAfterClick('.loginIn #in');
 	});
 	
 	//login UP	
@@ -68,15 +68,16 @@ $(document).ready(function() {
 	});	
 	
 	$('.menuLogin #up').click(function(){	
+		makeFirstAfterClick('.menuLogin #up');
 		if(isUpContentActive){
 			hideUpContent();			
 		}else{
 			showUpContent();		
-		};	
-		makeFirstAfterClick('.menuLogin #up');	
+		};		
 	});
 	
 	$('.loginUpInput #up').click(function(){
+		makeFirstAfterClick('.loginUpInput #up');
 		var username = $('.loginUpInput #username');
 		var password = $('.loginUpInput #password');
 		var confirm = $('.loginUpInput #confirm');
@@ -118,8 +119,7 @@ $(document).ready(function() {
 			return true;
 		}else{
 			return false;
-		};
-		makeFirstAfterClick('.loginUpInput #up');
+		};			
 	});
 
 	/*===================*/
@@ -147,12 +147,12 @@ $(document).ready(function() {
 	
 	/* clients menu */
 	$('.menuHome #clients').click(function() {
+		makeFirstAfterClick('.menuHome #clients');
 		if(isHomeClientsMenuActive){
 			hideHomeClientsMenu();			
 		}else{
 			showHomeClientsMenu();			
 		}
-		makeFirstAfterClick('.menuHome #clients');
 	});	
 	$('.menuHome #newClient').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #newClient', '20', 'NEW');
@@ -169,12 +169,12 @@ $(document).ready(function() {
 	
 	/* proposals menu*/
 	$('.menuHome #proposals').click(function() {
+		makeFirstAfterClick('.menuHome #proposals');
 		if(isHomeProposalsMenuActive){
 			hideHomeProposalsMenu();		
 		}else{
 			showHomeProposalsMenu();		
-		};
-		makeFirstAfterClick('.menuHome #proposals');
+		}
 	});		
 	$('.menuHome #newProposal').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #newProposal', '20', 'NEW');
@@ -191,12 +191,12 @@ $(document).ready(function() {
 	
 	/* workers menu*/
 	$('.menuHome #workers').click(function() {
+		makeFirstAfterClick('.menuHome #workers');
 		if(isHomeWorkersMenuActive){
 			hideHomeWorkersMenu();	
 		}else{
 			showHomeWorkersMenu();		
-		};
-		makeFirstAfterClick('.menuHome #workers');
+		}
 	});	
 	$('.menuHome #newWorker').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #newWorker', '20', 'NEW');		
