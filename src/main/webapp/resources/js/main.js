@@ -2,7 +2,6 @@ $(document).ready(function() {
 	/*======================*/
 	/*=    global setup    =*/
 	/*======================*/
-	$('button').blur();
 	$.ajaxSetup({
 		async: false
 		});
@@ -38,6 +37,7 @@ $(document).ready(function() {
 		switchElementTextValueAndSize('.menuLogin #info', 'false', 'i')
 	});
 	$('.menuLogin #info').click(function() {
+		makeFirstAfterClick('.menuLogin #info');
 		if(isInfoContentActive){
 			hideProjectInformationContent();
 		}else{
@@ -47,6 +47,7 @@ $(document).ready(function() {
 	
 	//check input username & password
 	$('.loginIn #in').click(function(){	
+		makeFirstAfterClick('.loginIn #in');
 		if(compareUsernameAndPassword($('.loginInput input#username').val(),$('.loginInput input#password').val())){
 			hideElement($('.loginInput td#loginTip'));
 			return true;			
@@ -66,7 +67,8 @@ $(document).ready(function() {
 		switchElementTextValueAndSize('.menuLogin #up', 'false', 'U')
 	});	
 	
-	$('.menuLogin #up').click(function(){		
+	$('.menuLogin #up').click(function(){	
+		makeFirstAfterClick('.menuLogin #up');
 		if(isUpContentActive){
 			hideUpContent();			
 		}else{
@@ -75,6 +77,7 @@ $(document).ready(function() {
 	});
 	
 	$('.loginUpInput #up').click(function(){
+		makeFirstAfterClick('.loginUpInput #up');
 		var username = $('.loginUpInput #username');
 		var password = $('.loginUpInput #password');
 		var confirm = $('.loginUpInput #confirm');
@@ -144,6 +147,7 @@ $(document).ready(function() {
 	
 	/* clients menu */
 	$('.menuHome #clients').click(function() {
+		makeFirstAfterClick('.menuHome #clients');
 		if(isHomeClientsMenuActive){
 			hideHomeClientsMenu();			
 		}else{
@@ -165,6 +169,7 @@ $(document).ready(function() {
 	
 	/* proposals menu*/
 	$('.menuHome #proposals').click(function() {
+		makeFirstAfterClick('.menuHome #workers');
 		if(isHomeProposalsMenuActive){
 			hideHomeProposalsMenu();		
 		}else{
@@ -186,6 +191,7 @@ $(document).ready(function() {
 	
 	/* workers menu*/
 	$('.menuHome #workers').click(function() {
+		makeFirstAfterClick('.menuHome #workers');
 		if(isHomeWorkersMenuActive){
 			hideHomeWorkersMenu();	
 		}else{
@@ -465,4 +471,7 @@ $(document).ready(function() {
 		return getAndReturnData('rest/check/authentication/' + username + '/' + password);
 	};
 	
+	function makeFirstAfterClick(element){
+		$(element).blur();
+	}
 });
