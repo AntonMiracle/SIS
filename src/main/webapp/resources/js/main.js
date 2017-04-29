@@ -169,7 +169,7 @@ $(document).ready(function() {
 	
 	/* proposals menu*/
 	$('.menuHome #proposals').click(function() {
-		makeFirstAfterClick('.menuHome #workers');
+		makeFirstAfterClick('.menuHome #proposals');
 		if(isHomeProposalsMenuActive){
 			hideHomeProposalsMenu();		
 		}else{
@@ -471,7 +471,7 @@ $(document).ready(function() {
 		return getAndReturnData('rest/check/authentication/' + username + '/' + password);
 	};
 	
-	function makeFirstAfterClick(element){
-		$(element).blur();
+	function makeFirstAfterClick(element){	
+		 $(element).blur();	
 	}
 });
