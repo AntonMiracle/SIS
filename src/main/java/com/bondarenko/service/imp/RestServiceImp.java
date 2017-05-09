@@ -2,6 +2,7 @@ package com.bondarenko.service.imp;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class RestServiceImp implements RestService {
 
 	@Override
 	public Set<RestUserDto> getRestClientsDto() throws RuntimeException {
-		Set<RestUserDto> clients = new HashSet<>();
+		Set<RestUserDto> clients = new TreeSet<>();
 		for (User user : userService.getUsers()) {
 			if(roleService.isClient(user.getId())){
 				clients.add(convertUser(user));
