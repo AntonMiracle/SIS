@@ -228,9 +228,9 @@ $(document).ready(function() {
 	
 	/* clients*/
 	$('.menuHome #allClients').click(function(){
-		console.log(clientsUsers);
-		clientsUsers = getClients();
-		console.log(clientsUsers);
+		hideAllHomeTable();
+		showAllClientsTable();
+		updateClientsTable();
 	});
 	/*============================*/
 	/*=    show/hide function    =*/
@@ -359,7 +359,14 @@ $(document).ready(function() {
 		showElement($('.menuHome #proposals'));		
 		isHomeWorkersMenuActive = false;
 	};
-	
+	// hide all home tables
+	function hideAllHomeTable(){
+		hideElement($('#clientsTableList'));
+	};
+	//home all clients table	
+	function showAllClientsTable(){
+		showElement($('#clientsTableList'));
+	};
 	/*========================*/
 	/*=    clean function    =*/
 	/*========================*/	
@@ -484,5 +491,14 @@ $(document).ready(function() {
 	};
 	function makeFirstAfterClick(element){	
 		 $(element).blur();	
-	}
+	};
+	
+	function updateClientsTable(){
+		console.log('inside');
+		clientsUsers = getClients();
+		console.log(clientsUsers);
+		$.each(clientsUsers, function(){
+			$('<tr><td>' + this.name + '</td></tr>').insertAfter($('tr:last'));
+		});
+	};
 });
