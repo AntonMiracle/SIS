@@ -14,7 +14,7 @@ public interface RestServiceController {
 
 	public ResponseEntity<Set<RestUserDto>> getUsers() throws RuntimeException;
 	
-	public ResponseEntity<List<RestUserDto>> getClients() throws RuntimeException;
+	public ResponseEntity<Set<RestUserDto>> getClients() throws RuntimeException;
 	
 	public ResponseEntity<Set<RestProposalDto>> getProposals() throws RuntimeException;
 	

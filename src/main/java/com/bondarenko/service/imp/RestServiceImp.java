@@ -37,18 +37,14 @@ public class RestServiceImp implements RestService {
 	private RoleService roleService;
 
 	@Override
-	public List<RestUserDto> getRestClientsDto() throws RuntimeException {
+	public Set<RestUserDto> getRestClientsDto() throws RuntimeException {
 		Set<RestUserDto> clients = new TreeSet<>();
 		for (User user : userService.getUsers()) {
 			if(roleService.isClient(user.getId())){
 				clients.add(convertUser(user));
 			}			
-		}
-		List<RestUserDto> sorted = new ArrayList<>();
-		for(RestUserDto user : clients){
-			sorted.add(user);
-		}
-		return sorted;
+		}		
+		return clients;
 	}
 	
 	@Override

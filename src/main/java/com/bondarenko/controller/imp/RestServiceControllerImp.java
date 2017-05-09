@@ -38,8 +38,8 @@ public class RestServiceControllerImp implements RestServiceController {
 
 	@GetMapping (value = "/clients")
 	@Override
-	public ResponseEntity<List<RestUserDto>> getClients() throws RuntimeException {
-		return new ResponseEntity<List<RestUserDto>>(restService.getRestClientsDto(), HttpStatus.OK);
+	public ResponseEntity<Set<RestUserDto>> getClients() throws RuntimeException {
+		return new ResponseEntity<Set<RestUserDto>>(restService.getRestClientsDto(), HttpStatus.OK);
 	}
 	
 	@Override
