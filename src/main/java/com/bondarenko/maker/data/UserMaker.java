@@ -12,6 +12,7 @@ public class UserMaker {
 	public void initializedUsers(UserService userService, RoleService roleService, UserInformationService uiService) {
 		if (!isInitilized) {
 			initializedAdministration(userService, roleService, uiService);
+			initializedTestAccount(userService, roleService, uiService);
 			isInitilized = true;
 		}
 	}
@@ -30,6 +31,7 @@ public class UserMaker {
 			admin.getRoles().add(roleService.getByName(RoleMaker.ROLE_ADMIN));
 			userService.save(admin);
 		}
+
 	}
 
 	public void generateExampleData(int numberOfClients, int numberOfManagers, int numberOfWorkers, RoleService rs,
@@ -52,6 +54,22 @@ public class UserMaker {
 				user.getRoles().add(rs.getByName(RoleMaker.ROLE_WORKER));
 			}
 			us.save(user);
+		}
+	}
+
+	private void initializedTestAccount(UserService userService, RoleService roleService,
+			UserInformationService uiService) {
+		if (userService.isUsernameUnique("anton") && uiService.isPhoneUnique("anton")) {
+			User client = new User();
+			client.setUserInformation(new UserInformation());
+			client.getUserInformation().setPhone("anton");
+			client.getUserInformation().setMail("anton");
+			client.getUserInformation().setName("anton");
+			client.getUserInformation().setSurname("anton");
+			client.setUsername("anton");
+			client.setPassword("anton");
+			client.getRoles().add(roleService.getByName(RoleMaker.ROLE_CLIENT));
+			userService.save(client);
 		}
 	}
 }
