@@ -229,7 +229,7 @@ $(document).ready(function() {
 	/* clients*/
 	$('.menuHome #allClients').click(function(){
 		console.log(getAndReturnData('rest/clients'));
-		clients = getAndReturnData('rest/clients');
+		clients = getClients();
 	});
 	/*============================*/
 	/*=    show/hide function    =*/
@@ -478,6 +478,9 @@ $(document).ready(function() {
 		return getAndReturnData('rest/check/authentication/' + username + '/' + password);
 	};
 	
+	function getClients(){
+		return getAndReturnData('rest/clients');
+	};
 	function makeFirstAfterClick(element){	
 		 $(element).blur();	
 	}
