@@ -36,7 +36,7 @@ public class RestServiceImp implements RestService {
 
 	@Override
 	public Set<RestUserDto> getRestClientsDto() throws RuntimeException {
-		Set<RestUserDto> clients = new TreeSet<>();
+		Set<RestUserDto> clients = new HashSet<>();
 		for (User user : userService.getUsers()) {
 			if(roleService.isClient(user.getId())){
 				clients.add(convertUser(user));
