@@ -213,11 +213,12 @@ input {
 	left: 140px;
 	background-color: rgba(255, 255, 255, 0.5);
 	text-align: center;
-	border: 5px solid #508c44;
+	border: 2px solid #508c44;
 	border-radius: 5px 5px 5px 5px;
+	border-collapse: collapse;
 }
-.homeClients td{
-	border: 1px solid #508c44;	
+.homeClients td{	
+	border: 1px solid #508c44;
 	width: 150px;
 }
 
