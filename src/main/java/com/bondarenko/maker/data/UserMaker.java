@@ -59,15 +59,15 @@ public class UserMaker {
 
 	private void initializedTestAccount(UserService userService, RoleService roleService,
 			UserInformationService uiService) {
-		if (userService.isUsernameUnique("anton") && uiService.isPhoneUnique("anton")) {
+		if (userService.isUsernameUnique("a") && uiService.isPhoneUnique("a")) {
 			User client = new User();
 			client.setUserInformation(new UserInformation());
-			client.getUserInformation().setPhone("anton");
-			client.getUserInformation().setMail("anton");
-			client.getUserInformation().setName("anton");
-			client.getUserInformation().setSurname("anton");
-			client.setUsername("anton");
-			client.setPassword("anton");
+			client.getUserInformation().setPhone("a");
+			client.getUserInformation().setMail("a");
+			client.getUserInformation().setName("a");
+			client.getUserInformation().setSurname("a");
+			client.setUsername("a");
+			client.setPassword("a");
 			client.getRoles().add(roleService.getByName(RoleMaker.ROLE_CLIENT));
 			userService.save(client);
 		}
