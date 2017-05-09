@@ -506,7 +506,7 @@ $(document).ready(function() {
 				+'<td>MAIL</td>'
 				+'<td>CREATE</td>'
 			+'</tr>'
-				).insertAfter($('#clientsTableList table:first'));		
+				).insertAfter($('#clientsTableList:first'));		
 		$.each(clientsUsers, function(){
 			$('<tr>'
 					+'<td>' + this.name + '</td>'
