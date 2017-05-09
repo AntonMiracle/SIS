@@ -233,6 +233,7 @@ $(document).ready(function() {
 		updateClientsTable();
 	});
 	$('.clientsRow').click(function() {
+		console.log('clicked clientsRow');
 		var id = $(this).attr('id');
 		hideAllHomeTable();
 	});	
@@ -366,10 +367,12 @@ $(document).ready(function() {
 	};
 	// hide all home tables
 	function hideAllHomeTable(){
+		console.log('try hide all home table');
 		hideElement($('#clientsTableList'));
 	};
 	//home all clients table	
 	function showAllClientsTable(){
+		console.log('try show all home table');
 		showElement($('#clientsTableList'));
 	};	
 	
