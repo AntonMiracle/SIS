@@ -232,12 +232,14 @@ $(document).ready(function() {
 		showAllClientsTable();
 		updateClientsTable();
 	});
-//	$('#clientsTableList tr').mouseenter(function() {
-//		switchElementTextValueAndSize('.homeHead #out', '20', 'OUT');
-//	});
-//	$('#clientsTableList tr').mouseleave(function() {
-//		switchElementTextValueAndSize('.homeHead #out', '25', 'O');
-//	});	
+	$('.homeClientsInfo').click(function() {
+		var id = $(this).attr('id');
+		hideAllHomeTable();
+	});
+	$('.menuHome .button-scale').click(function() {
+		hideAllHomeTable();
+	});
+	
 	/*============================*/
 	/*=    show/hide function    =*/
 	/*============================*/
@@ -524,4 +526,5 @@ $(document).ready(function() {
 			+'</tr>').insertAfter($('#clientsTableList tr:last'));
 		});
 	};
+	
 });
