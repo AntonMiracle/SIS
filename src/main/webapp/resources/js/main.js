@@ -228,6 +228,7 @@ $(document).ready(function() {
 	
 	/* clients*/
 	$('.menuHome #allClients').click(function(){
+		console.log(getAndReturnData('rest/clients'));
 		clients = getAndReturnData('rest/clients');
 	});
 	/*============================*/
