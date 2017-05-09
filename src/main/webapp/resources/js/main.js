@@ -515,7 +515,7 @@ $(document).ready(function() {
 			+'</tr>'
 				);		
 		$.each(clientsUsers, function(){
-			$('<tr id=' + this.id + ' class=' + 'clientsRow' + '>'
+			$('<tr id=' + this.id + ' class=clientsRow>'
 					+'<td>' + this.name + '</td>'
 					+'<td>' + this.surname + '</td>'
 					+'<td>' + this.phone + '</td>'
