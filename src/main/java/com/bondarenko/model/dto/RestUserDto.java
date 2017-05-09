@@ -25,7 +25,7 @@ public class RestUserDto implements Comparator<RestUserDto>, Comparable<RestUser
 
 	@Override
 	public int compareTo(RestUserDto o) {
-		return 0;
+		return (int)(id - o.id);
 	}
 
 }
