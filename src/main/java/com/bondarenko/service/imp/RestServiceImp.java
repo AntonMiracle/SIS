@@ -1,6 +1,8 @@
 package com.bondarenko.service.imp;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -35,15 +37,17 @@ public class RestServiceImp implements RestService {
 	private RoleService roleService;
 
 	@Override
-	public Set<RestUserDto> getRestClientsDto() throws RuntimeException {
-		Set<RestUserDto> clients = new HashSet<>();
+	public List<RestUserDto> getRestClientsDto() throws RuntimeException {
+		Set<RestUserDto> clients = new TreeSet<>();
 		for (User user : userService.getUsers()) {
 			if(roleService.isClient(user.getId())){
 				clients.add(convertUser(user));
 			}			
 		}
-		TreeSet<RestUserDto> sorted = new TreeSet<>();
-		sorted.addAll(clients);
+		List<RestUserDto> sorted = new ArrayList<>();
+		for(RestUserDto user : clients){
+			sorted.add(user);
+		}
 		return sorted;
 	}
 	

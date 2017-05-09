@@ -1,5 +1,6 @@
 package com.bondarenko.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ public interface RestServiceController {
 
 	public ResponseEntity<Set<RestUserDto>> getUsers() throws RuntimeException;
 	
-	public ResponseEntity<Set<RestUserDto>> getClients() throws RuntimeException;
+	public ResponseEntity<List<RestUserDto>> getClients() throws RuntimeException;
 	
 	public ResponseEntity<Set<RestProposalDto>> getProposals() throws RuntimeException;
 	

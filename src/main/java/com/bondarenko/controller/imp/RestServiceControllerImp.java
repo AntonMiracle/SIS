@@ -1,5 +1,6 @@
 package com.bondarenko.controller.imp;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,8 @@ public class RestServiceControllerImp implements RestServiceController {
 
 	@GetMapping (value = "/clients")
 	@Override
-	public ResponseEntity<Set<RestUserDto>> getClients() throws RuntimeException {
-		return new ResponseEntity<Set<RestUserDto>>(restService.getRestClientsDto(), HttpStatus.OK);
+	public ResponseEntity<List<RestUserDto>> getClients() throws RuntimeException {
+		return new ResponseEntity<List<RestUserDto>>(restService.getRestClientsDto(), HttpStatus.OK);
 	}
 	
 	@Override

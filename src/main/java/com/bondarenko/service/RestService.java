@@ -1,5 +1,6 @@
 package com.bondarenko.service;
 
+import java.util.List;
 import java.util.Set;
 
 import com.bondarenko.model.Car;
@@ -14,7 +15,7 @@ public interface RestService {
 	
 	public Set<RestUserDto> getRestUsersDto() throws RuntimeException;
 	
-	public Set<RestUserDto> getRestClientsDto() throws RuntimeException;
+	public List<RestUserDto> getRestClientsDto() throws RuntimeException;
 
 	public Set<RestProposalDto> getRestProposalsDto() throws RuntimeException;
 
