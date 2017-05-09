@@ -232,7 +232,7 @@ $(document).ready(function() {
 		showAllClientsTable();
 		updateClientsTable();
 	});
-	$('.clientsRow td').click(function() {
+	$('.clientsRow').live('click',function() {
 		console.log('clicked clientsRow');
 		var id = $(this).attr('id');
 		hideAllHomeTable();
