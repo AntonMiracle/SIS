@@ -17,7 +17,7 @@ $(document).ready(function() {
 	var loginButtonShow = 1000;	
 	var loginBackgroundShow = 1500;	
 	var rootUrl = location.protocol + '//' + location.host + '/';	
-	var clients;
+	var clientsUsers;
 	
 	/*====================*/
 	/*=    login page    =*/
@@ -228,8 +228,9 @@ $(document).ready(function() {
 	
 	/* clients*/
 	$('.menuHome #allClients').click(function(){
-		console.log(getAndReturnData('rest/clients'));
-		clients = getClients();
+		console.log(clientsUsers);
+		clientsUsers = getClients();
+		console.log(clientsUsers);
 	});
 	/*============================*/
 	/*=    show/hide function    =*/
