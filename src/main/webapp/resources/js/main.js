@@ -496,8 +496,7 @@ $(document).ready(function() {
 	function updateClientsTable(){
 		clientsUsers = getClients();
 		$('#clientsTableList').empty()
-		$('#clientsTableList').text(
-			'<tr>'
+		$('<tr>'
 				+'<td colspan=5>ALL CLIENTS</td>'
 			+'</tr>'
 			+'<tr>'
@@ -507,7 +506,7 @@ $(document).ready(function() {
 				+'<td>MAIL</td>'
 				+'<td>CREATE</td>'
 			+'</tr>'
-				);		
+				).insertAfter($('#clientsTableList table:first'));		
 		$.each(clientsUsers, function(){
 			$('<tr>'
 					+'<td>' + this.name + '</td>'
