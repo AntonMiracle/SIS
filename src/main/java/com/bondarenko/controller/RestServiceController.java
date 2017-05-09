@@ -13,6 +13,8 @@ public interface RestServiceController {
 
 	public ResponseEntity<Set<RestUserDto>> getUsers() throws RuntimeException;
 	
+	public ResponseEntity<Set<RestUserDto>> getClients() throws RuntimeException;
+	
 	public ResponseEntity<Set<RestProposalDto>> getProposals() throws RuntimeException;
 	
 	public ResponseEntity<Boolean> saveUser(RestNewUserDto dto) throws RuntimeException;
@@ -25,4 +27,5 @@ public interface RestServiceController {
 	
 	public ResponseEntity<Boolean> checkUsernameAndPassword(String username, String password) throws RuntimeException;	
 
+	
 }

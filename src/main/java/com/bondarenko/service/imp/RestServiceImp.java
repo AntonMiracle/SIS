@@ -19,6 +19,7 @@ import com.bondarenko.model.dto.RestUserDto;
 import com.bondarenko.service.CarService;
 import com.bondarenko.service.ProposalService;
 import com.bondarenko.service.RestService;
+import com.bondarenko.service.RoleService;
 import com.bondarenko.service.UserService;
 
 @Service
@@ -29,7 +30,20 @@ public class RestServiceImp implements RestService {
 	private ProposalService proposalService;
 	@Autowired
 	private CarService carService;
+	@Autowired
+	private RoleService roleService;
 
+	@Override
+	public Set<RestUserDto> getRestClientsDto() throws RuntimeException {
+		Set<RestUserDto> clients = new HashSet<>();
+		for (User user : userService.getUsers()) {
+			if(roleService.isClient(user.getId())){
+				clients.add(convertUser(user));
+			}			
+		}
+		return clients;
+	}
+	
 	@Override
 	public Set<RestUserDto> getRestUsersDto() throws RuntimeException {
 		Set<RestUserDto> users = new HashSet<>();
@@ -128,5 +142,6 @@ public class RestServiceImp implements RestService {
 		dto.createDate = car.getCreateDate().toGMTString();
 		return null;
 	}
+
 
 }

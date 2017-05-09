@@ -10,14 +10,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bondarenko.dao.RoleDao;
+import com.bondarenko.maker.data.RoleMaker;
 import com.bondarenko.model.Role;
+import com.bondarenko.model.User;
 import com.bondarenko.service.RoleService;
+import com.bondarenko.service.UserService;
 
 @Service
 public class RoleServiceImp implements RoleService {
 	private static final Logger LOG = LogManager.getLogger();
 	@Autowired
 	private RoleDao roleDao;
+	@Autowired
+	private UserService userService;
 
 	@Override
 	@Transactional
@@ -98,6 +103,17 @@ public class RoleServiceImp implements RoleService {
 			LOG.error(ex, ex);
 			throw ex;
 		}
+	}
+
+	@Override
+	public boolean isClient(Long userId) throws RuntimeException {
+		User user = userService.getById(userId);
+		for(Role role: user.getRoles()){
+			if(role.getName().equals(RoleMaker.ROLE_CLIENT)){
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

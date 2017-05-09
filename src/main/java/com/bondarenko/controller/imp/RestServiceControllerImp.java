@@ -34,6 +34,13 @@ public class RestServiceControllerImp implements RestServiceController {
 	@Autowired
 	private RestService restService;
 
+
+	@GetMapping (value = "/clients")
+	@Override
+	public ResponseEntity<Set<RestUserDto>> getClients() throws RuntimeException {
+		return new ResponseEntity<Set<RestUserDto>>(restService.getRestClientsDto(), HttpStatus.OK);
+	}
+	
 	@Override
 	@GetMapping (value = "/users")
 	public ResponseEntity<Set<RestUserDto>> getUsers() throws RuntimeException {
@@ -78,5 +85,6 @@ public class RestServiceControllerImp implements RestServiceController {
 			@PathVariable ("password") String password) throws RuntimeException {
 		return new ResponseEntity<Boolean>(userService.isAuthenticationCorrect(username, password), HttpStatus.OK);
 	}
+
 
 }

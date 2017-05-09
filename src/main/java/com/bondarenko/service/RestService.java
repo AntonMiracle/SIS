@@ -13,6 +13,8 @@ import com.bondarenko.model.dto.RestUserDto;
 public interface RestService {
 	
 	public Set<RestUserDto> getRestUsersDto() throws RuntimeException;
+	
+	public Set<RestUserDto> getRestClientsDto() throws RuntimeException;
 
 	public Set<RestProposalDto> getRestProposalsDto() throws RuntimeException;
 

@@ -17,6 +17,7 @@ $(document).ready(function() {
 	var loginButtonShow = 1000;	
 	var loginBackgroundShow = 1500;	
 	var rootUrl = location.protocol + '//' + location.host + '/';	
+	var clients;
 	
 	/*====================*/
 	/*=    login page    =*/
@@ -224,6 +225,11 @@ $(document).ready(function() {
 	$('.homeHead #out').mouseleave(function() {
 		switchElementTextValueAndSize('.homeHead #out', '25', 'O');
 	});	
+	
+	/* clients*/
+	$('.menuHome #allClients').click(function(){
+		clients = getAndReturnData('rest/clients');
+	});
 	/*============================*/
 	/*=    show/hide function    =*/
 	/*============================*/

@@ -17,6 +17,8 @@ public interface RoleService {
 	public Role getById(Long id) throws RuntimeException;// test-ok
 
 	public boolean isNameUnique(String name) throws RuntimeException;// test-ok
+	
+	public boolean isClient(Long userId) throws RuntimeException;
 
 	public Set<Role> getRoles() throws RuntimeException;// test-ok
 
