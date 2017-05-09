@@ -502,7 +502,7 @@ $(document).ready(function() {
 	
 	function updateClientsTable(){
 		clientsUsers = getClients();
-		$('#clientsTableList').empty();
+//		$('#clientsTableList').empty();
 		$('#clientsTableList').append('<tr>'
 				+'<td colspan=5>ALL CLIENTS</td>'
 			+'</tr>'
@@ -515,7 +515,7 @@ $(document).ready(function() {
 			+'</tr>'
 				);		
 		$.each(clientsUsers, function(){
-			$('<tr id=' + this.id + '>'
+			$('<tr id=' + this.id + ' class=' + 'clientsRow' + '>'
 					+'<td>' + this.name + '</td>'
 					+'<td>' + this.surname + '</td>'
 					+'<td>' + this.phone + '</td>'
