@@ -232,6 +232,12 @@ $(document).ready(function() {
 		showAllClientsTable();
 		updateClientsTable();
 	});
+//	$('#clientsTableList tr').mouseenter(function() {
+//		switchElementTextValueAndSize('.homeHead #out', '20', 'OUT');
+//	});
+//	$('#clientsTableList tr').mouseleave(function() {
+//		switchElementTextValueAndSize('.homeHead #out', '25', 'O');
+//	});	
 	/*============================*/
 	/*=    show/hide function    =*/
 	/*============================*/
@@ -366,7 +372,8 @@ $(document).ready(function() {
 	//home all clients table	
 	function showAllClientsTable(){
 		showElement($('#clientsTableList'));
-	};
+	};	
+	
 	/*========================*/
 	/*=    clean function    =*/
 	/*========================*/	

@@ -221,7 +221,22 @@ input {
 	border: 1px solid #508c44;
 	width: 150px;
 }
-
+.homeClients tr:hover{
+	border: 3px solid #508c44;
+	background-color: rgba(255, 255, 255, 1);
+	width: 150px;
+}
+.homeClientsInfo {	
+	display: none;
+	position: absolute;
+	top: 60px;
+	left: 150px;
+	background-color: rgba(255, 255, 255, 0.6);
+	text-align: center;
+	border: 2px solid #508c44;
+	border-radius: 5px 5px 5px 5px;
+	border-collapse: collapse;
+}
 /*=====================*/
 /*=      buttons      =*/
 /*=====================*/
