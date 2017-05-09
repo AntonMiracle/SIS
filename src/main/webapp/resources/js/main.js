@@ -126,7 +126,7 @@ $(document).ready(function() {
 	/*===================*/
 	/*=    home page    =*/
 	/*===================*/
-	/*=== home menu ==*/	
+	/*=== home menu ==*/
 	$('.menuHome #clients').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #clients', '20', 'CLIENTS'); 
 	});
@@ -235,10 +235,7 @@ $(document).ready(function() {
 	$('.homeClientsInfo').click(function() {
 		var id = $(this).attr('id');
 		hideAllHomeTable();
-	});
-	$('.menuHome .button-scale').click(function() {
-		hideAllHomeTable();
-	});
+	});	
 	
 	/*============================*/
 	/*=    show/hide function    =*/
