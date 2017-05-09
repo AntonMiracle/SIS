@@ -502,7 +502,7 @@ $(document).ready(function() {
 	
 	function updateClientsTable(){
 		clientsUsers = getClients();
-		$('#clientsTableList').empty();
+//		$('#clientsTableList').empty();
 		$('#clientsTableList').append('<tr>'
 				+'<td colspan=5>ALL CLIENTS</td>'
 			+'</tr>'
