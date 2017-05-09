@@ -494,11 +494,28 @@ $(document).ready(function() {
 	};
 	
 	function updateClientsTable(){
-		console.log('inside');
 		clientsUsers = getClients();
-		console.log(clientsUsers);
+		$('#clientsTableList').empty()
+		$('#clientsTableList').text(
+			'<tr>'
+				+'<td colspan=5>ALL CLIENTS</td>'
+			+'</tr>'
+			+'<tr>'
+				+'<td>NAME</td>'
+				+'<td>SURNAME</td>'
+				+'<td>PHONE</td>'
+				+'<td>MAIL</td>'
+				+'<td>CREATE</td>'
+			+'</tr>'
+				);		
 		$.each(clientsUsers, function(){
-			$('<tr><td>' + this.name + '</td></tr>').insertAfter($('tr:last'));
+			$('<tr>'
+					+'<td>' + this.name + '</td>'
+					+'<td>' + this.surname + '</td>'
+					+'<td>' + this.phone + '</td>'
+					+'<td>' + this.mail + '</td>'
+					+'<td>' + this.createDate + '</td>'
+			+'</tr>').insertAfter($('#clientsTableList tr:last'));
 		});
 	};
 });
