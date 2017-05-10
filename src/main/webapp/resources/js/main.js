@@ -227,15 +227,16 @@ $(document).ready(function() {
 	});	
 	
 	/* clients*/
+	var clientsRowId;
 	$('.menuHome #allClients').click(function(){
 		hideAllHomeTable();
 		showAllClientsTable();
 		updateClientsTable();
 	});
 	$('#clientsTableList').on('click', '.clientsRow', function() {		
-		console.log('click clientsrow');
-		var id = $(this).attr('id');		
+		clientsRowId = $(this).attr('id');		
 		hideAllHomeTable();				
+		console.log('click TR with id : ' + clientsRowId);
 	});
 	
 	/*============================*/
