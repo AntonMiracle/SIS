@@ -233,6 +233,7 @@ $(document).ready(function() {
 		updateClientsTable();
 	});
 	$('#clientsTableList').on('click', '.clientsRow', function() {		
+		console.log('click clientsrow');
 		var id = $(this).attr('id');		
 		hideAllHomeTable();				
 	});
