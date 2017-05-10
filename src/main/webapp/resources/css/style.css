@@ -222,9 +222,7 @@ input {
 	width: 150px;
 }
 .clientsRow:hover{
-	border: 3px solid #508c44;
 	background-color: rgba(255, 255, 255, 1);
-	width: 150px;
 }
 .homeClientsInfo {	
 	display: none;
