@@ -235,8 +235,7 @@ $(document).ready(function() {
 	});
 	$('#clientsTableList').on('click', '.clientsRow', function() {		
 		clientsRowId = $(this).attr('id');		
-		hideAllHomeTable();				
-		console.log('click TR with id : ' + clientsRowId);
+		hideAllHomeTable();	
 	});
 	
 	/*============================*/
@@ -368,13 +367,11 @@ $(document).ready(function() {
 	};
 	// hide all home tables
 	function hideAllHomeTable(){
-		console.log('try hide all home table');
-		hideElement($('#clientsTableList'));
+		hideElement($('.homeClients'));
 	};
 	//home all clients table	
 	function showAllClientsTable(){
-		console.log('try show all home table');
-		showElement($('#clientsTableList'));
+		showElement($('.homeClients'));
 	};	
 	
 	/*========================*/
@@ -505,7 +502,7 @@ $(document).ready(function() {
 	
 	function updateClientsTable(){
 		clientsUsers = getClients();
-//		$('#clientsTableList').empty();		
+//		$('#clientsTableList').empty();	
 		$.each(clientsUsers, function(){
 			$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
 					+'<td>' + this.name + '</td>'

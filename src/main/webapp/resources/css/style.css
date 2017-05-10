@@ -206,20 +206,33 @@ input {
 	border-radius: 5px 5px 5px 5px;
 	text-align: right;
 }
-.homeClients {	
+
+.homeClients {
+	padding: 30px;
 	display: none;
 	position: absolute;
 	top: 60px;
 	left: 150px;
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(255, 255, 255, 0.3);
 	text-align: center;
-	border: 2px solid #508c44;
-	border-radius: 5px 5px 5px 5px;
+	border: 5px solid #508c44;
+	border-radius: 35px;
+}
+#clientsTableList{	
+	background-color: rgba(255, 255, 255, 0.4);
 	border-collapse: collapse;
 }
+#allClientsTableTitle{
+	background-color: white;	
+	font-size: 30px;
+}
+#allClientsTableHead{	
+	background-color: white;
+}
+
 .homeClients td{	
 	border: 1px solid #508c44;
-	width: 150px;
+	width: 200px;
 }
 .clientsRow:hover{
 	background-color: rgba(255, 255, 255, 1);
