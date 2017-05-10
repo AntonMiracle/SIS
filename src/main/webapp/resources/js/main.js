@@ -232,11 +232,10 @@ $(document).ready(function() {
 		showAllClientsTable();
 		updateClientsTable();
 	});
-	$('.clientsRow').on('click',function() {
-		console.log('clicked clientsRow');
-		var id = $(this).attr('id');
-		hideAllHomeTable();
-	});	
+	$('#clientsTableList').on('click', '.clientsRow', function() {		
+		var id = $(this).attr('id');		
+		hideAllHomeTable();				
+	});
 	
 	/*============================*/
 	/*=    show/hide function    =*/
@@ -504,27 +503,16 @@ $(document).ready(function() {
 	
 	function updateClientsTable(){
 		clientsUsers = getClients();
-//		$('#clientsTableList').empty();
-		$('#clientsTableList').append('<tr>'
-				+'<td colspan=5>ALL CLIENTS</td>'
-			+'</tr>'
-			+'<tr>'
-				+'<td>NAME</td>'
-				+'<td>SURNAME</td>'
-				+'<td>PHONE</td>'
-				+'<td>MAIL</td>'
-				+'<td>CREATE</td>'
-			+'</tr>'
-				);		
+//		$('#clientsTableList').empty();		
 		$.each(clientsUsers, function(){
-			$('<tr class=clientsRow id=' + this.id + '>'
+			$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
 					+'<td>' + this.name + '</td>'
 					+'<td>' + this.surname + '</td>'
 					+'<td>' + this.phone + '</td>'
 					+'<td>' + this.mail + '</td>'
 					+'<td>' + this.createDate + '</td>'
-			+'</tr>').insertAfter($('#clientsTableList tr:last'));
+					+'</tr>'
+				);
 		});
-	};
-	
-});
+		};
+	});
