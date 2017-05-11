@@ -171,32 +171,30 @@ input {
 .homeLogo {
 	display: table-cell;
 	background-color: rgba(255, 255, 255, 0.6);	
-	min-width: 145px;
-	height: 35px;
+	min-width: 150px;
+	height: 36px;
 	border-color: white;		
-	border-width: 0 1px 1px 0;		
-	border-style: solid;
-	border-radius: 0 0 35px 0px;	
+	border-width: 0;		
+	border-style: solid;		
 	font-size: 20px;
 	text-align: center;
 	vertical-align: middle;
 }
 
 div#homeUsername {
-	display: table-cell;
 	background-color: rgba(255, 255, 255, 0.6);	
-	min-width: 145px;
-	height: 35px;
+	min-width: 150px;
+	min-height: 35px;
 	border-color: white;		
-	border-width: 1px 1px 1px 0;	
+	border-width: 0;	
 	border-style: solid;
-	border-radius: 0 17px 17px 0px;	
 	font-size: 20px;
 	text-align: center;
 	vertical-align: middle;
 }
 #clientsTableList{
-	display: none;
+	display: none;	
+	min-width: 1006px;
 	text-align: center;
 	left: 150px;
 	top: 35px;
@@ -204,13 +202,15 @@ div#homeUsername {
 	background-color: rgba(255, 255, 255, 0.4);
 	border-collapse: collapse;
 }
-#allClientsTableTitle{
+#allClientsTableTitle{		
 	left: 150px;
 	top:0;
 	position: fixed;
+	max-width: 1006px;
+	min-width: 1006px;
 }
 #clientsTableList #allClientsTableTitle td{		
-	border-width: 0 1px 1px 1px;		
+	border-width: 0 0 1px 0;
 	height: 35px;		
 	background-color: white;	
 	font-size: 20px;
@@ -219,9 +219,12 @@ div#homeUsername {
 	background-color: white;
 }
 
-#clientsTableList td{	
-	border: 1px solid #508c44;
-	width: 200px;
+#clientsTableList td{		
+	border-width: 0 0 1px 0;
+	border-color: #508c44;
+	border-style: solid;
+	max-width: 200px;
+	min-width: 200px;
 }
 .clientsRow:hover{
 	background-color: rgba(255, 255, 255, 1);
@@ -246,9 +249,9 @@ div#homeUsername {
 	margin-top: 1px;
 	border-color: white;		
 	border-width: 1px 1px 1px 0;	
+	border-width: 1px;	
 	border-style: solid;	
-	border-radius: 0 40px 40px 0;
-	width: 40px;
+	width: 50px;
 	height: 80px;
 	left: 0;
 	font-size: 25px;	
@@ -258,8 +261,17 @@ div#homeUsername {
 	z-index: 2;
 	outline: none;
 }
+.button-scale#homeUsername, .button-scale#homeUsernameOut {	
+	font-size: 20px;		
+	width: 150px;
+	height: 40px;	
+}
+.button-scale#homeUsername:hover, .button-scale#homeUsernameOut  {		
+	width: 150px;	
+}
+
 .button-scale:hover{
-	border-width: 5px 5px 5px 0;
+	border-width: 5px;
 	border-color: #508c44;
 	border-style: solid;	
 	width: 130px;
@@ -268,7 +280,6 @@ div#homeUsername {
 .loginInput #in, .loginUpInput #up{	
 	height: 80px;
 	width: 80px;
-	border-radius: 40px;
 }
 .loginInput #in:hover, .loginUpInput #up:hover{	
 	border: 5px solid #508c44;		
@@ -280,6 +291,6 @@ div#homeUsername {
 
 .menuHome #newClient, .menuHome #newProposal, .menuHome #newWorker,
 .menuHome #allClients, .menuHome #allProposals, .menuHome #allWorkers,
-.menuHome #tasks{
+.menuHome #tasks, .menuHome #homeUsernameOut{
 	display: none;
 }

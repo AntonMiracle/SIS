@@ -20,7 +20,16 @@
 		<!-- ========= -->
 		<div class="menuHome">	
 			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">	
-				<div class="homeLogo">SIS</div>		
+				<div class="homeLogo">SIS</div>
+				<button class="button-scale" id="homeUsername" title="USERNAME">Username</button>
+			</sec:authorize>
+			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">						
+				<form:form action="${logoutUrl}" method="POST">	
+				<button class="button-scale" id="homeUsernameOut" title="LOG OUT">OUT</button>
+					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>			
+				</form:form>				
+			</sec:authorize>
+			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">								
 				<button class="button-scale" id="clients" title="CLIENTS">C</button>	
 				<button class="button-scale" id="newClient" title="NEW CLIENT">N</button>	
 				<button class="button-scale" id="allClients" title="ALL CLIENT">A</button>		
@@ -30,14 +39,7 @@
 				<button class="button-scale" id="workers" title="WORKERS">W</button>		
 				<button class="button-scale" id="newWorker" title="NEW WORKER">N</button>	
 				<button class="button-scale" id="allWorkers" title="ALL WORKERS">A</button>	
-				<button class="button-scale" id="tasks" title="TASKS">T</button>	
-				<div id="homeUsername">${username}</div>					
-			</sec:authorize>
-			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">						
-				<form:form action="${logoutUrl}" method="POST">	
-					<button class="button-scale" id="out" title="LOG OUT">O</button>
-					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>			
-				</form:form>				
+				<button class="button-scale" id="tasks" title="TASKS">T</button>
 			</sec:authorize>
 		</div>
 		

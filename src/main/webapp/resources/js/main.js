@@ -224,6 +224,20 @@ $(document).ready(function() {
 	$('.menuHome #out').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #out', '25', 'O');
 	});	
+	/*home menu username*/
+	var isUsernameMenuActive = false;
+	var usernameValue;
+	$('.menuHome #homeUsername').click(function() {
+		makeFirstAfterClick('.menuHome #homeUsername');
+		if(usernameValue === undefined){
+			usernameValue = $('.menuHome #homeUsername').text();
+		}
+		if(isUsernameMenuActive){
+			hideUsernameMenu();
+		}else{
+			showUsernameMenu();
+		}		
+	});	
 	
 	/* clients*/
 	var clientsRowId;
@@ -364,19 +378,28 @@ $(document).ready(function() {
 		showElement($('.menuHome #proposals'));		
 		isHomeWorkersMenuActive = false;
 	};
+	//username menu
+	function hideUsernameMenu(){
+		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
+		setButtonTitle($('.menuHome #homeUsername'), 'USERNAME');
+		setTextInsideElement($('.menuHome #homeUsername'),usernameValue);
+		hideElement($('.menuHome #homeUsernameOut'));				
+		isUsernameMenuActive = false;
+	};
+	function showUsernameMenu(){
+		setTextInsideElement($('.menuHome .homeLogo'),usernameValue);
+		setButtonTitle($('.menuHome #homeUsername'), 'USERNAME');
+		setTextInsideElement($('.menuHome #homeUsername'),'CLOSE');
+		showElement($('.menuHome #homeUsernameOut'));				
+		isUsernameMenuActive = true;
+	};
 	// hide all home tables
 	function hideAllHomeTable(){
-		//clients area
-		$('.homeLogo').css('border-width', '0 1px 1px 0');
-		$('.homeLogo').css('border-radius', '0 0 35px 0px');
-		$('.homeLogo').css('min-width', 145);
+		//clients area		
 		hideElement($('#clientsTableList'));
 	};
 	//home all clients table	
 	function showAllClientsTable(){
-		$('.homeLogo').css('border-width', '0 0 1px 0');
-		$('.homeLogo').css('min-width', 150);
-		$('.homeLogo').css('border-radius', 0);
 		showElement($('#clientsTableList'));
 	};	
 	
@@ -518,6 +541,16 @@ $(document).ready(function() {
 				+'<td>CREATE</td>'
 			+'</tr>'				
 		);	
+//////////////////////////test
+		$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
+				+'<td>' + this.name + '</td>'
+				+'<td>' + this.surname + '</td>'
+				+'<td>' + this.phone + '</td>'
+				+'<td>' + this.mail + '</td>'
+				+'<td>' + this.createDate + '</td>'
+				+'</tr>'
+			);
+////////////////////////test
 		$.each(clientsUsers, function(){
 			$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
 					+'<td>' + this.name + '</td>'
