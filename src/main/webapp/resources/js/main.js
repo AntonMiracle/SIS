@@ -388,7 +388,7 @@ $(document).ready(function() {
 	};
 	function showUsernameMenu(){
 		setTextInsideElement($('.menuHome .homeLogo'),usernameValue);
-		setButtonTitle($('.menuHome #homeUsername'), 'USERNAME');
+		setButtonTitle($('.menuHome #homeUsername'), 'CLOSE USERNAME MENU');
 		setTextInsideElement($('.menuHome #homeUsername'),'CLOSE');
 		showElement($('.menuHome #homeUsernameOut'));
 		isUsernameMenuActive = true;
@@ -543,7 +543,7 @@ $(document).ready(function() {
 				+'<td>MAIL</td>'
 				+'<td>CREATE</td>'
 			+'</tr>'				
-		);
+		);	
 		$.each(clientsUsers, function(){
 			$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
 					+'<td>' + this.name + '</td>'
