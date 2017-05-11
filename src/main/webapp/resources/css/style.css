@@ -195,7 +195,7 @@ input {
 	text-align: center;
 	vertical-align: middle;
 }
-#clientsTableList{		
+#clientsTableList{
 	text-align: center;
 	left: 150px;
 	top: 35px;
@@ -204,13 +204,13 @@ input {
 	background-color: rgba(255, 255, 255, 0.4);
 	border-collapse: collapse;
 }
-#allClientsTableTitle{	
-	left: 149px;
+#allClientsTableTitle{
+	left: 150px;
 	top:0;
 	position: fixed;
 }
 #clientsTableList #allClientsTableTitle td{		
-	border-width: 0 1px 1px 1px;
+	border-width: 0 1px 1px 1px;		
 	height: 35px;		
 	background-color: white;	
 	font-size: 20px;
@@ -242,7 +242,8 @@ input {
 /*=====================*/
 .button-scale {	
 	background-color: rgba(255, 255, 255, 0.6);
-	margin: 1px;
+	margin-bottom: 1px;
+	margin-top: 1px;
 	border-color: white;		
 	border-width: 1px 1px 1px 0;	
 	border-style: solid;	

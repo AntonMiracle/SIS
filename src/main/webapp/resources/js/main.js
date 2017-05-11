@@ -517,7 +517,7 @@ $(document).ready(function() {
 				+'<td>MAIL</td>'
 				+'<td>CREATE</td>'
 			+'</tr>'				
-		);		
+		);	
 		$.each(clientsUsers, function(){
 			$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
 					+'<td>' + this.name + '</td>'
