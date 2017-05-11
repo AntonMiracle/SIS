@@ -194,17 +194,18 @@ input {
 	text-align: center;
 	vertical-align: middle;
 }
-
-.homeHead {
-	width: 100%;
-	height: 30px;
-	position: fixed;
-	top: 0;
-	right: 0;
-	margin: auto;
-	border: 0px solid #508c44;
-	border-radius: 5px 5px 5px 5px;
-	text-align: right;
+.homeUsername {
+	display: table-cell;
+	background-color: rgba(255, 255, 255, 0.6);	
+	min-width: 145px;
+	height: 35px;
+	border-color: white;		
+	border-width: 1px 1px 1px 0;	
+	border-style: solid;
+	border-radius: 0 17px 17px 0px;	
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle;
 }
 
 .homeClients {
@@ -268,30 +269,11 @@ input {
 	z-index: 2;
 	outline: none;
 }
-
-.homeHead .button-scale#out {		
-	border-width: 0 1px 1px 1px;
-	border-radius: 0 0 35px 35px;
-	width: 70px;
-	height: 35px;
-	top: 0;
-	font-size: 25px;	
-	color: #1d3517;
-	text-align: center;
-}
-
 .button-scale:hover{
 	border-width: 5px 5px 5px 0;
 	border-color: #508c44;
 	border-style: solid;	
 	width: 130px;
-}
-
-.homeHead .button-scale#out:hover {
-	border-width: 0 5px 5px 5px;
-	border-color: #508c44;
-	border-style: solid;	
-	height: 90px;
 }
 
 .loginInput #in, .loginUpInput #up{	

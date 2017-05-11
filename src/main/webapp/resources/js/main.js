@@ -217,13 +217,12 @@ $(document).ready(function() {
 	$('.menuHome #tasks').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #tasks', '25', 'T');
 	});	
-	
-	/* home head*/
-	$('.homeHead #out').mouseenter(function() {
-		switchElementTextValueAndSize('.homeHead #out', '20', 'OUT');
+	/*home menu username area*/
+	$('.menuHome #out').mouseenter(function() {
+		switchElementTextValueAndSize('.menuHome #out', '20', 'OUT');
 	});
-	$('.homeHead #out').mouseleave(function() {
-		switchElementTextValueAndSize('.homeHead #out', '25', 'O');
+	$('.menuHome #out').mouseleave(function() {
+		switchElementTextValueAndSize('.menuHome #out', '25', 'O');
 	});	
 	
 	/* clients*/
@@ -502,7 +501,7 @@ $(document).ready(function() {
 	
 	function updateClientsTable(){
 		clientsUsers = getClients();
-//		$('#clientsTableList').empty();	
+		$('#clientsTableList').empty();		
 		$.each(clientsUsers, function(){
 			$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
 					+'<td>' + this.name + '</td>'

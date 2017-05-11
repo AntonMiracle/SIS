@@ -14,20 +14,7 @@
 	<jsp:attribute name="head">
 	
 	</jsp:attribute>
-	<jsp:attribute name="content">
-		<!-- ========= -->
-		<!-- home head -->
-		<!-- ========= -->
-		<div class="homeHead">
-			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">						
-				<form:form action="${logoutUrl}" method="POST">
-					<td id="loginUsername">${username}</td>			
-					<button class="button-scale" id="out" title="LOG OUT">O</button>
-					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>			
-				</form:form>				
-			</sec:authorize>
-		</div>
-		
+	<jsp:attribute name="content">		
 		<!-- ========= -->
 		<!-- home menu -->
 		<!-- ========= -->
@@ -44,6 +31,13 @@
 				<button class="button-scale" id="newWorker" title="NEW WORKER">N</button>	
 				<button class="button-scale" id="allWorkers" title="ALL WORKERS">A</button>	
 				<button class="button-scale" id="tasks" title="TASKS">T</button>					
+			</sec:authorize>
+			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">						
+				<form:form action="${logoutUrl}" method="POST">
+					<div class="homeUsername">${username}</div>		
+					<button class="button-scale" id="out" title="LOG OUT">O</button>
+					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>			
+				</form:form>				
 			</sec:authorize>
 		</div>
 		
