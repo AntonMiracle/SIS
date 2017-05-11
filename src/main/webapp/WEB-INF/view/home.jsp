@@ -31,7 +31,7 @@
 				<button class="button-scale" id="newWorker" title="NEW WORKER">N</button>	
 				<button class="button-scale" id="allWorkers" title="ALL WORKERS">A</button>	
 				<button class="button-scale" id="tasks" title="TASKS">T</button>	
-				<div class="homeUsername">${username}</div>					
+				<div id="homeUsername">${username}</div>					
 			</sec:authorize>
 			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">						
 				<form:form action="${logoutUrl}" method="POST">	
