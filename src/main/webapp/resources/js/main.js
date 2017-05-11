@@ -383,14 +383,14 @@ $(document).ready(function() {
 		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
 		setButtonTitle($('.menuHome #homeUsername'), 'USERNAME');
 		setTextInsideElement($('.menuHome #homeUsername'),usernameValue);
-		hideElement($('.menuHome #homeUsernameOut'));				
+		hideElement($('.menuHome #homeUsernameOut'));		
 		isUsernameMenuActive = false;
 	};
 	function showUsernameMenu(){
 		setTextInsideElement($('.menuHome .homeLogo'),usernameValue);
 		setButtonTitle($('.menuHome #homeUsername'), 'USERNAME');
 		setTextInsideElement($('.menuHome #homeUsername'),'CLOSE');
-		showElement($('.menuHome #homeUsernameOut'));				
+		showElement($('.menuHome #homeUsernameOut'));
 		isUsernameMenuActive = true;
 	};
 	// hide all home tables
@@ -528,6 +528,9 @@ $(document).ready(function() {
 	function makeFirstAfterClick(element){	
 		 $(element).blur();	
 		 hideAllHomeTable();
+		 if(isUsernameMenuActive){
+			 hideUsernameMenu(); 
+		 }			
 	};
 	
 	function updateClientsTable(){
