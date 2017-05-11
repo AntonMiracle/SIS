@@ -30,11 +30,11 @@
 				<button class="button-scale" id="workers" title="WORKERS">W</button>		
 				<button class="button-scale" id="newWorker" title="NEW WORKER">N</button>	
 				<button class="button-scale" id="allWorkers" title="ALL WORKERS">A</button>	
-				<button class="button-scale" id="tasks" title="TASKS">T</button>					
+				<button class="button-scale" id="tasks" title="TASKS">T</button>	
+				<div class="homeUsername">${username}</div>					
 			</sec:authorize>
 			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">						
-				<form:form action="${logoutUrl}" method="POST">
-					<div class="homeUsername">${username}</div>		
+				<form:form action="${logoutUrl}" method="POST">	
 					<button class="button-scale" id="out" title="LOG OUT">O</button>
 					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>			
 				</form:form>				
