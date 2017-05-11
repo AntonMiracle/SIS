@@ -44,19 +44,9 @@
 		<!-- ==================== -->
 		<!-- home clients content -->
 		<!-- ==================== -->
-		<div class="homeClients">
-			<table id="clientsTableList">
-				<tr id="allClientsTableTitle">
-					<td colspan=5>CLIENTS</td>
-				</tr>
-				<tr id="allClientsTableHead">
-					<td>NAME</td>
-					<td>SURNAME</td>
-					<td>PHONE</td>
-					<td>MAIL</td>
-					<td>CREATE</td>
-				</tr>			
-			</table>		
-		</div>
+		<table id="clientsTableList">				
+					
+		</table>		
+		
 	</jsp:attribute>
 </t:template>

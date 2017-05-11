@@ -366,11 +366,18 @@ $(document).ready(function() {
 	};
 	// hide all home tables
 	function hideAllHomeTable(){
-		hideElement($('.homeClients'));
+		//clients area
+		$('.homeLogo').css('border-width', '0 1px 1px 0');
+		$('.homeLogo').css('border-radius', '0 0 35px 0px');
+		$('.homeLogo').css('min-width', 145);
+		hideElement($('#clientsTableList'));
 	};
 	//home all clients table	
 	function showAllClientsTable(){
-		showElement($('.homeClients'));
+		$('.homeLogo').css('border-width', '0 0 1px 0');
+		$('.homeLogo').css('min-width', 150);
+		$('.homeLogo').css('border-radius', 0);
+		showElement($('#clientsTableList'));
 	};	
 	
 	/*========================*/
@@ -497,11 +504,20 @@ $(document).ready(function() {
 	};
 	function makeFirstAfterClick(element){	
 		 $(element).blur();	
+		 hideAllHomeTable();
 	};
 	
 	function updateClientsTable(){
 		clientsUsers = getClients();
-		$('#clientsTableList').empty();		
+//		$('#clientsTableList').empty();
+		$('#clientsTableList').append('<tr id="allClientsTableTitle">'
+				+'<td>NAME</td>'
+				+'<td>SURNAME</td>'
+				+'<td>PHONE</td>'
+				+'<td>MAIL</td>'
+				+'<td>CREATE</td>'
+			+'</tr>'				
+		);		
 		$.each(clientsUsers, function(){
 			$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
 					+'<td>' + this.name + '</td>'
