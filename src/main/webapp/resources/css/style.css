@@ -196,11 +196,11 @@ input {
 	vertical-align: middle;
 }
 #clientsTableList{
+	display: none;
 	text-align: center;
 	left: 150px;
 	top: 35px;
 	position: absolute;
-	display: none;
 	background-color: rgba(255, 255, 255, 0.4);
 	border-collapse: collapse;
 }
