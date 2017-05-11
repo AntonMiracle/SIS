@@ -540,17 +540,7 @@ $(document).ready(function() {
 				+'<td>MAIL</td>'
 				+'<td>CREATE</td>'
 			+'</tr>'				
-		);	
-//////////////////////////test
-		$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
-				+'<td>' + this.name + '</td>'
-				+'<td>' + this.surname + '</td>'
-				+'<td>' + this.phone + '</td>'
-				+'<td>' + this.mail + '</td>'
-				+'<td>' + this.createDate + '</td>'
-				+'</tr>'
-			);
-////////////////////////test
+		);
 		$.each(clientsUsers, function(){
 			$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
 					+'<td>' + this.name + '</td>'
