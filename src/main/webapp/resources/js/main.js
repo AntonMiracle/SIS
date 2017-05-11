@@ -228,13 +228,13 @@ $(document).ready(function() {
 	var isUsernameMenuActive = false;
 	var usernameValue;
 	$('.menuHome #homeUsername').click(function() {
-		makeFirstAfterClick('.menuHome #homeUsername');
 		if(usernameValue === undefined){
 			usernameValue = $('.menuHome #homeUsername').text();
 		}
 		if(isUsernameMenuActive){
 			hideUsernameMenu();
 		}else{
+			makeFirstAfterClick('.menuHome #homeUsername');
 			showUsernameMenu();
 		}		
 	});	
