@@ -21,7 +21,7 @@
 		<div class="menuHome">	
 			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">	
 				<div class="homeLogo">SIS</div>
-				<button class="button-scale" id="homeUsername" title="USERNAME">Username</button>
+				<button class="button-scale" id="homeUsername" title="USERNAME">${username}</button>
 			</sec:authorize>
 			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">						
 				<form:form action="${logoutUrl}" method="POST">	
