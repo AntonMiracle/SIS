@@ -431,8 +431,12 @@ $(document).ready(function() {
 			contentType : 'application/json; charset=utf-8',
 			dataType : 'json',
 			async : false,
+		    beforeSend: function()
+		    {
+		        showElement($('loadingDiv'));
+		    },
 			success : function() {
-				console.log('SAVE DATA COMPLETE');
+				hideElement($('loadingDiv'));
 			},
 			error : function() {
 				console.log('SAVE DATA ERROR');

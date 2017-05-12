@@ -14,7 +14,13 @@
 	<jsp:attribute name="head">
 	
 	</jsp:attribute>
-	<jsp:attribute name="content">		
+	<jsp:attribute name="content">
+		<!-- ============ -->
+		<!-- loading div -->
+		<!-- =========== -->
+		<div class="loloadingDiv">
+			LOADING....
+		</div>			
 		<!-- ========= -->
 		<!-- home menu -->
 		<!-- ========= -->
