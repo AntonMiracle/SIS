@@ -441,8 +441,8 @@ $(document).ready(function() {
 	
 	function getAndReturnData(relativeUrl){
 		var result;
-		$.getJSON( rootUrl + relativeUrl, function( data ) {
-	        showElement($('.loadingDiv'));
+		  	showElement($('.loadingDiv'));
+		$.getJSON( rootUrl + relativeUrl, function( data ) {	      
 			result = data;
 			hideElement($('.loadingDiv'));
 			});	
