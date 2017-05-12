@@ -430,13 +430,8 @@ $(document).ready(function() {
 			data : JSON.stringify(data),
 			contentType : 'application/json; charset=utf-8',
 			dataType : 'json',
-			async : false,
-		    beforeSend: function()
-		    {
-		        showElement($('.loadingDiv'));
-		    },
+			async : false,		   
 			success : function() {
-				hideElement($('.loadingDiv'));
 			},
 			error : function() {
 				console.log('SAVE DATA ERROR');
@@ -447,7 +442,9 @@ $(document).ready(function() {
 	function getAndReturnData(relativeUrl){
 		var result;
 		$.getJSON( rootUrl + relativeUrl, function( data ) {
+	        showElement($('.loadingDiv'));
 			result = data;
+			hideElement($('.loadingDiv'));
 			});	
 		return result;
 	};
