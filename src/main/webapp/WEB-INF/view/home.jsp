@@ -19,7 +19,7 @@
 		<!-- loading div -->
 		<!-- =========== -->
 		<div class="loadingDiv">		 
-			<img src="css/load.gif">	
+			<img src="resources/css/load.gif">	
 		</div>	
 		<!-- ========= -->
 		<!-- home menu -->
