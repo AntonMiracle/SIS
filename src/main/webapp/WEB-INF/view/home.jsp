@@ -19,8 +19,8 @@
 		<!-- loading div -->
 		<!-- =========== -->
 		<div class="loadingDiv">		 
-			<img src="css/load.gif">				
-		</div>			
+			<img src="css/load.gif">	
+		</div>	
 		<!-- ========= -->
 		<!-- home menu -->
 		<!-- ========= -->
