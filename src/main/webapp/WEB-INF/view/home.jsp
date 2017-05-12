@@ -18,8 +18,8 @@
 		<!-- ============ -->
 		<!-- loading div -->
 		<!-- =========== -->
-		<div class="loloadingDiv">
-			LOADING....
+		<div class="loadingDiv">		 
+			<img src="css/load.gif">				
 		</div>			
 		<!-- ========= -->
 		<!-- home menu -->

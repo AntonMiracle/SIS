@@ -433,10 +433,10 @@ $(document).ready(function() {
 			async : false,
 		    beforeSend: function()
 		    {
-		        showElement($('loadingDiv'));
+		        showElement($('.loadingDiv'));
 		    },
 			success : function() {
-				hideElement($('loadingDiv'));
+				hideElement($('.loadingDiv'));
 			},
 			error : function() {
 				console.log('SAVE DATA ERROR');
