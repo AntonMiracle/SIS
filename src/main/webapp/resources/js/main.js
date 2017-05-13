@@ -5,6 +5,12 @@ $(document).ready(function() {
 	$.ajaxSetup({
 		async: false
 		});
+	$(document).ajaxStart(function() {
+	  	showElement($('.loadingDiv'));	    
+	});
+	$(document).ajaxStop(function() {
+	    hideElement($('.loadingDiv'));
+	});
 	/*=========================*/
 	/*=    global variable    =*/
 	/*=========================*/
@@ -440,12 +446,9 @@ $(document).ready(function() {
 	};
 	
 	function getAndReturnData(relativeUrl){
-		var result;
-			console.log('loading');
-		  	showElement($('.loadingDiv'));
+		var result;			
 		$.getJSON( rootUrl + relativeUrl, function( data ) {	      
-			result = data;
-			hideElement($('.loadingDiv'));
+			result = data;			
 			});	
 		return result;
 	};
