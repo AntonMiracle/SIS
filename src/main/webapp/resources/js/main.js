@@ -2,7 +2,7 @@ $(document).ready(function() {
 	/*======================*/
 	/*=    global setup    =*/
 	/*======================*/
-	$('.loadingDiv').hide();
+	
 	$.ajaxSetup({		
 		async: false,
 		beforeSend: function(){
@@ -448,6 +448,7 @@ $(document).ready(function() {
 	/*=    ajax function    =*/
 	/*=======================*/
 	function saveData(relativeUrl, method, data) {	
+		$('.loadingDiv').show();
 		$.ajax({
 			url : rootUrl + relativeUrl,
 			type : method,
@@ -455,13 +456,16 @@ $(document).ready(function() {
 			contentType : 'application/json; charset=utf-8',
 			dataType : 'json'
 		});
+		$('.loadingDiv').hide();
 	};
 	
 	function getAndReturnData(relativeUrl){
-		var result;			
+		var result;
+		$('.loadingDiv').show();
 		$.getJSON( rootUrl + relativeUrl, function( data ) {	      
 			result = data;			
 			});	
+		$('.loadingDiv').hide();
 		return result;
 	};
 	
