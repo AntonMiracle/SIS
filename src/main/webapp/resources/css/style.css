@@ -29,8 +29,7 @@ input {
 
 
 .loadingDiv {
-	/*display: none;*/
-	display: inline;
+	display: none;
 	top:0;
 	left:0;
 	position:absolute;

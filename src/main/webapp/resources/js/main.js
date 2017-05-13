@@ -6,11 +6,11 @@ $(document).ready(function() {
 		async: false,
 		beforeSend: function(){
 			console.log('BEFORE SEND');
-			showElement($('.loadingDiv'));
+			$('.loadingDiv').show();
 		},
 		complete : function(){
 			console.log('COMPLETE SEND');
-			hideElement($('.loadingDiv'));
+			$('.loadingDiv').hide();
 		},		
 	});	
 	/*=========================*/
