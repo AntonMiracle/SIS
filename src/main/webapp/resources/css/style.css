@@ -28,8 +28,7 @@ input {
 }
 
 
-.loadingDiv {
-	display: none;
+.loadingDiv {	
 	top:0;
 	left:0;
 	position:absolute;
@@ -39,7 +38,6 @@ input {
 	z-index: 1000;	
 }
 .loadingDiv img, #load{
-	display: none;
 	top: 50%;
 	left: 50%;
 	position: absolute;

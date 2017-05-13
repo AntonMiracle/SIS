@@ -2,19 +2,20 @@ $(document).ready(function() {
 	/*======================*/
 	/*=    global setup    =*/
 	/*======================*/
+	$('.loadingDiv').hide();
 	$.ajaxSetup({		
 		async: false,
 		beforeSend: function(){
 			console.log('BEFORE SEND');
-			//$('.loadingDiv').show();
-			$('#load').show();
+			$('.loadingDiv').show();
+			//$('#load').show();
 			//$('.loadingDiv').css('display','inline');
 		},
 		complete : function(){
 			console.log('COMPLETE SEND');
-			$('#load').hide();
+			//$('#load').hide();
 			//$('.loadingDiv').css('display','none');
-			//$('.loadingDiv').hide();
+			$('.loadingDiv').hide();
 		},		
 	});	
 	 $(document).ajaxStart(function () {
