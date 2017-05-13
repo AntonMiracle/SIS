@@ -1,14 +1,14 @@
-$(document).ready(function() {	
-	/*======================*/
-	/*=    global setup    =*/
-	/*======================*/
-	$('.loadingDiv').bind('ajaxStart', function(){
+$('.loadingDiv').bind('ajaxStart', function(){
 		console.log('BIND START');
 	    $(this).show();
 	}).bind('ajaxStop', function(){
 		console.log('BIND END');
 	    $(this).hide();
 	});
+$(document).ready(function() {	
+	/*======================*/
+	/*=    global setup    =*/
+	/*======================*/	
 	$.ajaxSetup({		
 		async: false,
 		beforeSend: function(){
