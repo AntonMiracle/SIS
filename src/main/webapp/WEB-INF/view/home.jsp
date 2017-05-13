@@ -19,9 +19,8 @@
 		<!-- loading div -->
 		<!-- =========== -->
 		<div class="loadingDiv">		 
-			<!--  <img src="resources/css/load.gif"> -->	
-		</div>
-		<img src="resources/css/load.gif" id="load">	
+			<img src="resources/css/load.gif"> 	
+		</div>			
 		<!-- ========= -->
 		<!-- home menu -->
 		<!-- ========= -->
