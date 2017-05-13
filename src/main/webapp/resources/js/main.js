@@ -2,12 +2,18 @@ $(document).ready(function() {
 	/*======================*/
 	/*=    global setup    =*/
 	/*======================*/
-	
+	$('.loadingDiv').bind('ajaxStart', function(){
+		console.log('BIND START');
+	    $(this).show();
+	}).bind('ajaxStop', function(){
+		console.log('BIND END');
+	    $(this).hide();
+	});
 	$.ajaxSetup({		
 		async: false,
 		beforeSend: function(){
 			console.log('BEFORE SEND');
-			$('.loadingDiv').show();
+			//$('.loadingDiv').show();
 			//$('#load').show();
 			//$('.loadingDiv').css('display','inline');
 		},
@@ -15,7 +21,7 @@ $(document).ready(function() {
 			console.log('COMPLETE SEND');
 			//$('#load').hide();
 			//$('.loadingDiv').css('display','none');
-			$('.loadingDiv').hide();
+			//$('.loadingDiv').hide();
 		},		
 	});	
 	 $(document).ajaxStart(function () {
