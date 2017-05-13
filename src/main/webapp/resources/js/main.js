@@ -3,14 +3,14 @@ $(document).ready(function() {
 	/*=    global setup    =*/
 	/*======================*/
 	$.ajaxSetup({
-		async: false
-		});
-	$.ajaxStart(function() {
-	  	showElement($('.loadingDiv'));	    
-	});
-	$.ajaxStop(function() {
-	    hideElement($('.loadingDiv'));
-	});
+		async: false,
+		beforeSend: function(){
+			showElement($('.loadingDiv'));
+		},
+		complete : function(){
+			hideElement($('.loadingDiv'));
+		},
+	});	
 	/*=========================*/
 	/*=    global variable    =*/
 	/*=========================*/
