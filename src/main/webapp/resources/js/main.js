@@ -5,11 +5,11 @@ $(document).ready(function() {
 	$.ajaxSetup({
 		async: false
 		});
-	$(document).ajaxStart(function() {
-	  	$('.loadingDiv').show();	    
+	ajaxStart(function() {
+	  	showElement($('.loadingDiv'));	    
 	});
-	$(document).ajaxStop(function() { 
-		$('.loadingDiv').hide();	
+	ajaxStop(function() {
+	    hideElement($('.loadingDiv'));
 	});
 	/*=========================*/
 	/*=    global variable    =*/
