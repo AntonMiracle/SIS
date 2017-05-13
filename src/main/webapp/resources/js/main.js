@@ -5,10 +5,10 @@ $(document).ready(function() {
 	$.ajaxSetup({
 		async: false
 		});
-	ajaxStart(function() {
+	$.ajaxStart(function() {
 	  	showElement($('.loadingDiv'));	    
 	});
-	ajaxStop(function() {
+	$.ajaxStop(function() {
 	    hideElement($('.loadingDiv'));
 	});
 	/*=========================*/
