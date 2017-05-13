@@ -15,10 +15,12 @@ $(document).ready(function() {
 	});	
 	 $(document).ajaxStart(function () {
 	     //showElement($('.loadingDiv'));   
-		 $('.loadingDiv').show();
+		 //$('.loadingDiv').show();
+		 $('.loadingDiv').css('display','inline');
 	    }).ajaxStop(function () {
 	    //	hideElement($('.loadingDiv'));
-	      $('.loadingDiv').hide();
+	     // $('.loadingDiv').hide();
+	    	$('.loadingDiv').css('display','none');
 	    });
 	/*=========================*/
 	/*=    global variable    =*/
