@@ -14,10 +14,10 @@ $(document).ready(function() {
 		},*/		
 	});	
 	 $(document).ajaxStart(function () {
-	     showElement('.loadingDiv');   
+	     showElement($('.loadingDiv'));   
 		 //$('.loadingDiv').show();
 	    }).ajaxStop(function () {
-	    	hideElement('.loadingDiv');
+	    	hideElement($('.loadingDiv'));
 	        //$('.loadingDiv').hide();
 	    });
 	/*=========================*/
