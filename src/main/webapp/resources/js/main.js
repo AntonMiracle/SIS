@@ -14,11 +14,11 @@ $(document).ready(function() {
 		},*/		
 	});	
 	 $(document).ajaxStart(function () {
-	     showElement($('.loadingDiv'));   
-		 //$('.loadingDiv').show();
+	     //showElement($('.loadingDiv'));   
+		 $('.loadingDiv').show();
 	    }).ajaxStop(function () {
-	    	hideElement($('.loadingDiv'));
-	        //$('.loadingDiv').hide();
+	    //	hideElement($('.loadingDiv'));
+	      $('.loadingDiv').hide();
 	    });
 	/*=========================*/
 	/*=    global variable    =*/
