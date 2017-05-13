@@ -6,10 +6,10 @@ $(document).ready(function() {
 		async: false
 		});
 	$(document).ajaxStart(function() {
-	  	showElement($('.loadingDiv'));	    
+	  	$('.loadingDiv').show();	    
 	});
-	$(document).ajaxStop(function() {
-	    hideElement($('.loadingDiv'));
+	$(document).ajaxStop(function() { 
+		$('.loadingDiv').hide();	
 	});
 	/*=========================*/
 	/*=    global variable    =*/
