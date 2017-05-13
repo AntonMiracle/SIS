@@ -4,23 +4,27 @@ $(document).ready(function() {
 	/*======================*/
 	$.ajaxSetup({		
 		async: false,
-		/*beforeSend: function(){
+		beforeSend: function(){
 			console.log('BEFORE SEND');
-			$('.loadingDiv').show();
+			//$('.loadingDiv').show();
+			$('.loadingDiv').css('display','inline');
 		},
 		complete : function(){
 			console.log('COMPLETE SEND');
-			$('.loadingDiv').hide();
-		},*/		
+			$('.loadingDiv').css('display','none');
+			//$('.loadingDiv').hide();
+		},		
 	});	
 	 $(document).ajaxStart(function () {
+		 console.log('ajax start');
 	     //showElement($('.loadingDiv'));   
 		 //$('.loadingDiv').show();
-		 $('.loadingDiv').css('display','inline');
+		 //$('.loadingDiv').css('display','inline');
 	    }).ajaxStop(function () {
+			 console.log('ajax stop');
 	    //	hideElement($('.loadingDiv'));
 	     // $('.loadingDiv').hide();
-	    	$('.loadingDiv').css('display','none');
+	    	//$('.loadingDiv').css('display','none');
 	    });
 	/*=========================*/
 	/*=    global variable    =*/
