@@ -436,12 +436,7 @@ $(document).ready(function() {
 			data : JSON.stringify(data),
 			contentType : 'application/json; charset=utf-8',
 			dataType : 'json',
-			async : false,		   
-			success : function() {
-			},
-			error : function() {
-				console.log('SAVE DATA ERROR');
-			}
+			/*async : false,*/
 		});
 	};
 	
