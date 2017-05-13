@@ -2,14 +2,16 @@ $(document).ready(function() {
 	/*======================*/
 	/*=    global setup    =*/
 	/*======================*/
-	$.ajaxSetup({
+	$.ajaxSetup({		
 		async: false,
 		beforeSend: function(){
+			console.log('BEFORE SEND');
 			showElement($('.loadingDiv'));
 		},
 		complete : function(){
+			console.log('COMPLETE SEND');
 			hideElement($('.loadingDiv'));
-		},
+		},		
 	});	
 	/*=========================*/
 	/*=    global variable    =*/
@@ -435,8 +437,7 @@ $(document).ready(function() {
 			type : method,
 			data : JSON.stringify(data),
 			contentType : 'application/json; charset=utf-8',
-			dataType : 'json',
-			/*async : false,*/
+			dataType : 'json'
 		});
 	};
 	
