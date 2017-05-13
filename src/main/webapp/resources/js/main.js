@@ -7,11 +7,13 @@ $(document).ready(function() {
 		beforeSend: function(){
 			console.log('BEFORE SEND');
 			//$('.loadingDiv').show();
-			$('.loadingDiv').css('display','inline');
+			$('#load').show();
+			//$('.loadingDiv').css('display','inline');
 		},
 		complete : function(){
 			console.log('COMPLETE SEND');
-			$('.loadingDiv').css('display','none');
+			$('#load').hide();
+			//$('.loadingDiv').css('display','none');
 			//$('.loadingDiv').hide();
 		},		
 	});	

@@ -38,7 +38,8 @@ input {
 	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 1000;	
 }
-.loadingDiv img{
+.loadingDiv img, #load{
+	display: none;
 	top: 50%;
 	left: 50%;
 	position: absolute;
