@@ -4,15 +4,22 @@ $(document).ready(function() {
 	/*======================*/
 	$.ajaxSetup({		
 		async: false,
-		beforeSend: function(){
+		/*beforeSend: function(){
 			console.log('BEFORE SEND');
 			$('.loadingDiv').show();
 		},
 		complete : function(){
 			console.log('COMPLETE SEND');
 			$('.loadingDiv').hide();
-		},		
+		},*/		
 	});	
+	 $(document).ajaxStart(function () {
+	     showElement('.loadingDiv');   
+		 //$('.loadingDiv').show();
+	    }).ajaxStop(function () {
+	    	hideElement('.loadingDiv');
+	        //$('.loadingDiv').hide();
+	    });
 	/*=========================*/
 	/*=    global variable    =*/
 	/*=========================*/
