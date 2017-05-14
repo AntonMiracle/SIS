@@ -17,14 +17,12 @@ $(document).ready(function() {
 	});	
 	 $(document).ajaxStart(function () {
 		 console.log('ajax start');		
-		 showElement($('#loadDiv'));   
-		 //$('.loadDiv').show();
-		 //$('.loadDiv').css('display','inline');
+		 //showElement($('#loadDiv')); -   
+		 $('#loadDiv').show();
 	    }).ajaxStop(function () {
 			 console.log('ajax stop');
-	    	hideElement($('#loadDiv'));
-	     // $('.loadDiv').hide();
-	    	//$('.loadDiv').css('display','none');
+//	    	hideElement($('#loadDiv'));-
+	      $('#loadDiv').hide();
 	    });
 	/*=========================*/
 	/*=    global variable    =*/
