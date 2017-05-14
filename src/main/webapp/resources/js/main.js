@@ -10,30 +10,28 @@ $(document).ready(function() {
 	/*=    global setup    =*/
 	/*======================*/	
 	$.ajaxSetup({		
-		//async: false,
+		async: false,
 		beforeSend: function(){
 			console.log('BEFORE SEND');
-			//$('.loadingDiv').show();
-			//$('#load').show();
-			//$('.loadingDiv').css('display','inline');
+			//$('.loadDiv').show();
+			//$('.loadDiv').css('display','inline');
 		},
 		complete : function(){
 			console.log('COMPLETE SEND');
-			//$('#load').hide();
-			//$('.loadingDiv').css('display','none');
-			//$('.loadingDiv').hide();
+			//$('.loadDiv').css('display','none');
+			//$('.loadDiv').hide();
 		},		
 	});	
 	 $(document).ajaxStart(function () {
 		 console.log('ajax start');
-		 showElement($('.loadingDiv'));   
-		 //$('.loadingDiv').show();
-		 //$('.loadingDiv').css('display','inline');
+		 showElement($('.loadDiv'));   
+		 //$('.loadDiv').show();
+		 //$('.loadDiv').css('display','inline');
 	    }).ajaxStop(function () {
 			 console.log('ajax stop');
-	    	hideElement($('.loadingDiv'));
-	     // $('.loadingDiv').hide();
-	    	//$('.loadingDiv').css('display','none');
+	    	hideElement($('.loadDiv'));
+	     // $('.loadDiv').hide();
+	    	//$('.loadDiv').css('display','none');
 	    });
 	/*=========================*/
 	/*=    global variable    =*/
@@ -465,11 +463,11 @@ $(document).ready(function() {
 	
 	function getAndReturnData(relativeUrl){
 		var result;
-		//$('.loadingDiv').show();
+		//$('.loadDiv').show();
 		$.getJSON( rootUrl + relativeUrl, function( data ) {	      
 			result = data;			
 			});	
-		//$('.loadingDiv').hide();
+		//$('.loadDiv').hide();
 		return result;
 	};
 	

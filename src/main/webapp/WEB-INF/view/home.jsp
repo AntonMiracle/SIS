@@ -18,7 +18,7 @@
 		<!-- ============ -->
 		<!-- loading div -->
 		<!-- =========== -->
-		<div class="loadingDiv">		 
+		<div class="loadDiv">		 
 			<img src="resources/css/load.gif"> 	
 		</div>			
 		<!-- ========= -->
