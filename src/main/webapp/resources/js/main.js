@@ -10,7 +10,7 @@ $(document).ready(function() {
 	/*=    global setup    =*/
 	/*======================*/	
 	$.ajaxSetup({		
-		async: false,
+		//async: false,
 		beforeSend: function(){
 			console.log('BEFORE SEND');
 			//$('.loadingDiv').show();
@@ -26,12 +26,12 @@ $(document).ready(function() {
 	});	
 	 $(document).ajaxStart(function () {
 		 console.log('ajax start');
-	     //showElement($('.loadingDiv'));   
+		 showElement($('.loadingDiv'));   
 		 //$('.loadingDiv').show();
 		 //$('.loadingDiv').css('display','inline');
 	    }).ajaxStop(function () {
 			 console.log('ajax stop');
-	    //	hideElement($('.loadingDiv'));
+	    	hideElement($('.loadingDiv'));
 	     // $('.loadingDiv').hide();
 	    	//$('.loadingDiv').css('display','none');
 	    });
@@ -453,8 +453,7 @@ $(document).ready(function() {
 	/*=======================*/
 	/*=    ajax function    =*/
 	/*=======================*/
-	function saveData(relativeUrl, method, data) {	
-		$('.loadingDiv').show();
+	function saveData(relativeUrl, method, data) {
 		$.ajax({
 			url : rootUrl + relativeUrl,
 			type : method,
@@ -462,16 +461,15 @@ $(document).ready(function() {
 			contentType : 'application/json; charset=utf-8',
 			dataType : 'json'
 		});
-		$('.loadingDiv').hide();
 	};
 	
 	function getAndReturnData(relativeUrl){
 		var result;
-		$('.loadingDiv').show();
+		//$('.loadingDiv').show();
 		$.getJSON( rootUrl + relativeUrl, function( data ) {	      
 			result = data;			
 			});	
-		$('.loadingDiv').hide();
+		//$('.loadingDiv').hide();
 		return result;
 	};
 	
@@ -562,7 +560,7 @@ $(document).ready(function() {
 	
 	function updateClientsTable(){
 		clientsUsers = getClients();
-//		$('#clientsTableList').empty();
+		$('#clientsTableList').empty();
 		$('#clientsTableList').append('<tr id="allClientsTableTitle">'
 				+'<td>NAME</td>'
 				+'<td>SURNAME</td>'
