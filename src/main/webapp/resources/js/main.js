@@ -18,11 +18,11 @@ $(document).ready(function() {
 	 $(document).ajaxStart(function () {
 		 console.log('ajax start');		
 		 //showElement($('#loadDiv')); -   
-		 $('#loadDiv').show();
+//		 $('#loadDiv').show();
 	    }).ajaxStop(function () {
 			 console.log('ajax stop');
 //	    	hideElement($('#loadDiv'));-
-	      $('#loadDiv').hide();
+//	      $('#loadDiv').hide();
 	    });
 	/*=========================*/
 	/*=    global variable    =*/
@@ -454,11 +454,11 @@ $(document).ready(function() {
 	
 	function getAndReturnData(relativeUrl){
 		var result;
-		//$('.loadDiv').show();
+		$('#loadDiv').show();
 		$.getJSON( rootUrl + relativeUrl, function( data ) {	      
 			result = data;			
 			});	
-		//$('.loadDiv').hide();
+		$('#loadDiv').hide();
 		return result;
 	};
 	
