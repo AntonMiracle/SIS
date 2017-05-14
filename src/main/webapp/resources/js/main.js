@@ -1,10 +1,3 @@
-$('.loadingDiv').bind('ajaxStart', function(){
-		console.log('BIND START');
-	    $(this).show();
-	}).bind('ajaxStop', function(){
-		console.log('BIND END');
-	    $(this).hide();
-	});
 $(document).ready(function() {	
 	/*======================*/
 	/*=    global setup    =*/
@@ -13,23 +6,23 @@ $(document).ready(function() {
 		async: false,
 		beforeSend: function(){
 			console.log('BEFORE SEND');
-			//$('.loadDiv').show();
+			//$('#loadDiv').show();
 			//$('.loadDiv').css('display','inline');
 		},
 		complete : function(){
 			console.log('COMPLETE SEND');
-			//$('.loadDiv').css('display','none');
+			//$('#loadDiv').css('display','none');
 			//$('.loadDiv').hide();
 		},		
 	});	
 	 $(document).ajaxStart(function () {
-		 console.log('ajax start');
-		 showElement($('.loadDiv'));   
+		 console.log('ajax start');		
+		 showElement($('#loadDiv'));   
 		 //$('.loadDiv').show();
 		 //$('.loadDiv').css('display','inline');
 	    }).ajaxStop(function () {
 			 console.log('ajax stop');
-	    	hideElement($('.loadDiv'));
+	    	hideElement($('#loadDiv'));
 	     // $('.loadDiv').hide();
 	    	//$('.loadDiv').css('display','none');
 	    });
