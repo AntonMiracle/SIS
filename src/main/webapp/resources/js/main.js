@@ -3,14 +3,14 @@ $(document).ready(function() {
 	/*=    global setup    =*/
 	/*======================*/	
 	$.ajaxSetup({		
-		async: false,
+		//async: false,
 		beforeSend: function(){
 			console.log('BEFORE SEND');
-//			loadingScreen();				
+			loadingScreen();				
 		},
 		complete : function(){
 			console.log('COMPLETE SEND');
-//			loadingScreen();	
+			loadingScreen();	
 		},		
 	});	 
 	/*=========================*/
@@ -57,6 +57,7 @@ $(document).ready(function() {
 	//check input username & password
 	$('.loginIn #in').click(function(){	
 		makeFirstAfterClick('.loginIn #in');
+		return true;//FOR TESTING
 		if(compareUsernameAndPassword($('.loginInput input#username').val(),$('.loginInput input#password').val())){
 			hideElement($('.loginInput td#loginTip'));
 			return true;			
@@ -536,7 +537,7 @@ $(document).ready(function() {
 	
 	function updateClientsTable(){
 		console.log('create table');
-		loadingScreen();
+//		loadingScreen();
 		clientsUsers = getClients();
 		$('#clientsTableList').empty();
 		$('#clientsTableList').append('<tr id="allClientsTableTitle">'
@@ -557,7 +558,7 @@ $(document).ready(function() {
 					+'</tr>'
 				);
 		});
-		loadingScreen();
+//		loadingScreen();
 		console.log('finish create table');
 		};
 		var loadingScreenActive = false;
