@@ -29,7 +29,6 @@ function switchElementTextValueAndSize(element, fontSize, text) {
 		if (fontSize !== 'false') {
 			element.css('font-size', fontSize + 'px');
 		}
-		;
 		setTextInsideElement(element, text);
 	}
 	;

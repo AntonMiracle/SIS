@@ -37,15 +37,12 @@ $(document).ready(function() {
 	
 	$('.menuLogin #info').click(function() {
 		makeFirstAfterClick('.menuLogin #info');
-		loadingScreen();
 		if(isInfoContentActive){
 			hideProjectInformationContent();
 		}else{
 			showProjectInformationContent();
 		}
-		setTimeout(function () {
-			loadingScreen();
-		},3000);
+		
 	});	
 	
 	//check input username & password
@@ -162,14 +159,19 @@ $(document).ready(function() {
 	});		
 	/* clients*/
 	var clientsRowId;
-	$('.menuHome #allClients').click(function(){
+	$('.menuHome #allClients').click(function(){		
 		hideAllHomeTable();
 		showAllClientsTable();
 		updateClientsTable();
 	});
 	$('#clientsTableList').on('click', '.clientsRow', function() {		
 		clientsRowId = $(this).attr('id');		
-		hideAllHomeTable();	
+		hideAllHomeTable();
+		///////////////test
+		loadingScreen();
+		setTimeout(function () {
+			loadingScreen();
+		},3000);
 	});	
 
 	/*=======================*/
