@@ -16,12 +16,12 @@ $(document).ready(function() {
 	/*=========================*/
 	/*=    global variable    =*/
 	/*=========================*/
-	var loginContentFlag = true;	
-	var isUpContentActive = false;
-	var isInfoContentActive = false;
-	var isHomeClientsMenuActive = false;
-	var isHomeProposalsMenuActive = false;
-	var isHomeWorkersMenuActive = false;
+//	var loginContentFlag = true;	
+//	var isUpContentActive = false;
+//	var isInfoContentActive = false;
+//	var isHomeClientsMenuActive = false;
+//	var isHomeProposalsMenuActive = false;
+//	var isHomeWorkersMenuActive = false;
 	var loginButtonShow = 1000;	
 	var loginBackgroundShow = 1500;	
 	var rootUrl = location.protocol + '//' + location.host + '/';	
@@ -153,19 +153,19 @@ $(document).ready(function() {
 		}
 	});	
 	/*home menu username*/
-	var isUsernameMenuActive = false;
-	var usernameValue;
-	$('.menuHome #homeUsername').click(function() {
-		if(usernameValue === undefined){
-			usernameValue = $('.menuHome #homeUsername').text();
-		}
-		if(isUsernameMenuActive){
-			hideUsernameMenu();
-		}else{
-			makeFirstAfterClick('.menuHome #homeUsername');
-			showUsernameMenu();
-		}		
-	});	
+//	var isUsernameMenuActive = false;
+//	var usernameValue;
+//	$('.menuHome #homeUsername').click(function() {
+//		if(usernameValue === undefined){
+//			usernameValue = $('.menuHome #homeUsername').text();
+//		}
+//		if(isUsernameMenuActive){
+//			hideUsernameMenu();
+//		}else{
+//			makeFirstAfterClick('.menuHome #homeUsername');
+//			showUsernameMenu();
+//		}		
+//	});	
 	
 	/* clients*/
 	var clientsRowId;

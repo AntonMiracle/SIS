@@ -21,15 +21,14 @@ function setTextInsideElement(element, text) {
 };
 function setElementValue(element, text) {
 	element = $(element);
-	element.val(text);		
+	element.val(text);
 };
 function setButtonTitle(buttonElement, text) {
 	buttonElement = $(buttonElement);
-	buttonElement.prop('title', text);		
+	buttonElement.prop('title', text);
 };
-/* ====================== */
-/* = show/hide function = */
-/* ====================== */
+
+// show/hide function
 function hideElement(element) {
 	element = $(element);
 	element.hide();
@@ -39,26 +38,18 @@ function showElement(element) {
 	element = $(element);
 	element.show();
 };
-
-function hideLoginUpContentTips() {
-	hideElement($('.loginUpInput #usernameTip'));
-	hideElement($('.loginUpInput #passwordTip'));
-	hideElement($('.loginUpInput #confirmTip'));
-	hideElement($('.loginUpInput #nameTip'));
-	hideElement($('.loginUpInput #phoneTip'));
-};
 // login UP content
+var isUpContentActive = false;
 function showUpContent() {
-	setTextInsideElement($('.menuLogin #up'), 'BACK');
-	hideElement($('.loginInput'));
-	hideElement($('.menuLogin #info'));
-	hideElement($('.loginInput td#loginTip'));
+	setTextInsideElement('.menuLogin #up', 'BACK');
+	hideElement('.loginInput');
+	hideElement('.menuLogin #info');
+	hideElement('.loginInput td#loginTip');
 	cleanLoginContentFields();
 	cleanUpContentFields();
-	showElement($('.loginUpContent'));
+	showElement('.loginUpContent');
 	isUpContentActive = true;
 };
-
 function hideUpContent() {
 	if ($('.menuLogin #up').text() === 'BACK') {
 		setTextInsideElement($('.menuLogin #up'), 'UP');
@@ -68,15 +59,22 @@ function hideUpContent() {
 		setTextInsideElement($('.menuLogin #up'), 'U');
 	}
 	;
-	setButtonTitle($('.menuLogin #up'), 'registration');
-	hideElement($('.loginUpContent'));
+	setButtonTitle('.menuLogin #up', 'registration');
+	hideElement('.loginUpContent');
 	hideLoginUpContentTips();
-	showElement($('.loginInput'));
-	showElement($('.menuLogin #info'));
+	showElement('.loginInput');
+	showElement('.menuLogin #info');
 	isUpContentActive = false;
 };
-
+function hideLoginUpContentTips() {
+	hideElement($('.loginUpInput #usernameTip'));
+	hideElement($('.loginUpInput #passwordTip'));
+	hideElement($('.loginUpInput #confirmTip'));
+	hideElement($('.loginUpInput #nameTip'));
+	hideElement($('.loginUpInput #phoneTip'));
+};
 // Project information content
+var isInfoContentActive = false;
 function hideProjectInformationContent() {
 	setTextInsideElement($('.menuLogin #info'), 'i');
 	showElement($('.menuLogin #up'));
@@ -84,7 +82,6 @@ function hideProjectInformationContent() {
 	hideElement($('.loginProjectInfo'));
 	isInfoContentActive = false;
 };
-
 function showProjectInformationContent() {
 	setTextInsideElement($('.menuLogin #info'), 'BACK');
 	showElement($('.loginProjectInfo'));
@@ -94,6 +91,7 @@ function showProjectInformationContent() {
 	isInfoContentActive = true;
 };
 // home clients menu
+var isHomeClientsMenuActive = false;
 function showHomeClientsMenu() {
 	setTextInsideElement($('.menuHome .homeLogo'), 'CLIENTS');
 	setTextInsideElement($('.menuHome #clients'), 'BACK');
@@ -115,6 +113,7 @@ function hideHomeClientsMenu() {
 	isHomeClientsMenuActive = false;
 };
 // home proposals menu
+var isHomeProposalsMenuActive = false;
 function showHomeProposalsMenu() {
 	setTextInsideElement($('.menuHome .homeLogo'), 'PROPOSALS');
 	setTextInsideElement($('.menuHome #proposals'), 'BACK');
@@ -136,6 +135,7 @@ function hideHomeProposalsMenu() {
 	isHomeProposalsMenuActive = false;
 };
 // home workers menu
+var isHomeWorkersMenuActive = false;
 function showHomeWorkersMenu() {
 	setTextInsideElement($('.menuHome .homeLogo'), 'WORKERS');
 	setTextInsideElement($('.menuHome #workers'), 'BACK');
@@ -159,6 +159,19 @@ function hideHomeWorkersMenu() {
 	isHomeWorkersMenuActive = false;
 };
 // username menu
+var isUsernameMenuActive = false;
+var usernameValue;
+$('.menuHome #homeUsername').click(function() {
+	if (usernameValue === undefined) {
+		usernameValue = $('.menuHome #homeUsername').text();
+	}
+	if (isUsernameMenuActive) {
+		hideUsernameMenu();
+	} else {
+		makeFirstAfterClick('.menuHome #homeUsername');
+		showUsernameMenu();
+	}
+});
 function hideUsernameMenu() {
 	setTextInsideElement($('.menuHome .homeLogo'), 'SIS');
 	setButtonTitle($('.menuHome #homeUsername'), 'USERNAME');
