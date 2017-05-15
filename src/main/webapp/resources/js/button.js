@@ -1,21 +1,28 @@
 //$(document).ready(function() {	
+	/*===================*/
+	/*=    loginmenu    =*/
+	/*===================*/
+	$('.menuLogin #up').mouseenter(function() {
+		switchElementTextValueAndSize('.menuLogin #up', 'false', 'UP')		
+	});
+	$('.menuLogin #up').mouseleave(function() {
+		switchElementTextValueAndSize('.menuLogin #up', 'false', 'U')
+	});	
+	$('.menuLogin #info').mouseenter(function() {
+		switchElementTextValueAndSize('.menuLogin #info', 'false', 'info')		
+	});
+	$('.menuLogin #info').mouseleave(function() {
+		switchElementTextValueAndSize('.menuLogin #info', 'false', 'i')
+	});
+	/*===================*/
+	/*=    home menu    =*/
+	/*===================*/
+	//clients
 	$('.menuHome #clients').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #clients', '20', 'CLIENTS');
 	});
 	$('.menuHome #clients').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #clients', '25', 'C');
-	});
-	$('.menuHome #proposals').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #proposals', '19', 'PROPOSALS');
-	});
-	$('.menuHome #proposals').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #proposals', '25', 'P');
-	});
-	$('.menuHome #workers').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #workers', '20', 'WORKERS');
-	});
-	$('.menuHome #workers').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #workers', '25', 'W');
 	});
 	$('.menuHome #newClient').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #newClient', '20', 'NEW');
@@ -29,6 +36,14 @@
 	$('.menuHome #allClients').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #allClients', '25', 'A');
 	});
+
+	//proposals
+	$('.menuHome #proposals').mouseenter(function() {
+		switchElementTextValueAndSize('.menuHome #proposals', '19', 'PROPOSALS');
+	});
+	$('.menuHome #proposals').mouseleave(function() {
+		switchElementTextValueAndSize('.menuHome #proposals', '25', 'P');
+	});
 	$('.menuHome #newProposal').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #newProposal', '20', 'NEW');
 	});
@@ -40,6 +55,14 @@
 	});
 	$('.menuHome #allProposals').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #allProposals', '25', 'A');
+	});
+
+	//workers
+	$('.menuHome #workers').mouseenter(function() {
+		switchElementTextValueAndSize('.menuHome #workers', '20', 'WORKERS');
+	});
+	$('.menuHome #workers').mouseleave(function() {
+		switchElementTextValueAndSize('.menuHome #workers', '25', 'W');
 	});
 	$('.menuHome #newWorker').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #newWorker', '20', 'NEW');
@@ -59,6 +82,8 @@
 	$('.menuHome #tasks').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #tasks', '25', 'T');
 	});
+
+	//user menu
 	$('.menuHome #out').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #out', '20', 'OUT');
 	});

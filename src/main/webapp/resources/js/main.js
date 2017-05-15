@@ -39,12 +39,12 @@ $(document).ready(function() {
 	setTimeout("$('.menuHome').show();", loginButtonShow);
 	
 	//login project info	
-	$('.menuLogin #info').mouseenter(function() {
-		switchElementTextValueAndSize('.menuLogin #info', 'false', 'info')		
-	});
-	$('.menuLogin #info').mouseleave(function() {
-		switchElementTextValueAndSize('.menuLogin #info', 'false', 'i')
-	});
+//	$('.menuLogin #info').mouseenter(function() {
+//		switchElementTextValueAndSize('.menuLogin #info', 'false', 'info')		
+//	});
+//	$('.menuLogin #info').mouseleave(function() {
+//		switchElementTextValueAndSize('.menuLogin #info', 'false', 'i')
+//	});
 	$('.menuLogin #info').click(function() {
 		makeFirstAfterClick('.menuLogin #info');
 		if(isInfoContentActive){
@@ -69,12 +69,12 @@ $(document).ready(function() {
 	});
 	
 	//login UP	
-	$('.menuLogin #up').mouseenter(function() {
-		switchElementTextValueAndSize('.menuLogin #up', 'false', 'UP')		
-	});
-	$('.menuLogin #up').mouseleave(function() {
-		switchElementTextValueAndSize('.menuLogin #up', 'false', 'U')
-	});	
+//	$('.menuLogin #up').mouseenter(function() {
+//		switchElementTextValueAndSize('.menuLogin #up', 'false', 'UP')		
+//	});
+//	$('.menuLogin #up').mouseleave(function() {
+//		switchElementTextValueAndSize('.menuLogin #up', 'false', 'U')
+//	});	
 	
 	$('.menuLogin #up').click(function(){	
 		makeFirstAfterClick('.menuLogin #up');
