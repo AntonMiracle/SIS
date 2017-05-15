@@ -6,8 +6,8 @@ $(document).ready(function() {
 		async: false,
 		beforeSend: function(){
 			console.log('BEFORE SEND');
-			$('#loadDiv').show();			
-			$('#test').show();			
+			$('#loadDiv').show(1);			
+			$('#test').show(1);			
 		},
 		complete : function(){
 			console.log('COMPLETE SEND');
