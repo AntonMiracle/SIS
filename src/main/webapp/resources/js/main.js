@@ -334,19 +334,19 @@ $(document).ready(function() {
 	/*========================*/
 	/*=    clean function    =*/
 	/*========================*/	
-	function cleanUpContentFields(){
-		setElementValue($('.loginUpInput #username'), '');
-		setElementValue($('.loginUpInput #password'), '');
-		setElementValue($('.loginUpInput #confirm'), '');
-		setElementValue($('.loginUpInput #name'), '');
-		setElementValue($('.loginUpInput #surname'), '');
-		setElementValue($('.loginUpInput #phone'), '');
-		setElementValue($('.loginUpInput #mail'), '');
-	};
-	function cleanLoginContentFields(){
-		setElementValue($('.loginInput input#username'), '');
-		setElementValue($('.loginInput input#password'), '');
-	};
+//	function cleanUpContentFields(){
+//		setElementValue($('.loginUpInput #username'), '');
+//		setElementValue($('.loginUpInput #password'), '');
+//		setElementValue($('.loginUpInput #confirm'), '');
+//		setElementValue($('.loginUpInput #name'), '');
+//		setElementValue($('.loginUpInput #surname'), '');
+//		setElementValue($('.loginUpInput #phone'), '');
+//		setElementValue($('.loginUpInput #mail'), '');
+//	};
+//	function cleanLoginContentFields(){
+//		setElementValue($('.loginInput input#username'), '');
+//		setElementValue($('.loginInput input#password'), '');
+//	};
 	
 	/*=======================*/
 	/*=    ajax function    =*/
@@ -403,13 +403,13 @@ $(document).ready(function() {
 //		element.text(text);		
 //	};
 	
-	function setElementValue(element, text) {
-		element.val(text);		
-	};
+//	function setElementValue(element, text) {
+//		element.val(text);		
+//	};
 	
-	function setButtonTitle(buttonElement, text) {
-		buttonElement.prop('title', text);		
-	};
+//	function setButtonTitle(buttonElement, text) {
+//		buttonElement.prop('title', text);		
+//	};
 	
 	function checkInputData(value,tipElement, error){
 		if(checkInputValuelength(value)){
