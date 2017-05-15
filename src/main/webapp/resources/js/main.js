@@ -20,8 +20,18 @@ $(document).ready(function() {
 			console.log('COMPLETE SEND');
 			loadingScreen();	
 		},		
-	});		
+	});	
 	
+	var loadingScreenActive = false;
+	function loadingScreen() {
+		if (loadingScreenActive) {
+			$('#loadDiv').hide();
+			loadingScreenActive = false;
+		} else {
+			$('#loadDiv').show();
+			loadingScreenActive = true;
+		}
+	}
 	
 	
 	
