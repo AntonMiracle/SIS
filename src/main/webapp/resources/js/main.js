@@ -562,11 +562,18 @@ $(document).ready(function() {
 		};
 		var loadingScreenActive = false;
 		function loadingScreen(){
+			console.log('loading screen function - 1');
 			if(loadingScreenActive){
+				console.log('loading screen function - 2');
 				$('#loadDiv').hide();
+				console.log('loading screen function - 3');
 			}else{
+				console.log('loading screen function - 4');
 				$('#loadDiv').show();
+				console.log('loading screen function - 5');
 				loadingScreenActive = true;
+				console.log('loading screen function - 6');
 			}
+			console.log('loading screen function - 7');
 		}
 	});
