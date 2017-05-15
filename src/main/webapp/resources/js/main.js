@@ -30,21 +30,11 @@ $(document).ready(function() {
 	/*====================*/
 	/*=    login page    =*/
 	/*====================*/
-	//fadein login bacground picture
 	$('#imgbg').fadeIn(loginBackgroundShow);
-	
-	//set visible to other login page element
 	$('.loginInput').fadeIn(500);
 	setTimeout("$('.menuLogin').show();", loginButtonShow);
-	setTimeout("$('.menuHome').show();", loginButtonShow);
+	setTimeout("$('.menuHome').show();", loginButtonShow);	
 	
-	//login project info	
-//	$('.menuLogin #info').mouseenter(function() {
-//		switchElementTextValueAndSize('.menuLogin #info', 'false', 'info')		
-//	});
-//	$('.menuLogin #info').mouseleave(function() {
-//		switchElementTextValueAndSize('.menuLogin #info', 'false', 'i')
-//	});
 	$('.menuLogin #info').click(function() {
 		makeFirstAfterClick('.menuLogin #info');
 		if(isInfoContentActive){
@@ -134,26 +124,7 @@ $(document).ready(function() {
 	/*===================*/
 	/*=    home page    =*/
 	/*===================*/
-	/*=== home menu ==*/
-//	$('.menuHome #clients').mouseenter(function() {
-//		switchElementTextValueAndSize('.menuHome #clients', '20', 'CLIENTS'); 
-//	});
-//	$('.menuHome #clients').mouseleave(function() {
-//		switchElementTextValueAndSize('.menuHome #clients', '25', 'C');
-//	});	
-//	$('.menuHome #proposals').mouseenter(function() {
-//		switchElementTextValueAndSize('.menuHome #proposals', '19', 'PROPOSALS');
-//	});
-//	$('.menuHome #proposals').mouseleave(function() {
-//		switchElementTextValueAndSize('.menuHome #proposals', '25', 'P');	
-//	});	
-//	$('.menuHome #workers').mouseenter(function() {
-//		switchElementTextValueAndSize('.menuHome #workers', '20', 'WORKERS');
-//	});
-//	$('.menuHome #workers').mouseleave(function() {
-//		switchElementTextValueAndSize('.menuHome #workers', '25', 'W');
-//	});
-	
+		
 	/* clients menu */
 	$('.menuHome #clients').click(function() {
 		makeFirstAfterClick('.menuHome #clients');
@@ -162,20 +133,7 @@ $(document).ready(function() {
 		}else{
 			showHomeClientsMenu();			
 		}
-	});	
-//	$('.menuHome #newClient').mouseenter(function() {
-//		switchElementTextValueAndSize('.menuHome #newClient', '20', 'NEW');
-//	});
-//	$('.menuHome #newClient').mouseleave(function() {
-//		switchElementTextValueAndSize('.menuHome #newClient', '25', 'N');
-//	});	
-//	$('.menuHome #allClients').mouseenter(function() {
-//		switchElementTextValueAndSize('.menuHome #allClients', '20', 'ALL');
-//	});
-//	$('.menuHome #allClients').mouseleave(function() {
-//		switchElementTextValueAndSize('.menuHome #allClients', '25', 'A');
-//	});
-	
+	});
 	/* proposals menu*/
 	$('.menuHome #proposals').click(function() {
 		makeFirstAfterClick('.menuHome #proposals');
@@ -185,19 +143,6 @@ $(document).ready(function() {
 			showHomeProposalsMenu();		
 		}
 	});		
-//	$('.menuHome #newProposal').mouseenter(function() {
-//		switchElementTextValueAndSize('.menuHome #newProposal', '20', 'NEW');
-//	});
-//	$('.menuHome #newProposal').mouseleave(function() {
-//		switchElementTextValueAndSize('.menuHome #newProposal', '25', 'N');
-//	});	
-//	$('.menuHome #allProposals').mouseenter(function() {
-//		switchElementTextValueAndSize('.menuHome #allProposals', '20', 'ALL');
-//	});
-//	$('.menuHome #allProposals').mouseleave(function() {
-//		switchElementTextValueAndSize('.menuHome #allProposals', '25', 'A');
-//	});	
-	
 	/* workers menu*/
 	$('.menuHome #workers').click(function() {
 		makeFirstAfterClick('.menuHome #workers');
@@ -207,31 +152,6 @@ $(document).ready(function() {
 			showHomeWorkersMenu();		
 		}
 	});	
-//	$('.menuHome #newWorker').mouseenter(function() {
-//		switchElementTextValueAndSize('.menuHome #newWorker', '20', 'NEW');		
-//	});
-//	$('.menuHome #newWorker').mouseleave(function() {
-//		switchElementTextValueAndSize('.menuHome #newWorker', '25', 'N');
-//	});	
-//	$('.menuHome #allWorkers').mouseenter(function() {
-//		switchElementTextValueAndSize('.menuHome #allWorkers', '20', 'ALL');		
-//	});
-//	$('.menuHome #allWorkers').mouseleave(function() {
-//		switchElementTextValueAndSize('.menuHome #allWorkers', '25', 'A');
-//	});	
-//	$('.menuHome #tasks').mouseenter(function() {
-//		switchElementTextValueAndSize('.menuHome #tasks', '20', 'TASKS');		
-//	});
-//	$('.menuHome #tasks').mouseleave(function() {
-//		switchElementTextValueAndSize('.menuHome #tasks', '25', 'T');
-//	});	
-//	/*home menu username area*/
-//	$('.menuHome #out').mouseenter(function() {
-//		switchElementTextValueAndSize('.menuHome #out', '20', 'OUT');
-//	});
-//	$('.menuHome #out').mouseleave(function() {
-//		switchElementTextValueAndSize('.menuHome #out', '25', 'O');
-//	});	
 	/*home menu username*/
 	var isUsernameMenuActive = false;
 	var usernameValue;
@@ -262,155 +182,155 @@ $(document).ready(function() {
 	/*============================*/
 	/*=    show/hide function    =*/
 	/*============================*/
-	function hideElement(element) {
-		element.hide();
-	};
-	
-	function showElement(element) {
-		element.show();
-	};
-	
-	function hideLoginUpContentTips(){
-		hideElement($('.loginUpInput #usernameTip'));
-		hideElement($('.loginUpInput #passwordTip'));
-		hideElement($('.loginUpInput #confirmTip'));
-		hideElement($('.loginUpInput #nameTip'));
-		hideElement($('.loginUpInput #phoneTip'));
-	};
-	//login UP content
-	function showUpContent(){		
-		setTextInsideElement($('.menuLogin #up'),'BACK');
-		hideElement($('.loginInput'));
-		hideElement($('.menuLogin #info'));
-		hideElement($('.loginInput td#loginTip'));
-		cleanLoginContentFields();
-		cleanUpContentFields();
-		showElement($('.loginUpContent'));
-		isUpContentActive = true;
-	};
-	
-	function hideUpContent(){
-		if($('.menuLogin #up').text() === 'BACK'){
-			setTextInsideElement($('.menuLogin #up'),'UP');
-		};
-		if($('.menuLogin #up').text() === 'B'){
-			setTextInsideElement($('.menuLogin #up'),'U');
-		};				
-		setButtonTitle(	$('.menuLogin #up'), 'registration');
-		hideElement($('.loginUpContent'));		
-		hideLoginUpContentTips();
-		showElement($('.loginInput'));
-		showElement($('.menuLogin #info'));	
-		isUpContentActive = false;
-	};	
-	
-	//Project information content
-	function hideProjectInformationContent(){
-		setTextInsideElement($('.menuLogin #info'),'i');		
-		showElement($('.menuLogin #up'));	
-		showElement($('.loginInput'));
-		hideElement($('.loginProjectInfo'));
-		isInfoContentActive = false;
-	};
-	
-	function showProjectInformationContent(){
-		setTextInsideElement($('.menuLogin #info'),'BACK');
-		showElement($('.loginProjectInfo'));
-		hideElement($('.menuLogin #up'));
-		hideElement($('.loginInput'));
-		hideElement($('.loginInput td#loginTip'));	
-		isInfoContentActive = true;
-	};
-	//home clients menu
-	function showHomeClientsMenu(){
-		setTextInsideElement($('.menuHome .homeLogo'),'CLIENTS');
-		setTextInsideElement($('.menuHome #clients'),'BACK');
-		setButtonTitle($('.menuHome #clients'), 'BACK');
-		showElement($('.menuHome #newClient'));
-		showElement($('.menuHome #allClients'));		
-		hideElement($('.menuHome #proposals'));
-		hideElement($('.menuHome #workers'));		
-		isHomeClientsMenuActive = true;
-	};
-	function hideHomeClientsMenu(){
-		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
-		setButtonTitle($('.menuHome #clients'), 'CLIENTS');
-		setTextInsideElement($('.menuHome #clients'),'CLIENTS');
-		hideElement($('.menuHome #newClient'));
-		hideElement($('.menuHome #allClients'));	
-		showElement($('.menuHome #proposals'));
-		showElement($('.menuHome #workers'));		
-		isHomeClientsMenuActive = false;		
-	};
-	//home proposals menu
-	function showHomeProposalsMenu(){
-		setTextInsideElement($('.menuHome .homeLogo'),'PROPOSALS');
-		setTextInsideElement($('.menuHome #proposals'),'BACK');
-		setButtonTitle($('.menuHome #proposals'), 'BACK');
-		showElement($('.menuHome #newProposal'));
-		showElement($('.menuHome #allProposals'));		
-		hideElement($('.menuHome #clients'));
-		hideElement($('.menuHome #workers'));		
-		isHomeProposalsMenuActive = true;
-	};
-	function hideHomeProposalsMenu(){
-		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
-		setButtonTitle($('.menuHome #proposals'), 'PROPOSALS');
-		setTextInsideElement($('.menuHome #proposals'),'PROPOSALS');
-		hideElement($('.menuHome #newProposal'));
-		hideElement($('.menuHome #allProposals'));	
-		showElement($('.menuHome #clients'));
-		showElement($('.menuHome #workers'));		
-		isHomeProposalsMenuActive = false;		
-	};
-	//home workers menu
-	function showHomeWorkersMenu(){
-		setTextInsideElement($('.menuHome .homeLogo'),'WORKERS');
-		setTextInsideElement($('.menuHome #workers'),'BACK');
-		setButtonTitle($('.menuHome #workers'), 'BACK');
-		showElement($('.menuHome #newWorker'));
-		showElement($('.menuHome #allWorkers'));		
-		showElement($('.menuHome #tasks'));		
-		hideElement($('.menuHome #clients'));
-		hideElement($('.menuHome #proposals'));		
-		isHomeWorkersMenuActive = true;
-	};
-	function hideHomeWorkersMenu(){
-		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
-		setButtonTitle($('.menuHome #workers'), 'WORKERS');
-		setTextInsideElement($('.menuHome #workers'),'WORKERS');
-		hideElement($('.menuHome #newWorker'));
-		hideElement($('.menuHome #allWorkers'));	
-		hideElement($('.menuHome #tasks'));	
-		showElement($('.menuHome #clients'));
-		showElement($('.menuHome #proposals'));		
-		isHomeWorkersMenuActive = false;
-	};
-	//username menu
-	function hideUsernameMenu(){
-		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
-		setButtonTitle($('.menuHome #homeUsername'), 'USERNAME');
-		setTextInsideElement($('.menuHome #homeUsername'),usernameValue);
-		hideElement($('.menuHome #homeUsernameOut'));		
-		isUsernameMenuActive = false;
-	};
-	function showUsernameMenu(){
-		setTextInsideElement($('.menuHome .homeLogo'),usernameValue);
-		setButtonTitle($('.menuHome #homeUsername'), 'CLOSE USERNAME MENU');
-		setTextInsideElement($('.menuHome #homeUsername'),'CLOSE');
-		showElement($('.menuHome #homeUsernameOut'));
-		isUsernameMenuActive = true;
-	};
-	// hide all home tables
-	function hideAllHomeTable(){
-		//clients area		
-		hideElement($('#clientsTableList'));
-	};
-	//home all clients table	
-	function showAllClientsTable(){
-		showElement($('#clientsTableList'));
-	};	
-	
+//	function hideElement(element) {
+//		element.hide();
+//	};
+//	
+//	function showElement(element) {
+//		element.show();
+//	};
+//	
+//	function hideLoginUpContentTips(){
+//		hideElement($('.loginUpInput #usernameTip'));
+//		hideElement($('.loginUpInput #passwordTip'));
+//		hideElement($('.loginUpInput #confirmTip'));
+//		hideElement($('.loginUpInput #nameTip'));
+//		hideElement($('.loginUpInput #phoneTip'));
+//	};
+//	//login UP content
+//	function showUpContent(){		
+//		setTextInsideElement($('.menuLogin #up'),'BACK');
+//		hideElement($('.loginInput'));
+//		hideElement($('.menuLogin #info'));
+//		hideElement($('.loginInput td#loginTip'));
+//		cleanLoginContentFields();
+//		cleanUpContentFields();
+//		showElement($('.loginUpContent'));
+//		isUpContentActive = true;
+//	};
+//	
+//	function hideUpContent(){
+//		if($('.menuLogin #up').text() === 'BACK'){
+//			setTextInsideElement($('.menuLogin #up'),'UP');
+//		};
+//		if($('.menuLogin #up').text() === 'B'){
+//			setTextInsideElement($('.menuLogin #up'),'U');
+//		};				
+//		setButtonTitle(	$('.menuLogin #up'), 'registration');
+//		hideElement($('.loginUpContent'));		
+//		hideLoginUpContentTips();
+//		showElement($('.loginInput'));
+//		showElement($('.menuLogin #info'));	
+//		isUpContentActive = false;
+//	};	
+//	
+//	//Project information content
+//	function hideProjectInformationContent(){
+//		setTextInsideElement($('.menuLogin #info'),'i');		
+//		showElement($('.menuLogin #up'));	
+//		showElement($('.loginInput'));
+//		hideElement($('.loginProjectInfo'));
+//		isInfoContentActive = false;
+//	};
+//	
+//	function showProjectInformationContent(){
+//		setTextInsideElement($('.menuLogin #info'),'BACK');
+//		showElement($('.loginProjectInfo'));
+//		hideElement($('.menuLogin #up'));
+//		hideElement($('.loginInput'));
+//		hideElement($('.loginInput td#loginTip'));	
+//		isInfoContentActive = true;
+//	};
+//	//home clients menu
+//	function showHomeClientsMenu(){
+//		setTextInsideElement($('.menuHome .homeLogo'),'CLIENTS');
+//		setTextInsideElement($('.menuHome #clients'),'BACK');
+//		setButtonTitle($('.menuHome #clients'), 'BACK');
+//		showElement($('.menuHome #newClient'));
+//		showElement($('.menuHome #allClients'));		
+//		hideElement($('.menuHome #proposals'));
+//		hideElement($('.menuHome #workers'));		
+//		isHomeClientsMenuActive = true;
+//	};
+//	function hideHomeClientsMenu(){
+//		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
+//		setButtonTitle($('.menuHome #clients'), 'CLIENTS');
+//		setTextInsideElement($('.menuHome #clients'),'CLIENTS');
+//		hideElement($('.menuHome #newClient'));
+//		hideElement($('.menuHome #allClients'));	
+//		showElement($('.menuHome #proposals'));
+//		showElement($('.menuHome #workers'));		
+//		isHomeClientsMenuActive = false;		
+//	};
+//	//home proposals menu
+//	function showHomeProposalsMenu(){
+//		setTextInsideElement($('.menuHome .homeLogo'),'PROPOSALS');
+//		setTextInsideElement($('.menuHome #proposals'),'BACK');
+//		setButtonTitle($('.menuHome #proposals'), 'BACK');
+//		showElement($('.menuHome #newProposal'));
+//		showElement($('.menuHome #allProposals'));		
+//		hideElement($('.menuHome #clients'));
+//		hideElement($('.menuHome #workers'));		
+//		isHomeProposalsMenuActive = true;
+//	};
+//	function hideHomeProposalsMenu(){
+//		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
+//		setButtonTitle($('.menuHome #proposals'), 'PROPOSALS');
+//		setTextInsideElement($('.menuHome #proposals'),'PROPOSALS');
+//		hideElement($('.menuHome #newProposal'));
+//		hideElement($('.menuHome #allProposals'));	
+//		showElement($('.menuHome #clients'));
+//		showElement($('.menuHome #workers'));		
+//		isHomeProposalsMenuActive = false;		
+//	};
+//	//home workers menu
+//	function showHomeWorkersMenu(){
+//		setTextInsideElement($('.menuHome .homeLogo'),'WORKERS');
+//		setTextInsideElement($('.menuHome #workers'),'BACK');
+//		setButtonTitle($('.menuHome #workers'), 'BACK');
+//		showElement($('.menuHome #newWorker'));
+//		showElement($('.menuHome #allWorkers'));		
+//		showElement($('.menuHome #tasks'));		
+//		hideElement($('.menuHome #clients'));
+//		hideElement($('.menuHome #proposals'));		
+//		isHomeWorkersMenuActive = true;
+//	};
+//	function hideHomeWorkersMenu(){
+//		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
+//		setButtonTitle($('.menuHome #workers'), 'WORKERS');
+//		setTextInsideElement($('.menuHome #workers'),'WORKERS');
+//		hideElement($('.menuHome #newWorker'));
+//		hideElement($('.menuHome #allWorkers'));	
+//		hideElement($('.menuHome #tasks'));	
+//		showElement($('.menuHome #clients'));
+//		showElement($('.menuHome #proposals'));		
+//		isHomeWorkersMenuActive = false;
+//	};
+//	//username menu
+//	function hideUsernameMenu(){
+//		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
+//		setButtonTitle($('.menuHome #homeUsername'), 'USERNAME');
+//		setTextInsideElement($('.menuHome #homeUsername'),usernameValue);
+//		hideElement($('.menuHome #homeUsernameOut'));		
+//		isUsernameMenuActive = false;
+//	};
+//	function showUsernameMenu(){
+//		setTextInsideElement($('.menuHome .homeLogo'),usernameValue);
+//		setButtonTitle($('.menuHome #homeUsername'), 'CLOSE USERNAME MENU');
+//		setTextInsideElement($('.menuHome #homeUsername'),'CLOSE');
+//		showElement($('.menuHome #homeUsernameOut'));
+//		isUsernameMenuActive = true;
+//	};
+//	// hide all home tables
+//	function hideAllHomeTable(){
+//		//clients area		
+//		hideElement($('#clientsTableList'));
+//	};
+//	//home all clients table	
+//	function showAllClientsTable(){
+//		showElement($('#clientsTableList'));
+//	};	
+//	
 	/*========================*/
 	/*=    clean function    =*/
 	/*========================*/	
