@@ -6,11 +6,11 @@ $(document).ready(function() {
 		async: false,
 		beforeSend: function(){
 			console.log('BEFORE SEND');
-			loadingScreen();				
+//			loadingScreen();				
 		},
 		complete : function(){
 			console.log('COMPLETE SEND');
-			loadingScreen();	
+//			loadingScreen();	
 		},		
 	});	 
 	/*=========================*/
