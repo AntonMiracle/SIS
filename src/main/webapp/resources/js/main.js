@@ -22,18 +22,18 @@ $(document).ready(function() {
 //	var isHomeClientsMenuActive = false;
 //	var isHomeProposalsMenuActive = false;
 //	var isHomeWorkersMenuActive = false;
-	var loginButtonShow = 1000;	
-	var loginBackgroundShow = 1500;	
-	var rootUrl = location.protocol + '//' + location.host + '/';	
+//	var loginButtonShow = 1000;	
+//	var loginBackgroundShow = 1500;	
+//	var rootUrl = location.protocol + '//' + location.host + '/';	
 	var clientsUsers;
 	
 	/*====================*/
 	/*=    login page    =*/
 	/*====================*/
-	$('#imgbg').fadeIn(loginBackgroundShow);
+	$('#imgbg').fadeIn(1500);
 	$('.loginInput').fadeIn(500);
-	setTimeout("$('.menuLogin').show();", loginButtonShow);
-	setTimeout("$('.menuHome').show();", loginButtonShow);	
+	setTimeout("$('.menuLogin').show();", 1000);
+	setTimeout("$('.menuHome').show();", 1000);	
 	
 	$('.menuLogin #info').click(function() {
 		makeFirstAfterClick('.menuLogin #info');

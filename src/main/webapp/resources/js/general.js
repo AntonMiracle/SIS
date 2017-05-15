@@ -1,3 +1,4 @@
+var rootUrl = location.protocol + '//' + location.host + '/';
 function switchElementTextValueAndSize(element, fontSize, text) {
 	element = $(element);
 	if ((element.text() === 'B') || (element.text() === 'BACK')) {
@@ -28,7 +29,7 @@ function setButtonTitle(buttonElement, text) {
 	buttonElement.prop('title', text);
 };
 
-// show/hide function
+// show or hide function
 function hideElement(element) {
 	element = $(element);
 	element.hide();
