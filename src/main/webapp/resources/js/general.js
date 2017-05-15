@@ -5,16 +5,18 @@ $(document).ajaxStart(function() {
 $(document).ajaxStop(function() {
 	loadingScreen();
 });
-//var loadingScreenActive = false;
-//function loadingScreen() {
-//	if (loadingScreenActive) {
+var loadingScreenActive = false;
+function loadingScreen() {
+	if (loadingScreenActive) {
+		hideElement($(document).find('#loadDiv'));
 //		$('#loadDiv').hide();
-//		loadingScreenActive = false;
-//	} else {
+		loadingScreenActive = false;
+	} else {
+		showElement($(document).find('#loadDiv'));
 //		$('#loadDiv').show();
-//		loadingScreenActive = true;
-//	}
-//}
+		loadingScreenActive = true;
+	}
+}
 function switchElementTextValueAndSize(element, fontSize, text) {
 	element = $(element);
 	if ((element.text() === 'B') || (element.text() === 'BACK')) {

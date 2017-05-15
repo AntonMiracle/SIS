@@ -22,16 +22,16 @@ $(document).ready(function() {
 		},		
 	});	
 	
-	var loadingScreenActive = false;
-	function loadingScreen() {
-		if (loadingScreenActive) {
-			$('#loadDiv').hide();
-			loadingScreenActive = false;
-		} else {
-			$('#loadDiv').show();
-			loadingScreenActive = true;
-		}
-	}
+//	var loadingScreenActive = false;
+//	function loadingScreen() {
+//		if (loadingScreenActive) {
+//			$('#loadDiv').hide();
+//			loadingScreenActive = false;
+//		} else {
+//			$('#loadDiv').show();
+//			loadingScreenActive = true;
+//		}
+//	}
 	
 	
 	
