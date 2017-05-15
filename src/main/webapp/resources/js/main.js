@@ -6,13 +6,11 @@ $(document).ready(function() {
 		async: false,
 		beforeSend: function(){
 			console.log('BEFORE SEND');
-			$('#loadDiv').show(1);			
-			$('#test').show(1);			
+			loadingScreen();				
 		},
 		complete : function(){
 			console.log('COMPLETE SEND');
-			$('#loadDiv').hide();
-			$('#test').hide();
+			loadingScreen();	
 		},		
 	});	 
 	/*=========================*/
@@ -537,6 +535,8 @@ $(document).ready(function() {
 	};
 	
 	function updateClientsTable(){
+		console.log('create table');
+		loadingScreen();
 		clientsUsers = getClients();
 		$('#clientsTableList').empty();
 		$('#clientsTableList').append('<tr id="allClientsTableTitle">'
@@ -557,5 +557,15 @@ $(document).ready(function() {
 					+'</tr>'
 				);
 		});
+		loadingScreen();
+		console.log('finish create table');
 		};
+		var loadingScreenActive = false;
+		function loadingScreen(){
+			if(loadingScreenActive){
+				$('#loadDiv').hide();
+			}else{
+				$('#loadDiv').show();		
+			}
+		}
 	});
