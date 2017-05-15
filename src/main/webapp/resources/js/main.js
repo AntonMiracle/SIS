@@ -3,15 +3,7 @@ $(document).ready(function() {
 	/*=    global setup    =*/
 	/*======================*/	
 	$.ajaxSetup({		
-		//async: false,
-		beforeSend: function(){
-			console.log('BEFORE SEND');
-			loadingScreen();				
-		},
-		complete : function(){
-			console.log('COMPLETE SEND');
-			loadingScreen();	
-		},		
+		async: false,			
 	});	 
 	/*=========================*/
 	/*=    global variable    =*/
@@ -56,8 +48,8 @@ $(document).ready(function() {
 	
 	//check input username & password
 	$('.loginIn #in').click(function(){	
-		makeFirstAfterClick('.loginIn #in');
-		return true;//FOR TESTING
+		loadingScreen();
+		makeFirstAfterClick('.loginIn #in');		
 		if(compareUsernameAndPassword($('.loginInput input#username').val(),$('.loginInput input#password').val())){
 			hideElement($('.loginInput td#loginTip'));
 			return true;			
@@ -67,6 +59,7 @@ $(document).ready(function() {
 			cleanLoginContentFields();
 			return false;
 		};
+		loadingScreen();
 	});
 	
 	//login UP	
@@ -87,6 +80,7 @@ $(document).ready(function() {
 	});
 	
 	$('.loginUpInput #up').click(function(){
+		loadingScreen();
 		makeFirstAfterClick('.loginUpInput #up');
 		var username = $('.loginUpInput #username');
 		var password = $('.loginUpInput #password');
@@ -129,7 +123,8 @@ $(document).ready(function() {
 			return true;
 		}else{
 			return false;
-		};			
+		};	
+		loadingScreen();
 	});
 
 	/*===================*/
@@ -251,9 +246,11 @@ $(document).ready(function() {
 	/* clients*/
 	var clientsRowId;
 	$('.menuHome #allClients').click(function(){
+		loadingScreen();
 		hideAllHomeTable();
 		showAllClientsTable();
 		updateClientsTable();
+		loadingScreen();
 	});
 	$('#clientsTableList').on('click', '.clientsRow', function() {		
 		clientsRowId = $(this).attr('id');		
@@ -537,7 +534,6 @@ $(document).ready(function() {
 	
 	function updateClientsTable(){
 		console.log('create table');
-//		loadingScreen();
 		clientsUsers = getClients();
 		$('#clientsTableList').empty();
 		$('#clientsTableList').append('<tr id="allClientsTableTitle">'
@@ -558,23 +554,16 @@ $(document).ready(function() {
 					+'</tr>'
 				);
 		});
-//		loadingScreen();
 		console.log('finish create table');
 		};
+		
 		var loadingScreenActive = false;
 		function loadingScreen(){
-			console.log('loading screen function - 1');
 			if(loadingScreenActive){
-				console.log('loading screen function - 2');
 				$('#loadDiv').hide();
-				console.log('loading screen function - 3');
 			}else{
-				console.log('loading screen function - 4');
 				$('#loadDiv').show();
-				console.log('loading screen function - 5');
 				loadingScreenActive = true;
-				console.log('loading screen function - 6');
 			}
-			console.log('loading screen function - 7');
 		}
 	});
