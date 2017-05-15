@@ -1,7 +1,7 @@
-//$(document).ready(function() {	
-	/*===================*/
-	/*=    loginmenu    =*/
-	/*===================*/
+$(document).ready(function() {	
+	/*====================*/
+	/*=    login menu    =*/
+	/*====================*/
 	$('.menuLogin #up').mouseenter(function() {
 		switchElementTextValueAndSize('.menuLogin #up', 'false', 'UP')		
 	});
@@ -90,4 +90,4 @@
 	$('.menuHome #out').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #out', '25', 'O');
 	});
-//});
+});
