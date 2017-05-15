@@ -479,9 +479,9 @@ $(document).ready(function() {
 		};
 	};
 	
-	function setTextInsideElement(element, text) {
-		element.text(text);		
-	};
+//	function setTextInsideElement(element, text) {
+//		element.text(text);		
+//	};
 	
 	function setElementValue(element, text) {
 		element.val(text);		
