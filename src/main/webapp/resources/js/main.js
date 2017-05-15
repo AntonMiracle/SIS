@@ -1,7 +1,15 @@
 $(document).ready(function() {	
-	/*======================*/
-	/*=    global setup    =*/
-	/*======================*/	
+	//general
+	
+	//login page
+	$('#imgbg').fadeIn(1500);
+	$('.loginInput').fadeIn(500);
+	setTimeout("$('.menuLogin').show();", 1000);
+	//home page
+	
+	
+	
+	
 	$.ajaxSetup({		
 		async: false,
 		beforeSend: function(){
@@ -12,33 +20,22 @@ $(document).ready(function() {
 			console.log('COMPLETE SEND');
 			loadingScreen();	
 		},		
-	});	 
-	/*=========================*/
-	/*=    global variable    =*/
-	/*=========================*/
-//	var loginContentFlag = true;	
-//	var isUpContentActive = false;
-//	var isInfoContentActive = false;
-//	var isHomeClientsMenuActive = false;
-//	var isHomeProposalsMenuActive = false;
-//	var isHomeWorkersMenuActive = false;
-//	var loginButtonShow = 1000;	
-//	var loginBackgroundShow = 1500;	
-//	var rootUrl = location.protocol + '//' + location.host + '/';	
-	var clientsUsers;	
+	});		
 	
-	$('#imgbg').fadeIn(1500);
-	$('.loginInput').fadeIn(500);
-	setTimeout("$('.menuLogin').show();", 1000);
+	
 	setTimeout("$('.menuHome').show();", 1000);	
 	
 	$('.menuLogin #info').click(function() {
 		makeFirstAfterClick('.menuLogin #info');
+		loadingScreen();
 		if(isInfoContentActive){
 			hideProjectInformationContent();
 		}else{
 			showProjectInformationContent();
 		}
+		setTimeout(function () {
+			loadingScreen();
+		},3000);
 	});	
 	
 	//check input username & password
@@ -53,15 +50,7 @@ $(document).ready(function() {
 			cleanLoginContentFields();
 			return false;
 		};
-	});
-	
-	//login UP	
-//	$('.menuLogin #up').mouseenter(function() {
-//		switchElementTextValueAndSize('.menuLogin #up', 'false', 'UP')		
-//	});
-//	$('.menuLogin #up').mouseleave(function() {
-//		switchElementTextValueAndSize('.menuLogin #up', 'false', 'U')
-//	});	
+	});	
 	
 	$('.menuLogin #up').click(function(){	
 		makeFirstAfterClick('.menuLogin #up');
@@ -150,8 +139,6 @@ $(document).ready(function() {
 		}
 	});	
 	/*home menu username*/
-//	var isUsernameMenuActive = false;
-//	var usernameValue;
 	$('.menuHome #homeUsername').click(function() {
 		if(usernameValue === undefined){
 			usernameValue = $('.menuHome #homeUsername').text();
@@ -162,8 +149,7 @@ $(document).ready(function() {
 			makeFirstAfterClick('.menuHome #homeUsername');
 			showUsernameMenu();
 		}		
-	});	
-	
+	});		
 	/* clients*/
 	var clientsRowId;
 	$('.menuHome #allClients').click(function(){
@@ -174,177 +160,8 @@ $(document).ready(function() {
 	$('#clientsTableList').on('click', '.clientsRow', function() {		
 		clientsRowId = $(this).attr('id');		
 		hideAllHomeTable();	
-	});
-	
-	/*============================*/
-	/*=    show/hide function    =*/
-	/*============================*/
-//	function hideElement(element) {
-//		element.hide();
-//	};
-//	
-//	function showElement(element) {
-//		element.show();
-//	};
-//	
-//	function hideLoginUpContentTips(){
-//		hideElement($('.loginUpInput #usernameTip'));
-//		hideElement($('.loginUpInput #passwordTip'));
-//		hideElement($('.loginUpInput #confirmTip'));
-//		hideElement($('.loginUpInput #nameTip'));
-//		hideElement($('.loginUpInput #phoneTip'));
-//	};
-//	//login UP content
-//	function showUpContent(){		
-//		setTextInsideElement($('.menuLogin #up'),'BACK');
-//		hideElement($('.loginInput'));
-//		hideElement($('.menuLogin #info'));
-//		hideElement($('.loginInput td#loginTip'));
-//		cleanLoginContentFields();
-//		cleanUpContentFields();
-//		showElement($('.loginUpContent'));
-//		isUpContentActive = true;
-//	};
-//	
-//	function hideUpContent(){
-//		if($('.menuLogin #up').text() === 'BACK'){
-//			setTextInsideElement($('.menuLogin #up'),'UP');
-//		};
-//		if($('.menuLogin #up').text() === 'B'){
-//			setTextInsideElement($('.menuLogin #up'),'U');
-//		};				
-//		setButtonTitle(	$('.menuLogin #up'), 'registration');
-//		hideElement($('.loginUpContent'));		
-//		hideLoginUpContentTips();
-//		showElement($('.loginInput'));
-//		showElement($('.menuLogin #info'));	
-//		isUpContentActive = false;
-//	};	
-//	
-//	//Project information content
-//	function hideProjectInformationContent(){
-//		setTextInsideElement($('.menuLogin #info'),'i');		
-//		showElement($('.menuLogin #up'));	
-//		showElement($('.loginInput'));
-//		hideElement($('.loginProjectInfo'));
-//		isInfoContentActive = false;
-//	};
-//	
-//	function showProjectInformationContent(){
-//		setTextInsideElement($('.menuLogin #info'),'BACK');
-//		showElement($('.loginProjectInfo'));
-//		hideElement($('.menuLogin #up'));
-//		hideElement($('.loginInput'));
-//		hideElement($('.loginInput td#loginTip'));	
-//		isInfoContentActive = true;
-//	};
-//	//home clients menu
-//	function showHomeClientsMenu(){
-//		setTextInsideElement($('.menuHome .homeLogo'),'CLIENTS');
-//		setTextInsideElement($('.menuHome #clients'),'BACK');
-//		setButtonTitle($('.menuHome #clients'), 'BACK');
-//		showElement($('.menuHome #newClient'));
-//		showElement($('.menuHome #allClients'));		
-//		hideElement($('.menuHome #proposals'));
-//		hideElement($('.menuHome #workers'));		
-//		isHomeClientsMenuActive = true;
-//	};
-//	function hideHomeClientsMenu(){
-//		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
-//		setButtonTitle($('.menuHome #clients'), 'CLIENTS');
-//		setTextInsideElement($('.menuHome #clients'),'CLIENTS');
-//		hideElement($('.menuHome #newClient'));
-//		hideElement($('.menuHome #allClients'));	
-//		showElement($('.menuHome #proposals'));
-//		showElement($('.menuHome #workers'));		
-//		isHomeClientsMenuActive = false;		
-//	};
-//	//home proposals menu
-//	function showHomeProposalsMenu(){
-//		setTextInsideElement($('.menuHome .homeLogo'),'PROPOSALS');
-//		setTextInsideElement($('.menuHome #proposals'),'BACK');
-//		setButtonTitle($('.menuHome #proposals'), 'BACK');
-//		showElement($('.menuHome #newProposal'));
-//		showElement($('.menuHome #allProposals'));		
-//		hideElement($('.menuHome #clients'));
-//		hideElement($('.menuHome #workers'));		
-//		isHomeProposalsMenuActive = true;
-//	};
-//	function hideHomeProposalsMenu(){
-//		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
-//		setButtonTitle($('.menuHome #proposals'), 'PROPOSALS');
-//		setTextInsideElement($('.menuHome #proposals'),'PROPOSALS');
-//		hideElement($('.menuHome #newProposal'));
-//		hideElement($('.menuHome #allProposals'));	
-//		showElement($('.menuHome #clients'));
-//		showElement($('.menuHome #workers'));		
-//		isHomeProposalsMenuActive = false;		
-//	};
-//	//home workers menu
-//	function showHomeWorkersMenu(){
-//		setTextInsideElement($('.menuHome .homeLogo'),'WORKERS');
-//		setTextInsideElement($('.menuHome #workers'),'BACK');
-//		setButtonTitle($('.menuHome #workers'), 'BACK');
-//		showElement($('.menuHome #newWorker'));
-//		showElement($('.menuHome #allWorkers'));		
-//		showElement($('.menuHome #tasks'));		
-//		hideElement($('.menuHome #clients'));
-//		hideElement($('.menuHome #proposals'));		
-//		isHomeWorkersMenuActive = true;
-//	};
-//	function hideHomeWorkersMenu(){
-//		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
-//		setButtonTitle($('.menuHome #workers'), 'WORKERS');
-//		setTextInsideElement($('.menuHome #workers'),'WORKERS');
-//		hideElement($('.menuHome #newWorker'));
-//		hideElement($('.menuHome #allWorkers'));	
-//		hideElement($('.menuHome #tasks'));	
-//		showElement($('.menuHome #clients'));
-//		showElement($('.menuHome #proposals'));		
-//		isHomeWorkersMenuActive = false;
-//	};
-//	//username menu
-//	function hideUsernameMenu(){
-//		setTextInsideElement($('.menuHome .homeLogo'),'SIS');
-//		setButtonTitle($('.menuHome #homeUsername'), 'USERNAME');
-//		setTextInsideElement($('.menuHome #homeUsername'),usernameValue);
-//		hideElement($('.menuHome #homeUsernameOut'));		
-//		isUsernameMenuActive = false;
-//	};
-//	function showUsernameMenu(){
-//		setTextInsideElement($('.menuHome .homeLogo'),usernameValue);
-//		setButtonTitle($('.menuHome #homeUsername'), 'CLOSE USERNAME MENU');
-//		setTextInsideElement($('.menuHome #homeUsername'),'CLOSE');
-//		showElement($('.menuHome #homeUsernameOut'));
-//		isUsernameMenuActive = true;
-//	};
-//	// hide all home tables
-//	function hideAllHomeTable(){
-//		//clients area		
-//		hideElement($('#clientsTableList'));
-//	};
-//	//home all clients table	
-//	function showAllClientsTable(){
-//		showElement($('#clientsTableList'));
-//	};	
-//	
-	/*========================*/
-	/*=    clean function    =*/
-	/*========================*/	
-//	function cleanUpContentFields(){
-//		setElementValue($('.loginUpInput #username'), '');
-//		setElementValue($('.loginUpInput #password'), '');
-//		setElementValue($('.loginUpInput #confirm'), '');
-//		setElementValue($('.loginUpInput #name'), '');
-//		setElementValue($('.loginUpInput #surname'), '');
-//		setElementValue($('.loginUpInput #phone'), '');
-//		setElementValue($('.loginUpInput #mail'), '');
-//	};
-//	function cleanLoginContentFields(){
-//		setElementValue($('.loginInput input#username'), '');
-//		setElementValue($('.loginInput input#password'), '');
-//	};
-	
+	});	
+
 	/*=======================*/
 	/*=    ajax function    =*/
 	/*=======================*/
@@ -444,20 +261,21 @@ $(document).ready(function() {
 //		loadingScreen();
 		console.log('finish create table');
 		};
-		var loadingScreenActive = false;
-		function loadingScreen(){
-			console.log('loading screen function - 1');
-			if(loadingScreenActive){
-				console.log('loading screen function - 2');
-				$('#loadDiv').hide();
-				console.log('loading screen function - 3');
-			}else{
-				console.log('loading screen function - 4');
-				$('#loadDiv').show();
-				console.log('loading screen function - 5');
-				loadingScreenActive = true;
-				console.log('loading screen function - 6');
-			}
-			console.log('loading screen function - 7');
-		}
+		
+//		var loadingScreenActive = false;
+//		function loadingScreen(){
+//			console.log('loading screen function - 1');
+//			if(loadingScreenActive){
+//				console.log('loading screen function - 2');
+//				$('#loadDiv').hide();
+//				console.log('loading screen function - 3');
+//			}else{
+//				console.log('loading screen function - 4');
+//				$('#loadDiv').show();
+//				console.log('loading screen function - 5');
+//				loadingScreenActive = true;
+//				console.log('loading screen function - 6');
+//			}
+//			console.log('loading screen function - 7');
+//		}
 	});
