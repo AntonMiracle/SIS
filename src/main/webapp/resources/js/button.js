@@ -1,4 +1,4 @@
-$(document).ready(function() {	
+//$(document).ready(function() {	
 	$('.menuHome #clients').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #clients', '20', 'CLIENTS');
 	});
@@ -65,4 +65,4 @@ $(document).ready(function() {
 	$('.menuHome #out').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #out', '25', 'O');
 	});
-});
+//});
