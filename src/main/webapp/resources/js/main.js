@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$('.loginInput').fadeIn(500);
 	setTimeout("$('.menuLogin').show();", 1000);
 	//home page
-	
+	setTimeout("$('.menuHome').show();", 1000);	
 	
 	
 	
@@ -23,7 +23,7 @@ $(document).ready(function() {
 	});		
 	
 	
-	setTimeout("$('.menuHome').show();", 1000);	
+	
 	
 	$('.menuLogin #info').click(function() {
 		makeFirstAfterClick('.menuLogin #info');

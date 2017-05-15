@@ -8,9 +8,10 @@ $(document).ajaxStop(function() {
 var loadingScreenActive = false;
 function loadingScreen() {
 	if (loadingScreenActive) {
-		$('#loadDiv').hide();
+		$(document).$('#loadDiv').hide();
+		loadingScreenActive = false;
 	} else {
-		$('#loadDiv').show();
+		$(document).$('#loadDiv').show();
 		loadingScreenActive = true;
 	}
 }
