@@ -20,7 +20,10 @@
 		<!-- =========== -->
 		<div id="loadDiv">		 
 			<img src="resources/css/load.gif"> 	
-		</div>			
+		</div>		
+		<div id="test">
+		LOADING....
+		</div>	
 		<!-- ========= -->
 		<!-- home menu -->
 		<!-- ========= -->

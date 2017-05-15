@@ -6,24 +6,15 @@ $(document).ready(function() {
 		async: false,
 		beforeSend: function(){
 			console.log('BEFORE SEND');
-			//$('#loadDiv').show();
-			//$('.loadDiv').css('display','inline');
+			$('#loadDiv').show();			
+			$('#test').show();			
 		},
 		complete : function(){
 			console.log('COMPLETE SEND');
-			//$('#loadDiv').css('display','none');
-			//$('.loadDiv').hide();
+			$('#loadDiv').hide();
+			$('#test').hide();
 		},		
-	});	
-	 $(document).ajaxStart(function () {
-		 console.log('ajax start');		
-		 //showElement($('#loadDiv')); -   
-//		 $('#loadDiv').show();
-	    }).ajaxStop(function () {
-			 console.log('ajax stop');
-//	    	hideElement($('#loadDiv'));-
-//	      $('#loadDiv').hide();
-	    });
+	});	 
 	/*=========================*/
 	/*=    global variable    =*/
 	/*=========================*/
@@ -454,11 +445,9 @@ $(document).ready(function() {
 	
 	function getAndReturnData(relativeUrl){
 		var result;
-		$('#loadDiv').show();
 		$.getJSON( rootUrl + relativeUrl, function( data ) {	      
 			result = data;			
-			});	
-		$('#loadDiv').hide();
+			});		
 		return result;
 	};
 	

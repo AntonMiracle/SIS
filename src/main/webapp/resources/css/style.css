@@ -28,6 +28,11 @@ input {
 }
 
 
+#test {
+	display: none;
+	font-size: 180px;
+	color: red;
+	}
 #loadDiv {	
 	display: none;
 	top:0;
