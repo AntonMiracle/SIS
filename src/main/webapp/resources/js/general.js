@@ -1,4 +1,8 @@
 var rootUrl = location.protocol + '//' + location.host + '/';
+function findElementInDocument(element){
+	element = $(document).find(element);
+	return element;
+}
 $(document).ajaxStart(function() {
 	loadingScreen();
 });
@@ -8,12 +12,12 @@ $(document).ajaxStop(function() {
 var loadingScreenActive = false;
 function loadingScreen() {
 	if (loadingScreenActive) {
-		hideElement($(document).find('#loadDiv'));
-//		$('#loadDiv').hide();
+		hideElement(findElementInDocument('#loadDiv'));
+//		hideElement($(document).find('#loadDiv'));
 		loadingScreenActive = false;
 	} else {
-		showElement($(document).find('#loadDiv'));
-//		$('#loadDiv').show();
+		showElement(findElementInDocument('#loadDiv'));
+//		showElement($(document).find('#loadDiv'));
 		loadingScreenActive = true;
 	}
 }
@@ -177,6 +181,17 @@ function hideHomeWorkersMenu() {
 // username menu
 var isUsernameMenuActive = false;
 var usernameValue;
+//$('.menuHome #homeUsername').click(function() {
+//	if(usernameValue === undefined){
+//		usernameValue = $('.menuHome #homeUsername').text();
+//	}
+//	if(isUsernameMenuActive){
+//		hideUsernameMenu();
+//	}else{
+//		makeFirstAfterClick('.menuHome #homeUsername');
+//		showUsernameMenu();
+//	}		
+//});		
 function hideUsernameMenu() {
 	setTextInsideElement('.menuHome .homeLogo', 'SIS');
 	setButtonTitle('.menuHome #homeUsername', 'USERNAME');
