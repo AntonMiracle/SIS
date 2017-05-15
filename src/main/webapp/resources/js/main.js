@@ -25,11 +25,8 @@ $(document).ready(function() {
 //	var loginButtonShow = 1000;	
 //	var loginBackgroundShow = 1500;	
 //	var rootUrl = location.protocol + '//' + location.host + '/';	
-	var clientsUsers;
+	var clientsUsers;	
 	
-	/*====================*/
-	/*=    login page    =*/
-	/*====================*/
 	$('#imgbg').fadeIn(1500);
 	$('.loginInput').fadeIn(500);
 	setTimeout("$('.menuLogin').show();", 1000);
@@ -155,17 +152,17 @@ $(document).ready(function() {
 	/*home menu username*/
 //	var isUsernameMenuActive = false;
 //	var usernameValue;
-//	$('.menuHome #homeUsername').click(function() {
-//		if(usernameValue === undefined){
-//			usernameValue = $('.menuHome #homeUsername').text();
-//		}
-//		if(isUsernameMenuActive){
-//			hideUsernameMenu();
-//		}else{
-//			makeFirstAfterClick('.menuHome #homeUsername');
-//			showUsernameMenu();
-//		}		
-//	});	
+	$('.menuHome #homeUsername').click(function() {
+		if(usernameValue === undefined){
+			usernameValue = $('.menuHome #homeUsername').text();
+		}
+		if(isUsernameMenuActive){
+			hideUsernameMenu();
+		}else{
+			makeFirstAfterClick('.menuHome #homeUsername');
+			showUsernameMenu();
+		}		
+	});	
 	
 	/* clients*/
 	var clientsRowId;
@@ -367,27 +364,7 @@ $(document).ready(function() {
 			result = data;			
 			});		
 		return result;
-	};
-	
-	/*============================*/
-	/*=    home menu function    =*/
-	/*============================*/
-//	function switchElementTextValueAndSize(element, fontSize, text){	
-//		element = $(element);
-//		if((element.text() === 'B') || (element.text() === 'BACK')){
-//			if((element.text() === 'B')){
-//				setTextInsideElement($(element),'BACK');
-//			}else{
-//				setTextInsideElement($(element),'B');
-//			}
-//		}else{
-//			if(fontSize !== 'false'){
-//				element.css('font-size',fontSize + 'px');
-//			};
-//			setTextInsideElement($(element),text);
-//		};
-//	};	
-	
+	};	
 	/*========================*/
 	/*=    other function    =*/
 	/*========================*/
@@ -398,19 +375,6 @@ $(document).ready(function() {
 			return false;
 		};
 	};
-	
-//	function setTextInsideElement(element, text) {
-//		element.text(text);		
-//	};
-	
-//	function setElementValue(element, text) {
-//		element.val(text);		
-//	};
-	
-//	function setButtonTitle(buttonElement, text) {
-//		buttonElement.prop('title', text);		
-//	};
-	
 	function checkInputData(value,tipElement, error){
 		if(checkInputValuelength(value)){
 			hideElement(tipElement);
