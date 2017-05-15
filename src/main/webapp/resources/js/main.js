@@ -3,7 +3,15 @@ $(document).ready(function() {
 	/*=    global setup    =*/
 	/*======================*/	
 	$.ajaxSetup({		
-		async: false,			
+		async: false,
+		beforeSend: function(){
+			console.log('BEFORE SEND');
+			loadingScreen();				
+		},
+		complete : function(){
+			console.log('COMPLETE SEND');
+			loadingScreen();	
+		},		
 	});	 
 	/*=========================*/
 	/*=    global variable    =*/
@@ -48,7 +56,6 @@ $(document).ready(function() {
 	
 	//check input username & password
 	$('.loginIn #in').click(function(){	
-		loadingScreen();
 		makeFirstAfterClick('.loginIn #in');		
 		if(compareUsernameAndPassword($('.loginInput input#username').val(),$('.loginInput input#password').val())){
 			hideElement($('.loginInput td#loginTip'));
@@ -59,7 +66,6 @@ $(document).ready(function() {
 			cleanLoginContentFields();
 			return false;
 		};
-		loadingScreen();
 	});
 	
 	//login UP	
@@ -80,7 +86,6 @@ $(document).ready(function() {
 	});
 	
 	$('.loginUpInput #up').click(function(){
-		loadingScreen();
 		makeFirstAfterClick('.loginUpInput #up');
 		var username = $('.loginUpInput #username');
 		var password = $('.loginUpInput #password');
@@ -123,32 +128,31 @@ $(document).ready(function() {
 			return true;
 		}else{
 			return false;
-		};	
-		loadingScreen();
+		};			
 	});
 
 	/*===================*/
 	/*=    home page    =*/
 	/*===================*/
 	/*=== home menu ==*/
-	$('.menuHome #clients').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #clients', '20', 'CLIENTS'); 
-	});
-	$('.menuHome #clients').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #clients', '25', 'C');
-	});	
-	$('.menuHome #proposals').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #proposals', '19', 'PROPOSALS');
-	});
-	$('.menuHome #proposals').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #proposals', '25', 'P');	
-	});	
-	$('.menuHome #workers').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #workers', '20', 'WORKERS');
-	});
-	$('.menuHome #workers').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #workers', '25', 'W');
-	});
+//	$('.menuHome #clients').mouseenter(function() {
+//		switchElementTextValueAndSize('.menuHome #clients', '20', 'CLIENTS'); 
+//	});
+//	$('.menuHome #clients').mouseleave(function() {
+//		switchElementTextValueAndSize('.menuHome #clients', '25', 'C');
+//	});	
+//	$('.menuHome #proposals').mouseenter(function() {
+//		switchElementTextValueAndSize('.menuHome #proposals', '19', 'PROPOSALS');
+//	});
+//	$('.menuHome #proposals').mouseleave(function() {
+//		switchElementTextValueAndSize('.menuHome #proposals', '25', 'P');	
+//	});	
+//	$('.menuHome #workers').mouseenter(function() {
+//		switchElementTextValueAndSize('.menuHome #workers', '20', 'WORKERS');
+//	});
+//	$('.menuHome #workers').mouseleave(function() {
+//		switchElementTextValueAndSize('.menuHome #workers', '25', 'W');
+//	});
 	
 	/* clients menu */
 	$('.menuHome #clients').click(function() {
@@ -159,18 +163,18 @@ $(document).ready(function() {
 			showHomeClientsMenu();			
 		}
 	});	
-	$('.menuHome #newClient').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #newClient', '20', 'NEW');
-	});
-	$('.menuHome #newClient').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #newClient', '25', 'N');
-	});	
-	$('.menuHome #allClients').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #allClients', '20', 'ALL');
-	});
-	$('.menuHome #allClients').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #allClients', '25', 'A');
-	});
+//	$('.menuHome #newClient').mouseenter(function() {
+//		switchElementTextValueAndSize('.menuHome #newClient', '20', 'NEW');
+//	});
+//	$('.menuHome #newClient').mouseleave(function() {
+//		switchElementTextValueAndSize('.menuHome #newClient', '25', 'N');
+//	});	
+//	$('.menuHome #allClients').mouseenter(function() {
+//		switchElementTextValueAndSize('.menuHome #allClients', '20', 'ALL');
+//	});
+//	$('.menuHome #allClients').mouseleave(function() {
+//		switchElementTextValueAndSize('.menuHome #allClients', '25', 'A');
+//	});
 	
 	/* proposals menu*/
 	$('.menuHome #proposals').click(function() {
@@ -181,18 +185,18 @@ $(document).ready(function() {
 			showHomeProposalsMenu();		
 		}
 	});		
-	$('.menuHome #newProposal').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #newProposal', '20', 'NEW');
-	});
-	$('.menuHome #newProposal').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #newProposal', '25', 'N');
-	});	
-	$('.menuHome #allProposals').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #allProposals', '20', 'ALL');
-	});
-	$('.menuHome #allProposals').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #allProposals', '25', 'A');
-	});	
+//	$('.menuHome #newProposal').mouseenter(function() {
+//		switchElementTextValueAndSize('.menuHome #newProposal', '20', 'NEW');
+//	});
+//	$('.menuHome #newProposal').mouseleave(function() {
+//		switchElementTextValueAndSize('.menuHome #newProposal', '25', 'N');
+//	});	
+//	$('.menuHome #allProposals').mouseenter(function() {
+//		switchElementTextValueAndSize('.menuHome #allProposals', '20', 'ALL');
+//	});
+//	$('.menuHome #allProposals').mouseleave(function() {
+//		switchElementTextValueAndSize('.menuHome #allProposals', '25', 'A');
+//	});	
 	
 	/* workers menu*/
 	$('.menuHome #workers').click(function() {
@@ -203,31 +207,31 @@ $(document).ready(function() {
 			showHomeWorkersMenu();		
 		}
 	});	
-	$('.menuHome #newWorker').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #newWorker', '20', 'NEW');		
-	});
-	$('.menuHome #newWorker').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #newWorker', '25', 'N');
-	});	
-	$('.menuHome #allWorkers').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #allWorkers', '20', 'ALL');		
-	});
-	$('.menuHome #allWorkers').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #allWorkers', '25', 'A');
-	});	
-	$('.menuHome #tasks').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #tasks', '20', 'TASKS');		
-	});
-	$('.menuHome #tasks').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #tasks', '25', 'T');
-	});	
-	/*home menu username area*/
-	$('.menuHome #out').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #out', '20', 'OUT');
-	});
-	$('.menuHome #out').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #out', '25', 'O');
-	});	
+//	$('.menuHome #newWorker').mouseenter(function() {
+//		switchElementTextValueAndSize('.menuHome #newWorker', '20', 'NEW');		
+//	});
+//	$('.menuHome #newWorker').mouseleave(function() {
+//		switchElementTextValueAndSize('.menuHome #newWorker', '25', 'N');
+//	});	
+//	$('.menuHome #allWorkers').mouseenter(function() {
+//		switchElementTextValueAndSize('.menuHome #allWorkers', '20', 'ALL');		
+//	});
+//	$('.menuHome #allWorkers').mouseleave(function() {
+//		switchElementTextValueAndSize('.menuHome #allWorkers', '25', 'A');
+//	});	
+//	$('.menuHome #tasks').mouseenter(function() {
+//		switchElementTextValueAndSize('.menuHome #tasks', '20', 'TASKS');		
+//	});
+//	$('.menuHome #tasks').mouseleave(function() {
+//		switchElementTextValueAndSize('.menuHome #tasks', '25', 'T');
+//	});	
+//	/*home menu username area*/
+//	$('.menuHome #out').mouseenter(function() {
+//		switchElementTextValueAndSize('.menuHome #out', '20', 'OUT');
+//	});
+//	$('.menuHome #out').mouseleave(function() {
+//		switchElementTextValueAndSize('.menuHome #out', '25', 'O');
+//	});	
 	/*home menu username*/
 	var isUsernameMenuActive = false;
 	var usernameValue;
@@ -246,11 +250,9 @@ $(document).ready(function() {
 	/* clients*/
 	var clientsRowId;
 	$('.menuHome #allClients').click(function(){
-		loadingScreen();
 		hideAllHomeTable();
 		showAllClientsTable();
 		updateClientsTable();
-		loadingScreen();
 	});
 	$('#clientsTableList').on('click', '.clientsRow', function() {		
 		clientsRowId = $(this).attr('id');		
@@ -450,21 +452,21 @@ $(document).ready(function() {
 	/*============================*/
 	/*=    home menu function    =*/
 	/*============================*/
-	function switchElementTextValueAndSize(element, fontSize, text){	
-		element = $(element);
-		if((element.text() === 'B') || (element.text() === 'BACK')){
-			if((element.text() === 'B')){
-				setTextInsideElement($(element),'BACK');
-			}else{
-				setTextInsideElement($(element),'B');
-			}
-		}else{
-			if(fontSize !== 'false'){
-				element.css('font-size',fontSize + 'px');
-			};
-			setTextInsideElement($(element),text);
-		};
-	};	
+//	function switchElementTextValueAndSize(element, fontSize, text){	
+//		element = $(element);
+//		if((element.text() === 'B') || (element.text() === 'BACK')){
+//			if((element.text() === 'B')){
+//				setTextInsideElement($(element),'BACK');
+//			}else{
+//				setTextInsideElement($(element),'B');
+//			}
+//		}else{
+//			if(fontSize !== 'false'){
+//				element.css('font-size',fontSize + 'px');
+//			};
+//			setTextInsideElement($(element),text);
+//		};
+//	};	
 	
 	/*========================*/
 	/*=    other function    =*/
@@ -534,6 +536,7 @@ $(document).ready(function() {
 	
 	function updateClientsTable(){
 		console.log('create table');
+//		loadingScreen();
 		clientsUsers = getClients();
 		$('#clientsTableList').empty();
 		$('#clientsTableList').append('<tr id="allClientsTableTitle">'
@@ -554,16 +557,23 @@ $(document).ready(function() {
 					+'</tr>'
 				);
 		});
+//		loadingScreen();
 		console.log('finish create table');
 		};
-		
 		var loadingScreenActive = false;
 		function loadingScreen(){
+			console.log('loading screen function - 1');
 			if(loadingScreenActive){
+				console.log('loading screen function - 2');
 				$('#loadDiv').hide();
+				console.log('loading screen function - 3');
 			}else{
+				console.log('loading screen function - 4');
 				$('#loadDiv').show();
+				console.log('loading screen function - 5');
 				loadingScreenActive = true;
+				console.log('loading screen function - 6');
 			}
+			console.log('loading screen function - 7');
 		}
 	});

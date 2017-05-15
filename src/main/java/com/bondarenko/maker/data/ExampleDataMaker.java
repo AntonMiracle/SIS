@@ -1,6 +1,5 @@
 package com.bondarenko.maker.data;
 
-import com.bondarenko.model.User;
 import com.bondarenko.service.CarService;
 import com.bondarenko.service.ProposalService;
 import com.bondarenko.service.RoleService;
@@ -15,18 +14,6 @@ public class ExampleDataMaker {
 			StatusService ss, RoleService rs) {
 		if (!isExampleDataInitialized) {
 			generateExampleData(us, ts, cs, ps, ss, rs);
-			for (User user : us.getUsers()) {
-//				System.out.print(" User ID : " + user.getId());
-//				System.out.print(" roles : " + user.getRoles().size());
-//				System.out.print(" cars : " + user.getCars().size());
-//				System.out.print(" proposals : " + user.getProposals().size());
-//				System.out.println(" tasks : " + user.getTasks().size());
-			}
-//			System.out.println("Number of cars : " + cs.getCars().size());
-//			System.out.println("Number of users : " + us.getUsers().size());
-//			System.out.println("Number of roles : " + rs.getRoles().size());
-//			System.out.println("Number of proposals : " + ps.getProposals().size());
-//			System.out.println("Number of tasks : " + ts.getTasks().size());
 			isExampleDataInitialized = true;
 		}
 	}
