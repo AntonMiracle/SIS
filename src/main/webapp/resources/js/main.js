@@ -565,7 +565,8 @@ $(document).ready(function() {
 			if(loadingScreenActive){
 				$('#loadDiv').hide();
 			}else{
-				$('#loadDiv').show();		
+				$('#loadDiv').show();
+				loadingScreenActive = true;
 			}
 		}
 	});
