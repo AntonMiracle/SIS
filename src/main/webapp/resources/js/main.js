@@ -114,55 +114,38 @@ $(document).ready(function() {
 				data : JSON.stringify(client),
 				contentType : 'application/json; charset=utf-8',
 				dataType : 'json',
-				beforeSend: function(){
-								console.log('BEFORE SEND');
-//								client = {
-//									username : username.val(),
-//									confirmPassword : confirm.val(),
-//									password : password.val(),
-//									name : name.val(),
-//									surname : surname.val(),
-//									phone : phone.val(),
-//									mail : mail.val(),
-//								};
-								console.log('CLIENT BEFORE SEND');				
-								console.log(client);				
+				beforeSend: function(){			
 				},
 				complete : function(data){
-					console.log('COMPLETE SEND');
-					console.log('isSave: ' + client.isSave);
-					console.log('RESPONSE DATA');
-					console.log(data);
 				},
 				success : function(data){
 					client = data;
-					console.log('SUCCESS SEND');
-					console.log('RESPONSE DATA');
-					console.log(data);
-					console.log('CLIENT AFTER SUCCESS SEND');				
-					console.log(client);
 					if(client.isSave){
 						hideUpContent();
 					}else{
 						if(client.username.length === 0){
-							setTextInsideElement(usernameTip, error)
+							setTextInsideElement(usernameTip, error);
+							showElement(usernameTip);
 						}
 						if(client.password.length === 0){
-							setTextInsideElement(passwordTip, error)
+							setTextInsideElement(passwordTip, error);
+							showElement(passwordTip);
 						}
 						if(client.confirmPassword.length === 0){
-							setTextInsideElement(confirmTip, error)
+							setTextInsideElement(confirmTip, error);
+							showElement(confirmTip);
 						}
 						if(client.phone.length === 0){
-							setTextInsideElement(phoneTip, error)
+							setTextInsideElement(phoneTip, error);
+							showElement(phoneTip);
 						}
 						if(client.name.length === 0){
-							setTextInsideElement(nameTip, error)
+							setTextInsideElement(nameTip, error);
+							showElement(nameTip);
 						}
 					}
 				},
 				error : function(){
-					console.log('ERROR SEND');
 					serverErrorScreen();
 				},				
 				timeout : function(){					
