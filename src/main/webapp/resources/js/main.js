@@ -56,10 +56,12 @@ $(document).ready(function() {
 				result = data;
 				if(result){
 					hideElement($('.loginInput td#loginTip'));
+					return true;
 				}else{
 					setTextInsideElement($('.loginInput td#loginTip'),'login or password error');
 					showElement($('.loginInput td#loginTip'));
 					cleanLoginContentFields();
+					return false;
 				};
 				console.log('Result inside ajax');
 				console.log(result);
