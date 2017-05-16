@@ -98,7 +98,16 @@ $(document).ready(function() {
 //		}else{
 //			return false;
 //		};
-			var client;
+//			var client;
+		var client = {
+				username : username.val(),
+				confirmPassword : confirm.val(),
+				password : password.val(),
+				name : name.val(),
+				surname : surname.val(),
+				phone : phone.val(),
+				mail : mail.val(),
+			};
 			$.ajax({
 				url : rootUrl + 'rest/user/new/client',
 				type : 'POST',
@@ -107,15 +116,15 @@ $(document).ready(function() {
 				dataType : 'json',
 				beforeSend: function(){
 								console.log('BEFORE SEND');
-								client = {
-									username : username.val(),
-									confirmPassword : confirm.val(),
-									password : password.val(),
-									name : name.val(),
-									surname : surname.val(),
-									phone : phone.val(),
-									mail : mail.val(),
-								};
+//								client = {
+//									username : username.val(),
+//									confirmPassword : confirm.val(),
+//									password : password.val(),
+//									name : name.val(),
+//									surname : surname.val(),
+//									phone : phone.val(),
+//									mail : mail.val(),
+//								};
 								console.log('CLIENT BEFORE SEND');				
 								console.log(client);				
 				},
