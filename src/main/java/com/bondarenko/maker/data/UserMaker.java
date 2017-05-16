@@ -87,7 +87,7 @@ public class UserMaker {
 			count++;
 		}		
 		if(!dto.confirmPassword.equals(dto.password)){
-			dto.password="";
+			dto.confirmPassword="";
 			count++;
 		}
 		if(!validator.checkFieldLength(dto.password)){
