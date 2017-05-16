@@ -123,8 +123,8 @@ $(document).ready(function() {
 					console.log('COMPLETE SEND');
 					console.log('isSave: ' + data.isSave);								
 				},
-				success : function(data){
-					client = data;
+				success : function(result){
+					client = result;
 					console.log('SUCCESS SEND');
 					console.log('CLIENT AFTER SUCCESS SEND');				
 					console.log(client);
