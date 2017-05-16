@@ -12,9 +12,7 @@
 
 <t:template title="HOME">
 	<jsp:attribute name="head">
-	<script type="text/javascript">
-	<@usernameValue = @>${username};
-	</script>
+	
 	
 	</jsp:attribute>
 	<jsp:attribute name="content">		
@@ -25,7 +23,7 @@
 			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">	
 				<div class="homeLogo">SIS</div>
 				<!--  <button class="button-scale" id="homeUsername" title="USERNAME MENU">${username}</button>-->
-				<button class="button-scale" id="homeUsername" title="USERNAME MENU">|||</button>
+				<button class="button-scale" id="homeUsername" title="USERNAME MENU">${username}</button>
 			</sec:authorize>
 			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">						
 				<form:form action="${logoutUrl}" method="POST">	

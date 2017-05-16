@@ -164,7 +164,10 @@ $(document).ready(function() {
 		}
 	});	
 	/*home menu username*/
-	
+	if(usernameValue === undefined){
+		usernameValue = $('.menuHome #homeUsername').text();
+		setTextInsideElement('.menuHome #homeUsername', '|||');
+	}
 	$('.menuHome #homeUsername').click(function() {
 		if(usernameValue === undefined){
 			usernameValue = $('.menuHome #homeUsername').text();
