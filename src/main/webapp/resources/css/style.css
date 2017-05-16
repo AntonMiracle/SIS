@@ -286,7 +286,7 @@ div#homeUsername {
 /*=      buttons      =*/
 /*=====================*/
 .button-scale {	
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(255, 255, 255, 0.4);
 	margin-bottom: 1px;
 	margin-top: 1px;
 	border-color: white;	
@@ -316,7 +316,7 @@ div#homeUsername {
 	/*border-width: 5px;
 	border-color: #508c44;
 	border-style: solid;*/	
-	width: 130px;
+	width: 150px;
 }
 
 }
