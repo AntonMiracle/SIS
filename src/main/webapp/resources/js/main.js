@@ -10,12 +10,14 @@ $(document).ready(function() {
 		complete : function(){
 			loadingScreen();	
 		},
-//		timeout : 3000,
+		timeout : 15000,
 	});	
 	//login page
 	$('#imgbg').fadeIn(1500);
 	$('.loginInput').fadeIn(500);
-	setTimeout("$('.menuLogin').show();", 1000);
+	setTimeout(function(){
+		$('.menuLogin').show()
+		}, 1000);
 	$('.menuLogin #info').click(function() {
 		makeFirstAfterClick('.menuLogin #info');
 		if(isInfoContentActive){
@@ -59,8 +61,7 @@ $(document).ready(function() {
 					console.log('result false');
 					setTextInsideElement($('.loginInput td#loginTip'),'login or password error');
 					showElement($('.loginInput td#loginTip'));
-					cleanLoginContentFields();	
-					return false;
+					cleanLoginContentFields();
 				};
 			},
 		});		
