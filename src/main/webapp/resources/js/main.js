@@ -126,22 +126,32 @@ $(document).ready(function() {
 						if(client.username.length === 0){
 							setTextInsideElement(usernameTip, error);
 							showElement(usernameTip);
+						}else{
+							hideElement(usernameTip);
 						}
 						if(client.password.length === 0){
 							setTextInsideElement(passwordTip, error);
 							showElement(passwordTip);
+						}else{
+							hideElement(passwordTip);
 						}
 						if(client.confirmPassword.length === 0){
 							setTextInsideElement(confirmTip, error);
 							showElement(confirmTip);
+						}else{
+							hideElement(confirmTip);
 						}
 						if(client.phone.length === 0){
 							setTextInsideElement(phoneTip, error);
 							showElement(phoneTip);
+						}else{
+							hideElement(phoneTip);
 						}
 						if(client.name.length === 0){
 							setTextInsideElement(nameTip, error);
 							showElement(nameTip);
+						}else{
+							hideElement(nameTip);
 						}
 					}
 				},
