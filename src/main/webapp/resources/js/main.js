@@ -51,19 +51,28 @@ $(document).ready(function() {
 				console.log('DATA');
 				console.log(data);
 				result = data;
+				if(result){
+					hideElement($('.loginInput td#loginTip'));
+					return true;			
+				}else{
+					setTextInsideElement($('.loginInput td#loginTip'),'login or password error');
+					showElement($('.loginInput td#loginTip'));
+					cleanLoginContentFields();
+					return false;
+				};
 			},
 			timeout : 100,
 		});	
 		//setTimeout(function(){
-			if(result){
-				hideElement($('.loginInput td#loginTip'));
-				return true;			
-			}else{
-				setTextInsideElement($('.loginInput td#loginTip'),'login or password error');
-				showElement($('.loginInput td#loginTip'));
-				cleanLoginContentFields();
-				return false;
-			};
+//			if(result){
+//				hideElement($('.loginInput td#loginTip'));
+//				return true;			
+//			}else{
+//				setTextInsideElement($('.loginInput td#loginTip'),'login or password error');
+//				showElement($('.loginInput td#loginTip'));
+//				cleanLoginContentFields();
+//				return false;
+//			};
 		//}, 110)
 	});	
 	
