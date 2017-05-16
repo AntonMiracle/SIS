@@ -60,6 +60,7 @@ $(document).ready(function() {
 					setTextInsideElement($('.loginInput td#loginTip'),'login or password error');
 					showElement($('.loginInput td#loginTip'));
 					cleanLoginContentFields();	
+					return false;
 				};
 			},
 		});		
