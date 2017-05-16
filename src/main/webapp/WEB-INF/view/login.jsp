@@ -39,7 +39,7 @@
 						<td>PASSWORD</td><td><input id="password" type="password" name="j_password"></td>
 					</tr>
 					<tr>
-						<td colspan="2" class="loginIn"><button class="button-scale" id="in">IN</button>						
+						<td colspan="2" class="loginIn"><button type="button" class="button-scale" id="in">IN</button>						
 					</tr>
 				</table>				
 			</div>
