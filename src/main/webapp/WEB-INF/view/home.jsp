@@ -25,7 +25,7 @@
 			</sec:authorize>
 			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">						
 				<form:form action="${logoutUrl}" method="POST">	
-				<button class="button-scale" id="homeUsernameOut" title="LOG OUT">OUT</button>
+				<button class="button-scale" id="homeUsernameOut" title="LOG OUT">O</button>
 					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>			
 				</form:form>				
 			</sec:authorize>

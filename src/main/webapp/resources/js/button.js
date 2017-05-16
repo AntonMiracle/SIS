@@ -90,4 +90,10 @@ $(document).ready(function() {
 	$('.menuHome #homeUsernameOut').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #homeUsernameOut', '25', 'O');
 	});
+	$('.menuHome #homeUsername').mouseenter(function() {
+		switchElementTextValueAndSize('.menuHome #homeUsername', '20', usernameValue);
+	});
+	$('.menuHome #homeUsername').mouseleave(function() {
+		switchElementTextValueAndSize('.menuHome #homeUsername', '25', '|||');
+	});
 });
