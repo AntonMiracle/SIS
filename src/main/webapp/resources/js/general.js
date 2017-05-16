@@ -17,7 +17,7 @@ function serverErrorScreen(){
 	showElement(getElement('#serverError'));
 	setTimeout(function () {
 		hideElement(getElement('#serverError'));
-	},2000);
+	},5000);
 }
 function switchElementTextValueAndSize(element, fontSize, text) {
 	element = $(element);
