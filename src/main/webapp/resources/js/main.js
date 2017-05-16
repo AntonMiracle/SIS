@@ -99,31 +99,31 @@ $(document).ready(function() {
 						return true;
 					}else{
 						if(client.username.length === 0){
-							setTextInsideElement(usernameTip, 'choose another username');
+							setTextInsideElement(usernameTip, 'incorrect username');
 							showElement(usernameTip);
 						}else{
 							hideElement(usernameTip);
 						}
 						if(client.password.length === 0){
-							setTextInsideElement(passwordTip, 'pto short or long');
+							setTextInsideElement(passwordTip, 'need 4-16 symbols');
 							showElement(passwordTip);
 						}else{
 							hideElement(passwordTip);
 						}
 						if(client.confirmPassword.length === 0){
-							setTextInsideElement(confirmTip, 'not equals with password');
+							setTextInsideElement(confirmTip, 'wrong confirm');
 							showElement(confirmTip);
 						}else{
 							hideElement(confirmTip);
 						}
 						if(client.phone.length === 0){
-							setTextInsideElement(phoneTip, 'to short or long');
+							setTextInsideElement(phoneTip, 'need 4-16 symbols');
 							showElement(phoneTip);
 						}else{
 							hideElement(phoneTip);
 						}
 						if(client.name.length === 0){
-							setTextInsideElement(nameTip, 'to short or long');
+							setTextInsideElement(nameTip, 'need 4-16 symbols');
 							showElement(nameTip);
 						}else{
 							hideElement(nameTip);
