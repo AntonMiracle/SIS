@@ -25,6 +25,6 @@ public interface RestServiceController {
 
 	public ResponseEntity<Boolean> isPhoneUnique(String phone) throws RuntimeException;
 
-	public ResponseEntity<Boolean> checkUsernameAndPassword(String username, String password) throws RuntimeException;
+	public ResponseEntity<Boolean> checkUsernameAndPassword(RestUserDto DTO) throws RuntimeException;
 
 }

@@ -1,11 +1,5 @@
 $(document).ready(function() {	
 	//general
-//	$(document).ajaxStart(function() {
-//		loadingScreen();
-//	});
-//	$(document).ajaxStop(function() {
-//		loadingScreen();
-//	});
 	$.ajaxSetup({
 		error : function(){
 			serverErrorScreen();
@@ -16,7 +10,7 @@ $(document).ready(function() {
 		complete : function(){
 			loadingScreen();	
 		},
-		timeout : 3000,
+//		timeout : 3000,
 	});	
 	//login page
 	$('#imgbg').fadeIn(1500);
@@ -39,17 +33,40 @@ $(document).ready(function() {
 		};		
 	});
 	$('.loginIn #in').click(function(){	
-		makeFirstAfterClick('.loginIn #in');		
-		if(compareUsernameAndPassword($('.loginInput input#username').val(),$('.loginInput input#password').val())){
-			hideElement($('.loginInput td#loginTip'));
-			return true;			
-		}else{
-			setTextInsideElement($('.loginInput td#loginTip'),'login or password error');
-			showElement($('.loginInput td#loginTip'));
-			cleanLoginContentFields();
-			return false;
+		makeFirstAfterClick('.loginIn #in');
+		var result;
+		var username = $('.loginInput input#username');
+		var password = $('.loginInput input#password');
+		var login = {
+				username : username.val(),
+				password : confirm.val(),
 		};
+		$.ajax({
+			url : rootUrl + 'rest/check/authentication/',
+			type : 'POST',
+			data : JSON.stringify(login),
+			contentType : 'application/json; charset=utf-8',
+			dataType : 'json',
+			success : function(data){
+				console.log('DATA');
+				console.log(data);
+				result = data;
+			},
+			timeout : 100,
+		});	
+		setTimeout(function(){
+			if(result){
+				hideElement($('.loginInput td#loginTip'));
+				return true;			
+			}else{
+				setTextInsideElement($('.loginInput td#loginTip'),'login or password error');
+				showElement($('.loginInput td#loginTip'));
+				cleanLoginContentFields();
+				return false;
+			};
+		}, 110)
 	});	
+	
 	$('.loginUpInput #up').click(function(){
 		makeFirstAfterClick('.loginUpInput #up');
 		var username = $('.loginUpInput #username');
@@ -64,43 +81,6 @@ $(document).ready(function() {
 		var confirmTip = $('.loginUpInput #confirmTip');
 		var nameTip = $('.loginUpInput #nameTip');		
 		var phoneTip = $('.loginUpInput #phoneTip');
-		var error = 'incorrect field';
-		
-		
-		
-//		var count = 0;
-		
-//		var isUsernameFree = getAndReturnData('rest/check/usernamefree/' + username.val());
-//		var isPhoneFree = getAndReturnData('rest/check/phonefree/' + phone.val());
-//		count = count + checkUniqueField(username.val(), usernameTip, error, isUsernameFree);
-//		count = count + checkInputData(password.val(), passwordTip, error);		
-//		count = count + checkInputData(confirm.val(), confirmTip, error);		
-//		count = count + checkInputData(name.val(), nameTip, error);
-//		count = count + checkUniqueField(phone.val(), phoneTip, error, isPhoneFree);
-//		if(password.val() != confirm.val()){
-//			setTextInsideElement(confirmTip, error);
-//			showElement(confirmTip);
-//			return false;
-//		};
-//		if(count === 0 && password.val() === confirm.val()){
-//			var client = {
-//			username : username.val(),
-//			confirm : confirm.val(),
-//			password : password.val(),
-//			name : name.val(),
-//			surname : surname.val(),
-//			phone : phone.val(),
-//			mail : mail.val(),
-//			};	
-				
-			
-			
-//			
-//			return true;
-//		}else{
-//			return false;
-//		};
-//			var client;
 		var client = {
 				username : username.val(),
 				confirmPassword : confirm.val(),
@@ -122,31 +102,31 @@ $(document).ready(function() {
 						hideUpContent();
 					}else{
 						if(client.username.length === 0){
-							setTextInsideElement(usernameTip, error);
+							setTextInsideElement(usernameTip, 'choose another username');
 							showElement(usernameTip);
 						}else{
 							hideElement(usernameTip);
 						}
 						if(client.password.length === 0){
-							setTextInsideElement(passwordTip, error);
+							setTextInsideElement(passwordTip, 'pto short or long');
 							showElement(passwordTip);
 						}else{
 							hideElement(passwordTip);
 						}
 						if(client.confirmPassword.length === 0){
-							setTextInsideElement(confirmTip, error);
+							setTextInsideElement(confirmTip, 'not equals with password');
 							showElement(confirmTip);
 						}else{
 							hideElement(confirmTip);
 						}
 						if(client.phone.length === 0){
-							setTextInsideElement(phoneTip, error);
+							setTextInsideElement(phoneTip, 'to short or long');
 							showElement(phoneTip);
 						}else{
 							hideElement(phoneTip);
 						}
 						if(client.name.length === 0){
-							setTextInsideElement(nameTip, error);
+							setTextInsideElement(nameTip, 'to short or long');
 							showElement(nameTip);
 						}else{
 							hideElement(nameTip);
@@ -154,52 +134,6 @@ $(document).ready(function() {
 					}
 				}				
 			});	
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 	});	
 	//home page
 	setTimeout("$('.menuHome').show();", 1000);	
@@ -256,24 +190,14 @@ $(document).ready(function() {
 
 	/*=======================*/
 	/*=    ajax function    =*/
-	/*=======================*/
-	function saveData(relativeUrl, method, data) {
-		$.ajax({
-			url : rootUrl + relativeUrl,
-			type : method,
-			data : JSON.stringify(data),
-			contentType : 'application/json; charset=utf-8',
-			dataType : 'json'
-		});
-	};
-	
-	function getAndReturnData(relativeUrl){
-		var result;
-		$.getJSON( rootUrl + relativeUrl, function( data ) {	      
-			result = data;			
-			});		
-		return result;
-	};	
+	/*=======================*/	
+//	function getAndReturnData(relativeUrl){
+//		var result;
+//		$.getJSON( rootUrl + relativeUrl, function( data ) {	      
+//			result = data;			
+//			});		
+//		return result;
+//	};	
 	/*========================*/
 	/*=    other function    =*/
 	/*========================*/
