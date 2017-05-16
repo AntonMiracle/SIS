@@ -53,7 +53,7 @@ input {
 	position:fixed;
 	min-width: 100%;
 	min-height: 100%;	
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: rgba(0, 0, 0, 0.1);
 	z-index: 1000;	
 }
 #loadDiv img{
@@ -191,14 +191,14 @@ input {
 	margin: auto;
 }
 .loginUpInput td{
-	min-width: 190px;	
-	max-width: 190px;	
+	min-width: 230px;	
+	max-width: 230px;	
 }
 .loginUpInput td#button{
 	min-width: 110px;	
 	max-width: 110px;
 }
- .loginUpInput td#usernameTip, .loginUpInput td#passwordTip, .loginUpInput td#confirmTip, .loginUpInput td#nameTip, .loginUpInput td#phoneTip{
+ .loginUpInput td#usernameTip, .loginUpInput td#passwordTip, .loginUpInput td#confirmTip, .loginUpInput td#nameTip, .loginUpInput td#phoneTip{ 	
 	display: none;
 	text-align: center;
 	color: red;
