@@ -44,6 +44,7 @@ $(document).ready(function() {
 				password : password.val(),
 		};
 		$.ajax({
+			async : false,
 			url : rootUrl + 'rest/check/authentication/',
 			type : 'POST',
 			data : JSON.stringify(login),
@@ -55,22 +56,19 @@ $(document).ready(function() {
 				result = data;
 				if(result){
 					hideElement($('.loginInput td#loginTip'));
-					return true;			
 				}else{
 					setTextInsideElement($('.loginInput td#loginTip'),'login or password error');
 					showElement($('.loginInput td#loginTip'));
 					cleanLoginContentFields();
-					return false;
 				};
 				console.log('Result inside ajax');
 				console.log(result);
 			},
 		});
-
 		console.log('end of funcction');
 		console.log('RESULT');
 		console.log(result);
-		return result;
+//		return result;
 	});		
 	$('.loginUpInput #up').click(function(){
 		makeFirstAfterClick('.loginUpInput #up');
