@@ -52,9 +52,11 @@ $(document).ready(function() {
 				console.log(data);
 				result = data;
 				if(result){
+					console.log('result true');
 					hideElement($('.loginInput td#loginTip'));
 					return true;			
 				}else{
+					console.log('result false');
 					setTextInsideElement($('.loginInput td#loginTip'),'login or password error');
 					showElement($('.loginInput td#loginTip'));
 					cleanLoginContentFields();	
