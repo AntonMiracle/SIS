@@ -70,6 +70,7 @@ $(document).ready(function() {
 		console.log('end of funcction');
 		console.log('RESULT');
 		console.log(result);
+		return result;
 	});		
 	$('.loginUpInput #up').click(function(){
 		makeFirstAfterClick('.loginUpInput #up');
