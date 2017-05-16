@@ -16,32 +16,6 @@ $(document).ready(function() {
 //			loadingScreen();	
 //		},		
 	});	
-	$.ajax({
-		url : rootUrl + relativeUrl,
-		type : method,
-		data : JSON.stringify(data),
-		contentType : 'application/json; charset=utf-8',
-		dataType : 'json',
-		beforeSend: function(){
-			loadingScreen();				
-		},
-		complete : function(){
-			console.log('COMPLETE SEND');
-			loadingScreen();	
-		},
-		success : function(){
-			
-		},
-		error : function(){
-			
-		},
-		complete : function(){
-			
-		},
-		timeout : function(){
-			
-		},
-	});
 	//login page
 	$('#imgbg').fadeIn(1500);
 	$('.loginInput').fadeIn(500);
