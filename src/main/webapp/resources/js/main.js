@@ -108,24 +108,28 @@ $(document).ready(function() {
 				beforeSend: function(){
 								console.log('BEFORE SEND');
 								client = {
-								username : username.val(),
-								confirmPassword : confirm.val(),
-								password : password.val(),
-								name : name.val(),
-								surname : surname.val(),
-								phone : phone.val(),
-								mail : mail.val(),
+									username : username.val(),
+									confirmPassword : confirm.val(),
+									password : password.val(),
+									name : name.val(),
+									surname : surname.val(),
+									phone : phone.val(),
+									mail : mail.val(),
 								};
 								console.log('CLIENT BEFORE SEND');				
 								console.log(client);				
 				},
 				complete : function(data){
 					console.log('COMPLETE SEND');
-					console.log('isSave: ' + data.isSave);								
+					console.log('isSave: ' + client.isSave);
+					console.log('RESPONSE DATA');
+					console.log(data);
 				},
-				success : function(result){
-					client = result;
+				success : function(data){
+					client = data;
 					console.log('SUCCESS SEND');
+					console.log('RESPONSE DATA');
+					console.log(data);
 					console.log('CLIENT AFTER SUCCESS SEND');				
 					console.log(client);
 					if(client.isSave){

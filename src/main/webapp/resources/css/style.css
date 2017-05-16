@@ -34,7 +34,7 @@ input {
 	color: red;
 	}
 #serverError {	
-	display: none;
+	display: none;	
 	top:0;
 	left:0;
 	position:fixed;
@@ -42,6 +42,8 @@ input {
 	height: 50px;	
 	background-color: rgba(255, 0, 0, 0.5);
 	text-align: center;
+	font-size:30px;
+	color: white;
 	z-index: 2000;	
 }
 #loadDiv {	
