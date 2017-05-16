@@ -57,11 +57,9 @@ $(document).ready(function() {
 				}else{
 					setTextInsideElement($('.loginInput td#loginTip'),'login or password error');
 					showElement($('.loginInput td#loginTip'));
-					cleanLoginContentFields();		
-					break;
+					cleanLoginContentFields();	
 				};
 			},
-			timeout : 100,
 		});		
 	});	
 	
@@ -98,6 +96,7 @@ $(document).ready(function() {
 					client = data;
 					if(client.isSave){
 						hideUpContent();
+						return true;
 					}else{
 						if(client.username.length === 0){
 							setTextInsideElement(usernameTip, 'choose another username');
