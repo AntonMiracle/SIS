@@ -180,14 +180,12 @@ function hideHomeWorkersMenu() {
 var isUsernameMenuActive = false;
 var usernameValue;
 function hideUsernameMenu() {
-	setButtonTitle('.menuHome #homeUsername', 'USERNAME MENU');
-	setTextInsideElement('.menuHome #homeUsername', usernameValue);
+	setButtonTitle('.menuHome #homeUsername', 'USERNAME MENU');	
 	hideElement('.menuHome #homeUsernameOut');
 	isUsernameMenuActive = false;
 };
 function showUsernameMenu() {
-	setButtonTitle('.menuHome #homeUsername', 'CLOSE USERNAME MENU');
-	setTextInsideElement('.menuHome #homeUsername', usernameValue);
+	setButtonTitle('.menuHome #homeUsername', 'CLOSE USERNAME MENU');	
 	showElement('.menuHome #homeUsernameOut');
 	isUsernameMenuActive = true;
 };
