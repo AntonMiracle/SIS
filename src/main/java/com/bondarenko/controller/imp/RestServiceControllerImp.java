@@ -78,7 +78,7 @@ public class RestServiceControllerImp implements RestServiceController {
 	}
 
 	@Override
-	@GetMapping ("/authentication")
+	@PostMapping ("/authentication")
 	public ResponseEntity<Boolean> checkUsernameAndPassword(@RequestBody RestUserDto dto) throws RuntimeException {
 		return new ResponseEntity<Boolean>(userService.isAuthenticationCorrect(dto.username, dto.password),
 				HttpStatus.OK);
