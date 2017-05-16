@@ -54,7 +54,7 @@ $(document).ready(function() {
 			},
 			timeout : 100,
 		});	
-		setTimeout(function(){
+		//setTimeout(function(){
 			if(result){
 				hideElement($('.loginInput td#loginTip'));
 				return true;			
@@ -64,7 +64,7 @@ $(document).ready(function() {
 				cleanLoginContentFields();
 				return false;
 			};
-		}, 110)
+		//}, 110)
 	});	
 	
 	$('.loginUpInput #up').click(function(){
