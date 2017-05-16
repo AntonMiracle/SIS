@@ -36,7 +36,7 @@ $(document).ready(function() {
 	});
 	$('.loginIn #in').click(function(){	
 		makeFirstAfterClick('.loginIn #in');
-		var result;
+		var result = false;
 		var username = $('.loginInput input#username');
 		var password = $('.loginInput input#password');
 		var login = {

@@ -293,7 +293,7 @@ div#homeUsername {
 	border-width: 1px 1px 1px 0;	
 	border-width: 1px;	
 	border-style: solid;	
-	width: 50px;
+	width: 80px;
 	height: 80px;
 	left: 0;
 	font-size: 25px;	
@@ -319,9 +319,6 @@ div#homeUsername {
 	width: 130px;
 }
 
-.loginInput #in, .loginUpInput #up{	
-	height: 80px;
-	width: 80px;
 }
 .loginInput #in:hover, .loginUpInput #up:hover{	
 	border: 5px solid #508c44;		
