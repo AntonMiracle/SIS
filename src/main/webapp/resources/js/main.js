@@ -164,6 +164,7 @@ $(document).ready(function() {
 		}
 	});	
 	/*home menu username*/
+	
 	$('.menuHome #homeUsername').click(function() {
 		if(usernameValue === undefined){
 			usernameValue = $('.menuHome #homeUsername').text();

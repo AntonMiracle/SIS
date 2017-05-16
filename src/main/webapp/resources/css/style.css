@@ -23,7 +23,7 @@ body {
 */
 input {
 	border: 1px solid #508c44;
-	border-radius: 5px;
+	border-radius: 0;
 	height: 25px;
 }
 
