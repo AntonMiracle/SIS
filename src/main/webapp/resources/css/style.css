@@ -313,6 +313,7 @@ div#homeUsername {
 
 .button-scale:hover{	
 	background-color: #508c44;
+	color: white;
 	/*border-width: 5px;
 	border-color: #508c44;
 	border-style: solid;*/	
@@ -320,7 +321,7 @@ div#homeUsername {
 }
 
 }
-.loginInput #in:hover, .loginUpInput #up:hover{	
+.loginInput .button-scale#in:hover, .loginUpInput .button-scale#up:hover{	
 	border: 5px solid #508c44;	
 	width: 80px;
 	height: 80px;	
