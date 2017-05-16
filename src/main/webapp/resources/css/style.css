@@ -312,7 +312,7 @@ div#homeUsername {
 	width: 150px;
 	height: 25px;	
 }
-.button-scale#homeUsername:hover, .button-scale#homeUsernameOut  {		
+.button-scale#homeUsername:hover{		
 	width: 150px;	
 }
 
