@@ -1,20 +1,22 @@
 $(document).ready(function() {	
 	//general
-	$(document).ajaxStart(function() {
-		loadingScreen();
-	});
-	$(document).ajaxStop(function() {
-		loadingScreen();
-	});
-	$.ajaxSetup({		
-		//async: false,
-//		beforeSend: function(){
-//			loadingScreen();				
-//		},
-//		complete : function(){
-//			console.log('COMPLETE SEND');
-//			loadingScreen();	
-//		},		
+//	$(document).ajaxStart(function() {
+//		loadingScreen();
+//	});
+//	$(document).ajaxStop(function() {
+//		loadingScreen();
+//	});
+	$.ajaxSetup({
+		error : function(){
+			serverErrorScreen();
+		},
+		beforeSend: function(){
+			loadingScreen();				
+		},
+		complete : function(){
+			loadingScreen();	
+		},
+		timeout : 3000,
 	});	
 	//login page
 	$('#imgbg').fadeIn(1500);
@@ -114,10 +116,6 @@ $(document).ready(function() {
 				data : JSON.stringify(client),
 				contentType : 'application/json; charset=utf-8',
 				dataType : 'json',
-				beforeSend: function(){			
-				},
-				complete : function(data){
-				},
 				success : function(data){
 					client = data;
 					if(client.isSave){
@@ -154,12 +152,7 @@ $(document).ready(function() {
 							hideElement(nameTip);
 						}
 					}
-				},
-				error : function(){
-					serverErrorScreen();
-				},				
-				timeout : function(){					
-				},
+				}				
 			});	
 			
 			
