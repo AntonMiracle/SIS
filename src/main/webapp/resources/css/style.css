@@ -320,8 +320,7 @@ div#homeUsername {
 	width: 150px;
 }
 
-}
-.loginInput .button-scale#in:hover, .loginUpInput .button-scale#up:hover{	
+.loginInput #in:hover, .loginUpInput #up:hover{	
 	border: 5px solid #508c44;	
 	width: 80px;
 	height: 80px;	
