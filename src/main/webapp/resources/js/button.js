@@ -39,7 +39,7 @@ $(document).ready(function() {
 
 	//proposals
 	$('.menuHome #proposals').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #proposals', '19', 'PROPOSALS');
+		switchElementTextValueAndSize('.menuHome #proposals', '20', 'PROPOSALS');
 	});
 	$('.menuHome #proposals').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #proposals', '25', 'P');
@@ -84,10 +84,10 @@ $(document).ready(function() {
 	});
 
 	//user menu
-	$('.menuHome #out').mouseenter(function() {
-		switchElementTextValueAndSize('.menuHome #out', '20', 'OUT');
+	$('.menuHome #homeUsernameOut').mouseenter(function() {
+		switchElementTextValueAndSize('.menuHome #homeUsernameOut', '20', 'OUT');
 	});
-	$('.menuHome #out').mouseleave(function() {
-		switchElementTextValueAndSize('.menuHome #out', '25', 'O');
+	$('.menuHome #homeUsernameOut').mouseleave(function() {
+		switchElementTextValueAndSize('.menuHome #homeUsernameOut', '25', 'O');
 	});
 });

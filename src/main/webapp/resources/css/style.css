@@ -78,7 +78,7 @@ input {
 	width: 40px;
 	height: auto;
 	position: absolute;
-	top: 30px;
+	top: 0;
 	left: 0;
 	margin: auto;
 	border: 0px solid #508c44;
@@ -90,7 +90,7 @@ input {
 	width: 40px;
 	height: auto;
 	position: absolute;
-	top: 0px;
+	top: 50px;
 	left: 0;
 	margin: auto;
 	border: 0px solid #508c44;
@@ -153,7 +153,7 @@ input {
 	height: auto;
 	position: absolute;
 	top: 10px;
-	left:150px;
+	left:200px;
 	margin: auto;
 	border: 0px solid #508c44;
 	border-radius: 7px;
@@ -212,15 +212,20 @@ input {
 
 .homeLogo {
 	display: table-cell;
-	background-color: rgba(255, 255, 255, 0.6);	
-	min-width: 150px;
-	height: 36px;
+	background-color: rgba(255, 255, 255, 1);	
+	height: 50px;
+	min-width:150px;
+	left: 0;
+	top:0;
+	width: 100%;
+	position: fixed;
 	border-color: white;		
 	border-width: 0;		
 	border-style: solid;		
-	font-size: 20px;
+	font-size: 45px;
 	text-align: center;
 	vertical-align: middle;
+	z-index: 10;
 }
 
 div#homeUsername {
@@ -286,7 +291,7 @@ div#homeUsername {
 /*=      buttons      =*/
 /*=====================*/
 .button-scale {	
-	background-color: rgba(255, 255, 255, 0.4);
+	background-color: rgba(255, 255, 255, 0.5);
 	margin-bottom: 1px;
 	margin-top: 1px;
 	border-color: white;	
@@ -302,10 +307,10 @@ div#homeUsername {
 	z-index: 2;
 	outline: none;
 }
-.button-scale#homeUsername, .button-scale#homeUsernameOut {	
+.button-scale#homeUsername {	
 	font-size: 20px;		
 	width: 150px;
-	height: 40px;	
+	height: 25px;	
 }
 .button-scale#homeUsername:hover, .button-scale#homeUsernameOut  {		
 	width: 150px;	

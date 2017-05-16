@@ -51,8 +51,6 @@ $(document).ready(function() {
 			contentType : 'application/json; charset=utf-8',
 			dataType : 'json',
 			success : function(data){
-//				console.log('DATA inside ajax');
-//				console.log(data);
 				result = data;
 				if(result){
 					hideElement($('.loginInput td#loginTip'));
@@ -61,13 +59,8 @@ $(document).ready(function() {
 					showElement($('.loginInput td#loginTip'));
 					cleanLoginContentFields();
 				};
-//				console.log('Result inside ajax');
-//				console.log(result);
 			},
 		});
-//		console.log('end of funcction');
-//		console.log('RESULT');
-//		console.log(result);
 		return result;
 	});		
 	$('.loginUpInput #up').click(function(){
@@ -140,7 +133,9 @@ $(document).ready(function() {
 			});	
 	});	
 	//home page
-	setTimeout("$('.menuHome').show();", 1000);	
+	setTimeout(function(){
+		$('.menuHome').show()
+	}, 1000);	
 	/* clients menu */
 	$('.menuHome #clients').click(function() {
 		makeFirstAfterClick('.menuHome #clients');
@@ -205,45 +200,45 @@ $(document).ready(function() {
 	/*========================*/
 	/*=    other function    =*/
 	/*========================*/
-	function checkInputValuelength(value) {
-		if (value && value.trim().length > 3 && value.trim().length < 17) {
-			return true;
-		} else {
-			return false;
-		};
-	};
-	function checkInputData(value,tipElement, error){
-		if(checkInputValuelength(value)){
-			hideElement(tipElement);
-			return 0;
-		}else{
-			setTextInsideElement(tipElement, error);
-			showElement(tipElement);
-			return 1;
-		};
-	};
-	
-	function checkUniqueField(value,tipElement, error, check){	
-		if(checkInputValuelength(value)){		
-			if(check){
-				hideElement(tipElement);
-				return 0;
-			}else{
-				setTextInsideElement(tipElement, error);
-				showElement(tipElement);
-				return 1;
-			};		
-		}else{
-			setTextInsideElement(tipElement, error);
-			showElement(tipElement);
-			return 1;
-		};	
-	};
-	
-	function compareUsernameAndPassword(username, password){
-		return getAndReturnData('rest/check/authentication/' + username + '/' + password);
-	};
-	
+//	function checkInputValuelength(value) {
+//		if (value && value.trim().length > 3 && value.trim().length < 17) {
+//			return true;
+//		} else {
+//			return false;
+//		};
+//	};
+//	function checkInputData(value,tipElement, error){
+//		if(checkInputValuelength(value)){
+//			hideElement(tipElement);
+//			return 0;
+//		}else{
+//			setTextInsideElement(tipElement, error);
+//			showElement(tipElement);
+//			return 1;
+//		};
+//	};
+//	
+//	function checkUniqueField(value,tipElement, error, check){	
+//		if(checkInputValuelength(value)){		
+//			if(check){
+//				hideElement(tipElement);
+//				return 0;
+//			}else{
+//				setTextInsideElement(tipElement, error);
+//				showElement(tipElement);
+//				return 1;
+//			};		
+//		}else{
+//			setTextInsideElement(tipElement, error);
+//			showElement(tipElement);
+//			return 1;
+//		};	
+//	};
+//	
+//	function compareUsernameAndPassword(username, password){
+//		return getAndReturnData('rest/check/authentication/' + username + '/' + password);
+//	};
+//	
 	function getClients(){
 		return getAndReturnData('rest/clients');
 	};
