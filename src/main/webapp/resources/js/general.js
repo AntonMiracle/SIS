@@ -1,25 +1,23 @@
 var rootUrl = location.protocol + '//' + location.host + '/';
-function findElementInDocument(element){
+function getElement(element){
 	element = $(document).find(element);
 	return element;
 }
-$(document).ajaxStart(function() {
-	loadingScreen();
-});
-$(document).ajaxStop(function() {
-	loadingScreen();
-});
-var loadingScreenActive = false;
+var isLoadingScreenActive = false;
 function loadingScreen() {
-	if (loadingScreenActive) {
-		hideElement(findElementInDocument('#loadDiv'));
-//		hideElement($(document).find('#loadDiv'));
-		loadingScreenActive = false;
+	if (isLoadingScreenActive) {
+		hideElement(getElement('#loadDiv'));
+		isLoadingScreenActive = false;
 	} else {
-		showElement(findElementInDocument('#loadDiv'));
-//		showElement($(document).find('#loadDiv'));
-		loadingScreenActive = true;
+		showElement(getElement('#loadDiv'));
+		isLoadingScreenActive = true;
 	}
+}
+function serverErrorScreen(){
+	showElement(getElement('#serverError'));
+	setTimeout(function () {
+		hideElement(getElement('#serverError'));
+	},2000);
 }
 function switchElementTextValueAndSize(element, fontSize, text) {
 	element = $(element);
@@ -181,17 +179,6 @@ function hideHomeWorkersMenu() {
 // username menu
 var isUsernameMenuActive = false;
 var usernameValue;
-//$('.menuHome #homeUsername').click(function() {
-//	if(usernameValue === undefined){
-//		usernameValue = $('.menuHome #homeUsername').text();
-//	}
-//	if(isUsernameMenuActive){
-//		hideUsernameMenu();
-//	}else{
-//		makeFirstAfterClick('.menuHome #homeUsername');
-//		showUsernameMenu();
-//	}		
-//});		
 function hideUsernameMenu() {
 	setTextInsideElement('.menuHome .homeLogo', 'SIS');
 	setButtonTitle('.menuHome #homeUsername', 'USERNAME');
@@ -215,9 +202,8 @@ function hideAllHomeTable() {
 function showAllClientsTable() {
 	showElement('#clientsTableList');
 };
-/* ================== */
-/* = clean function = */
-/* ================== */
+
+// clean function
 function cleanUpContentFields() {
 	setElementValue('.loginUpInput #username', '');
 	setElementValue('.loginUpInput #password', '');
@@ -231,4 +217,11 @@ function cleanLoginContentFields() {
 	setElementValue('.loginInput input#username', '');
 	setElementValue('.loginInput input#password', '');
 };
-
+// other
+function makeFirstAfterClick(element){	
+	 getElement(element).blur();	
+	 hideAllHomeTable();
+	 if(isUsernameMenuActive){
+		 hideUsernameMenu(); 
+	 }			
+};

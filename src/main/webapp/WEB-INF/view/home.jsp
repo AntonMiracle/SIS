@@ -14,16 +14,7 @@
 	<jsp:attribute name="head">
 	
 	</jsp:attribute>
-	<jsp:attribute name="content">
-		<!-- ============ -->
-		<!-- loading div -->
-		<!-- =========== -->
-		<div id="loadDiv">		 
-			<img src="resources/css/load.gif"> 	
-		</div>		
-		<div id="test">
-		LOADING....
-		</div>	
+	<jsp:attribute name="content">		
 		<!-- ========= -->
 		<!-- home menu -->
 		<!-- ========= -->

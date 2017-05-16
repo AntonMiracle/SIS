@@ -30,7 +30,7 @@ public class ExampleDataMaker {
 		CarMaker cm = new CarMaker();
 		ProposalMaker pm = new ProposalMaker();
 		TaskMaker tm = new TaskMaker();
-		um.generateExampleData(numberOfClients, numberOfManagers, numberOfWorkers, rs, us);
+		um.makeExampleData(numberOfClients, numberOfManagers, numberOfWorkers, rs, us);
 		cm.generateExampleData(maxCarsByClient, cs, us);
 		pm.generateExampleData(numberOfProposals, cs, us, ss, ps);
 		tm.generateExampleData(maxTasksByProposal, rs, ss, ts, ps);

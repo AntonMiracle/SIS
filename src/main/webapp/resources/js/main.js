@@ -1,51 +1,67 @@
 $(document).ready(function() {	
 	//general
-	
-	//login page
-	$('#imgbg').fadeIn(1500);
-	$('.loginInput').fadeIn(500);
-	setTimeout("$('.menuLogin').show();", 1000);
-	//home page
-	setTimeout("$('.menuHome').show();", 1000);	
-	
-	
-	
+	$(document).ajaxStart(function() {
+		loadingScreen();
+	});
+	$(document).ajaxStop(function() {
+		loadingScreen();
+	});
 	$.ajaxSetup({		
-		async: false,
+		//async: false,
+//		beforeSend: function(){
+//			loadingScreen();				
+//		},
+//		complete : function(){
+//			console.log('COMPLETE SEND');
+//			loadingScreen();	
+//		},		
+	});	
+	$.ajax({
+		url : rootUrl + relativeUrl,
+		type : method,
+		data : JSON.stringify(data),
+		contentType : 'application/json; charset=utf-8',
+		dataType : 'json',
 		beforeSend: function(){
-			console.log('BEFORE SEND');
 			loadingScreen();				
 		},
 		complete : function(){
 			console.log('COMPLETE SEND');
 			loadingScreen();	
-		},		
-	});	
-	
-//	var loadingScreenActive = false;
-//	function loadingScreen() {
-//		if (loadingScreenActive) {
-//			$('#loadDiv').hide();
-//			loadingScreenActive = false;
-//		} else {
-//			$('#loadDiv').show();
-//			loadingScreenActive = true;
-//		}
-//	}
-	
-	
-	
+		},
+		success : function(){
+			
+		},
+		error : function(){
+			
+		},
+		complete : function(){
+			
+		},
+		timeout : function(){
+			
+		},
+	});
+	//login page
+	$('#imgbg').fadeIn(1500);
+	$('.loginInput').fadeIn(500);
+	setTimeout("$('.menuLogin').show();", 1000);
 	$('.menuLogin #info').click(function() {
 		makeFirstAfterClick('.menuLogin #info');
 		if(isInfoContentActive){
 			hideProjectInformationContent();
 		}else{
 			showProjectInformationContent();
-		}
-		
+		}		
 	});	
-	
-	//check input username & password
+	$('.menuLogin #up').click(function(){	
+		makeFirstAfterClick('.menuLogin #up');
+		if(isUpContentActive){
+			hideUpContent();			
+		}else{
+			showUpContent();		
+		};		
+	});
 	$('.loginIn #in').click(function(){	
 		makeFirstAfterClick('.loginIn #in');		
 		if(compareUsernameAndPassword($('.loginInput input#username').val(),$('.loginInput input#password').val())){
@@ -58,16 +74,6 @@ $(document).ready(function() {
 			return false;
 		};
 	});	
-	
-	$('.menuLogin #up').click(function(){	
-		makeFirstAfterClick('.menuLogin #up');
-		if(isUpContentActive){
-			hideUpContent();			
-		}else{
-			showUpContent();		
-		};		
-	});
-	
 	$('.loginUpInput #up').click(function(){
 		makeFirstAfterClick('.loginUpInput #up');
 		var username = $('.loginUpInput #username');
@@ -81,43 +87,148 @@ $(document).ready(function() {
 		var passwordTip = $('.loginUpInput #passwordTip');
 		var confirmTip = $('.loginUpInput #confirmTip');
 		var nameTip = $('.loginUpInput #nameTip');		
-		var phoneTip = $('.loginUpInput #phoneTip');		
-		var count = 0;
+		var phoneTip = $('.loginUpInput #phoneTip');
 		var error = 'incorrect field';
-		var isUsernameFree = getAndReturnData('rest/check/usernamefree/' + username.val());
-		var isPhoneFree = getAndReturnData('rest/check/phonefree/' + phone.val());
-		count = count + checkUniqueField(username.val(), usernameTip, error, isUsernameFree);
-		count = count + checkInputData(password.val(), passwordTip, error);		
-		count = count + checkInputData(confirm.val(), confirmTip, error);		
-		count = count + checkInputData(name.val(), nameTip, error);
-		count = count + checkUniqueField(phone.val(), phoneTip, error, isPhoneFree);
-		if(password.val() != confirm.val()){
-			setTextInsideElement(confirmTip, error);
-			showElement(confirmTip);
-			return false;
-		};
-		if(count === 0 && password.val() === confirm.val()){
-			var client = {
-			username : username.val(),
-			password : password.val(),
-			name : name.val(),
-			surname : surname.val(),
-			phone : phone.val(),
-			mail : mail.val(),
-			};			
-			saveData('rest/user/new', 'POST', client);
-			hideUpContent();
-			
-			return true;
-		}else{
-			return false;
-		};			
-	});
-
-	/*===================*/
-	/*=    home page    =*/
-	/*===================*/
 		
+		
+		
+//		var count = 0;
+		
+//		var isUsernameFree = getAndReturnData('rest/check/usernamefree/' + username.val());
+//		var isPhoneFree = getAndReturnData('rest/check/phonefree/' + phone.val());
+//		count = count + checkUniqueField(username.val(), usernameTip, error, isUsernameFree);
+//		count = count + checkInputData(password.val(), passwordTip, error);		
+//		count = count + checkInputData(confirm.val(), confirmTip, error);		
+//		count = count + checkInputData(name.val(), nameTip, error);
+//		count = count + checkUniqueField(phone.val(), phoneTip, error, isPhoneFree);
+//		if(password.val() != confirm.val()){
+//			setTextInsideElement(confirmTip, error);
+//			showElement(confirmTip);
+//			return false;
+//		};
+//		if(count === 0 && password.val() === confirm.val()){
+//			var client = {
+//			username : username.val(),
+//			confirm : confirm.val(),
+//			password : password.val(),
+//			name : name.val(),
+//			surname : surname.val(),
+//			phone : phone.val(),
+//			mail : mail.val(),
+//			};	
+				
+			
+			
+//			
+//			return true;
+//		}else{
+//			return false;
+//		};
+			var client;
+			$.ajax({
+				url : rootUrl + 'rest/user/new/client',
+				type : 'POST',
+				data : JSON.stringify(client),
+				contentType : 'application/json; charset=utf-8',
+				dataType : 'json',
+				beforeSend: function(){
+								console.log('BEFORE SEND');
+								client = {
+								username : username.val(),
+								confirmPassword : confirm.val(),
+								password : password.val(),
+								name : name.val(),
+								surname : surname.val(),
+								phone : phone.val(),
+								mail : mail.val(),
+								};
+								console.log('CLIENT BEFORE SEND');				
+								console.log(client);				
+				},
+				complete : function(data){
+					console.log('COMPLETE SEND');
+					console.log('isSave: ' + data.isSave);								
+				},
+				success : function(data){
+					client = data;
+					console.log('SUCCESS SEND');
+					console.log('CLIENT AFTER SUCCESS SEND');				
+					console.log(client);
+					if(client.isSave){
+						hideUpContent();
+					}else{
+						if(client.username.length === 0){
+							setTextInsideElement(usernameTip, error)
+						}
+						if(client.password.length === 0){
+							setTextInsideElement(passwordTip, error)
+						}
+						if(client.confirmPassword.length === 0){
+							setTextInsideElement(confirmTip, error)
+						}
+						if(client.phone.length === 0){
+							setTextInsideElement(phoneTip, error)
+						}
+						if(client.name.length === 0){
+							setTextInsideElement(nameTip, error)
+						}
+					}
+				},
+				error : function(){
+					serverErrorScreen();
+				},				
+				timeout : function(){					
+				},
+			});	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+	});	
+	//home page
+	setTimeout("$('.menuHome').show();", 1000);	
 	/* clients menu */
 	$('.menuHome #clients').click(function() {
 		makeFirstAfterClick('.menuHome #clients');
@@ -167,11 +278,6 @@ $(document).ready(function() {
 	$('#clientsTableList').on('click', '.clientsRow', function() {		
 		clientsRowId = $(this).attr('id');		
 		hideAllHomeTable();
-		///////////////test
-		loadingScreen();
-		setTimeout(function () {
-			loadingScreen();
-		},3000);
 	});	
 
 	/*=======================*/
@@ -239,17 +345,9 @@ $(document).ready(function() {
 	function getClients(){
 		return getAndReturnData('rest/clients');
 	};
-	function makeFirstAfterClick(element){	
-		 $(element).blur();	
-		 hideAllHomeTable();
-		 if(isUsernameMenuActive){
-			 hideUsernameMenu(); 
-		 }			
-	};
-	
+		
 	function updateClientsTable(){
 		console.log('create table');
-//		loadingScreen();
 		clientsUsers = getClients();
 		$('#clientsTableList').empty();
 		$('#clientsTableList').append('<tr id="allClientsTableTitle">'
@@ -270,24 +368,6 @@ $(document).ready(function() {
 					+'</tr>'
 				);
 		});
-//		loadingScreen();
 		console.log('finish create table');
-		};
-		
-//		var loadingScreenActive = false;
-//		function loadingScreen(){
-//			console.log('loading screen function - 1');
-//			if(loadingScreenActive){
-//				console.log('loading screen function - 2');
-//				$('#loadDiv').hide();
-//				console.log('loading screen function - 3');
-//			}else{
-//				console.log('loading screen function - 4');
-//				$('#loadDiv').show();
-//				console.log('loading screen function - 5');
-//				loadingScreenActive = true;
-//				console.log('loading screen function - 6');
-//			}
-//			console.log('loading screen function - 7');
-//		}
+		};		
 	});

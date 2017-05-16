@@ -1,6 +1,5 @@
 package com.bondarenko.controller.imp;
 
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ import com.bondarenko.service.UserInformationService;
 import com.bondarenko.service.UserService;
 
 @RestController
-@RequestMapping (value = {"/rest","/rest/user","/rest/check"})
+@RequestMapping (value = {"/rest","/rest/user","/rest/check","/rest/user/new"})
 public class RestServiceControllerImp implements RestServiceController {
 	@Autowired
 	private ProposalService proposalService;
@@ -55,10 +54,9 @@ public class RestServiceControllerImp implements RestServiceController {
 	}
 
 	@Override
-	@PostMapping (value = "/new")
-	public ResponseEntity<Boolean> saveUser(@RequestBody RestNewUserDto dto) throws RuntimeException {		
-		restService.saveNewUserDto(dto);		
-		return new ResponseEntity<Boolean>(!userService.isUsernameUnique(dto.username), HttpStatus.OK);
+	@PostMapping (value = "/client")
+	public ResponseEntity<RestNewUserDto> makeNewClient(@RequestBody RestNewUserDto dto) throws RuntimeException {	
+		return new ResponseEntity<RestNewUserDto>(restService.makeNewClient(dto), HttpStatus.OK);
 	}
 
 	@Override

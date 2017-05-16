@@ -30,7 +30,15 @@
 	<!-- background img -->
 	<!-- ============== -->	
 	<img src="resources/css/bodybg.jpg" id="imgbg">
-	
+	<!-- ============ -->
+	<!-- loading div -->
+	<!-- =========== -->
+	<div id="loadDiv">		 
+		<img src="resources/css/load.gif"> 	
+	</div>		
+	<div id="serverError">
+		SERVER ERROR! Try later
+	</div>	
 	<!-- =============== -->
 	<!-- general content -->
 	<!-- =============== -->	

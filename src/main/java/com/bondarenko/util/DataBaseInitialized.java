@@ -20,7 +20,7 @@ public class DataBaseInitialized {
 		if (!isDatabaseFill) {			
 			new RoleMaker().initialized(roleService);
 			new StatusMaker().initialized(statusService);
-			new UserMaker().initializedUsers(userService, roleService,uiService);
+			new UserMaker().makeUsers(userService, roleService,uiService);
 			new ExampleDataMaker().initializedExampleData(userService, taskService, carService, proposalService, statusService, roleService);
 			System.out.println("Database initialized complete");
 			isDatabaseFill = true;

@@ -1,14 +1,13 @@
 package com.bondarenko.service.imp;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bondarenko.maker.data.UserMaker;
 import com.bondarenko.model.Car;
 import com.bondarenko.model.Proposal;
 import com.bondarenko.model.Role;
@@ -23,12 +22,15 @@ import com.bondarenko.service.CarService;
 import com.bondarenko.service.ProposalService;
 import com.bondarenko.service.RestService;
 import com.bondarenko.service.RoleService;
+import com.bondarenko.service.UserInformationService;
 import com.bondarenko.service.UserService;
 
 @Service
 public class RestServiceImp implements RestService {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private UserInformationService userInformationService;
 	@Autowired
 	private ProposalService proposalService;
 	@Autowired
@@ -119,17 +121,8 @@ public class RestServiceImp implements RestService {
 	}
 
 	@Override
-	public void saveNewUserDto(RestNewUserDto dto) throws RuntimeException {
-		User user = new User();
-		UserInformation ui = new UserInformation();
-		user.setUserInformation(ui);
-		user.setUsername(dto.username);
-		user.setPassword(dto.password);
-		ui.setPhone(dto.phone);
-		ui.setMail(dto.mail);
-		ui.setName(dto.name);
-		ui.setSurname(dto.surname);
-		user = userService.save(user);		
+	public RestNewUserDto makeNewClient(RestNewUserDto dto) throws RuntimeException {		
+		return new UserMaker().makeNewClient(dto, userService, roleService, userInformationService);				
 	}
 
 	@SuppressWarnings ("deprecation")

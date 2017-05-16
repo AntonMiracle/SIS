@@ -10,10 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bondarenko.dao.UserDao;
-import com.bondarenko.maker.data.RoleMaker;
 import com.bondarenko.model.Role;
 import com.bondarenko.model.User;
-import com.bondarenko.service.RoleService;
 import com.bondarenko.service.UserInformationService;
 import com.bondarenko.service.UserService;
 
@@ -23,17 +21,12 @@ public class UserServiceImp implements UserService {
 	@Autowired
 	private UserDao userDao;
 	@Autowired
-	private RoleService roleService;
-	@Autowired
 	private UserInformationService uiService;
 
 	@Override
 	@Transactional
 	public User save(User user) throws RuntimeException {
 		try {
-			if(user.getRoles().size()==0){
-				user.getRoles().add(roleService.getByName(RoleMaker.ROLE_CLIENT));
-			}
 			user.setUserInformation(uiService.save(user.getUserInformation()));
 			return userDao.save(user);
 		} catch (RuntimeException ex) {
