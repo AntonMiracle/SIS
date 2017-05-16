@@ -39,7 +39,7 @@ $(document).ready(function() {
 		var password = $('.loginInput input#password');
 		var login = {
 				username : username.val(),
-				password : confirm.val(),
+				password : password.val(),
 		};
 		$.ajax({
 			url : rootUrl + 'rest/check/authentication/',
