@@ -51,8 +51,8 @@ $(document).ready(function() {
 			contentType : 'application/json; charset=utf-8',
 			dataType : 'json',
 			success : function(data){
-				console.log('DATA inside ajax');
-				console.log(data);
+//				console.log('DATA inside ajax');
+//				console.log(data);
 				result = data;
 				if(result){
 					hideElement($('.loginInput td#loginTip'));
@@ -61,13 +61,13 @@ $(document).ready(function() {
 					showElement($('.loginInput td#loginTip'));
 					cleanLoginContentFields();
 				};
-				console.log('Result inside ajax');
-				console.log(result);
+//				console.log('Result inside ajax');
+//				console.log(result);
 			},
 		});
-		console.log('end of funcction');
-		console.log('RESULT');
-		console.log(result);
+//		console.log('end of funcction');
+//		console.log('RESULT');
+//		console.log(result);
 		return result;
 	});		
 	$('.loginUpInput #up').click(function(){

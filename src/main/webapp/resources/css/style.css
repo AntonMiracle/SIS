@@ -289,9 +289,8 @@ div#homeUsername {
 	background-color: rgba(255, 255, 255, 0.6);
 	margin-bottom: 1px;
 	margin-top: 1px;
-	border-color: white;		
-	border-width: 1px 1px 1px 0;	
-	border-width: 1px;	
+	border-color: white;	
+	border-width: 0px;	
 	border-style: solid;	
 	width: 80px;
 	height: 80px;
@@ -312,16 +311,19 @@ div#homeUsername {
 	width: 150px;	
 }
 
-.button-scale:hover{
-	border-width: 5px;
+.button-scale:hover{	
+	background-color: #508c44;
+	/*border-width: 5px;
 	border-color: #508c44;
-	border-style: solid;	
+	border-style: solid;*/	
 	width: 130px;
 }
 
 }
 .loginInput #in:hover, .loginUpInput #up:hover{	
-	border: 5px solid #508c44;		
+	border: 5px solid #508c44;	
+	width: 80px;
+	height: 80px;	
 }
 
 .menuLogin .button-scale#info {
