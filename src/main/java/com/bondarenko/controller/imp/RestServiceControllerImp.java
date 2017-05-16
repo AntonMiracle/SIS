@@ -56,6 +56,7 @@ public class RestServiceControllerImp implements RestServiceController {
 	@Override
 	@PostMapping (value = "/client")
 	public ResponseEntity<RestNewUserDto> makeNewClient(@RequestBody RestNewUserDto dto) throws RuntimeException {	
+		System.out.println(dto);
 		return new ResponseEntity<RestNewUserDto>(restService.makeNewClient(dto), HttpStatus.OK);
 	}
 

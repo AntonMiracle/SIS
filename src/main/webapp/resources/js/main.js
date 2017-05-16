@@ -153,6 +153,7 @@ $(document).ready(function() {
 					}
 				},
 				error : function(){
+					console.log('ERROR SEND');
 					serverErrorScreen();
 				},				
 				timeout : function(){					
