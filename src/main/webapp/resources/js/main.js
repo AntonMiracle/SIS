@@ -57,7 +57,8 @@ $(document).ready(function() {
 				}else{
 					setTextInsideElement($('.loginInput td#loginTip'),'login or password error');
 					showElement($('.loginInput td#loginTip'));
-					cleanLoginContentFields();					
+					cleanLoginContentFields();		
+					break;
 				};
 			},
 			timeout : 100,
