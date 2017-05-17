@@ -244,8 +244,7 @@ div#homeUsername {
 #allClientsTableTitle{		
 	left: 150px;
 	top:50px;
-	position: fixed;
-	min-height: 35px;	
+	position: fixed;	
 	max-width: 1006px;
 	min-width: 1006px;
 }
@@ -263,23 +262,13 @@ div#homeUsername {
 	border-style: solid;
 	max-width: 200px;
 	min-width: 200px;
+	min-height: 35px;		
+	max-height: 35px;
 }
 .clientsRow:hover{
 	background-color: rgba(255, 255, 255, 1);
 }
-/*
-.homeClientsInfo {	
-	display: none;
-	position: absolute;
-	top: 60px;
-	left: 150px;
-	background-color: rgba(255, 255, 255, 0.6);
-	text-align: center;
-	border: 2px solid #508c44;
-	border-radius: 5px 5px 5px 5px;
-	border-collapse: collapse;
-}
-*/
+
 /* HOME USER INFO TESTING*/
 .homeUserDiv .button-scale{
 	width: 150px;
@@ -302,26 +291,26 @@ div#homeUsername {
 	border-color: #508c44;
 	border-style: solid;
 	font-size: 25px;
-	}
-	.homeUserDiv #head div{
+}
+.homeUserDiv #head div{
 	display: inline-block;
-	}	
-	.homeUserDiv #menu{
+}	
+.homeUserDiv #menu{
 	display: inline-block;
 	float: left;
 	width: 150px;
 	border-width: 0 2px 0 0;
 	border-color: #508c44;
 	border-style: solid;
-	}
-	.homeUserDiv #contentDiv{
+}
+.homeUserDiv #contentDiv{
 	display: inline-block;
 	float: left;	
 	right:0;
 	bottom:0;
 	position: relative;
 	background-color: rgba(255, 255, 255, 0.6);
-	}
+}
 /* HOME USER INFO END TESTING*/
 /*=====================*/
 /*=      buttons      =*/
