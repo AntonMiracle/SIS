@@ -172,7 +172,7 @@ $(document).ready(function() {
 		if(isUsernameMenuActive){
 			hideUsernameMenu();
 		}else{				
-			('.menuHome #homeUsername').blur();
+			$('.menuHome #homeUsername').blur();
 			showUsernameMenu();
 		}		
 	});		
