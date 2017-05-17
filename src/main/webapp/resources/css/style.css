@@ -236,14 +236,14 @@ div#homeUsername {
 	min-width: 1006px;
 	text-align: center;
 	left: 150px;	
-	top: 35px;
+	top: 85px;
 	position: absolute;
 	background-color: rgba(255, 255, 255, 0.4);
 	border-collapse: collapse;
 }
 #allClientsTableTitle{		
 	left: 150px;
-	top:0;
+	top:50px;
 	position: fixed;
 	max-width: 1006px;
 	min-width: 1006px;
@@ -253,9 +253,6 @@ div#homeUsername {
 	height: 35px;		
 	background-color: white;	
 	font-size: 20px;
-}
-#allClientsTableHead{	
-	background-color: white;
 }
 
 #clientsTableList td{		

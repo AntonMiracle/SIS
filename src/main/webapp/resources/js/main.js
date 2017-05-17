@@ -10,7 +10,7 @@ $(document).ready(function() {
 		complete : function(){
 			loadingScreen();	
 		},
-		timeout : 15000,
+		timeout : 30000,
 	});	
 	//login page
 	$('#imgbg').fadeIn(1500);
@@ -180,16 +180,96 @@ $(document).ready(function() {
 		}		
 	});		
 	/* clients*/
-	var clientsRowId;
-	$('.menuHome #allClients').click(function(){		
-		hideAllHomeTable();
-		showAllClientsTable();
-		updateClientsTable();
+	
+//	$('.menuHome #allClients').click(function(){		
+//		hideAllHomeTable();
+//		showAllClientsTable();
+//		updateClientsTable();
+//	});
+	$('.menuHome #allClients').click(function(){
+		makeFirstAfterClick('.loginIn #in');
+		hideAllHomeTable();		
+		//updateClientsTable();	
+		var clientsUsers;		
+		$.ajax({			
+			url : rootUrl + 'rest/clients',
+			type : 'GET',			
+			contentType : 'application/json; charset=utf-8',
+			dataType : 'json',
+			success : function(data){
+				console.log('create table');
+				clientsUsers=data;
+				$('#clientsTableList').empty();
+				$('#clientsTableList').append('<tr id="allClientsTableTitle">'
+						+'<td>NAME</td>'
+						+'<td>SURNAME</td>'
+						+'<td>PHONE</td>'
+						+'<td>MAIL</td>'
+						+'<td>CREATE</td>'
+					+'</tr>'				
+				);	
+				$.each(clientsUsers, function(){
+					$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
+							+'<td>' + this.name + '</td>'
+							+'<td>' + this.surname + '</td>'
+							+'<td>' + this.phone + '</td>'
+							+'<td>' + this.mail + '</td>'
+							+'<td>' + this.createDate + '</td>'
+							+'</tr>'
+						);
+				});
+				console.log('finish create table');						
+				showAllClientsTable();
+			},
+		});	
 	});
+	var clientsRowId;
 	$('#clientsTableList').on('click', '.clientsRow', function() {		
 		clientsRowId = $(this).attr('id');		
 		hideAllHomeTable();
 	});	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	/*=======================*/
 	/*=    ajax function    =*/
@@ -243,32 +323,32 @@ $(document).ready(function() {
 //		return getAndReturnData('rest/check/authentication/' + username + '/' + password);
 //	};
 //	
-	function getClients(){
-		return getAndReturnData('rest/clients');
-	};
+//	function getClients(){
+//		return getAndReturnData('rest/clients');
+//	};
 		
-	function updateClientsTable(){
-		console.log('create table');
-		clientsUsers = getClients();
-		$('#clientsTableList').empty();
-		$('#clientsTableList').append('<tr id="allClientsTableTitle">'
-				+'<td>NAME</td>'
-				+'<td>SURNAME</td>'
-				+'<td>PHONE</td>'
-				+'<td>MAIL</td>'
-				+'<td>CREATE</td>'
-			+'</tr>'				
-		);	
-		$.each(clientsUsers, function(){
-			$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
-					+'<td>' + this.name + '</td>'
-					+'<td>' + this.surname + '</td>'
-					+'<td>' + this.phone + '</td>'
-					+'<td>' + this.mail + '</td>'
-					+'<td>' + this.createDate + '</td>'
-					+'</tr>'
-				);
-		});
-		console.log('finish create table');
-		};		
+//	function updateClientsTable(){
+//		console.log('create table');
+//		clientsUsers = getClients();
+//		$('#clientsTableList').empty();
+//		$('#clientsTableList').append('<tr id="allClientsTableTitle">'
+//				+'<td>NAME</td>'
+//				+'<td>SURNAME</td>'
+//				+'<td>PHONE</td>'
+//				+'<td>MAIL</td>'
+//				+'<td>CREATE</td>'
+//			+'</tr>'				
+//		);	
+//		$.each(clientsUsers, function(){
+//			$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
+//					+'<td>' + this.name + '</td>'
+//					+'<td>' + this.surname + '</td>'
+//					+'<td>' + this.phone + '</td>'
+//					+'<td>' + this.mail + '</td>'
+//					+'<td>' + this.createDate + '</td>'
+//					+'</tr>'
+//				);
+//		});
+//		console.log('finish create table');
+//		};		
 	});
