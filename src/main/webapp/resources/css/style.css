@@ -234,7 +234,6 @@ div#homeUsername {
 #clientsTableList{
 	display: none;	
 	min-width: 1006px;
-	min-height:100%;
 	text-align: center;
 	left: 150px;	
 	top: 85px;
