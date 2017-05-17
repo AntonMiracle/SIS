@@ -6,10 +6,12 @@ function getElement(element){
 var isLoadingScreenActive = false;
 function loadingScreen() {
 	if (isLoadingScreenActive) {
-		hideElement(getElement('#loadDiv'));
+		getElement('#loadDiv').fadeOut('slow');
+//		hideElement(getElement('#loadDiv'));
 		isLoadingScreenActive = false;
 	} else {
-		showElement(getElement('#loadDiv'));
+		getElement('#loadDiv').fadeIn('slow');
+//		showElement(getElement('#loadDiv'));
 		isLoadingScreenActive = true;
 	}
 }
