@@ -21,7 +21,7 @@ public class ExampleDataMaker {
 	public void generateExampleData(UserService us, TaskService ts, CarService cs, ProposalService ps, StatusService ss,
 			RoleService rs) {
 		int numberOfManagers = 1;
-		int numberOfClients = 50;
+		int numberOfClients = 5;
 		int numberOfWorkers = 1;
 		int maxCarsByClient = 2;
 		int numberOfProposals = 7;

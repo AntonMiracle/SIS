@@ -174,18 +174,12 @@ $(document).ready(function() {
 		}
 		if(isUsernameMenuActive){
 			hideUsernameMenu();
-		}else{
-			makeFirstAfterClick('.menuHome #homeUsername');
+		}else{				
+			('.menuHome #homeUsername').blur();
 			showUsernameMenu();
 		}		
 	});		
-	/* clients*/
-	
-//	$('.menuHome #allClients').click(function(){		
-//		hideAllHomeTable();
-//		showAllClientsTable();
-//		updateClientsTable();
-//	});
+	/* clients*/	
 	$('.menuHome #allClients').click(function(){
 		makeFirstAfterClick('.loginIn #in');
 		hideAllHomeTable();		
@@ -227,128 +221,5 @@ $(document).ready(function() {
 	$('#clientsTableList').on('click', '.clientsRow', function() {		
 		clientsRowId = $(this).attr('id');		
 		hideAllHomeTable();
-	});	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	/*=======================*/
-	/*=    ajax function    =*/
-	/*=======================*/	
-//	function getAndReturnData(relativeUrl){
-//		var result;
-//		$.getJSON( rootUrl + relativeUrl, function( data ) {	      
-//			result = data;			
-//			});		
-//		return result;
-//	};	
-	/*========================*/
-	/*=    other function    =*/
-	/*========================*/
-//	function checkInputValuelength(value) {
-//		if (value && value.trim().length > 3 && value.trim().length < 17) {
-//			return true;
-//		} else {
-//			return false;
-//		};
-//	};
-//	function checkInputData(value,tipElement, error){
-//		if(checkInputValuelength(value)){
-//			hideElement(tipElement);
-//			return 0;
-//		}else{
-//			setTextInsideElement(tipElement, error);
-//			showElement(tipElement);
-//			return 1;
-//		};
-//	};
-//	
-//	function checkUniqueField(value,tipElement, error, check){	
-//		if(checkInputValuelength(value)){		
-//			if(check){
-//				hideElement(tipElement);
-//				return 0;
-//			}else{
-//				setTextInsideElement(tipElement, error);
-//				showElement(tipElement);
-//				return 1;
-//			};		
-//		}else{
-//			setTextInsideElement(tipElement, error);
-//			showElement(tipElement);
-//			return 1;
-//		};	
-//	};
-//	
-//	function compareUsernameAndPassword(username, password){
-//		return getAndReturnData('rest/check/authentication/' + username + '/' + password);
-//	};
-//	
-//	function getClients(){
-//		return getAndReturnData('rest/clients');
-//	};
-		
-//	function updateClientsTable(){
-//		console.log('create table');
-//		clientsUsers = getClients();
-//		$('#clientsTableList').empty();
-//		$('#clientsTableList').append('<tr id="allClientsTableTitle">'
-//				+'<td>NAME</td>'
-//				+'<td>SURNAME</td>'
-//				+'<td>PHONE</td>'
-//				+'<td>MAIL</td>'
-//				+'<td>CREATE</td>'
-//			+'</tr>'				
-//		);	
-//		$.each(clientsUsers, function(){
-//			$('#clientsTableList').append('<tr class=clientsRow id=' + this.id + '>'
-//					+'<td>' + this.name + '</td>'
-//					+'<td>' + this.surname + '</td>'
-//					+'<td>' + this.phone + '</td>'
-//					+'<td>' + this.mail + '</td>'
-//					+'<td>' + this.createDate + '</td>'
-//					+'</tr>'
-//				);
-//		});
-//		console.log('finish create table');
-//		};		
+	});		
 	});
