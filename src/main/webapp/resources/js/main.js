@@ -169,9 +169,6 @@ $(document).ready(function() {
 		setTextInsideElement('.menuHome #homeUsername', '|||');
 	}
 	$('.menuHome #homeUsername').click(function() {
-		if(usernameValue === undefined){
-			usernameValue = $('.menuHome #homeUsername').text();
-		}
 		if(isUsernameMenuActive){
 			hideUsernameMenu();
 		}else{				
