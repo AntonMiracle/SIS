@@ -96,4 +96,30 @@ $(document).ready(function() {
 	$('.menuHome #homeUsername').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #homeUsername', '25', '|||');
 	});
+	
+	//home user profile
+	$('.menuHome #exit_user_profile').mouseenter(function() {
+		switchElementTextValueAndSize('.menuHome #exit_user_profile', '20', 'SIS');
+	});
+	$('.menuHome #exit_user_profile').mouseleave(function() {
+		switchElementTextValueAndSize('.menuHome #exit_user_profile', '25', 'B');
+	});
+	$('.menuHome #edit_user_profile').mouseenter(function() {
+		switchElementTextValueAndSize('.menuHome #edit_user_profile', '20', 'EDIT');
+	});
+	$('.menuHome #edit_user_profile').mouseleave(function() {
+		switchElementTextValueAndSize('.menuHome #edit_user_profile', '25', 'E');
+	});
+	$('.menuHome #cars_user_profile').mouseenter(function() {
+		switchElementTextValueAndSize('.menuHome #cars_user_profile', '20', 'CARS');
+	});
+	$('.menuHome #cars_user_profile').mouseleave(function() {
+		switchElementTextValueAndSize('.menuHome #cars_user_profile', '25', 'C');
+	});
+	$('.menuHome #proposals_user_profile').mouseenter(function() {
+		switchElementTextValueAndSize('.menuHome #proposals_user_profile', '20', 'PROPOSALS');
+	});
+	$('.menuHome #proposals_user_profile').mouseleave(function() {
+		switchElementTextValueAndSize('.menuHome #proposals_user_profile', '25', 'P');
+	});
 });

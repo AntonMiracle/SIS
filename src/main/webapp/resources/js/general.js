@@ -189,6 +189,43 @@ function showUsernameMenu() {
 	showElement('.menuHome #homeUsernameOut');
 	isUsernameMenuActive = true;
 };
+//home main menu
+function showHomeMainMenu(){
+	showElement('.menuHome #clients');
+	showElement('.menuHome #proposals');
+	showElement('.menuHome #workers');
+};
+function hideHomeMainMenu(){
+	hideHomeClientsMenu();
+	hideHomeProposalsMenu();
+	hideHomeWorkersMenu();
+	hideElement('.menuHome #clients');
+	hideElement('.menuHome #proposals');
+	hideElement('.menuHome #workers');
+};
+// home user div
+var isHomeUserDivActive = false;
+function showHomeUserDiv(){
+	hideAllHomeTable();
+	hideHomeMainMenu();
+	showHomeUserDivMenu();
+	setTextInsideElement('.menuHome .homeLogo', 'PROFILE');	
+	isHomeUserDivActive = true;
+};
+function hideHomeUserDiv(){
+	setTextInsideElement('.menuHome .homeLogo', 'SIS');
+	hideHomeUserDivMenu();
+	showHomeMainMenu();
+	isHomeUserDivActive =false;
+};
+function showHomeUserDivMenu(){
+	showElement('.menuHome #exit_user_profile');
+	showElement('.menuHome #edit_user_profile');
+};
+function hideHomeUserDivMenu(){
+	hideElement('.menuHome #exit_user_profile');
+	hideElement('.menuHome #edit_user_profile');
+};
 // hide all home tables
 function hideAllHomeTable() {
 	// clients area
@@ -221,3 +258,4 @@ function makeFirstAfterClick(element){
 		 hideUsernameMenu(); 
 	 }			
 };
+

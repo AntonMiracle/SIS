@@ -13,11 +13,9 @@ $(document).ready(function() {
 		timeout : 30000,
 	});	
 	//login page
-	$('#imgbg').fadeIn(1500);
-	$('.loginInput').fadeIn(500);
-	setTimeout(function(){
-		$('.menuLogin').show()
-		}, 1000);
+	$('#imgbg').fadeIn("slow");
+	$('.loginInput').fadeIn("slow");	
+	$('.menuLogin').fadeIn("slow");
 	$('.menuLogin #info').click(function() {
 		makeFirstAfterClick('.menuLogin #info');
 		if(isInfoContentActive){
@@ -217,6 +215,10 @@ $(document).ready(function() {
 	var clientsRowId;
 	$('#clientsTableList').on('click', '.clientsRow', function() {		
 		clientsRowId = $(this).attr('id');		
-		hideAllHomeTable();
+		if(isHomeUserDivActive){
+			hideHomeUserDiv();
+		}else{
+			showHomeUserDiv();
+		}
 	});		
 	});

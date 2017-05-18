@@ -330,22 +330,14 @@ div#homeUsername {
 	z-index: 2;
 	outline: none;
 }
-/*
-.button-scale#homeUsername {	
-	font-size: 20px;		
-	width: 150px;
-	height: 25px;	
+
+.button-scale #exit_user_profile ,.button-scale #edit_user_profile ,.button-scale #cars_user_profile ,.button-scale #proposals_user_profile{	
+	display: none;	
 }
-.button-scale#homeUsername:hover{		
-	width: 150px;	
-}*/
 
 .button-scale:hover{	
 	background-color: #508c44;
 	color: white;
-	/*border-width: 5px;
-	border-color: #508c44;
-	border-style: solid;*/	
 	width: 150px;
 }
 
