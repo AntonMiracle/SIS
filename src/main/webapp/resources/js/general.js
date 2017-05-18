@@ -6,10 +6,10 @@ function getElement(element){
 var isLoadingScreenActive = false;
 function loadingScreen() {
 	if (isLoadingScreenActive) {
-		getElement('#loadDiv').fadeOut('fast');
+		getElement('#loadDiv').fadeOut(50);
 		isLoadingScreenActive = false;
 	} else {
-		getElement('#loadDiv').fadeIn('fast');
+		getElement('#loadDiv').fadeIn(50);
 		isLoadingScreenActive = true;
 	}
 }
