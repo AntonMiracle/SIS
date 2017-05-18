@@ -191,6 +191,9 @@ function showUsernameMenu() {
 };
 //home main menu
 function showHomeMainMenu(){
+	setTextInsideElement('.menuHome #clients', 'C');
+	setTextInsideElement('.menuHome #proposals', 'P');
+	setTextInsideElement('.menuHome #workers', 'W');
 	showElement('.menuHome #clients');
 	showElement('.menuHome #proposals');
 	showElement('.menuHome #workers');
@@ -221,10 +224,14 @@ function hideHomeUserDiv(){
 function showHomeUserDivMenu(){
 	showElement('.menuHome #exit_user_profile');
 	showElement('.menuHome #edit_user_profile');
+	showElement('.menuHome #cars_user_profile');
+	showElement('.menuHome #proposals_user_profile');
 };
 function hideHomeUserDivMenu(){
 	hideElement('.menuHome #exit_user_profile');
 	hideElement('.menuHome #edit_user_profile');
+	hideElement('.menuHome #cars_user_profile');
+	hideElement('.menuHome #proposals_user_profile');
 };
 // hide all home tables
 function hideAllHomeTable() {

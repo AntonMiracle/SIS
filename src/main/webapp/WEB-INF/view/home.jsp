@@ -22,15 +22,11 @@
 		<div class="menuHome">	
 			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">	
 				<div class="homeLogo">SIS</div>				
-				<button class="button-scale" id="homeUsername" title="USER MENU">${username}</button>
-			<!-- </sec:authorize>
-			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')">-->						
+				<button class="button-scale" id="homeUsername" title="USER MENU">${username}</button>				
 				<form:form action="${logoutUrl}" method="POST">	
 				<button class="button-scale" id="homeUsernameOut" title="LOG OUT">O</button>
 					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>			
-				</form:form>				
-			<!-- </sec:authorize>
-			<sec:authorize access="hasAnyRole('ROLE_MANAGER', 'ROLE_BOSS', 'ROLE_CLIENT')"> -->								
+				</form:form>							
 				<button class="button-scale" id="clients" title="CLIENTS">C</button>	
 				<button class="button-scale" id="newClient" title="NEW CLIENT">N</button>	
 				<button class="button-scale" id="allClients" title="ALL CLIENT">A</button>		
