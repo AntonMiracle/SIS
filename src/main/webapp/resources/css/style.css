@@ -331,7 +331,7 @@ div#homeUsername {
 	outline: none;
 }
 
-.button-scale #exit_user_profile ,.button-scale #edit_user_profile ,.button-scale #cars_user_profile ,.button-scale #proposals_user_profile{	
+.button-scale#exit_user_profile, .button-scale#edit_user_profile, .button-scale#cars_user_profile, .button-scale#proposals_user_profile{	
 	display: none;	
 }
 

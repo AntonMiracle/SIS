@@ -213,12 +213,13 @@ $(document).ready(function() {
 		});	
 	});
 	var clientsRowId;
-	$('#clientsTableList').on('click', '.clientsRow', function() {		
+	$('#clientsTableList').on('click', '.clientsRow', function() {	
+		makeFirstAfterClick('.clientsRow');
 		clientsRowId = $(this).attr('id');		
-		if(isHomeUserDivActive){
-			hideHomeUserDiv();
-		}else{
-			showHomeUserDiv();
-		}
+		showHomeUserDiv();		
 	});		
+	$('.menuHome #exit_user_profile').click(function() {
+		makeFirstAfterClick('.menuHome #exit_user_profile');
+		hideHomeUserDiv();
+	});	
 	});
