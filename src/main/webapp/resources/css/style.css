@@ -294,13 +294,13 @@ div#homeUsername {
 	text-align: left;
 	background-color: rgba(255, 255, 255, 0.4);
 }
-.openStatus td{	
+.userProfile .openStatus td{	
 	background-color: rgba(255, 255, 0, 0.4);
 }
-.acceptedStatus td{	
+.userProfile .acceptedStatus td{	
 	background-color: rgba(0, 255, 0, 0.4);
 }
-.closeStatus  td{	
+.userProfile .closeStatus  td{	
 	background-color: rgba(255, 0, 0, 0.4);
 }
 #profileHead{		

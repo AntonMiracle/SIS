@@ -256,13 +256,13 @@ $(document).ready(function() {
 						+'</tr>'				
 				);	
 				$.each(data.proposals, function(){
-					$('.userProfile').append('<tr>'
-							+'<td id="button"><button class="button-scale" id="' + this.id + '" title="REMOVE CAR">-</button></td>'
-							+'<td class="openStatus">' + this.status + '</td>'
-							+'<td>' + this.carNumber + '</td>'
-							+'<td colspan="2">' + this.description + '</td>'
-							+'<td>' + this.createDate + '</td>'
-							+'</tr>'
+					$('.userProfile').append('<tr class="openStatus">'
+						+'<td id="button"><button class="button-scale" id="' + this.id + '" title="REMOVE CAR">-</button></td>'
+						+'<td>' + this.status + '</td>'
+						+'<td>' + this.carNumber + '</td>'
+						+'<td colspan="2">' + this.description + '</td>'
+						+'<td>' + this.createDate + '</td>'
+						+'</tr>'
 					);
 				});						
 				showHomeCLientsProfile();
