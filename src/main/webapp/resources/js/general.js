@@ -19,24 +19,6 @@ function serverErrorScreen(){
 		hideElement(getElement('#serverError'));
 	},5000);
 }
-/*
-function switchElementTextValueAndSize(element, fontSize, text) {
-	element = $(element);
-	if ((element.text() === 'B') || (element.text() === 'BACK')) {
-		if ((element.text() === 'B')) {
-			setTextInsideElement(element, 'BACK');
-		} else {
-			setTextInsideElement(element, 'B');
-		}
-	} else {
-		if (fontSize !== 'false') {
-			element.css('font-size', fontSize + 'px');
-		}
-		setTextInsideElement(element, text);
-	}
-	;
-};
-*/
 function setTextInsideElement(element, text) {
 	element = $(element);
 	element.text(text);
@@ -188,9 +170,6 @@ function showUsernameMenu() {
 };
 //home main menu
 function showHomeMainMenu(){
-	setTextInsideElement('.menuHome #clients', 'CLIENTS');
-	setTextInsideElement('.menuHome #proposals', 'PROPOSALS');
-	setTextInsideElement('.menuHome #workers', 'WORKERS');
 	showElement('.menuHome #clients');
 	showElement('.menuHome #proposals');
 	showElement('.menuHome #workers');
@@ -204,32 +183,23 @@ function hideHomeMainMenu(){
 	hideElement('.menuHome #workers');
 };
 // home user div
-var isHomeUserDivActive = false;
-function showHomeUserDiv(){
+var isHomeCLientsProfileActive = false;
+function showHomeCLientsProfile(){
 	hideAllHomeTable();
 	hideHomeMainMenu();
-	showHomeUserDivMenu();
-	setTextInsideElement('.menuHome .homeLogo', 'PROFILE');	
-	isHomeUserDivActive = true;
-};
-function hideHomeUserDiv(){
-	setTextInsideElement('.menuHome .homeLogo', 'SIS');
-	hideHomeUserDivMenu();
-	showHomeMainMenu();
-	isHomeUserDivActive =false;
-};
-function showHomeUserDivMenu(){
 	showElement('.menuHome #exit_user_profile');
-	showElement('.menuHome #edit_user_profile');
-	showElement('.menuHome #cars_user_profile');
-	showElement('.menuHome #proposals_user_profile');
+	showElement('.userProfile');
+	setTextInsideElement('.menuHome .homeLogo', 'PROFILE');	
+	isHomeCLientsProfileActive = true;
 };
-function hideHomeUserDivMenu(){
+function hideHomeCLientsProfile(){
+	setTextInsideElement('.menuHome .homeLogo', 'SIS');
 	hideElement('.menuHome #exit_user_profile');
-	hideElement('.menuHome #edit_user_profile');
-	hideElement('.menuHome #cars_user_profile');
-	hideElement('.menuHome #proposals_user_profile');
+	hideElement('.userProfile');
+	showHomeMainMenu();
+	isHomeCLientsProfileActive = false;
 };
+
 // hide all home tables
 function hideAllHomeTable() {
 	// clients area

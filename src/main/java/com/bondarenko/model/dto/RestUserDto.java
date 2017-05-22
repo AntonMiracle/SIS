@@ -14,8 +14,8 @@ public class RestUserDto implements Comparator<RestUserDto>, Comparable<RestUser
 	public String mail;
 	public String createDate;
 	public Set<String> roles = new HashSet<>();;
-	public Set<Long> proposalsId = new HashSet<>();;
-	public Set<Long> carsId = new HashSet<>();;
+	public Set<RestProposalDto> proposals = new HashSet<>();;
+	public Set<RestCarDto> cars = new HashSet<>();
 	public Set<Long> tasksId = new HashSet<>();
 
 	@Override

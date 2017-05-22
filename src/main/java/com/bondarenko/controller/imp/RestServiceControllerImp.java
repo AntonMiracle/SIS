@@ -59,22 +59,9 @@ public class RestServiceControllerImp implements RestServiceController {
 	}
 
 	@Override
-	@GetMapping ("/usernamefree/{username}")
-	public ResponseEntity<Boolean> isUsernameUnique(@PathVariable ("username") String username)
-			throws RuntimeException {
-		return new ResponseEntity<Boolean>(userService.isUsernameUnique(username), HttpStatus.OK);
-	}
-
-	@Override
-	@GetMapping ("/phonefree/{phone}")
-	public ResponseEntity<Boolean> isPhoneUnique(@PathVariable ("phone") String phone) throws RuntimeException {
-		return new ResponseEntity<Boolean>(uiService.isPhoneUnique(phone), HttpStatus.OK);
-	}
-
-	@Override
 	@GetMapping ("/{id}")
-	public ResponseEntity<User> getById(@PathVariable ("id") Long id) throws RuntimeException {
-		return new ResponseEntity<User>(userService.getById(id), HttpStatus.OK);
+	public ResponseEntity<RestUserDto> getById(@PathVariable ("id") Long id) throws RuntimeException {
+		return new ResponseEntity<RestUserDto>(restService.convertUser(userService.getById(id)), HttpStatus.OK);
 	}
 
 	@Override

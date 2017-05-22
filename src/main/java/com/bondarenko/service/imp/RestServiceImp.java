@@ -93,10 +93,10 @@ public class RestServiceImp implements RestService {
 			dto.roles.add(role.getName());
 		}
 		for (Proposal proposal : user.getProposals()) {
-			dto.proposalsId.add(proposal.getId());
+			dto.proposals.add(convertProposal(proposal));
 		}
 		for (Car car : user.getCars()) {
-			dto.carsId.add(car.getId());
+			dto.cars.add(convertCar(car));
 		}
 		for (Task task : user.getTasks()) {
 			dto.tasksId.add(task.getId());
@@ -109,7 +109,6 @@ public class RestServiceImp implements RestService {
 	public RestProposalDto convertProposal(Proposal proposal) throws RuntimeException {
 		RestProposalDto dto = new RestProposalDto();
 		dto.id = proposal.getId();
-		dto.userId = proposal.getUser().getId();
 		dto.status = proposal.getStatus().getName();
 		dto.carNumber = proposal.getCar().getNumber();
 		dto.description = proposal.getDescription();
@@ -130,13 +129,12 @@ public class RestServiceImp implements RestService {
 	public RestCarDto convertCar(Car car) throws RuntimeException {
 		RestCarDto dto = new RestCarDto();
 		dto.id = car.getId();
-		dto.userId = car.getUser().getId();
 		dto.number = car.getNumber();
 		dto.model = car.getModel();
 		dto.mark = car.getMark();
 		dto.description = car.getDescription();
 		dto.createDate = car.getCreateDate().toGMTString();
-		return null;
+		return dto;
 	}
 
 

@@ -216,10 +216,63 @@ $(document).ready(function() {
 	$('#clientsTableList').on('click', '.clientsRow', function() {	
 		makeFirstAfterClick('.clientsRow');
 		clientsRowId = $(this).attr('id');		
-		showHomeUserDiv();		
-	});		
+		//updateClientsTable();	
+		var clientsUsers;		
+		$.ajax({			
+			url : rootUrl + '/rest/user/' + clientsRowId,
+			type : 'GET',			
+			contentType : 'application/json; charset=utf-8',
+			dataType : 'json',
+			success : function(data){				
+				$('.userProfile').empty();
+				$('.userProfile').append('<tr>'
+						+'<td id="button"><button class="button-scale"  id="0" title="EDIT">e</button></td>'
+						+'<td id="profileHead">' + data.name + '</td>'
+						+'<td id="profileHead">' + data.surname + '</td>'
+						+'<td id="profileHead">' + data.phone + '</td>'
+						+'<td id="profileHead">' + data.mail + '</td>'
+						+'<td id="profileHead">' + data.createDate + '</td>'
+					+'</tr>'				
+				);
+				$('.userProfile').append('<tr>'
+						+'<td id="button"><button class="button-scale" id="0" title="ADD CAR">+</button></td>'
+						+'<td colspan="5" id="profileHead">CARS</td>'						
+					+'</tr>'				
+				);	
+				$.each(data.cars, function(){
+					$('.userProfile').append('<tr>'
+							+'<td id="button"><button class="button-scale" id="' + this.id + '" title="REMOVE CAR">-</button></td>'
+							+'<td>' + this.number + '</td>'
+							+'<td>' + this.model + '</td>'
+							+'<td>' + this.mark + '</td>'
+							+'<td>' + this.description + '</td>'
+							+'<td>' + this.createDate + '</td>'
+							+'</tr>'
+						);
+				});						
+				$('.userProfile').append('<tr>'
+						+'<td id="button"><button class="button-scale" id="0" title="ADD PROPOSAL">+</button></td>'
+						+'<td colspan="5" id="profileHead">PROPOSALS</td>'						
+						+'</tr>'				
+				);	
+				$.each(data.proposals, function(){
+					$('.userProfile').append('<tr>'
+							+'<td id="button"><button class="button-scale" id="' + this.id + '" title="REMOVE CAR">-</button></td>'
+							+'<td class="openStatus">' + this.status + '</td>'
+							+'<td>' + this.carNumber + '</td>'
+							+'<td colspan="2">' + this.description + '</td>'
+							+'<td>' + this.createDate + '</td>'
+							+'</tr>'
+					);
+				});						
+				showHomeCLientsProfile();
+			},
+		});	
+	});	
+	
 	$('.menuHome #exit_user_profile').click(function() {
 		makeFirstAfterClick('.menuHome #exit_user_profile');
-		hideHomeUserDiv();
-	});	
+		hideHomeCLientsProfile();
+	});
+	
 	});

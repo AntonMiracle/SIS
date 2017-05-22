@@ -37,12 +37,7 @@
 				<button class="button-scale" id="newWorker" title="NEW WORKER">NEW</button>	
 				<button class="button-scale" id="allWorkers" title="ALL WORKERS">ALL</button>	
 				<button class="button-scale" id="tasks" title="TASKS">TASKS</button>
-				<button class="button-scale" id="exit_user_profile" title="BACK TO SIS">SIS</button>
-				<button class="button-scale" id="edit_user_profile" title="EDIT PROFILE">EDIT</button>
-				<button class="button-scale" id="cars_user_profile" title="USER CARS">CARS</button>
-				<button class="button-scale" id="proposals_user_profile" title="USER PROPOSALS">PROPOSALS</button>
-				
-				
+				<button class="button-scale" id="exit_user_profile" title="BACK TO SIS">SIS</button>				
 			</sec:authorize>
 		</div>
 		
@@ -51,7 +46,13 @@
 		<!-- ==================== -->
 		<table id="clientsTableList">				
 					
-		</table>		
+		</table>
+				
+		<!-- ==================== -->
+		<!-- profile content -->
+		<!-- ==================== -->
+		<table class="userProfile">
 		
+		</table>
 	</jsp:attribute>
 </t:template>
