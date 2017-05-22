@@ -2,6 +2,7 @@ $(document).ready(function() {
 	/*====================*/
 	/*=    login menu    =*/
 	/*====================*/
+	/*
 	$('.menuLogin #up').mouseenter(function() {
 		switchElementTextValueAndSize('.menuLogin #up', 'false', 'UP')		
 	});
@@ -18,6 +19,7 @@ $(document).ready(function() {
 	/*=    home menu    =*/
 	/*===================*/
 	//clients
+	/*
 	$('.menuHome #clients').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #clients', '20', 'CLIENTS');
 	});
@@ -36,8 +38,10 @@ $(document).ready(function() {
 	$('.menuHome #allClients').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #allClients', '25', 'A');
 	});
+	*/
 
 	//proposals
+	/*
 	$('.menuHome #proposals').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #proposals', '20', 'PROPOSALS');
 	});
@@ -56,8 +60,10 @@ $(document).ready(function() {
 	$('.menuHome #allProposals').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #allProposals', '25', 'A');
 	});
+	*/
 
 	//workers
+	/*
 	$('.menuHome #workers').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #workers', '20', 'WORKERS');
 	});
@@ -82,8 +88,10 @@ $(document).ready(function() {
 	$('.menuHome #tasks').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #tasks', '25', 'T');
 	});
+	*/
 
 	//user menu
+	/*
 	$('.menuHome #homeUsernameOut').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #homeUsernameOut', '20', 'OUT');
 	});
@@ -96,8 +104,10 @@ $(document).ready(function() {
 	$('.menuHome #homeUsername').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #homeUsername', '25', '|||');
 	});
+	*/
 	
 	//home user profile
+	/*
 	$('.menuHome #exit_user_profile').mouseenter(function() {
 		switchElementTextValueAndSize('.menuHome #exit_user_profile', '20', 'SIS');
 	});
@@ -122,4 +132,5 @@ $(document).ready(function() {
 	$('.menuHome #proposals_user_profile').mouseleave(function() {
 		switchElementTextValueAndSize('.menuHome #proposals_user_profile', '25', 'P');
 	});
+	*/
 });

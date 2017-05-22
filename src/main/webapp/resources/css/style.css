@@ -314,16 +314,18 @@ div#homeUsername {
 /*=      buttons      =*/
 /*=====================*/
 .button-scale {	
-	background-color: rgba(255, 255, 255, 0.5);
-	margin-bottom: 1px;
-	margin-top: 1px;
-	border-color: white;	
-	border-width: 0px;	
-	border-style: solid;	
-	width: 80px;
-	height: 80px;
+	background-color: rgba(255, 255, 255, 0);
+	margin-top: 4px;
+	margin-left: 4px;
+	margin-right: 4px;
+	border-color: #1d3517;	
+	border-width: 1px;
+	border-radius: 7px;
+	border-style: solid;
+	width: 140px;
+	height: 40px;
 	left: 0;
-	font-size: 25px;	
+	font-size: 20px;	
 	color: #1d3517;
 	text-align: center;
 	transition: 200ms linear;
@@ -335,20 +337,13 @@ div#homeUsername {
 	display: none;	
 }
 
-.button-scale:hover{	
-	background-color: #508c44;
-	color: white;
-	width: 150px;
+.button-scale:hover{
+	background-color: rgba(255, 255, 255, 0.35);
 }
 
-.loginInput #in:hover, .loginUpInput #up:hover{	
-	border: 5px solid #508c44;	
+.loginInput #in, .loginUpInput #up{	
 	width: 80px;
 	height: 80px;	
-}
-
-.menuLogin .button-scale#info {
-	font-size: 30px;
 }
 
 .menuHome #newClient, .menuHome #newProposal, .menuHome #newWorker,

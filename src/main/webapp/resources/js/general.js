@@ -19,6 +19,7 @@ function serverErrorScreen(){
 		hideElement(getElement('#serverError'));
 	},5000);
 }
+/*
 function switchElementTextValueAndSize(element, fontSize, text) {
 	element = $(element);
 	if ((element.text() === 'B') || (element.text() === 'BACK')) {
@@ -35,6 +36,7 @@ function switchElementTextValueAndSize(element, fontSize, text) {
 	}
 	;
 };
+*/
 function setTextInsideElement(element, text) {
 	element = $(element);
 	element.text(text);
@@ -71,12 +73,7 @@ function showUpContent() {
 	isUpContentActive = true;
 };
 function hideUpContent() {
-	if ($('.menuLogin #up').text() === 'BACK') {
-		setTextInsideElement($('.menuLogin #up'), 'UP');
-	}
-	if ($('.menuLogin #up').text() === 'B') {
-		setTextInsideElement($('.menuLogin #up'), 'U');
-	}
+	setTextInsideElement($('.menuLogin #up'), 'UP');
 	setButtonTitle('.menuLogin #up', 'registration');
 	hideElement('.loginUpContent');
 	hideLoginUpContentTips();
@@ -94,7 +91,7 @@ function hideLoginUpContentTips() {
 // Project information content
 var isInfoContentActive = false;
 function hideProjectInformationContent() {
-	setTextInsideElement($('.menuLogin #info'), 'i');
+	setTextInsideElement($('.menuLogin #info'), 'ABOUT');
 	showElement('.menuLogin #up');
 	showElement('.loginInput');
 	hideElement('.loginProjectInfo');
@@ -191,9 +188,9 @@ function showUsernameMenu() {
 };
 //home main menu
 function showHomeMainMenu(){
-	setTextInsideElement('.menuHome #clients', 'C');
-	setTextInsideElement('.menuHome #proposals', 'P');
-	setTextInsideElement('.menuHome #workers', 'W');
+	setTextInsideElement('.menuHome #clients', 'CLIENTS');
+	setTextInsideElement('.menuHome #proposals', 'PROPOSALS');
+	setTextInsideElement('.menuHome #workers', 'WORKERS');
 	showElement('.menuHome #clients');
 	showElement('.menuHome #proposals');
 	showElement('.menuHome #workers');
