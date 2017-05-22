@@ -300,7 +300,7 @@ div#homeUsername {
 .userProfile .acceptedStatus td{	
 	background-color: rgba(0, 255, 0, 0.4);
 }
-.userProfile .closeStatus  td{	
+.userProfile .closedStatus  td{	
 	background-color: rgba(255, 0, 0, 0.4);
 }
 #profileHead{		
@@ -333,7 +333,7 @@ div#homeUsername {
 	outline: none;
 }
 .userProfile .button-scale{	
-	padding-bottom: 5px;
+	padding-bottom: 2px;
 	width: 40px;
 	height: 40px;
 	font-size: 25px;

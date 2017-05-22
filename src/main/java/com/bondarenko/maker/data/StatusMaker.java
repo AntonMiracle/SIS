@@ -6,7 +6,7 @@ import com.bondarenko.service.StatusService;
 public class StatusMaker {
 	public static boolean isInitilized = false;
 	public static final String STATUS_OPEN = "open";
-	public static final String STATUS_CLOSE = "close";
+	public static final String STATUS_CLOSE = "closed";
 	public static final String STATUS_ACCEPTED = "accepted";
 
 	public void initialized(StatusService statusService) {

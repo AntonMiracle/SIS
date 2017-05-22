@@ -255,8 +255,17 @@ $(document).ready(function() {
 						+'<td colspan="5" id="profileHead">PROPOSALS</td>'						
 						+'</tr>'				
 				);	
-				$.each(data.proposals, function(){
-					$('.userProfile').append('<tr class="openStatus">'
+				$.each(data.proposals, function(){												 
+						if(this.status === 'open'){
+							$('.userProfile').append('<tr class="openStatus">')
+						};
+						if(this.status === 'closed'){
+							$('.userProfile').append('<tr class="closedStatus">')	
+						};
+						if(this.status === 'accepted'){
+							$('.userProfile').append('<tr class="acceptedStatus">')
+						};
+						$('.userProfile').append(
 						+'<td id="button"><button class="button-scale" id="' + this.id + '" title="REMOVE CAR">-</button></td>'
 						+'<td>' + this.status + '</td>'
 						+'<td>' + this.carNumber + '</td>'
