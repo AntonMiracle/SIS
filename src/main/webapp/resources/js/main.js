@@ -255,23 +255,24 @@ $(document).ready(function() {
 						+'<td colspan="5" id="profileHead">PROPOSALS</td>'						
 						+'</tr>'				
 				);	
-				$.each(data.proposals, function(){												 
+				$.each(data.proposals, function(){	
+						var trClass;
 						if(this.status === 'open'){
-							$('.userProfile').append('<tr class="openStatus">')
+							trClass ='openStatus';
 						};
 						if(this.status === 'closed'){
-							$('.userProfile').append('<tr class="closedStatus">')	
+							trClass ='closedStatus';
 						};
 						if(this.status === 'accepted'){
-							$('.userProfile').append('<tr class="acceptedStatus">')
+							trClass ='acceptedStatus';
 						};
-						$('.userProfile').append(
-						+'<td id="button"><button class="button-scale" id="' + this.id + '" title="REMOVE CAR">-</button></td>'
-						+'<td>' + this.status + '</td>'
-						+'<td>' + this.carNumber + '</td>'
-						+'<td colspan="2">' + this.description + '</td>'
-						+'<td>' + this.createDate + '</td>'
-						+'</tr>'
+						$('.userProfile').append('<tr class="'+trClass+'">'
+							+'<td id="button"><button class="button-scale" id="' + this.id + '" title="REMOVE CAR">-</button></td>'
+							+'<td>' + this.status + '</td>'
+							+'<td>' + this.carNumber + '</td>'
+							+'<td colspan="2">' + this.description + '</td>'
+							+'<td>' + this.createDate + '</td>'
+							+'</tr>'
 					);
 				});						
 				showHomeCLientsProfile();
